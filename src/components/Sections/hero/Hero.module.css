@@ -1,0 +1,423 @@
+@reference "../../../app/globals.css";
+
+/* =========
+   HERO — base
+   ========= */
+
+.section {
+  @apply relative w-full overflow-hidden;
+  background: var(--c-hero-bg);
+  color: var(--c-hero-text);
+
+  /* pełna wysokość ekranu */
+  min-height: 100svh;
+
+  /* default navbar height (desktop) */
+  --nav-h: 72px;
+
+  /* offsets */
+  --hero-side-offset: 18px;
+  --hero-ornaments-offset: 18px;
+
+  /* ornaments sizing */
+  --hero-ornaments-scale: 1;
+  --hero-ornament-size: 44px;
+  --hero-ornaments-gap: 16px;
+}
+
+.shell {
+  @apply page-shell relative;
+
+  /* KLUCZ: twarda wysokość dla potomków (żeby 100% działało stabilnie) */
+  height: 100svh;
+}
+
+/* Wrapper tylko jako "scena" (bez flex-centrowania) */
+.center {
+  @apply relative w-full;
+  height: 100%;
+}
+
+/* Grupa: pozycjonowana od dołu.
+   Odstęp od dołu = --nav-h (czyli symetrycznie jak u góry navbar) */
+.stack {
+  @apply absolute left-1/2 -translate-x-1/2 flex w-full flex-col items-center;
+
+  bottom: var(--nav-h);
+  width: 100%;
+
+  justify-content: flex-end;
+}
+
+/* side-copy desktop */
+.sideCopy {
+  @apply pointer-events-none absolute hidden md:block;
+  color: rgb(var(--rgb-white) / 0.9);
+
+  width: clamp(140px, 12vw, 220px);
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.15;
+  left: 0;
+
+  top: calc(
+    var(--nav-h) +
+    var(--hero-side-offset) +
+    clamp(40px, 6vh, 80px)
+  );
+}
+
+/* ornaments desktop */
+.ornaments {
+  @apply absolute hidden md:flex md:flex-col items-center;
+  right: 0;
+
+  top: calc(
+    var(--nav-h) +
+    var(--hero-ornaments-offset) +
+    clamp(56px, 8vh, 110px)
+  );
+
+  gap: var(--hero-ornaments-gap);
+  transform: scale(var(--hero-ornaments-scale, 1));
+  transform-origin: top right;
+}
+
+.ornaments svg {
+  width: var(--hero-ornament-size);
+  height: var(--hero-ornament-size);
+  flex: 0 0 auto;
+}
+
+.photoWrap {
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  width: auto;
+  height: auto;
+  max-inline-size: clamp(280px, 70vw, 760px);
+  max-block-size: clamp(260px, 56vh, 720px);
+}
+
+.titleBlock {
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  @apply relative select-none text-center;
+  color: var(--c-hero-text);
+
+  z-index: 10;
+  font-family: var(--font-inter);
+  font-weight: 800;
+  font-size: clamp(72px, 14vw, 260px);
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  margin-top: clamp(-130px, -10vw, -70px);
+}
+
+.tags {
+  @apply flex items-center justify-between;
+  color: rgb(var(--rgb-white) / 0.75);
+
+  width: 100%;
+  margin-top: var(--hero-tags-gap);
+  font-size: clamp(20px, 2vw, 24px);
+  line-height: 1.2;
+}
+
+.cta {
+  @apply flex flex-col items-center gap-4 sm:flex-row;
+  margin-top: clamp(14px, 2.4vh, 22px);
+}
+
+/* =========
+   HERO — responsive overrides
+   ========= */
+
+/* Mobile small (≤ 360px) */
+@media (max-width: 360px) {
+  .section {
+    --nav-h: 60px;
+  }
+
+  .sideCopy {
+    display: none;
+  }
+
+  .ornaments {
+    display: none;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -58%);
+  }
+
+  .photo {
+    max-inline-size: 82vw;
+    max-block-size: 48vh;
+  }
+
+  .title {
+    font-size: clamp(80px, 18vw, 120px);
+    margin-top: clamp(-110px, -14vw, -70px);
+  }
+
+  .tags {
+    font-size: 14px;
+    margin-top: clamp(8px, 1.8vh, 14px);
+  }
+
+  .cta {
+    margin-top: 14px;
+    gap: 12px;
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+/* Mobile (default, ≤ 767px) */
+@media (max-width: 767px) {
+  .section {
+    --nav-h: 40px;
+  }
+
+  .sideCopy {
+    display: none;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -56%);
+  }
+
+  .photo {
+    max-inline-size: min(80vw, 450px);
+    max-block-size: 54vh;
+  }
+
+  .title {
+    font-size: clamp(64px, 18vw, 140px);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    margin-top: clamp(-120px, -12vw, -75px);
+    white-space: nowrap;
+  }
+
+  .tags {
+    font-size: clamp(13px, 3.2vw, 16px);
+    margin-top: clamp(10px, 2vh, 18px);
+  }
+
+  .cta {
+    margin-top: clamp(14px, 2.4vh, 22px);
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .ornaments {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: absolute;
+    right: clamp(20px, 4vw, 32px);
+    left: auto;
+
+    top: calc(var(--nav-h) + 40px);
+    gap: 12px;
+
+    transform: none;
+  }
+
+  .ornaments svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Tablet (md, 768–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    --hero-side-offset: 30px;
+    --hero-ornaments-offset: 30px;
+
+    --hero-ornaments-scale: 0.92;
+    --hero-ornament-size: 38px;
+    --hero-ornaments-gap: 12px;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -55%);
+  }
+
+  .photo {
+    max-inline-size: clamp(520px, 62vw, 700px);
+    max-block-size: clamp(420px, 52vh, 640px);
+  }
+
+  .title {
+    font-size: clamp(110px, 14vw, 220px);
+    margin-top: clamp(-140px, -10vw, -90px);
+  }
+
+  .tags {
+    font-size: clamp(16px, 1.8vw, 20px);
+    margin-top: clamp(14px, 2vh, 22px);
+  }
+
+  .cta {
+    margin-top: clamp(18px, 2.6vh, 28px);
+  }
+
+  .sideCopy {
+    width: clamp(130px, 14vw, 200px);
+    font-size: 12px;
+    line-height: 1.15;
+  }
+}
+
+/* Laptop (lg, 1024–1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    --hero-side-offset: 22px;
+    --hero-ornaments-offset: 22px;
+
+    --hero-ornaments-scale: 0.96;
+    --hero-ornament-size: 42px;
+    --hero-ornaments-gap: 14px;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -54%);
+  }
+
+  .photo {
+    max-inline-size: clamp(560px, 54vw, 760px);
+    max-block-size: clamp(460px, 52vh, 700px);
+  }
+
+  .title {
+    font-size: clamp(140px, 13vw, 260px);
+    margin-top: clamp(-150px, -9vw, -95px);
+  }
+
+  .tags {
+    font-size: clamp(18px, 1.6vw, 22px);
+  }
+
+  .cta {
+    margin-top: clamp(20px, 2.8vh, 32px);
+  }
+
+  .sideCopy {
+    width: clamp(140px, 12vw, 210px);
+    font-size: 13px;
+  }
+}
+
+/* Desktop (xl, 1280–1535px) */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .section {
+    --hero-side-offset: 52px;
+    --hero-ornaments-offset: 52px;
+
+    --hero-ornaments-scale: 1;
+    --hero-ornament-size: 44px;
+    --hero-ornaments-gap: 16px;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -53%);
+  }
+
+  .photo {
+    max-inline-size: clamp(620px, 46vw, 820px);
+    max-block-size: clamp(280px, 45vh, 700px);
+  }
+
+  .title {
+    font-size: clamp(170px, 12vw, 280px);
+    margin-top: clamp(-160px, -8vw, -105px);
+  }
+
+  .tags {
+    font-size: clamp(18px, 1.4vw, 24px);
+  }
+
+  .sideCopy {
+    font-size: 14px;
+  }
+}
+
+/* Large desktop (2xl, ≥ 1536px) */
+@media (min-width: 1536px) {
+  .section {
+    --hero-side-offset: 120px;
+    --hero-ornaments-offset: 120px;
+
+    --hero-ornaments-scale: 1.3;
+    --hero-ornament-size: 48px;
+    --hero-ornaments-gap: 18px;
+  }
+
+  .photoWrap {
+    transform: translate(-50%, -52%);
+  }
+
+  .photo {
+    max-inline-size: clamp(720px, 40vw, 900px);
+    max-block-size: clamp(560px, 56vh, 820px);
+  }
+
+  .title {
+    font-size: clamp(190px, 11vw, 260px);
+    margin-top: clamp(-170px, -7vw, -115px);
+  }
+
+  .tags {
+    font-size: 32px;
+  }
+
+  .sideCopy {
+    width: clamp(160px, 10vw, 240px);
+    font-size: 20px;
+  }
+}
+
+/* Niskie wysokości — żeby nie "ucinało" */
+@media (max-height: 740px) {
+  .photoWrap {
+    transform: translate(-50%, -60%);
+  }
+
+  .photo {
+    max-block-size: 50vh;
+  }
+
+  .title {
+    margin-top: clamp(-120px, -12vw, -80px);
+  }
+
+  .cta {
+    margin-top: 14px;
+  }
+}

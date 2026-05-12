@@ -1,0 +1,99 @@
+@reference "../app/globals.css";
+
+.btn {
+  @apply relative w-full sm:w-auto h-[53px] px-8 font-medium text-[16px] leading-[19px]
+    overflow-hidden inline-flex items-center justify-center cursor-pointer border-0
+    isolate focus-ring disabled:opacity-50 disabled:cursor-not-allowed;
+
+  /* Domyślne wartości (fallback) */
+  --btn-base-bg: var(--c-white);
+  --btn-base-shadow: none;
+
+  --btn-sweep-1: var(--c-neutral-200);
+  --btn-sweep-2: var(--c-black);
+
+  --btn-text: var(--c-black);
+  --btn-text-hover: var(--c-white);
+
+  /* ring-offset pod tło strony */
+  --tw-ring-offset-color: var(--c-bg);
+}
+
+.layer {
+  @apply absolute inset-0;
+}
+
+.base {
+  background: var(--btn-base-bg);
+  box-shadow: var(--btn-base-shadow);
+}
+
+.sweep1 {
+  @apply w-0 transition-all duration-500 ease-out;
+  background: var(--btn-sweep-1);
+}
+
+.sweep2 {
+  @apply w-0 transition-all duration-700 delay-300 ease-out;
+  background: var(--btn-sweep-2);
+}
+
+.btn:hover .sweep1,
+.btn:hover .sweep2 {
+  width: 100%;
+}
+
+.label {
+  @apply relative z-10 whitespace-nowrap transition-colors duration-700 delay-200;
+  color: var(--btn-text);
+}
+
+.btn:hover .label {
+  color: var(--btn-text-hover);
+}
+
+/* --- Variants --- */
+
+.variantWhite {
+  --btn-base-bg: var(--c-white);
+  --btn-base-shadow: none;
+
+  --btn-sweep-2: var(--c-black);
+
+  --btn-text: var(--c-black);
+  --btn-text-hover: var(--c-white);
+}
+
+.variantOutline {
+  --btn-base-bg: transparent;
+  --btn-base-shadow: inset 0 0 0 0.5px var(--c-white);
+
+  --btn-sweep-2: var(--c-white);
+
+  --btn-text: var(--c-white);
+  --btn-text-hover: var(--c-black);
+
+  /* outline zwykle na ciemnym tle */
+  --tw-ring-offset-color: var(--c-hero-bg);
+}
+
+.variantCookieAccept {
+  --btn-base-bg: var(--c-black);
+  --btn-base-shadow: none;
+
+  --btn-sweep-2: var(--c-white);
+
+  --btn-text: var(--c-white);
+  --btn-text-hover: var(--c-black);
+}
+
+.variantCookieDetailed {
+  --btn-base-bg: var(--c-white);
+  --btn-base-shadow: inset 0 0 0 1px var(--c-black);
+
+  --btn-sweep-2: var(--c-black);
+
+  --btn-text: var(--c-black);
+  --btn-text-hover: var(--c-white);
+}
+

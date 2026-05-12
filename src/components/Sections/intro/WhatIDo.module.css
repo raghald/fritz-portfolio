@@ -1,0 +1,47 @@
+@reference "../../../app/globals.css";
+
+.section {
+  @apply section section-pad-b-90;
+}
+
+.heading {
+  @apply font-semibold leading-[100%] text-[44px] md:text-[48px] lg:text-[52px];
+  color: var(--c-black);
+}
+
+.layout {
+  @apply mt-8 flex flex-col lg:flex-row gap-[60px];
+}
+
+.lead {
+  @apply text-[28px] leading-[110%] md:text-[28px] lg:text-[40px] lg:leading-[48px] max-w-[626px];
+  color: var(--c-black);
+}
+
+.grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[650px];
+}
+
+.card {
+  @apply card card-pad-md;
+  min-height: 220px;
+}
+
+.icon {
+  @apply border w-[56px] h-[56px] flex items-center justify-center p-2;
+  border-color: var(--c-border);
+}
+
+.text {
+  @apply mt-7;
+}
+
+.cardTitle {
+  @apply font-semibold text-[24px] leading-[120%];
+  color: var(--c-black);
+}
+
+.cardDesc {
+  @apply mt-1 text-[16px] leading-[150%];
+  color: var(--c-black);
+}

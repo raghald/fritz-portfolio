@@ -1,0 +1,701 @@
+{
+  "Common": {
+    "sections": {
+      "rangeHeading": "Range",
+      "resultHeading": "Result"
+    }
+  },
+
+  "hero": {
+    "ariaLabel": "Hero section",
+    "titleWord": "DESIGNER",
+
+    "sideCopyLine1": "Your neighbor",
+    "sideCopyLine2": "design freak",
+
+    "tags": {
+      "web": "#web",
+      "ui": "#UI",
+      "ux": "#UX",
+      "brand": "#brand",
+      "motion": "#motion"
+    },
+
+    "tagOrder": "[\"ui\",\"web\",\"ux\",\"brand\",\"motion\"]",
+
+    "btnPrimary": "Check out my workflow",
+    "btnSecondary": "Ask about your project",
+    "btnPrimaryAria": "Go to my case studies",
+    "btnSecondaryAria": "Open contact dialog to work together"
+  },
+
+  "loading": {
+    "projects": "Loading projects...",
+    "content": "Loading content..."
+  },
+
+  "intro": {
+    "ariaLabel": "Intro",
+    "heading": "Hi, I'm Fryderyk — web & UI/UX designer focused on clean, thoughtful design. Sometimes I'm a content creator.",
+    "portraitAlt": "Portrait of Fritz Glowacki"
+  },
+
+  "contact": {
+    "visit": "Open: {label}",
+    "copyToClipboard": "Copy to clipboard",
+    "copied": "Copied",
+    "actions": {
+      "email": { "hover": "Copy" },
+      "instagram": { "label": "Instagram", "hover": "Visit" },
+      "linkedin": { "label": "LinkedIn", "hover": "Visit" }
+    }
+  },
+
+  "footer": {
+    "ariaLabel": "Footer",
+    "headlineLine1": "Curious about what we can create together?",
+    "headlineLine2": "Let's bring something extraordinary to life!",
+    "btnLabel": "Get in touch!",
+    "btnAria": "Open the contact section to get in touch",
+    "phoneAria": "Call phone number",
+    "emailAria": "Send an email",
+    "cookiesLabel": "Cookie Policy",
+    "cookiesAria": "Open cookie policy page"
+  },
+
+  "navbar": {
+    "ariaMainNav": "Main navigation",
+    "brand": "FRITZ GLOWACKI",
+    "brandAria": "Fritz Glowacki – go to homepage",
+    "toggleMenuAria": "Toggle mobile menu",
+    "linkWorks": "Works",
+    "linkAbout": "About",
+    "linkGallery": "Gallery",
+    "contactCta": "Contact",
+    "contactCtaAria": "Open contact form",
+    "switchToEn": "Switch language to English",
+    "switchToPl": "Switch language to Polish"
+  },
+
+  "projects": {
+  "ariaLabel": "Projects showcase",
+  "headerTyping": "I'm (...) web & UI/UX designer",
+  "showMore": "Show more"
+},
+
+
+  "tiktok": {
+    "ariaLabel": "TikTok content showcase",
+    "headerTyping": "Sometimes I'm a content creator.",
+    "openSource": "Open TikTok source",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "seek": "Seek in video",
+    "dotPage": "Go to page {index}",
+    "dotVideo": "Go to video {index}",
+    "ctaLabel": "Show more",
+    "ctaAria": "Show more content in gallery",
+    "play": "Play video",
+    "pause": "Pause video"
+  },
+
+  "worksIntro": {
+    "ariaLabel": "Works Introduction",
+    "title": "I've done a few projects...",
+    "subtitle": "Explore my projects — from UX and web design to creative campaigns and digital content"
+  },
+
+  "Works": {
+    "videoFallback": "Your browser does not support the video tag.",
+    "items": {
+      "talentdays-blog": {
+        "title": "Blog for young talents",
+        "meta": "Blog | 2024",
+        "description": "Blog design for Talent Days - created as a clear and engaging space with articles supporting users in job searching and career development"
+      },
+      "pharmovit-store": {
+        "title": "Supplement Store",
+        "meta": "E-commerce | 2022",
+        "description": "Design of Pharmovit’s online store, where the key objective was combining modern aesthetics with functionality that drives sales"
+      },
+      "pasibus-job-board": {
+        "title": "Burger's Job Board",
+        "meta": "LoFi / UX | 2025",
+        "description": "The Pasibus Careers website project focused on structuring content and creating an intuitive information architecture to support the recruitment process"
+      },
+      "tutlo-recommendation": {
+        "title": "Recommendation system",
+        "meta": "LandingPage | 2025",
+        "description": "Landing page design for Tutlo Referral Program - created to encourage users to sign up and join the partnership initiative"
+      },
+      "kobu-studio": {
+        "title": "Architecture Studio",
+        "meta": "Website | 2025",
+        "description": "Landing page design for Tutlo Referral Program – created to encourage users to sign up and join the partnership initiative. My task was to design a visually consistent, clear, and conversion-oriented page that communicates the program rules and user benefits in an accessible way."
+      },
+      "absolvent-agency": {
+        "title": "Employer Branding Agency",
+        "meta": "Website | 2025",
+        "description": "Design project new Absolvent Consulting’s website"
+      }
+    },
+
+    "filters": {
+      "All": "All projects",
+      "E-commerce": "E-commerce",
+      "LandingPage": "Landing pages",
+      "Website": "Websites",
+      "LoFi": "UX / LoFi",
+      "Framer": "Framer"
+    },
+
+    "moreSections": {
+      "heading": "This is not my one and only case"
+    },
+
+    "types": {
+      "E-commerce": "E-commerce",
+      "LandingPage": "Landing page",
+      "Website": "Website",
+      "LoFi": "UX / LoFi",
+      "Framer": "Framer"
+    },
+
+    "absolvent": {
+      "heading": "Employer Branding Agency",
+      "intro": "Absolvent Consulting is an employer branding agency with several years of experience in the industry. A creative team of professionals in their fields. They work with major brands on a daily basis, and their creations and ideas can be found every day on social media and the internet",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+
+      "challenge": {
+        "heading": "Challenge",
+        "description": "Absolvent Consulting encountered an unpleasant situation. The website redesign project had already been going on for a year because the original contractor disappeared at a certain stage of the work, and the project had to be completed"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "Auditing current materials and sifting out items that were no longer suitable for further use. Completing the project"
+      },
+
+      "range": {
+        "audit": {
+          "title": "Audit and structuring of the existing project",
+          "description": "Layout, branding consistency"
+        },
+        "implementer": {
+          "title": "Implementation",
+          "description": "Finding an implementer"
+        },
+        "ux-ui": {
+          "title": "UX and UI improvements",
+          "description": "Enhancing readability, content hierarchy, and navigation"
+        },
+        "mobile": {
+          "title": "Mobile versions",
+          "description": "Full adaptation of the website for mobile devices"
+        },
+        "finalization": {
+          "title": "Project finalization",
+          "description": "Delivering the site in a cohesive, completed form"
+        }
+      },
+      "result": "The changes forced by the situation brought immediate results. We managed to complete the website. Absolvent Consulting was able to welcome the second quarter of 2025 with a new showcase for its activities",
+      "video": {
+        "ariaLabel": "Absolvent Consulting website overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
+
+    "pasibus": {
+      "heading": "Burger's Job Board",
+      "intro": "Pasibus is a Polish fast food chain that has gone from being a food truck restaurant to a real competitor for foreign corporations on the local market in just a few years. It consistently pursues its goals by focusing on the continuous development of its products, restaurant chain, and employees",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+      "challenge": {
+        "heading": "Challenge",
+        "description": "The growing Pasibus network faced the need to efficiently recruit new employees for rapidly emerging new locations across Poland. They decided to create their own job board, which would recruit candidates directly to their database"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "Building the website architecture and wireframes, which were then passed on to the visual design team"
+      },
+      "range": {
+        "audit": {
+          "title": "User needs analysis",
+          "description": "Understanding expectations of candidates and Pasibus HR."
+        },
+        "ux-ui": {
+          "title": "Information architecture",
+          "description": "Planning navigation, hierarchy and content categories."
+        },
+        "finalization": {
+          "title": "UX wireframes",
+          "description": "Preparing functional layouts without the visual layer."
+        }
+      },
+      "result": "The result was a clear and intuitive career site structure that makes it easier for candidates to navigate job opportunities while also supporting Pasibus’s employer branding. My UX and information architecture work provided a solid foundation for the following UI design and implementation phases",
+      "video": {
+        "ariaLabel": "Pasibus careers UX and IA overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
+
+    "pharmovit": {
+      "heading": "Supplement store",
+      "intro": "Pharmovit is one of the largest manufacturers and distributors of dietary supplements in Poland. Year after year, the Płock-based company is gradually expanding its product portfolio and investing in various innovations",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+      "challenge": {
+        "heading": "Challenge",
+        "description": "Together with the Pharmovit team, we faced an ambitious task. After the company celebrated its triumphs in B2B sales and production, the idea arose to try to develop retail sales. The existing online store existed separately from the company's website, so after several meetings, we decided to consolidate the two entities"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "Creating a new e-commerce design from scratch based on existing content that we drew from previous digital materials. In addition to UI and UX, synchronization with the warehouse system was an important aspect here"
+      },
+      "range": {
+        "audit": {
+          "title": "Information architecture",
+          "description": "Organizing the supplement offer by form, function, and product features (e.g. clean label, gluten-free)."
+        },
+        "ux-ui": {
+          "title": "UX wireframes and UI design",
+          "description": "Creating layouts for the shop, product page, blog homepage and navigation – with a focus on readability and sales-supporting interfaces."
+        },
+        "mobile": {
+          "title": "Responsiveness",
+          "description": "Adapting the design for desktop and mobile devices so users can comfortably browse and buy on any screen."
+        },
+        "finalization": {
+          "title": "Technical support",
+          "description": "One-time setup for payments and warehouse system synchronization to prepare the store for real orders."
+        }
+      },
+      "result": "In addition to consolidating the most important content, we achieved something that is of utmost importance for any e-commerce business. After implementing the new website, we observed an increase in visibility in browsers after a few months, which translated into higher retail sales of the company's products. Synchronization with the Subiekt GT system, on the other hand, facilitated the processing of new orders by the customer service department",
+      "video": {
+        "ariaLabel": "Pharmovit e-commerce store overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
+
+    "talentdays": {
+      "heading": "Blog for young talents",
+      "intro": "Talent Days is one of the largest and most important events for students during the year. Since 2013, hundreds of young talents have found their first job here during each edition. However, Talent Days is not only a career event, but also a rapidly growing website that positions itself as a job board focused on junior-level job offers and a blog that has become a collection of advice on work-related issues",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+
+      "challenge": {
+        "heading": "Challenge",
+        "description": "Talent Days decided to expand its range of activities and came up with a slightly old-school idea: to build a blog that would serve as a knowledge base for young talents entering the world of careers. The previous solution was based on Wordpress using a default template, and user activity was practically non-existent"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "Complete redesign and reengineering of solutions to build the best possible user experience"
+      },
+
+      "range": {
+        "audit": {
+          "title": "Content structure & navigation",
+          "description": "Designing a clear information architecture for articles, categories, and related content."
+        },
+        "ux-ui": {
+          "title": "Reading experience & accessibility",
+          "description": "Focusing on typography, spacing, and layout to make long-form content comfortable to read."
+        },
+        "finalization": {
+          "title": "Engagement & CTAs",
+          "description": "Integrating newsletter, registration, and Talent Match touchpoints into the reading flow."
+        }
+      },
+      "result": "We managed to achieve the goal we set for ourselves. We implemented a completely new product design, but most importantly, in the long term, we saw an increase in the number of visits and the time users spent on the site. A place that supports young talent has come to fruition",
+      "video": {
+        "ariaLabel": "Talent Days blog UI and reading experience",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
+
+    "tutlo": {
+      "heading": "Recommendation system",
+      "intro": "Tutlo is a Polish platform for learning English online. It is based on the freedom to choose the place and time of learning. It draws on a large database of tutors from around the world",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+      "challenge": {
+        "heading": "Challenge",
+        "description": "Tutlo created an ambassador program that anyone who wanted to could join. We had to build a place that would gather potential candidates"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "Building an LP that would provide knowledge to new ambassador candidates and convert them to the program"
+      },
+      "range": {
+        "audit": {
+          "title": "Brief analysis & UX research",
+          "description": "Reviewing existing materials and defining user needs of potential partners"
+        },
+        "ux-ui": {
+          "title": "UX wireframes",
+          "description": "Structuring the page to guide users smoothly from information to registration"
+        },
+        "mobile": {
+          "title": "UI design",
+          "description": "Creating a modern, visually consistent layout aligned with Tutlo's branding"
+        },
+        "finalization": {
+          "title": "Developer handoff",
+          "description": "Preparing assets and documentation for a smooth implementation"
+        }
+      },
+      "result": "The result is a lightweight and intuitive landing page that clearly presents the program rules, addresses key user questions, and drives them toward registration. The design supports the business goal of acquiring new partners and increasing the number of Tutlo referrals",
+      "video": {
+        "ariaLabel": "Tutlo recommendation system landing page overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
+
+    "KobuStudio": {
+      "heading": "Architectural Studio",
+      "intro": "Kobu Studio is an architectural office specializing in modern, functional spaces. The brand emphasizes aesthetics, detail, and visual consistency across its projects",
+      "table": {
+  "client": { "label": "Client" },
+  "type": { "label": "Type" },
+  "year": { "label": "Year" },
+  "tools": { "label": "Tools" },
+  "live": {
+    "label": "Online",
+    "button": "Visit"
+  }
+},
+
+"challenge": {
+        "heading": "Challenge",
+        "description": "The goal was to accurately translate the provided visual design into Framer while preserving the brand’s minimalist character and high-quality project presentation. The main challenge was precise layout implementation, maintaining typographic rhythm and proportions, optimizing large portfolio images, and ensuring smooth performance"
+      },
+
+      "goal": {
+        "heading": "Goal",
+        "description": "The objective was to deliver a modern, lightweight, and aesthetic website, ensure intuitive portfolio presentation, enable easy future content updates, and optimize overall performance"
+      },
+
+      "range": {
+  "layout-implementation": {
+    "title": "Layout Implementation in Framer",
+    "description": "Precise translation of the provided visual design while maintaining grid structure, proportions, and typographic rhythm"
+  },
+  "responsive-setup": {
+    "title": "Responsive Configuration",
+    "description": "Adapting the layout for desktop, tablet, and mobile devices while preserving clarity and the brand’s minimalist character"
+  },
+  "performance-optimization": {
+    "title": "Performance Optimization",
+    "description": "Optimizing large portfolio images, improving loading times, and ensuring smooth overall performance"
+  },
+  "seo-setup": {
+    "title": "SEO Setup",
+    "description": "Configuring heading structure, meta tags, and essential SEO parameters to support search visibility"
+  },
+  "launch": {
+    "title": "Testing & Launch",
+    "description": "Final quality checks, responsive testing, and production deployment"
+  }
+},
+
+      "result": "The result was a clean, fast, and fully responsive website that clearly presents the studio’s portfolio and supports its positioning as a modern architectural practice",
+      "video": {
+        "ariaLabel": "Tutlo Lead Active landing page overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    }
+  },
+
+  "about": {
+    "introAria": "About intro",
+    "skillsAria": "Skills",
+    "whatIDoAria": "What I do",
+    "mediaCarouselAria": "Media carousel",
+    "intro": {
+      "sectionAria": "About introduction section",
+      "heading": "Who I am...",
+      "paragraph1": "I’ve been working in design for 8 years, specializing in Web Design and UI/UX Design. My background combines both artistic and technical skills – I hold degrees in Graphic Design and Computer Science, and I’m currently pursuing Creative Management with a specialization in UX Design. This allows me to approach projects not only from an aesthetic and functional perspective.",
+      "devLanguageHighlight": "Yes, I know dev's language",
+      "paragraph2": "Privately, I’m a true UX geek – the kind of person who tells random people about the example of Norman doors. I’m also comfortable in front of the camera and occasionally create content for social media. I value people who take action, create, and keep moving forward, because I believe growth is a continuous process.",
+      "copyToClipboardTitle": "Copy to clipboard"
+    },
+
+    "skills": {
+      "sectionAria": "Skills section",
+      "heading": "...and my skills....",
+      "items": {
+        "figma": {
+          "title": "Figma",
+          "description": "Interface design, prototyping, and team collaboration"
+        },
+        "creativeThinking": {
+          "title": "Creative Thinking & Problem Solving",
+          "description": "Thinking outside the box and generating innovative solutions"
+        },
+        "adobePsAi": {
+          "title": "Adobe Photoshop & Illustrator",
+          "description": "Digital graphics, visual editing, and creating UI elements"
+        },
+        "htmlCssJs": {
+          "title": "HTML | CSS | JS",
+          "description": "Interface design, prototyping, and team collaboration"
+        },
+        "aiTools": {
+          "title": "AI Tools",
+          "description": "Leveraging AI to streamline creative processes and prototyping"
+        },
+        "afterEffects": {
+          "title": "Adobe After Effects",
+          "description": "Animations and motion design for websites and applications"
+        },
+        "communicationTeamwork": {
+          "title": "Effective Communication & Teamwork",
+          "description": "Collaborating with teams and clearly presenting ideas"
+        },
+        "framer": {
+          "title": "Framer",
+          "description": "Building interactive prototypes and developing modern websites"
+        }
+      }
+    },
+
+    "whatIDo": {
+      "sectionAria": "What I do section",
+      "heading": "...and what I do?",
+      "lead": "My approach combines creativity, research, and technology to deliver experiences that truly work for people",
+      "items": {
+        "researchDiscovery": {
+          "title": "Research & Discovery",
+          "description": "Understanding user needs, analyzing business goals, and gathering insights"
+        },
+        "wireframingUx": {
+          "title": "Wireframing & UX Design",
+          "description": "Structuring information, creating user flows, and building low-fidelity wireframes."
+        },
+        "uiDesignPrototyping": {
+          "title": "UI Design & Prototyping",
+          "description": "Designing polished interfaces, interactive prototypes, and visual systems."
+        },
+        "testingIteration": {
+          "title": "Testing & Iteration",
+          "description": "Validating solutions with users, refining designs, and ensuring continuous improvement."
+        }
+      }
+    },
+
+    "mediaCarousel": {
+      "sectionAria": "Media carousel section",
+      "heading": "(And I do other things)",
+      "videoFallback": "Your browser does not support the video tag."
+    }
+  },
+
+  "gallery": {
+    "pageAria": "Gallery page",
+    "introAria": "Gallery introduction",
+    "gridAria": "Gallery grid",
+    "intro": {
+      "aria": "Gallery introduction",
+      "title": "Not only a designer",
+      "description": "From time to time, I step into the role of a content creator – handling everything from concept and recording to video editing. I create short-form content for social media. It’s my way of experimenting with visuals and storytelling in a fun, dynamic format."
+    },
+    "grid": {
+      "sectionAria": "Gallery videos grid"
+    },
+    "video": {
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "play": "Play",
+      "pause": "Pause",
+      "seek": "Seek"
+    }
+  },
+
+  "contactPopup": {
+    "title": "Contact Me",
+    "closeAria": "Close contact form",
+    "description": {
+      "line1": "Do you have a project that could be my next challenge?",
+      "line2": "Let's bring it to life together."
+    },
+    "fields": {
+      "firstName": { "placeholder": "What's your name?" },
+      "email": { "placeholder": "Email where I can reply" },
+      "subject": { "placeholder": "What project do you want to discuss?" },
+      "message": { "placeholder": "Tell me a bit more about the project :)" }
+    },
+    "errors": {
+      "required": "Please fill in this field.",
+      "emailFormat": "The correct email format is, for example, mail@gmail.com"
+    },
+    "submit": {
+      "aria": "Send message",
+      "default": "Send",
+      "sending": "Sending...",
+      "sent": "Sent!",
+      "error": "An error occurred while sending your message. Please try again."
+    },
+    "success": {
+      "closeAria": "Close success message",
+      "emojiAlt": "Success emoji",
+      "title": "Thank you for your message!",
+      "description": "I will get back to you with an answer as soon as possible."
+    }
+  },
+
+  "cookieBanner": {
+    "title": "Cookies",
+    "description": {
+      "beforeLink": "We use cookies to ensure that the website works properly and, with your consent, for analytics and external functions. You can change your settings in the",
+      "linkText": "Cookie Policy",
+      "afterLink": "."
+    },
+    "buttons": {
+      "acceptAll": { "label": "Accept all", "aria": "Accept all cookies" },
+      "detailed": { "label": "Detailed settings", "aria": "Open detailed cookie settings" }
+    }
+  },
+
+  "cookiePolicy": {
+    "header": {
+      "title": "Cookie Policy",
+      "intro": "On this page, we explain what cookies are, how we use them, and how you can manage your preferences. To learn how we process personal data, please visit our Privacy Policy."
+    },
+    "section1": {
+      "title": "1. What are cookies?",
+      "body": "Cookies are small text files saved on your device that help us ensure proper site functionality, analyze traffic, and – with your consent – personalize content."
+    },
+    "section2": {
+      "title": "2. What cookies do we use?",
+      "items": {
+        "necessary": { "title": "Necessary", "body": "required for the site to function (e.g., saving cookie settings). These files are always active." },
+        "analytics": { "title": "Analytics", "body": "help us understand how you use the site (e.g., Google Analytics)." },
+        "marketing": { "title": "Marketing", "body": "used to tailor content and advertising campaigns." },
+        "functional": { "title": "External functional", "body": "e.g., Google Maps embedded on the contact page." }
+      }
+    },
+    "section3": {
+      "title": "3. Consent management",
+      "categories": {
+        "necessary": { "label": "Necessary", "helper": "(always active - required for site functionality)" },
+        "analytics": { "label": "Analytics", "helper": "(Google Analytics - traffic analysis)" },
+        "marketing": { "label": "Marketing", "helper": "(tailored advertising)" },
+        "functional": { "label": "Functional", "helper": "(Google Maps and embedded content)" }
+      },
+      "browserInfo": "You can also manage cookies in your browser settings and delete saved files."
+    },
+    "section4": {
+      "title": "4. Third-party cookies",
+      "cards": {
+        "googleFonts": { "title": "Google Fonts", "body": "Loading fonts used on the site." },
+        "googleAnalytics": { "title": "Google Analytics", "body": "Traffic analysis and user behavior (optional)." },
+        "formspree": { "title": "Formspree", "body": "Contact form submission handling." },
+        "social": { "title": "Social Media", "body": "Links to Instagram and LinkedIn profiles." }
+      }
+    },
+    "section5": {
+      "title": "5. How to disable cookies in your browser?",
+      "important": "Important:",
+      "body": "Every browser allows you to delete or block cookies. However, keep in mind that some site features may not work properly if you do so.",
+      "browsers": {
+        "chrome": "Chrome: Settings → Privacy and security → Cookies",
+        "firefox": "Firefox: Settings → Privacy and security → Cookies and site data",
+        "safari": "Safari: Preferences → Privacy → Manage website data",
+        "edge": "Edge: Settings → Cookies and site permissions"
+      }
+    },
+    "buttons": {
+      "save": { "label": "Save preferences", "aria": "Save cookie preferences" },
+      "acceptAll": { "label": "Accept all", "aria": "Accept all cookies" }
+    },
+    "feedback": {
+      "loadError": "We couldn't load your previous cookie settings.",
+      "acceptAll": "All cookie categories have been accepted and saved.",
+      "saved": "Your cookie preferences have been saved."
+    },
+    "footer": {
+      "title": "Need help?",
+      "body": "If you have questions about our cookie policy, please contact us or check our Privacy Policy."
+    }
+  },
+
+  "NotFound": {
+    "title": "404 — Page not found",
+    "desc": "The page you are looking for doesn't exist or has been moved.",
+    "back": "Go back to homepage"
+  },
+
+  "caseStudyContact": {
+    "kicker": "Need someone to help you reach your goals?",
+    "headline": "You're in the right place",
+    "subheadline": "Let's talk about your product",
+    "form": { "title": "Let's talk about your product" },
+    "fields": {
+      "firstName": { "placeholder": "What's your name?" },
+      "email": { "placeholder": "Email where I can reply" },
+      "subject": { "placeholder": "What project do you want to discuss?" },
+      "message": { "placeholder": "Tell me a bit more about the project :)" }
+    },
+    "errors": {
+      "required": "Please fill in this field.",
+      "emailFormat": "The correct email format is, for example, mail@gmail.com"
+    },
+    "submit": {
+      "aria": "Send message",
+      "default": "Send",
+      "sending": "Sending...",
+      "error": "An error occurred while sending your message. Please try again."
+    },
+    "success": {
+      "emojiAlt": "Success emoji",
+      "title": "Thank you for your message!",
+      "description": "I will get back to you with an answer as soon as possible.",
+      "sendAnother": "Send another message"
+    }
+  }
+}

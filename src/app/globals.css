@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@reference "tailwindcss";
+
+/* (opcjonalnie, ale OK) */
+@custom-variant dark (&:is(.dark *));
+
+/* Tailwind v4: jawnie wskaż źródła (gdyby config nie został złapany) */
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+
+:root {
+  /* --font-inter jest wstrzykiwane przez next/font/local w src/app/[locale]/layout.tsx */
+  --radius: 0.625rem;
+
+  /* HERO */
+  --nav-h: 0px;
+  --hero-tags-gap: clamp(32px, 1vh, 200px);
+
+  /* =========================
+     COLORS (JEDNO MIEJSCE)
+     ========================= */
+  --c-black: #111;
+  --c-white: #E2E2E2;
+
+  /* Navbar */
+  --n-bg: #fff;
+  --nav-h-mobile: 60px;
+
+  /* RGB do alpha: rgb(var(--rgb-*) / 0.3) */
+  --rgb-black: 17 17 17;          /* #111 */
+  --rgb-white: 226 226 226;       /* #E2E2E2 */
+
+  /* Semantyka */
+  --c-bg: var(--c-white);
+  --c-fg: var(--c-black);
+  --c-border: var(--c-black);
+
+  /* Tailwindowe szarości (u Ciebie użyte) */
+  --c-gray-600: #4B5563;          /* text-gray-600 */
+  --rgb-gray-600: 75 85 99;
+
+  --c-gray-100: #F3F4F6;          /* bg-gray-100 */
+  --rgb-gray-100: 243 244 246;
+
+  /* HeXY z kodu */
+  --c-neutral-200: #C6C6C6;
+  --rgb-neutral-200: 198 198 198;
+
+  --c-neutral-300: #D9D9D9;
+  --rgb-neutral-300: 217 217 217;
+
+  /* Alias pod hero */
+  --c-hero-bg: var(--c-black);
+  --c-hero-text: var(--c-white);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✅ Tailwind v4: własna utility (można jej używać w @apply) */
+@utility page-shell {
+  @apply w-full max-w-[1440px] mx-auto px-8 sm:px-8 lg:px-[52px];
+}
+
+/* ✅ Tailwind base + Twoje podstawy w jednym miejscu */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    color: var(--c-fg);
+
+    margin: 0;
+    padding: 0;
+    padding-top: var(--nav-h, 0px);
+    font-family: var(--font-inter);
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    outline: 2px solid var(--c-black);
+    outline-offset: 2px;
+  }
+
+  /* Hide scrollbar only for html/body */
+  /* ✅ Sticky-friendly base */
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* nie dotykamy overflow na html */
+  }
+
+  body {
+    /* ✅ nie ustawiaj overflow na body — sticky potrzebuje spokoju */
+    overflow: visible;
+  }
+
+  /* Hide scrollbar visuals (bez ustawiania overflow-y) */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+}
+
+/* Force full-bleed video inside Vidstack */
+[data-media-player] .vds-media,
+[data-media-player] .vds-video,
+[data-media-player] video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* =========================
+   BASE UTILITIES (mogą być @apply)
+   ========================= */
+
+@utility focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  --tw-ring-color: var(--c-black);
+}
+
+/* sections */
+@utility section {
+  @apply relative w-full;
+  color: var(--c-black);
+  z-index: 20;
+}
+
+@utility section-front {
+  z-index: 30;
+}
+
+/* spacing presets */
+@utility section-pad-home {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+@media (min-width: 640px) {
+  .section-pad-home {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@utility section-pad-60-100 {
+  padding-top: 60px;
+  padding-bottom: 100px;
+}
+
+@utility section-pad-30-90 {
+  padding-top: 30px;
+  padding-bottom: 90px;
+}
+
+@utility section-pad-b-90 {
+  padding-bottom: 90px;
+}
+
+/* headings */
+@utility section-header {
+  @apply mb-12;
+}
+
+@utility section-title {
+  @apply font-medium mb-4 text-[32px] lg:text-[40px];
+  color: var(--c-black);
+}
+
+/* cards */
+@utility card {
+  @apply border flex flex-col;
+  border-color: var(--c-border);
+  background: transparent;
+}
+
+@utility card-pad-sm {
+  @apply p-3 lg:p-6;
+}
+
+@utility card-pad-md {
+  @apply p-6;
+}
+
+
+/* =========================
+   Components layer
+   ========================= */
+

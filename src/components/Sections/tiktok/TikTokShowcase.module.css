@@ -1,0 +1,247 @@
+@reference "../../../app/globals.css";
+
+/* =========
+   TikTok layout
+   ========= */
+
+.section {
+  @apply section section-pad-60-100;
+}
+
+.header {
+  @apply section-header;
+}
+
+.headerTitle {
+  @apply section-title;
+}
+
+.gridDesktop {
+  @apply hidden lg:grid grid-cols-4 gap-[28px];
+}
+
+.cardDesktop {
+  @apply w-full aspect-[9/16] hover:scale-105 transition-transform duration-300;
+}
+
+.carouselTablet {
+  @apply hidden md:flex lg:hidden overflow-x-auto scroll-smooth gap-[28px] snap-x snap-mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carouselTablet::-webkit-scrollbar {
+  display: none;
+}
+
+.cardTablet {
+  @apply snap-start flex-none w-[calc(50%-14px)] aspect-[9/16];
+}
+
+.carouselMobile {
+  @apply md:hidden flex overflow-x-auto scroll-smooth gap-[28px] snap-x snap-mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carouselMobile::-webkit-scrollbar {
+  display: none;
+}
+
+.cardMobile {
+  @apply snap-center flex-none w-[calc(100vw-48px)] aspect-[9/16];
+}
+
+.dots {
+  @apply lg:hidden mt-6 flex justify-center gap-2;
+}
+
+.dot {
+  @apply w-2 h-2 transition-all;
+  background: var(--c-neutral-300);
+}
+
+.dot.isActive {
+  background: var(--c-black);
+}
+
+.footer {
+  @apply mt-12 md:mt-16 text-center md:text-right;
+}
+
+/* =========
+   TikTok card + player (high-level wrappers)
+   ========= */
+
+.card {
+  @apply relative overflow-hidden;
+}
+
+.player {
+  @apply relative block h-full w-full;
+  background: var(--c-black);
+  --video-object-fit: cover;
+  --video-object-position: center;
+}
+
+.provider {
+  @apply absolute inset-0;
+}
+
+.overlay {
+  @apply pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300;
+}
+
+.topbar {
+  @apply pointer-events-auto absolute left-4 right-4 top-4 flex items-start justify-between;
+}
+
+.iconBtn {
+  @apply pointer-events-auto w-10 h-10 grid place-items-center rounded-full transition-colors cursor-pointer;
+}
+.iconBtn:hover {
+  background: rgb(var(--rgb-white) / 0.2);
+}
+
+.center {
+  @apply pointer-events-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.playBtn {
+  @apply w-16 h-16 grid place-items-center rounded-full transition-colors cursor-pointer;
+}
+.playBtn:hover {
+  background: rgb(var(--rgb-white) / 0.2);
+}
+
+.progressWrap {
+  @apply pointer-events-auto absolute bottom-4 left-4 right-4;
+}
+
+.progress {
+  @apply relative h-1.5 rounded-full overflow-hidden;
+  background: rgb(var(--rgb-white) / 0.3);
+}
+
+/* =========
+   TikTok styles (low-level)
+   ========= */
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--c-black);
+}
+
+.videoContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controls {
+  pointer-events: auto;
+}
+
+.controls button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controls button:focus-visible {
+  outline: 2px solid var(--c-white);
+  outline-offset: 2px;
+}
+
+.controls button:active {
+  transform: scale(0.95);
+}
+
+.progressContainer {
+  position: relative;
+  background: rgb(var(--rgb-white) / 0.3);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressBar {
+  background: var(--c-white);
+  border-radius: 9999px;
+  height: 100%;
+  transition: width 0.1s ease;
+}
+
+.progressThumb {
+  background: var(--c-white);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+.progressContainer:hover .progressThumb {
+  opacity: 1;
+}
+
+.progressInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  background: transparent;
+}
+
+.progressInput::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.progressInput::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--rgb-black) / 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: rgb(var(--rgb-black) / 0.7);
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .progressThumb {
+    opacity: 1;
+  }
+
+  .button:active {
+    background: rgb(var(--rgb-black) / 0.8);
+  }
+}

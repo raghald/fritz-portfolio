@@ -1,0 +1,664 @@
+{
+  "Common": {
+    "sections": {
+      "rangeHeading": "Zakres prac",
+      "resultHeading": "Efekt"
+    }
+  },
+
+  "hero": {
+    "ariaLabel": "Hero section",
+    "titleWord": "DESIGNER",
+
+    "sideCopyLine1": "Your neighbor",
+    "sideCopyLine2": "design freak",
+
+    "tags": {
+      "web": "#web",
+      "ui": "#UI",
+      "ux": "#UX",
+      "brand": "#brand",
+      "motion": "#motion"
+    },
+
+    "tagOrder": "[\"ui\",\"web\",\"ux\",\"brand\",\"motion\"]",
+
+    "btnPrimary": "Zobacz moje workflow",
+    "btnSecondary": "Zapytaj o swój projekt",
+    "btnPrimaryAria": "Przejdź do moich case studies",
+    "btnSecondaryAria": "Otwórz okno kontaktu, aby wspólnie popracować"
+  },
+
+  "loading": {
+    "projects": "Ładowanie projektów...",
+    "content": "Ładowanie treści..."
+  },
+
+  "intro": {
+    "ariaLabel": "Intro",
+    "heading": "Cześć, jestem Fryderyk — web & UI/UX designer skupiający się na przejrzystym, przemyślanym designie. Czasami zajmuję się również tworzeniem treści.",
+    "portraitAlt": "Zdjęcie przedstawiające Fritz"
+  },
+
+  "contact": {
+    "visit": "Otwórz: {label}",
+    "copyToClipboard": "Kopiuj",
+    "copied": "Skopiowano",
+    "actions": {
+      "email": { "hover": "Skopiuj" },
+      "instagram": { "label": "Instagram", "hover": "Sprawdź" },
+      "linkedin": { "label": "LinkedIn", "hover": "Sprawdź" }
+    }
+  },
+
+  "footer": {
+    "ariaLabel": "Stopka",
+    "headlineLine1": "Zastanawiasz się, co możemy stworzyć razem?",
+    "headlineLine2": "Zróbmy coś naprawdę wyjątkowego!",
+    "btnLabel": "Skontaktuj się!",
+    "btnAria": "Otwórz sekcję kontaktu, aby się skontaktować",
+    "phoneAria": "Zadzwoń pod numer telefonu",
+    "emailAria": "Wyślij e-mail",
+    "cookiesLabel": "Polityka cookies",
+    "cookiesAria": "Przejdź do strony z polityką cookies"
+  },
+
+  "navbar": {
+    "ariaMainNav": "Główna nawigacja",
+    "brand": "FRITZ GLOWACKI",
+    "brandAria": "Fritz Glowacki – przejdź do strony głównej",
+    "toggleMenuAria": "Przełącz menu mobilne",
+    "linkWorks": "Projekty",
+    "linkAbout": "O mnie",
+    "linkGallery": "Galeria",
+    "contactCta": "Kontakt",
+    "contactCtaAria": "Otwórz formularz kontaktowy",
+    "switchToEn": "Zmień język na angielski",
+    "switchToPl": "Zmień język na polski"
+  },
+
+  "projects": {
+  "ariaLabel": "Sekcja projektów",
+  "headerTyping": "I'm (...) web & UI/UX designer",
+  "showMore": "Zobacz więcej"
+},
+
+
+  "tiktok": {
+    "ariaLabel": "Sekcja treści z TikToka",
+    "headerTyping": "Czasem jestem też twórcą contentu.",
+    "openSource": "Otwórz źródło na TikToku",
+    "mute": "Wycisz",
+    "unmute": "Włącz dźwięk",
+    "seek": "Przewiń wideo",
+    "dotPage": "Przejdź do strony {index}",
+    "dotVideo": "Przejdź do wideo {index}",
+    "ctaLabel": "Zobacz więcej",
+    "ctaAria": "Zobacz więcej treści w galerii",
+    "play": "Odtwórz wideo",
+    "pause": "Zatrzymaj wideo"
+  },
+
+  "worksIntro": {
+    "ariaLabel": "Wprowadzenie do projektów",
+    "title": "Zrealizowałem kilka projektów...",
+    "subtitle": "Poznaj moje projekty — od UX i web designu po kreatywne kampanie i treści digital"
+  },
+
+  "Works": {
+    "videoFallback": "Twoja przeglądarka nie obsługuje elementu wideo.",
+    "items": {
+      "talentdays-blog": {
+        "title": "Blog dla młodych talentów",
+        "meta": "Blog | 2024",
+        "description": "Projekt bloga dla platformy Talent Days, którego celem było stworzenie przejrzystej i angażującej przestrzeni z artykułami wspierającymi użytkowników w poszukiwaniu pracy i rozwoju kariery"
+      },
+      "pharmovit-store": {
+        "title": "Sklep z suplementami",
+        "meta": "E-commerce | 2022",
+        "description": "Projekt sklepu internetowego Pharmovit, w którym kluczowym celem było połączenie nowoczesnej estetyki z funkcjonalnością wspierającą sprzedaż"
+      },
+      "pasibus-job-board": {
+        "title": "Burger's Job Board",
+        "meta": "LoFi / UX | 2025",
+        "description": "Projekt strony Kariera w Pasibusie, którego celem było uporządkowanie treści i stworzenie intuicyjnej architektury informacji wspierającej proces rekrutacyjny"
+      },
+      "tutlo-recommendation": {
+        "title": "System poleceń",
+        "meta": "Landing Page | 2025",
+        "description": "Projekt landing page’a dla programu poleceń Tutlo – przygotowany tak, aby zachęcać użytkowników do dołączenia do programu partnerskiego. Odpowiadałem za zaprojektowanie spójnej wizualnie, czytelnej i nastawionej na konwersję strony, która w prosty sposób tłumaczy zasady i korzyści dla użytkownika."
+      },
+      "kobu-studio": {
+        "title": "Studio architektoniczne",
+        "meta": "Strona Internetowa | 2025",
+        "description": "Wdrożenie strony internetowej dla biura architektonicznego Kobu Studio w oparciu o Framer, z naciskiem na precyzję, minimalizm i jakość prezentacji portfolio."
+      },
+      "absolvent-agency": {
+        "title": "Agencja Employer Branding",
+        "meta": "Website | 2025",
+        "description": "Projekt nowej strony Absolvent Consulting"
+      }
+    },
+
+    "filters": {
+      "All": "Wszystkie projekty",
+      "E-commerce": "E-commerce",
+      "LandingPage": "Landing page",
+      "Website": "Strony www",
+      "LoFi": "UX / LoFi",
+      "Framer": "Framer"
+    },
+
+    "moreSections": {
+      "heading": "To nie jest moje jedyne case study"
+    },
+
+    "types": {
+      "E-commerce": "E-commerce",
+      "LandingPage": "Landing page",
+      "Website": "Strona internetowa",
+      "LoFi": "UX / LoFi",
+      "Framer": "Framer"
+    },
+
+    "absolvent": {
+      "heading": "Agencja Employer Branding",
+      "intro": "Absolvent Consulting to agencja employer brandingowa z kilkuletnim doświadczeniem w branży. Kreatywna ekipa fachowców w swoich dziedzinach. Na co dzień pracują z największymi markami, a ich kreacje i pomysły można spotkać na co dzień w social mediach oraz internecie",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Absolvent Consulting spotkało się z nieprzyjemną sytuacją. Projekt przebudowy strony trwał już rok, ponieważ pierwotny wykonawca zniknął na pewnym etapie prac, a temat trzeba było doprowadzić do końca"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Audyt obecnych materiałów i odsianie rzeczy, które nie nadawały się do dalszego wykorzystania. Doprowadzenie projektu do końca"
+      },
+
+      "range": {
+        "audit": {
+          "title": "Audyt i uporządkowanie istniejącego projektu",
+          "description": "Układ, spójność z brandingiem"
+        },
+        "implementer": {
+          "title": "Wdrożenie",
+          "description": "Znalezienie wdrożeniowca"
+        },
+        "ux-ui": {
+          "title": "Usprawnienia UX i UI",
+          "description": "Poprawa czytelności, hierarchii treści i nawigacji"
+        },
+        "mobile": {
+          "title": "Wersje mobilne",
+          "description": "Pełna adaptacja strony do urządzeń mobilnych"
+        },
+        "finalization": {
+          "title": "Finalizacja projektu",
+          "description": "Dostarczenie kompletnej, spójnej wersji strony"
+        }
+      },
+      "result": "Wymuszone przez sytuację zmiany przyniosły błyskawiczne efekty. Udało nam się dopiąć stronę do końca. Absolvent Consulting mógł powitać drugi kwartał 2025 z nową wizytówką swojej działalności",
+      "video": {
+        "ariaLabel": "Prezentacja strony Absolvent Consulting",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    },
+
+    "pasibus": {
+      "heading": "Burger's Job Board",
+      "intro": "Pasibus to polska sieć fastfoodowa, która w kilka lat przeszła drogę od foodtruckowej restauracji do realnego konkurenta dla zagranicznych koncernów na lokalnym rynku. Konsekwentnie realizuje swoje cele, stawiając na ciągły rozwój produktów, sieci restauracji oraz pracowników",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Rozwijająca się sieć Pasibus stanęła przed potrzebą sprawnego pozyskiwania nowych pracowników do powstających błyskawicznie nowych punktów na mapie Polski. Zdecydowali się na własny job board, który będzie pozyskiwał kandydatów bezpośrednio do ich bazy"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Zbudowanie architektury strony oraz wireframe’ów, które następnie zostały przekazane do zespołu visual design"
+      },
+      "range": {
+        "audit": {
+          "title": "Analiza potrzeb użytkowników",
+          "description": "Zrozumienie oczekiwań kandydatów i celów HR Pasibus."
+        },
+        "ux-ui": {
+          "title": "Architektura informacji",
+          "description": "Zaplanowanie nawigacji, hierarchii i kategorii treści."
+        },
+        "finalization": {
+          "title": "Makiety UX",
+          "description": "Przygotowanie funkcjonalnych layoutów bez warstwy wizualnej."
+        }
+      },
+      "result": "Powstała uporządkowana i intuicyjna struktura strony karierowej, która ułatwia kandydatom poruszanie się po ofercie pracy i jednocześnie wspiera budowanie wizerunku Pasibusa jako pracodawcy. Moje opracowanie UX i architektury informacji stało się solidną bazą dla dalszych prac UI i wdrożenia",
+      "video": {
+        "ariaLabel": "Prezentacja UX i architektury informacji Pasibus",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    },
+
+    "pharmovit": {
+      "heading": "Sklep z suplementami",
+      "intro": "Pharmovit jest jednym z największych producentów oraz dystrybutorów suplementów diety w Polsce. Płocka firma sukcesywnie rok w rok powiększa swoje portfolio produktów i inwestuje w różne innowacje",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Razem z zespołem Pharmovitu stanęliśmy przed ambitnym zadaniem. Po tym, jak firma święciła triumfy w obszarze sprzedaży B2B oraz produkcji, pojawił się pomysł, aby spróbować rozwinąć sprzedaż detaliczną. Dotychczasowy sklep internetowy istniał oddzielnie od strony internetowej firmy, więc po kilku spotkaniach postawiliśmy na konsolidację tych dwóch bytów"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Stworzenie designu nowego e-commerce od podstaw na podstawie istniejących treści, które czerpaliśmy z dotychczasowych materiałów digitalowych. Poza sferą UI i UX ważnym aspektem była tutaj synchronizacja z systemem magazynowym"
+      },
+      "range": {
+        "audit": {
+          "title": "Architektura informacji",
+          "description": "Uporządkowanie oferty suplementów według formy, funkcji i cech produktów (np. clean label, bez glutenu)."
+        },
+        "ux-ui": {
+          "title": "Makiety UX i projekt UI",
+          "description": "Przygotowanie layoutów sklepu, stron produktów, bloga i nawigacji – z naciskiem na czytelność i wsparcie sprzedaży."
+        },
+        "mobile": {
+          "title": "Responsywność",
+          "description": "Dostosowanie projektu do desktopu i urządzeń mobilnych, aby wygodnie przeglądać i kupować na każdym ekranie."
+        },
+        "finalization": {
+          "title": "Wsparcie techniczne",
+          "description": "Jednorazowa konfiguracja płatności i integracji z magazynem, aby przygotować sklep na realną sprzedaż."
+        }
+      },
+      "result": "Poza konsolidacją najważniejszych treści osiągnęliśmy coś, co jest największą wagą dla każdego e-commerce. Po wdrożeniu nowej strony po kilku miesiącach zaobserwowaliśmy wzrost widoczności w przeglądarkach, co przełożyło się na większą sprzedaż detaliczną produktów firmy. Synchronizacja z systemem Subiekt GT ułatwiła obsługę nowych zamówień przez biuro obsługi klienta",
+      "video": {
+        "ariaLabel": "Prezentacja sklepu internetowego Pharmovit",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    },
+
+    "talentdays": {
+      "heading": "Blog dla młodych talentów",
+      "intro": "Talent Days to jedne z największych i najważniejszych wydarzeń dla studentów w ciągu roku. Od 2013 podczas każdej edycji setki młodych talentów znajdują tutaj swoją pierwszą pracę. Jednak Talent Days to nie tylko wydarzenie karierowe, ale też prężnie rozwijający się serwis internetowy, który pozycjonuje się jako job board skupiony na ofertach pracy na poziomie juniorskim oraz blog, który stał się zbiorem porad dotyczących kariery",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+
+      "range": {
+        "audit": {
+          "title": "Struktura treści i nawigacja",
+          "description": "Zaprojektowanie przejrzystej architektury informacji dla artykułów, kategorii i powiązanych treści."
+        },
+        "ux-ui": {
+          "title": "Doświadczenie czytania i dostępność",
+          "description": "Skupienie na typografii, odstępach i układzie, aby długie treści były komfortowe w odbiorze."
+        },
+        "finalization": {
+          "title": "Zaangażowanie i CTA",
+          "description": "Integracja newslettera, rejestracji oraz Talent Match w toku czytania, bez przerywania doświadczenia."
+        }
+      },
+      "result": "Udało nam się osiągnąć cel, który założyliśmy. Wdrożyliśmy całkowicie nowy wygląd produktu, ale co najważniejsze, w dłuższym okresie analizy odnotowaliśmy większą liczbę wejść oraz wydłużony czas pozostawania użytkowników na stronie. Miejsce, które wspiera młode talenty, doszło do skutku",
+      "video": {
+        "ariaLabel": "Interfejs bloga Talent Days i doświadczenie czytania",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      },
+
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Talent Days postawiło na rozbudowę swojej działalności i powstał pomysł lekko oldschoolowy: zbudowanie bloga, który będzie bazą wiedzy dla młodych talentów wkraczających w świat kariery. Dotychczasowe rozwiązanie powstało na Wordpressie na domyślnym szablonie, a aktywność użytkowników praktycznie nie istniała"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Całkowity redesign i przeprojektowanie rozwiązań, aby zbudować jak najlepsze doświadczenie użytkownika"
+      }
+    },
+
+    "tutlo": {
+      "heading": "System rekomendacji",
+      "intro": "Projekt landing page’a promującego Program Poleceń Tutlo — stworzonego z myślą o zachęceniu użytkowników do rejestracji i dołączenia do programu partnerskiego",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Tutlo stworzyło program ambasadorski, którego częścią mógł zostać każdy, kto miał na to ochotę. Musieliśmy zbudować miejsce, które zbierałoby potencjalnych chętnych"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Zbudowanie landing page’a, który dostarczałby wiedzy nowym kandydatom na ambasadorów i konwertowałby ich do programu"
+      },
+
+      "range": {
+        "audit": {
+          "title": "Analiza briefu i badania UX",
+          "description": "Przegląd istniejących materiałów i definiowanie potrzeb użytkowników – potencjalnych partnerów."
+        },
+        "ux-ui": {
+          "title": "Makiety UX",
+          "description": "Ułożenie struktury strony tak, aby płynnie prowadziła od informacji do rejestracji."
+        },
+        "mobile": {
+          "title": "Projekt UI",
+          "description": "Stworzenie nowoczesnego, spójnego wizualnie layoutu opartego na brandingu Tutlo."
+        },
+        "finalization": {
+          "title": "Przekazanie do wdrożenia",
+          "description": "Przygotowanie assetów i dokumentacji dla zespołu developerskiego."
+        }
+      },
+      "result": "Powstała lekka i intuicyjna strona typu landing page, która w prosty sposób prezentuje zasady programu, odpowiada na kluczowe pytania użytkowników i prowadzi ich do rejestracji. Projekt wspiera cel biznesowy — pozyskanie nowych partnerów i zwiększenie liczby poleceń Tutlo",
+      "video": {
+        "ariaLabel": "Prezentacja landing page'a systemu rekomendacji Tutlo",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    },
+
+    "KobuStudio": {
+      "heading": "Studio architektoniczne",
+      "intro": "Kobu Studio to biuro architektoniczne specjalizujące się w nowoczesnych, funkcjonalnych przestrzeniach. Marka stawia na estetykę, detal oraz spójność wizualną w realizowanych projektach",
+      "table": {
+        "client": { "label": "Klient" },
+        "type": { "label": "Typ" },
+        "year": { "label": "Rok" },
+        "tools": { "label": "Narzędzia" },
+        "live": {
+    "label": "Online",
+    "button": "Zobacz"
+  }
+      },
+
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Celem było wierne przeniesienie dostarczonego projektu graficznego do środowiska Framer z zachowaniem minimalistycznego charakteru marki i wysokiej jakości prezentacji realizacji. Kluczowym wyzwaniem było precyzyjne odwzorowanie layoutu, utrzymanie rytmu i proporcji typografii, optymalizacja dużych zdjęć projektów oraz zapewnienie płynności działania strony"
+      },
+
+      "goal": {
+        "heading": "Cel",
+        "description": "Celem projektu było stworzenie nowoczesnej, lekkiej i estetycznej strony internetowej, zapewnienie intuicyjnej prezentacji portfolio, umożliwienie łatwej edycji treści w przyszłości oraz optymalizacja wydajności"
+      },
+
+      "range": {
+  "layout-implementation": {
+    "title": "Implementacja layoutu w Framer",
+    "description": "Precyzyjne odwzorowanie dostarczonego projektu graficznego z zachowaniem proporcji, siatki oraz rytmu typografii"
+  },
+  "responsive-setup": {
+    "title": "Konfiguracja responsywności",
+    "description": "Dostosowanie układu do wersji desktop, tablet i mobile, z dbałością o czytelność portfolio i zachowanie minimalistycznego charakteru marki"
+  },
+  "performance-optimization": {
+    "title": "Optymalizacja wydajności",
+    "description": "Optymalizacja dużych zdjęć realizacji, poprawa czasu ładowania strony oraz zapewnienie płynności działania"
+  },
+  "seo-setup": {
+    "title": "Konfiguracja SEO",
+    "description": "Ustawienie struktury nagłówków, meta tagów i podstawowych parametrów SEO wspierających widoczność strony w wyszukiwarkach"
+  },
+  "launch": {
+    "title": "Testy i publikacja",
+    "description": "Weryfikacja działania strony, testy responsywności oraz wdrożenie produkcyjne"
+  }
+},
+
+      "result": "Efektem była estetyczna, szybka i w pełni responsywna strona internetowa, która w czytelny sposób prezentuje portfolio studia i wspiera jego wizerunek jako nowoczesnego biura architektonicznego",
+      "video": {
+        "ariaLabel": "Prezentacja landing page'a Tutlo Lead Active",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    }
+  },
+
+  "about": {
+    "introAria": "Sekcja wprowadzająca",
+    "skillsAria": "Umiejętności",
+    "whatIDoAria": "Czym się zajmuję",
+    "mediaCarouselAria": "Karuzela z mediami",
+    "intro": {
+      "sectionAria": "Sekcja wprowadzająca o mnie",
+      "heading": "Kim jestem...",
+      "paragraph1": "Od 8 lat pracuję w designie, specjalizując się w Web Designie oraz UI/UX. Łączę zaplecze artystyczne i techniczne – ukończyłem studia z Projektowania Graficznego i Informatyki, a obecnie studiuję Creative Management ze specjalizacją UX Design. Dzięki temu podchodzę do projektów jednocześnie z perspektywy estetyki, funkcjonalności i procesów.",
+      "devLanguageHighlight": "Tak, znam język devów",
+      "paragraph2": "Prywatnie jestem UX-geekiem – typem osoby, która opowiada znajomym o przykładzie drzwi Normana. Dobrze czuję się przed kamerą i od czasu do czasu tworzę treści w social mediach. Cenię ludzi, którzy działają, tworzą i idą do przodu, bo wierzę, że rozwój to ciągły proces.",
+      "copyToClipboardTitle": "Skopiuj do schowka"
+    },
+    "skills": {
+      "sectionAria": "Sekcja umiejętności",
+      "heading": "...i moje umiejętności...",
+      "items": {
+        "figma": { "title": "Figma", "description": "Projektowanie interfejsów, prototypowanie i współpraca z zespołem" },
+        "creativeThinking": { "title": "Kreatywne myślenie i rozwiązywanie problemów", "description": "Myślenie nieszablonowe i szukanie niestandardowych rozwiązań" },
+        "adobePsAi": { "title": "Adobe Photoshop & Illustrator", "description": "Grafika cyfrowa, obróbka wizualna i tworzenie elementów UI" },
+        "htmlCssJs": { "title": "HTML | CSS | JS", "description": "Lepsze zrozumienie wdrożenia, projektowanie interfejsów z myślą o devach" },
+        "aiTools": { "title": "Narzędzia AI", "description": "Wykorzystywanie AI do usprawniania procesu kreatywnego i prototypowania" },
+        "afterEffects": { "title": "Adobe After Effects", "description": "Animacje i motion design dla stron oraz aplikacji" },
+        "communicationTeamwork": { "title": "Komunikacja i praca zespołowa", "description": "Współpraca z zespołami i klarowne prezentowanie pomysłów" },
+        "framer": { "title": "Framer", "description": "Budowanie interaktywnych prototypów i nowoczesnych stron www" }
+      }
+    },
+    "whatIDo": {
+      "sectionAria": "Sekcja: czym się zajmuję",
+      "heading": "...i czym się zajmuję?",
+      "lead": "Łączę kreatywność, research i technologię, żeby projektować doświadczenia, które realnie działają dla ludzi.",
+      "items": {
+        "researchDiscovery": { "title": "Research i odkrywanie", "description": "Zrozumienie potrzeb użytkowników, analiza celów biznesowych i zbieranie insightów." },
+        "wireframingUx": { "title": "Makiety i UX Design", "description": "Strukturyzowanie informacji, tworzenie user flowów i budowanie makiet low-fidelity." },
+        "uiDesignPrototyping": { "title": "UI Design i prototypowanie", "description": "Projektowanie dopracowanych interfejsów, interaktywnych prototypów i systemów wizualnych." },
+        "testingIteration": { "title": "Testowanie i iteracje", "description": "Weryfikacja rozwiązań z użytkownikami, poprawki na podstawie feedbacku i ciągłe doskonalenie." }
+      }
+    },
+    "mediaCarousel": {
+      "sectionAria": "Sekcja z materiałami wideo",
+      "heading": "(A poza tym robię też inne rzeczy)",
+      "videoFallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+    }
+  },
+
+  "gallery": {
+    "pageAria": "Strona galerii",
+    "introAria": "Sekcja wprowadzająca galerię",
+    "gridAria": "Siatka galerii",
+    "intro": {
+      "aria": "Wprowadzenie do galerii",
+      "title": "Nie tylko designer",
+      "description": "Od czasu do czasu wchodzę w rolę twórcy contentu — od pomysłu, przez nagranie, aż po montaż. Tworzę krótkie formy wideo na social media. To mój sposób na eksperymentowanie z wizualem i storytellingiem w lekkiej, dynamicznej formie."
+    },
+    "grid": {
+      "sectionAria": "Siatka wideo w galerii"
+    },
+    "video": {
+      "mute": "Wycisz",
+      "unmute": "Włącz dźwięk",
+      "play": "Odtwórz",
+      "pause": "Zatrzymaj",
+      "seek": "Przewiń"
+    }
+  },
+
+  "contactPopup": {
+    "title": "Skontaktuj się ze mną",
+    "closeAria": "Zamknij formularz kontaktowy",
+    "description": {
+      "line1": "Masz projekt, który mógłby być moim kolejnym wyzwaniem?",
+      "line2": "Zrealizujmy go razem."
+    },
+    "fields": {
+      "firstName": { "placeholder": "Jak masz na imię?" },
+      "email": { "placeholder": "Mail, na który wyślę odpowiedź" },
+      "subject": { "placeholder": "Jaki projekt masz do obgadania?" },
+      "message": { "placeholder": "Napisz coś więcej o projekcie :D" }
+    },
+    "errors": {
+      "required": "Uzupełnij to pole.",
+      "emailFormat": "Poprawny format e-maila to np. mail@gmail.com"
+    },
+    "submit": {
+      "aria": "Wyślij wiadomość",
+      "default": "Wyślij",
+      "sending": "Wysyłanie...",
+      "sent": "Wysłano!",
+      "error": "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+    },
+    "success": {
+      "closeAria": "Zamknij komunikat o powodzeniu",
+      "emojiAlt": "Ikona sukcesu",
+      "title": "Dziękuję za wiadomość!",
+      "description": "Odezwę się do Ciebie tak szybko, jak to możliwe."
+    }
+  },
+
+  "cookieBanner": {
+    "title": "Pliki cookie",
+    "description": {
+      "beforeLink": "Używamy plików cookie, aby strona działała poprawnie oraz – za Twoją zgodą – do analityki i zewnętrznych funkcji. Ustawienia możesz zmienić w dokumencie",
+      "linkText": "Polityka plików cookie",
+      "afterLink": "."
+    },
+    "buttons": {
+      "acceptAll": { "label": "Akceptuję wszystkie", "aria": "Akceptuj wszystkie pliki cookie" },
+      "detailed": { "label": "Ustawienia szczegółowe", "aria": "Otwórz szczegółowe ustawienia plików cookie" }
+    }
+  },
+
+  "cookiePolicy": {
+    "header": {
+      "title": "Polityka plików cookie",
+      "intro": "Na tej stronie wyjaśniam, czym są pliki cookie, w jaki sposób ich używam oraz jak możesz zarządzać swoimi ustawieniami. Informacje o przetwarzaniu danych osobowych znajdziesz w Polityce prywatności."
+    },
+    "section1": {
+      "title": "1. Czym są pliki cookie?",
+      "body": "Pliki cookie to niewielkie pliki tekstowe zapisywane na Twoim urządzeniu. Pomagają zapewnić prawidłowe działanie strony, analizować ruch oraz – za Twoją zgodą – personalizować treści."
+    },
+    "section2": {
+      "title": "2. Jakich plików cookie używam?",
+      "items": {
+        "necessary": { "title": "Niezbędne", "body": "wymagane do działania strony (np. zapisywanie ustawień cookies). Te pliki są zawsze aktywne." },
+        "analytics": { "title": "Analityczne", "body": "pomagają zrozumieć, w jaki sposób korzystasz ze strony (np. Google Analytics)." },
+        "marketing": { "title": "Marketingowe", "body": "wykorzystywane do dopasowania treści i kampanii reklamowych." },
+        "functional": { "title": "Funkcjonalne zewnętrzne", "body": "np. Google Maps osadzone na stronie kontaktowej." }
+      }
+    },
+    "section3": {
+      "title": "3. Zarządzanie zgodą",
+      "categories": {
+        "necessary": { "label": "Niezbędne", "helper": "(zawsze aktywne — wymagane do działania serwisu)" },
+        "analytics": { "label": "Analityczne", "helper": "(Google Analytics – analiza ruchu)" },
+        "marketing": { "label": "Marketingowe", "helper": "(spersonalizowane reklamy)" },
+        "functional": { "label": "Funkcjonalne", "helper": "(Google Maps i osadzone treści)" }
+      },
+      "browserInfo": "Możesz też zarządzać plikami cookie w ustawieniach swojej przeglądarki i usuwać zapisane pliki."
+    },
+    "section4": {
+      "title": "4. Zewnętrzne pliki cookie",
+      "cards": {
+        "googleFonts": { "title": "Google Fonts", "body": "Wczytywanie czcionek używanych na stronie." },
+        "googleAnalytics": { "title": "Google Analytics", "body": "Analiza ruchu i zachowania użytkowników (opcjonalna)." },
+        "formspree": { "title": "Formspree", "body": "Obsługa wysyłki formularza kontaktowego." },
+        "social": { "title": "Media społecznościowe", "body": "Linki do profili na Instagramie i LinkedIn." }
+      }
+    },
+    "section5": {
+      "title": "5. Jak wyłączyć pliki cookie w przeglądarce?",
+      "important": "Ważne:",
+      "body": "Każda przeglądarka umożliwia usunięcie lub zablokowanie plików cookie. Pamiętaj jednak, że po ich wyłączeniu niektóre funkcje strony mogą działać nieprawidłowo.",
+      "browsers": {
+        "chrome": "Chrome: Ustawienia → Prywatność i bezpieczeństwo → Pliki cookie",
+        "firefox": "Firefox: Ustawienia → Prywatność i bezpieczeństwo → Ciasteczka i dane stron",
+        "safari": "Safari: Preferencje → Prywatność → Zarządzaj danymi witryn",
+        "edge": "Edge: Ustawienia → Pliki cookie i uprawnienia witryn"
+      }
+    },
+    "buttons": {
+      "save": { "label": "Zapisz ustawienia", "aria": "Zapisz preferencje dotyczące plików cookie" },
+      "acceptAll": { "label": "Akceptuję wszystkie", "aria": "Akceptuj wszystkie pliki cookie" }
+    },
+    "feedback": {
+      "loadError": "Nie udało się wczytać zapisanych ustawień plików cookie.",
+      "acceptAll": "Wszystkie kategorie plików cookie zostały zaakceptowane i zapisane.",
+      "saved": "Twoje preferencje dotyczące plików cookie zostały zapisane."
+    },
+    "footer": {
+      "title": "Potrzebujesz pomocy?",
+      "body": "Jeśli masz pytania dotyczące polityki plików cookie, skontaktuj się ze mną lub zajrzyj do Polityki prywatności."
+    }
+  },
+
+  "NotFound": {
+    "title": "404 — Nie znaleziono strony",
+    "desc": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "back": "Wróć na stronę główną"
+  },
+
+  "caseStudyContact": {
+    "kicker": "Potrzebujesz kogoś, kto pomoże osiągnąć Ci Twoje cele?",
+    "headline": "Świetnie trafiłeś",
+    "subheadline": "Porozmawiajmy o Twoim produkcie",
+    "form": { "title": "Porozmawiajmy o Twoim produkcie" },
+    "fields": {
+      "firstName": { "placeholder": "Jak masz na imię?" },
+      "email": { "placeholder": "Mail, na który wyślę odpowiedź" },
+      "subject": { "placeholder": "Jaki projekt masz do obgadania?" },
+      "message": { "placeholder": "Napisz coś więcej o projekcie :D" }
+    },
+    "submit": {
+      "aria": "Wyślij formularz",
+      "default": "Wyślij",
+      "sending": "Wysyłam...",
+      "error": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "errors": {
+      "required": "To pole jest wymagane",
+      "emailFormat": "Podaj poprawny adres e-mail"
+    },
+    "success": {
+      "emojiAlt": "Success emoji",
+      "title": "Dzięki!",
+      "description": "Wiadomość została wysłana. Odezwę się najszybciej, jak to możliwe.",
+      "sendAnother": "Wyślij kolejną wiadomość"
+    }
+  }
+}

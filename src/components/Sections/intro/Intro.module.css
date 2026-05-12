@@ -1,0 +1,32 @@
+@reference "../../../app/globals.css";
+
+.intro {
+  @apply section section-front border-b section-pad-home;
+  border-color: var(--c-border);
+}
+
+.inner {
+  @apply max-w-7xl mx-auto;
+}
+
+.grid {
+  @apply grid grid-cols-1 lg:grid-cols-[492px_minmax(0,654px)] gap-y-10 items-start justify-center;
+  column-gap: clamp(24px, 8vw, 120px);
+}
+
+.image {
+  @apply order-1 w-full lg:w-[492px] h-full lg:h-[576px] mx-auto lg:mx-0;
+}
+
+.text {
+  @apply order-2 max-w-[654px] mx-auto lg:mx-0;
+}
+
+.heading {
+  @apply mb-8 text-[28px] leading-[36px] sm:text-[32px] sm:leading-[40px] lg:text-[40px] lg:leading-[48px];
+  color: var(--c-black);
+}
+
+.contacts {
+  @apply mt-8 inline-flex flex-col justify-start items-start gap-5;
+}

@@ -1,0 +1,52 @@
+@reference "../../../app/globals.css";
+
+.section {
+  @apply w-full pt-[132px] md:pt-[92px] lg:pt-[172px];
+}
+
+.containerMobile {
+  @apply lg:hidden;
+}
+
+.containerDesktop {
+  @apply hidden lg:block;
+}
+
+.max {
+  @apply max-w-[1100px];
+}
+
+.title {
+  @apply font-semibold leading-[100%] text-left text-[40px] md:text-[56px] lg:text-[68px];
+  color: var(--c-black);
+}
+
+.subtitle {
+  @apply mt-5 leading-[150%] tracking-[0.16px] text-left text-sm md:text-base;
+  color: var(--c-black);
+}
+
+.divider {
+  @apply w-full border-t;
+  border-color: var(--c-border);
+}
+
+.dividerMobile {
+  @apply mt-6 md:mt-10;
+}
+
+.dividerDesktop {
+  @apply mt-10;
+}
+
+.space {
+  @apply h-[60px] md:h-[80px] lg:h-[100px];
+}
+
+.alignRight {
+  @apply text-right;
+}
+
+.galleryWrap {
+  @apply flex flex-col justify-start items-end gap-5 w-full md:max-w-[384px] lg:max-w-[480px] ml-auto;
+}

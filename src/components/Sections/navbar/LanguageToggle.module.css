@@ -1,0 +1,44 @@
+@reference "../../../app/globals.css";
+
+.toggle {
+  @apply relative inline-flex items-center justify-between px-[6px] transition-colors;
+  background: var(--n-bg);
+  border: 1px solid rgb(var(--rgb-black) / 0.6);
+}
+
+.toggle:hover {
+  background: rgb(var(--rgb-black) / 0.05);
+}
+
+.desktop {
+  @apply w-16 h-8 text-[11px];
+}
+
+.mobile {
+  @apply w-14 h-7 text-[10px];
+}
+
+.label {
+  @apply font-medium tracking-[0.16em];
+}
+
+.labelActive {
+  color: var(--c-black);
+}
+
+.labelInactive {
+  color: rgb(var(--rgb-black) / 0.6);
+}
+
+.knob {
+  @apply absolute top-1/2 -translate-y-1/2 w-[20px] h-[20px] transition-all duration-200;
+  background: var(--c-black);
+}
+
+.knobRight {
+  right: 4px;
+}
+
+.knobLeft {
+  left: 4px;
+}

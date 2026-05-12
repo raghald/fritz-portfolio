@@ -1,0 +1,113 @@
+@reference "../../../app/globals.css";
+
+/* =========
+   MOBILE NAV (top bar — visible on <lg)
+   ========= */
+
+.mobile {
+  @apply lg:hidden fixed left-0 right-0 z-50 shadow-sm;
+  top: 0;
+  background: var(--n-bg);
+
+  /* ✅ safe-area dla notcha */
+  padding-top: env(safe-area-inset-top);
+
+  /* ✅ stała wysokość całego headera */
+  height: calc(var(--nav-h-mobile) + env(safe-area-inset-top));
+
+  /* minimalizuje "drgania" w Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.mobileBar {
+  @apply flex items-center justify-between px-4;
+  height: var(--nav-h-mobile);
+}
+
+.brandMobile {
+  @apply text-xl font-bold tracking-[-0.06em];
+  color: var(--c-black);
+}
+
+.mobileActions {
+  @apply flex items-center gap-4;
+}
+
+.burger {
+  @apply relative w-8 h-8 flex flex-col items-center justify-center gap-[3px];
+  -webkit-tap-highlight-color: transparent;
+}
+
+.burgerLine,
+.burgerLine2 {
+  @apply block w-5 h-[2px] transition-all duration-200;
+  background: var(--c-black);
+}
+
+/* =========
+   DESKTOP NAV (sticky/animated wrapper — variant="sticky")
+   ========= */
+
+.desktop {
+  @apply hidden lg:block fixed inset-x-0 top-0 z-40 pointer-events-none;
+}
+
+.desktopInner {
+  @apply pointer-events-auto flex items-center justify-between h-[72px] mx-auto px-[52px];
+  background: var(--n-bg);
+  border-radius: 0;
+  border-style: solid;
+  border-color: rgb(var(--rgb-black) / 0.05);
+  border-bottom-width: 1px;
+
+  /* Sterowanie zachowaniem przez inline style (tylko "ruchome" rzeczy) */
+  transition:
+    margin-top 300ms ease-out,
+    max-width 300ms ease-out,
+    box-shadow 300ms ease-out,
+    border-width 300ms ease-out,
+    padding 300ms ease-out;
+}
+
+.links {
+  @apply flex items-center gap-8;
+}
+
+.link {
+  @apply px-3 py-1 transition-colors duration-300;
+  color: var(--c-black);
+}
+
+.link:hover {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.brandCenter {
+  @apply absolute left-1/2 -translate-x-1/2;
+}
+
+.brandDesktop {
+  @apply text-3xl font-bold tracking-[-0.06em];
+  color: var(--c-black);
+}
+
+.right {
+  @apply flex items-center gap-4;
+}
+
+/* =========
+   STATIC DESKTOP NAV (variant="static")
+   ========= */
+
+.staticDesktop {
+  @apply hidden lg:block fixed top-0 left-0 right-0 z-40 h-[72px];
+  background: var(--n-bg);
+  border-bottom: 1px solid rgb(var(--rgb-black) / 0.05);
+}
+
+.staticInner {
+  @apply flex items-center justify-between w-full h-full px-[52px] relative;
+}

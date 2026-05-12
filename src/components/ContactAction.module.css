@@ -1,0 +1,159 @@
+@reference "../app/globals.css";
+
+/* ✅ usuwa underline/kreski dla <a> i normalizuje button */
+.focus {
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.focus:hover {
+  text-decoration: none;
+}
+
+.ca {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 8px 16px;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  transition: transform 300ms ease;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.frame {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Frame 1 trzyma layout */
+.frameDefault {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.text {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSvg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Frame 2 overlay — tylko tekst, wyśrodkowany względem całego buttona */
+.frameHover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: translateY(1px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.hoverText {
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+}
+
+/* hover: Frame 1 znika, Frame 2 się pojawia
+   .group jest globalną klasą Tailwind dodawaną w JSX (na <a>/<button>),
+   więc trzymamy ją w :global() żeby CSS Modules nie scope'ował. */
+:global(.group):hover .bg {
+  transform: translateX(0);
+}
+
+:global(.group):hover .frameDefault {
+  opacity: 0;
+  transform: translateY(-1px);
+}
+
+:global(.group):hover .frameHover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* tooltip */
+.tooltip {
+  position: absolute;
+  left: 0;
+  top: -44px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* =========================
+   Variants
+   ========================= */
+
+.variantBlack .bg {
+  background: var(--c-black);
+}
+.variantBlack .text,
+.variantBlack .iconSvg,
+.variantBlack .hoverText {
+  color: var(--c-black);
+}
+:global(.group):hover .variantBlack .text,
+:global(.group):hover .variantBlack .iconSvg,
+:global(.group):hover .variantBlack .hoverText {
+  color: var(--c-white);
+}
+.variantBlack .tooltip {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.variantWhite .bg {
+  background: var(--c-white);
+}
+.variantWhite .text,
+.variantWhite .iconSvg,
+.variantWhite .hoverText {
+  color: var(--c-white);
+}
+/* white variant: na hoverze czarny tekst */
+:global(.group):hover .variantWhite .text,
+:global(.group):hover .variantWhite .iconSvg,
+:global(.group):hover .variantWhite .hoverText {
+  color: var(--c-black);
+}
+.variantWhite .tooltip {
+  background: var(--c-white);
+  color: var(--c-black);
+}

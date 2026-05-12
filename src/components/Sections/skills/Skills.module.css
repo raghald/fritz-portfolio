@@ -1,0 +1,41 @@
+@reference "../../../app/globals.css";
+
+.section {
+  @apply section section-pad-30-90;
+}
+
+.heading {
+  @apply font-semibold leading-[100%] mb-8 text-[44px] md:text-[48px] lg:text-[52px];
+  color: var(--c-black);
+}
+
+.gridWrap {
+  @apply mt-8 w-full;
+}
+
+.grid {
+  @apply grid grid-cols-2 w-full gap-5;
+}
+
+.card {
+  @apply card card-pad-sm;
+  @apply w-full h-full justify-center items-start overflow-hidden;
+  min-height: 160px;
+}
+
+.cardTitle {
+  @apply text-left break-words hyphens-auto text-[16px] font-bold leading-[120%] tracking-[0.16px] lg:text-[24px] lg:font-semibold lg:leading-[150%] lg:tracking-normal;
+  color: var(--c-black);
+}
+
+.cardDesc {
+  @apply text-left break-words hyphens-auto text-[12px] leading-[150%] lg:text-[16px] lg:leading-[150%];
+  color: var(--c-black);
+  margin-top: 4px;
+}
+
+.divider {
+  @apply w-full h-[1px] border-t mt-[60px] lg:mt-[100px];
+  background: var(--c-border);
+  border-color: var(--c-border);
+}

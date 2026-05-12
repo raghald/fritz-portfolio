@@ -1,0 +1,138 @@
+@reference "../../app/globals.css";
+
+/* header */
+.header {
+  @apply section-header;
+}
+
+.headerTitle {
+  @apply section-title;
+}
+
+/* layout (mobile = jak wcześniej) */
+.layout {
+  @apply flex flex-col gap-12;
+}
+
+/* desktop: 2 kolumny 50/50 */
+@media (min-width: 1024px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(24px, 8vw, 120px);
+    align-items: stretch;
+  }
+
+  .aside {
+    align-self: stretch;
+  }
+}
+
+/* LEFT (desktop only) */
+.aside {
+  @apply hidden lg:block;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 96px;
+}
+
+.fade {
+  @apply transition-opacity duration-300;
+}
+
+.asideLink {
+  @apply block cursor-pointer hover:opacity-90 transition-opacity;
+  text-decoration: none;
+  color: inherit;
+}
+
+.kicker {
+  @apply text-sm uppercase tracking-wider mb-2;
+  color: var(--c-gray-600);
+}
+
+.title {
+  @apply text-[28px] lg:text-[32px] font-medium mb-6;
+  color: var(--c-black);
+}
+
+.desc {
+  @apply text-lg leading-relaxed transition-opacity duration-300;
+  color: var(--c-black);
+}
+
+/* RIGHT */
+.mediaCol {
+  @apply order-1 lg:order-2;
+}
+
+.mediaList {
+  @apply space-y-[40px];
+}
+
+/* ✅ zawsze 1:1 */
+.mediaItem {
+  @apply relative w-full aspect-square overflow-hidden;
+  background: var(--c-gray-100);
+}
+
+.mediaLink {
+  @apply block w-full h-full cursor-pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.video {
+  @apply absolute inset-0 w-full h-full object-cover transition-opacity duration-200;
+}
+
+.img {
+  @apply absolute inset-0 w-full h-full object-cover transition-opacity duration-200;
+}
+
+/* footer */
+.footer {
+  @apply mt-12 text-center lg:text-right;
+}
+
+.footerLink {
+  text-decoration: none;
+}
+
+/* CTA */
+.cta {
+  @apply focus-ring relative w-[125px] h-[53px] font-medium text-[16px] leading-[19px] cursor-pointer border-0 overflow-hidden;
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.ctaLayer {
+  @apply absolute inset-0;
+}
+
+.ctaLayer1 {
+  background: var(--c-black);
+}
+
+.ctaLayer2 {
+  @apply w-0 transition-all duration-500 ease-out;
+  background: var(--c-neutral-200);
+}
+
+.ctaLayer3 {
+  @apply w-0 transition-all duration-700 delay-300 ease-out;
+  background: var(--c-white);
+}
+
+.ctaLabel {
+  @apply relative z-10 transition-colors duration-700 delay-200;
+  color: var(--c-white);
+}
+
+.coverLayer,
+.videoLayer {
+  @apply absolute inset-0 w-full h-full object-cover transition-opacity duration-200;
+}

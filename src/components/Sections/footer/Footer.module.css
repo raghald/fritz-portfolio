@@ -1,0 +1,67 @@
+@reference "../../../app/globals.css";
+
+.footer {
+  @apply relative w-full;
+  z-index: 20;
+  background: var(--c-hero-bg);
+  color: var(--c-hero-text);
+}
+
+.shell {
+  @apply page-shell mx-auto min-h-[100svh] flex flex-col justify-between;
+  @apply px-3 sm:px-8 lg:px-[52px];
+  @apply pt-[60px] md:pt-[160px] pb-[60px];
+}
+
+/* top socials */
+.social {
+  @apply w-full flex flex-col items-end gap-3;
+}
+
+/* main center */
+.main {
+  @apply mt-10 w-full flex-1 flex flex-col justify-center;
+}
+
+.headline {
+  @apply font-medium text-[44px] md:text-[56px] leading-[1.2] text-left;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--rgb-white) / 1) 0%,
+    rgb(var(--rgb-white) / 0.45) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta {
+  @apply mt-10 w-full flex justify-center md:justify-start;
+}
+
+.ctaBtn {
+  @apply w-full md:w-auto;
+}
+
+/* bottom */
+.bottom {
+  @apply mt-10 w-full flex flex-col md:flex-row md:justify-between md:items-end gap-3;
+}
+
+.contact {
+  @apply flex flex-col items-start gap-3;
+}
+
+.link {
+  @apply font-medium text-[16px] transition-colors duration-300;
+}
+.link:hover {
+  color: rgb(var(--rgb-white) / 0.7);
+}
+
+.cookies {
+  @apply font-medium text-[12px] transition-colors duration-300;
+}
+.cookies:hover {
+  color: rgb(var(--rgb-white) / 0.7);
+}
