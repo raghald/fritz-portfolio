@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "@/lib/useTranslations";
+import { getVideoPosterPath } from "@/lib/videoPoster";
 
 import ChallengeSection from "@/components/Sections/works/ChallengeSection";
 import GoalSection from "@/components/Sections/works/GoalSection";
@@ -169,6 +170,8 @@ const CaseStudyRenderer: React.FC<CaseStudyRendererProps> = ({
               loop
               muted
               playsInline
+              preload="metadata"
+              poster={getVideoPosterPath(heroVideoSrc)}
               disablePictureInPicture
               controlsList="nodownload nofullscreen noremoteplayback"
               aria-label={t("video.ariaLabel")}

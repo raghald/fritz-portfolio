@@ -73,3 +73,6 @@ SSH-COMMANDS-DO-WYKONANIA.txt
 # your local helper folders
 /seohost-deploy
 /tmp
+
+# original video files (pre-compression backup)
+/.video-originals

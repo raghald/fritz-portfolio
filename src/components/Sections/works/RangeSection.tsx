@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "@/lib/useTranslations";
+import { getVideoPosterPath } from "@/lib/videoPoster";
 
 interface RangeItem {
   title: string;
@@ -68,6 +69,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video1Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
@@ -82,6 +85,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video2Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
@@ -124,6 +129,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video1Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
@@ -138,6 +145,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video2Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
@@ -180,6 +189,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video1Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
@@ -194,6 +205,8 @@ const RangeSection: React.FC<RangeSectionProps> = ({
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(video2Src)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >

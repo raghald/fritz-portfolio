@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useTranslations } from "@/lib/useTranslations";
+import { getVideoPosterPath } from "@/lib/videoPoster";
 
 type MediaItem = {
   id: number;
@@ -17,9 +18,11 @@ interface MediaCarouselProps {
 const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   const t = useTranslations("about.mediaCarousel");
 
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   // Create array of 4 video items - alternating wide and narrow
   const mediaItems: MediaItem[] = [
@@ -135,6 +138,34 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
     };
   }, []);
 
+  // IntersectionObserver: pause off-screen videos to save CPU/network
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: "200px" }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!trackRef.current) return;
+    const videos = trackRef.current.querySelectorAll("video");
+    videos.forEach((video) => {
+      if (isInView) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [isInView]);
+
   // Handle hover with smooth deceleration like a train slowing down
   useEffect(() => {
     if (!animationRef.current) return;
@@ -158,6 +189,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
 
   return (
     <section
+      ref={sectionRef}
       className={`relative z-20 w-full bg-white ${className}`}
       role="region"
       aria-label={t("sectionAria")}
@@ -197,6 +229,8 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={getVideoPosterPath(item.videoSrc)}
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                 >
