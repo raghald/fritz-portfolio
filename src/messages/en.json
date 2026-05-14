@@ -45,7 +45,7 @@
     "copyToClipboard": "Copy to clipboard",
     "copied": "Copied",
     "actions": {
-      "email": { "hover": "Copy" },
+      "email": { "label": "info@fritzglowacki.com", "hover": "Copy" },
       "instagram": { "label": "Instagram", "hover": "Visit" },
       "linkedin": { "label": "LinkedIn", "hover": "Visit" }
     }
@@ -552,7 +552,8 @@
       "unmute": "Unmute",
       "play": "Play",
       "pause": "Pause",
-      "seek": "Seek"
+      "seek": "Seek",
+      "posterAlt": "Short-form motion design video — Fritz Glowacki"
     }
   },
 

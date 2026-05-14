@@ -235,7 +235,7 @@ function VideoCard({ video }: { video: GalleryVideo }) {
         <div className="absolute inset-0">
           <Image
             src={posterSrc}
-            alt=""
+            alt={t("posterAlt")}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover"

@@ -4,13 +4,13 @@
 RewriteEngine On
 
 # 1. Root "/" -> /en/ (domyślny locale; brak middleware w static export).
-RewriteRule ^$ /en/ [R=302,L]
+RewriteRule ^$ /en/ [R=301,L]
 
 # 2. Bez locale w ścieżce (np. /about/, /works/) -> /en/<reszta>.
 RewriteCond %{REQUEST_URI} !^/(en|pl)(/|$)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+?)/?$ /en/$1/ [R=302,L]
+RewriteRule ^(.+?)/?$ /en/$1/ [R=301,L]
 
 # 3. Trailing slash dla katalogów (zgodne z trailingSlash: true).
 RewriteCond %{REQUEST_FILENAME} -d
@@ -35,6 +35,16 @@ ErrorDocument 404 /en/404.html
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/webm "access plus 1 year"
+</IfModule>
+
+# Cache-Control: immutable dla niezmiennych assetów — repeat visits pomijają revalidation.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(mp4|webm|webp|avif|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(jpg|jpeg|png|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 
 # Kompresja (jeśli SeoHost ma mod_deflate).

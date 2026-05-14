@@ -12,8 +12,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const isPl = locale === "pl";
 
-  const base = new URL("https://www.fritzglowacki.com");
-  const path = `/${locale}/about`;
+  const BASE = "https://www.fritzglowacki.com";
+  const path = `/${locale}/about/`;
+  const url = `${BASE}${path}`;
 
   const title = isPl
     ? "O mnie — Fritz Głowacki"
@@ -24,20 +25,22 @@ export async function generateMetadata({
     : "Learn more about Fryderyk Glowacki (Fritz) — web & UI/UX designer working across web design, branding and motion.";
 
   return {
-    metadataBase: base,
-    title,
+    metadataBase: new URL(BASE),
+    title: { absolute: title },
     description,
     alternates: {
-      canonical: path,
+      canonical: url,
       languages: {
-        en: "/en/about",
-        pl: "/pl/about",
+        en: `${BASE}/en/about/`,
+        pl: `${BASE}/pl/about/`,
+        "x-default": `${BASE}/en/about/`,
       },
     },
     openGraph: {
       type: "website",
       locale: isPl ? "pl_PL" : "en_US",
-      url: path,
+      alternateLocale: isPl ? "en_US" : "pl_PL",
+      url,
       title,
       description,
     },

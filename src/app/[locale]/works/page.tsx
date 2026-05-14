@@ -15,8 +15,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const isPl = locale === "pl";
 
-  const base = new URL("https://www.fritzglowacki.com");
-  const path = `/${locale}/works`;
+  const BASE = "https://www.fritzglowacki.com";
+  const path = `/${locale}/works/`;
+  const url = `${BASE}${path}`;
 
   const title = isPl
     ? "Case study — zobacz moje realizacje — Fritz Głowacki"
@@ -27,20 +28,22 @@ export async function generateMetadata({
     : "Explore selected case studies in web design, UI/UX, branding and motion — from information architecture to final UI.";
 
   return {
-    metadataBase: base,
-    title,
+    metadataBase: new URL(BASE),
+    title: { absolute: title },
     description,
     alternates: {
-      canonical: path,
+      canonical: url,
       languages: {
-        en: "/en/works",
-        pl: "/pl/works",
+        en: `${BASE}/en/works/`,
+        pl: `${BASE}/pl/works/`,
+        "x-default": `${BASE}/en/works/`,
       },
     },
     openGraph: {
       type: "website",
       locale: isPl ? "pl_PL" : "en_US",
-      url: path,
+      alternateLocale: isPl ? "en_US" : "pl_PL",
+      url,
       title,
       description,
     },

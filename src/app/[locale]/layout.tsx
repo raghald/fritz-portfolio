@@ -53,7 +53,7 @@ export async function generateMetadata({
   const isPl = locale === "pl";
 
   const baseUrl = "https://www.fritzglowacki.com";
-  const url = `${baseUrl}/${locale}`;
+  const url = `${baseUrl}/${locale}/`;
 
   const titleDefault = isPl
     ? "Fritz Glowacki — Designer: Web, UI/UX, Branding i Motion"
@@ -105,8 +105,9 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: `${baseUrl}/en`,
-        pl: `${baseUrl}/pl`,
+        en: `${baseUrl}/en/`,
+        pl: `${baseUrl}/pl/`,
+        "x-default": `${baseUrl}/en/`,
       },
     },
 
@@ -125,6 +126,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: isPl ? "pl_PL" : "en_US",
+      alternateLocale: isPl ? "en_US" : "pl_PL",
       url,
       title: ogTitle,
       description,
@@ -134,9 +136,7 @@ export async function generateMetadata({
           url: "/images/OG.webp",
           width: 1200,
           height: 630,
-          alt: isPl
-            ? "Portfolio — Fritz Glowacki"
-            : "Portfolio — Fritz Glowacki",
+          alt: "Portfolio — Fritz Glowacki",
         },
       ],
     },

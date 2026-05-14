@@ -101,7 +101,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
         {/* COVER */}
         <Image
           src={work.coverSrc}
-          alt=""
+          alt={title}
           fill
           sizes="(max-width: 768px) 338px, (max-width: 1024px) 371px, 540px"
           className={[

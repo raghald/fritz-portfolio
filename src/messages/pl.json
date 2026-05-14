@@ -45,7 +45,7 @@
     "copyToClipboard": "Kopiuj",
     "copied": "Skopiowano",
     "actions": {
-      "email": { "hover": "Skopiuj" },
+      "email": { "label": "info@fritzglowacki.com", "hover": "Skopiuj" },
       "instagram": { "label": "Instagram", "hover": "Sprawdź" },
       "linkedin": { "label": "LinkedIn", "hover": "Sprawdź" }
     }
@@ -515,7 +515,8 @@
       "unmute": "Włącz dźwięk",
       "play": "Odtwórz",
       "pause": "Zatrzymaj",
-      "seek": "Przewiń"
+      "seek": "Przewiń",
+      "posterAlt": "Krótka forma wideo motion design — Fritz Głowacki"
     }
   },
 

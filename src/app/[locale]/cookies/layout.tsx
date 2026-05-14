@@ -1,9 +1,51 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy - Fritz Glowacki",
-  description: "Learn how we use cookies on our site and how you can manage your preferences.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isPl = locale === "pl";
+
+  const BASE = "https://www.fritzglowacki.com";
+  const path = `/${locale}/cookies/`;
+  const url = `${BASE}${path}`;
+
+  const title = isPl
+    ? "Polityka cookies — Fritz Głowacki"
+    : "Cookie Policy — Fritz Glowacki";
+
+  const description = isPl
+    ? "Dowiedz się, jak ta strona używa plików cookie i jak możesz zarządzać swoimi preferencjami."
+    : "Learn how this site uses cookies and how you can manage your preferences.";
+
+  return {
+    metadataBase: new URL(BASE),
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${BASE}/en/cookies/`,
+        pl: `${BASE}/pl/cookies/`,
+        "x-default": `${BASE}/en/cookies/`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isPl ? "pl_PL" : "en_US",
+      alternateLocale: isPl ? "en_US" : "pl_PL",
+      url,
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function CookiePolicyLayout({
   children,

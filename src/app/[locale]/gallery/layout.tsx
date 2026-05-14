@@ -12,8 +12,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const isPl = locale === "pl";
 
-  const base = new URL("https://www.fritzglowacki.com");
-  const path = `/${locale}/gallery`;
+  const BASE = "https://www.fritzglowacki.com";
+  const path = `/${locale}/gallery/`;
+  const url = `${BASE}${path}`;
 
   const title = isPl
     ? "Galeria — Fritz Głowacki"
@@ -24,20 +25,22 @@ export async function generateMetadata({
     : "A gallery of my work and content: short-form video, motion, visual experiments and process snippets. See how I blend design and storytelling.";
 
   return {
-    metadataBase: base,
-    title,
+    metadataBase: new URL(BASE),
+    title: { absolute: title },
     description,
     alternates: {
-      canonical: path,
+      canonical: url,
       languages: {
-        en: "/en/gallery",
-        pl: "/pl/gallery",
+        en: `${BASE}/en/gallery/`,
+        pl: `${BASE}/pl/gallery/`,
+        "x-default": `${BASE}/en/gallery/`,
       },
     },
     openGraph: {
       type: "website",
       locale: isPl ? "pl_PL" : "en_US",
-      url: path,
+      alternateLocale: isPl ? "en_US" : "pl_PL",
+      url,
       title,
       description,
     },
