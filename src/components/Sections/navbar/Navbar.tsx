@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
-import { motion, type HTMLMotionProps, type Transition } from "framer-motion";
 
 import { useStickyNav } from "@/hooks/useStickyNav";
 import MobileMenu from "./MobileMenu";
@@ -13,7 +12,7 @@ import AnimatedButton from "@/components/AnimatedButton";
 import { useContactPopup } from "@/hooks/ContactPopupContext";
 import LanguageToggle from "./LanguageToggle";
 
-import { intro, ms } from "@/lib/introTimings";
+import { intro } from "@/lib/introTimings";
 
 import styles from "./Navbar.module.css";
 
@@ -54,20 +53,14 @@ export default function Navbar({
       }
     : undefined;
 
-  const navMotionProps: Partial<HTMLMotionProps<"nav">> = {};
+  // Intro animation tylko dla sticky (home page) — sterujemy klasą + CSS var
   const playIntro = isSticky && !disableIntro;
-  if (playIntro) {
-    const delayMs =
-      introDelayMs ?? intro.titleStartMs + (intro.navbarExtraDelayMs ?? 0);
-    const transition: Transition = {
-      delay: ms(delayMs),
-      duration: 0.35,
-      ease: [0.16, 1, 0.3, 1],
-    };
-    navMotionProps.initial = { opacity: 0, y: -10, filter: "blur(2px)" };
-    navMotionProps.animate = { opacity: 1, y: 0, filter: "blur(0px)" };
-    navMotionProps.transition = transition;
-  }
+  const delayMs =
+    introDelayMs ?? intro.titleStartMs + (intro.navbarExtraDelayMs ?? 0);
+  const introClass = playIntro ? styles.intro : "";
+  const introStyle: React.CSSProperties | undefined = playIntro
+    ? ({ ["--navbar-delay-ms" as string]: `${delayMs}ms` } as React.CSSProperties)
+    : undefined;
 
   const desktopClassName = isSticky ? styles.desktop : styles.staticDesktop;
   const desktopInnerClassName = isSticky ? styles.desktopInner : styles.staticInner;
@@ -75,12 +68,11 @@ export default function Navbar({
   return (
     <>
       {/* MOBILE NAV */}
-      <motion.nav
-        className={styles.mobile}
+      <nav
+        className={`${styles.mobile} ${introClass}`.trim()}
         role="navigation"
         aria-label={t("ariaMainNav")}
-        style={{ pointerEvents: "auto" }}
-        {...navMotionProps}
+        style={{ pointerEvents: "auto", ...introStyle }}
       >
         <div className={styles.mobileBar}>
           <Link
@@ -114,15 +106,14 @@ export default function Navbar({
         </div>
 
         <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
-      </motion.nav>
+      </nav>
 
       {/* DESKTOP NAV */}
-      <motion.nav
-        className={desktopClassName}
+      <nav
+        className={`${desktopClassName} ${introClass}`.trim()}
         role="navigation"
         aria-label={t("ariaMainNav")}
-        style={{ pointerEvents: "auto" }}
-        {...navMotionProps}
+        style={{ pointerEvents: "auto", ...introStyle }}
       >
         <div className={desktopInnerClassName} style={desktopWrapperStyle}>
           <div className={styles.links}>
@@ -160,7 +151,7 @@ export default function Navbar({
             </AnimatedButton>
           </div>
         </div>
-      </motion.nav>
+      </nav>
     </>
   );
 }

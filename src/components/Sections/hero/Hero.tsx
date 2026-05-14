@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
 import AnimatedButton from "../../AnimatedButton";
 import { useContactPopup } from "@/hooks/ContactPopupContext";
 import HeroMedia, { type HeroMediaItem } from "./HeroMedia";
 import AnimatedTitle from "@/components/Sections/hero/AnimatedTitle";
-import { intro, ms, resolveHeroTimeline } from "@/lib/introTimings";
+import { intro, resolveHeroTimeline } from "@/lib/introTimings";
 
 import styles from "./Hero.module.css";
 
@@ -22,8 +21,6 @@ type Tag = {
   id: TagId;
   label: string;
 };
-
-const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const DEFAULT_TAG_ORDER: TagId[] = ["ui", "web", "ux", "brand", "motion"];
 const ALL_TAG_IDS: TagId[] = ["web", "ui", "ux", "brand", "motion"];
@@ -129,10 +126,21 @@ export default function Hero({ rightOrnaments }: HeroProps) {
     [titleText, orderedTags.length]
   );
 
-  const softFromLeft = { opacity: 0, x: -10, y: 0, scale: 0.99 };
-  const softFromRight = { opacity: 0, x: 10, y: 0, scale: 0.99 };
-  const softFromBottom = { opacity: 0, y: 10, scale: 0.99 };
-  const softTo = { opacity: 1, x: 0, y: 0, scale: 1 };
+  // CSS variables zasilające animacje w Hero.module.css (z timeline w ms)
+  const sectionStyle: React.CSSProperties = {
+    ["--side-copy-start-ms" as string]: `${timeline.sideCopy.startMs}ms`,
+    ["--side-copy-enter-ms" as string]: `${timeline.sideCopy.enterMs}ms`,
+    ["--ornaments-start-ms" as string]: `${timeline.ornaments.startMs}ms`,
+    ["--ornaments-enter-ms" as string]: `${timeline.ornaments.enterMs}ms`,
+    ["--cta-start-ms" as string]: `${timeline.cta.startMs}ms`,
+    ["--cta-enter-ms" as string]: `${timeline.cta.enterMs}ms`,
+  };
+
+  const tagsStyle: React.CSSProperties = {
+    ["--tag-start-ms" as string]: `${timeline.tags.startMs}ms`,
+    ["--tag-stagger-ms" as string]: `${timeline.tags.staggerMs}ms`,
+    ["--tag-enter-ms" as string]: `${timeline.tags.enterMs}ms`,
+  };
 
   return (
     <section
@@ -140,39 +148,18 @@ export default function Hero({ rightOrnaments }: HeroProps) {
       role="banner"
       aria-label={t("ariaLabel")}
       className={styles.section}
+      style={sectionStyle}
     >
       <h1 className="sr-only">{seoH1}</h1>
 
       <div className={styles.shell}>
-        <motion.div
-          className={styles.sideCopy}
-          initial={softFromLeft}
-          animate={softTo}
-          transition={{
-            delay: ms(timeline.sideCopy.startMs),
-            duration: ms(timeline.sideCopy.enterMs),
-            ease: EASE_OUT,
-          }}
-          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
-        >
+        <div className={styles.sideCopy}>
           {sideCopyLine1}
           <br />
           {sideCopyLine2}
-        </motion.div>
+        </div>
 
-        <motion.div
-          className={styles.ornaments}
-          initial={softFromRight}
-          animate={softTo}
-          transition={{
-            delay: ms(timeline.ornaments.startMs),
-            duration: ms(timeline.ornaments.enterMs),
-            ease: EASE_OUT,
-          }}
-          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
-        >
-          {rightOrnaments}
-        </motion.div>
+        <div className={styles.ornaments}>{rightOrnaments}</div>
 
         <div className={styles.center}>
           <div className={styles.photoWrap}>
@@ -192,61 +179,21 @@ export default function Hero({ rightOrnaments }: HeroProps) {
                 ariaLevel={2}
               />
 
-              <motion.div
-                className={styles.tags}
-                initial="hidden"
-                animate="show"
-                variants={{
-                  hidden: {},
-                  show: {
-                    transition: {
-                      delay: ms(timeline.tags.startMs),
-                      staggerChildren: ms(timeline.tags.staggerMs),
-                    },
-                  },
-                }}
-              >
-                {orderedTags.map((tag) => (
-                  <motion.span
-                    key={tag.id}
-                    variants={{
-                      hidden: { opacity: 0, y: 8, scale: 0.99 },
-                      show: {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: {
-                          duration: ms(timeline.tags.enterMs),
-                          ease: EASE_OUT,
-                        },
-                      },
-                    }}
-                    style={{
-                      display: "inline-block",
-                      willChange: "transform, opacity",
-                      transform: "translateZ(0)",
-                    }}
-                  >
-                    {tag.label}
-                  </motion.span>
-                ))}
-              </motion.div>
+              <div className={styles.tags} style={tagsStyle}>
+                {orderedTags.map((tag, i) => {
+                  const tagStyle: React.CSSProperties = {
+                    ["--idx" as string]: i,
+                  };
+                  return (
+                    <span key={tag.id} className={styles.tag} style={tagStyle}>
+                      {tag.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
 
-            <motion.div
-              className={styles.cta}
-              initial={softFromBottom}
-              animate={softTo}
-              transition={{
-                delay: ms(timeline.cta.startMs),
-                duration: ms(timeline.cta.enterMs),
-                ease: EASE_OUT,
-              }}
-              style={{
-                willChange: "transform, opacity",
-                transform: "translateZ(0)",
-              }}
-            >
+            <div className={styles.cta}>
               <AnimatedButton
                 onClick={openPopup}
                 ariaLabel={t("btnSecondaryAria")}
@@ -264,7 +211,7 @@ export default function Hero({ rightOrnaments }: HeroProps) {
               >
                 {t("btnPrimary")}
               </AnimatedButton>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

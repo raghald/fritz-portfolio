@@ -8,16 +8,34 @@ interface SmoothScrollProps {
   children: ReactNode;
 }
 
+/**
+ * Cache layout values (offsetTop/offsetHeight) per element. Read once on mount
+ * and on resize; never inside the scroll callback (which would force reflow).
+ */
+type Layout = {
+  hero: HTMLElement | null;
+  projectsShowcase: HTMLElement | null;
+  lastSection: HTMLElement | null;
+  // Computed thresholds in scroll space:
+  projectsBottom: number; // scroll position where projects section ends
+  footerRevealStart: number; // scroll position where last-section bottom reaches viewport bottom
+};
+
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
   const rafIdRef = useRef<number | null>(null);
+  const layoutRef = useRef<Layout>({
+    hero: null,
+    projectsShowcase: null,
+    lastSection: null,
+    projectsBottom: Number.POSITIVE_INFINITY,
+    footerRevealStart: Number.POSITIVE_INFINITY,
+  });
 
-  // init Lenis (raz)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // ✅ wyłącz przywracanie scrolla przez przeglądarkę/Next (back/forward itd.)
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
@@ -42,53 +60,72 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     };
     rafIdRef.current = requestAnimationFrame(raf);
 
-    // logika hero / footer reveal – tylko na podstawie scrolla
-    lenis.on("scroll", ({ scroll }) => {
-      const hero = document.querySelector("[data-hero]") as HTMLElement | null;
-      const projectsShowcase = document.querySelector(
+    /** Refresh layout cache: read DOM positions once, store in layoutRef. */
+    const refreshLayout = () => {
+      const hero = document.querySelector<HTMLElement>("[data-hero]");
+      const projectsShowcase = document.querySelector<HTMLElement>(
         "[role='region'][aria-label='Projects Showcase']"
-      ) as HTMLElement | null;
-      const lastSection = document.querySelector(".last-section") as HTMLElement | null;
+      );
+      const lastSection = document.querySelector<HTMLElement>(".last-section");
+      const windowHeight = window.innerHeight;
 
-      if (hero && projectsShowcase) {
-        const windowHeight = window.innerHeight;
-        const projectsShowcaseBottom =
-          projectsShowcase.offsetTop + projectsShowcase.offsetHeight;
+      layoutRef.current.hero = hero;
+      layoutRef.current.projectsShowcase = projectsShowcase;
+      layoutRef.current.lastSection = lastSection;
 
-        if (scroll > projectsShowcaseBottom) {
-          hero.style.opacity = "0";
-          hero.style.pointerEvents = "none";
-        } else {
-          hero.style.opacity = "1";
-          hero.style.pointerEvents = "auto";
-        }
+      layoutRef.current.projectsBottom = projectsShowcase
+        ? projectsShowcase.offsetTop + projectsShowcase.offsetHeight
+        : Number.POSITIVE_INFINITY;
 
-        if (lastSection) {
-          const lastSectionTop = lastSection.offsetTop;
-          const footerRevealStart =
-            lastSectionTop + lastSection.offsetHeight - windowHeight;
+      layoutRef.current.footerRevealStart = lastSection
+        ? lastSection.offsetTop + lastSection.offsetHeight - windowHeight
+        : Number.POSITIVE_INFINITY;
+    };
 
-          hero.style.zIndex = scroll >= footerRevealStart ? "1" : "10";
-        }
+    // Initial layout read after a tick so the page tree is mounted.
+    const initialTimer = window.setTimeout(refreshLayout, 0);
+    window.addEventListener("resize", refreshLayout, { passive: true });
+    window.addEventListener("orientationchange", refreshLayout, { passive: true });
+
+    // Track last state to skip redundant style writes.
+    let lastHidden = false;
+    let lastLowered = false;
+
+    lenis.on("scroll", ({ scroll }: { scroll: number }) => {
+      const { hero, projectsBottom, footerRevealStart } = layoutRef.current;
+      if (!hero) return;
+
+      const shouldHide = scroll > projectsBottom;
+      if (shouldHide !== lastHidden) {
+        hero.style.opacity = shouldHide ? "0" : "1";
+        hero.style.pointerEvents = shouldHide ? "none" : "auto";
+        lastHidden = shouldHide;
+      }
+
+      const shouldLower = scroll >= footerRevealStart;
+      if (shouldLower !== lastLowered) {
+        hero.style.zIndex = shouldLower ? "1" : "10";
+        lastLowered = shouldLower;
       }
     });
 
     return () => {
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      window.clearTimeout(initialTimer);
+      window.removeEventListener("resize", refreshLayout);
+      window.removeEventListener("orientationchange", refreshLayout);
       lenis.destroy();
       lenisRef.current = null;
     };
   }, []);
 
-  // ✅ scroll do góry po każdej zmianie podstrony
+  // scroll do góry po każdej zmianie podstrony
   useEffect(() => {
     const lenis = lenisRef.current;
     if (!lenis) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       return;
     }
-
-    // immediate = bez animacji (żeby było “od góry” natychmiast)
     lenis.scrollTo(0, { immediate: true });
   }, [pathname]);
 

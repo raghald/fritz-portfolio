@@ -9,6 +9,7 @@ import { useTranslations } from "@/lib/useTranslations";
 
 import { WORKS } from "@/data/worksData";
 import type { WorkItem } from "@/data/worksData";
+import AnimatedButton from "@/components/AnimatedButton";
 
 import styles from "./ProjectsShowcase.module.css";
 
@@ -326,16 +327,14 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
 
         {/* Footer */}
         <div className={styles.footer}>
-          <Link href={`/${locale}/works`} className={styles.footerLink}>
-            <button className={`${styles.cta} group`} type="button">
-              <div className={`${styles.ctaLayer} ${styles.ctaLayer1}`} />
-              <div className={`${styles.ctaLayer} ${styles.ctaLayer2} group-hover:w-full`} />
-              <div className={`${styles.ctaLayer} ${styles.ctaLayer3} group-hover:w-full`} />
-              <span className={`${styles.ctaLabel} group-hover:text-black`}>
-                {tProjects("showMore")}
-              </span>
-            </button>
-          </Link>
+          <AnimatedButton
+            href={`/${locale}/works`}
+            ariaLabel={tProjects("showMore")}
+            variant="cookieAccept"
+            className="w-[125px] h-[53px] px-0"
+          >
+            {tProjects("showMore")}
+          </AnimatedButton>
         </div>
       </div>
     </section>

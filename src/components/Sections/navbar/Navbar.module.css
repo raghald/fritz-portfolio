@@ -1,6 +1,36 @@
 @reference "../../../app/globals.css";
 
 /* =========
+   NAVBAR — intro animation (sticky variant only)
+   ========= */
+
+@keyframes navbar-drop-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+.intro {
+  opacity: 0;
+  animation: navbar-drop-in 350ms cubic-bezier(0.16, 1, 0.3, 1)
+    var(--navbar-delay-ms, 0ms) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* =========
    MOBILE NAV (top bar — visible on <lg)
    ========= */
 

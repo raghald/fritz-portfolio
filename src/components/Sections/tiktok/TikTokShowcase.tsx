@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import {
   MediaPlayer,
   MediaProvider,
@@ -14,6 +13,7 @@ import { TypeAnimation } from "react-type-animation";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
 
+import AnimatedButton from "@/components/AnimatedButton";
 import { getVideoPosterPath } from "@/lib/videoPoster";
 
 import styles from "./TikTokShowcase.module.css";
@@ -420,25 +420,17 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
           ))}
       </div>
 
-      {/* CTA — identyczne jak ProjectsShowcase */}
-     {/* CTA — takie samo jak w ProjectsShowcaseSticky */}
-<div className={styles.footer}>
-  <Link href={`/${locale}/gallery`}>
-    <button
-      aria-label={t("ctaAria")}
-      className="ps-cta group"
-      type="button"
-    >
-      <div className="ps-ctaLayer ps-ctaLayer-1" />
-      <div className="ps-ctaLayer ps-ctaLayer-2 group-hover:w-full" />
-      <div className="ps-ctaLayer ps-ctaLayer-3 group-hover:w-full" />
-      <span className="ps-ctaLabel group-hover:text-black">
-        {t("ctaLabel")}
-      </span>
-    </button>
-  </Link>
-</div>
-
+      {/* CTA — link do galerii */}
+      <div className={styles.footer}>
+        <AnimatedButton
+          href={`/${locale}/gallery`}
+          ariaLabel={t("ctaAria")}
+          variant="cookieAccept"
+          className="w-[125px] h-[53px] px-0"
+        >
+          {t("ctaLabel")}
+        </AnimatedButton>
+      </div>
     </section>
   );
 }

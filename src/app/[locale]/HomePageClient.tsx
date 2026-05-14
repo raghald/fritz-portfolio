@@ -6,7 +6,6 @@ import { useTranslations } from "@/lib/useTranslations";
 import Hero from "@/components/Sections/hero/Hero";
 import Intro from "@/components/Sections/intro/Intro";
 import Footer from "@/components/Sections/footer/Footer";
-import { useHeroLayering } from "@/hooks/useHeroLayering";
 import OrnamentsShuffle from "@/components/Sections/hero/OrnamentsShuffle";
 
 // SVG jako komponenty (SVGR) – z src/assets
@@ -58,8 +57,6 @@ const TikTokShowcase = dynamic(
 );
 
 export default function HomePageClient() {
-  useHeroLayering();
-
   // ✅ Regulacja tempa + kill switch
   const ORNAMENTS_ENABLED = true;
   const ORNAMENTS_INTERVAL_MS = 300;
@@ -79,8 +76,7 @@ export default function HomePageClient() {
         }
       />
 
-      {/* ⛔️ Ten main bywa transformowany przez useHeroLayering(),
-          więc NIE wkładamy tu sticky-sekcji. */}
+      {/* z-index hero/footer reveal sterowany w SmoothScroll przez lenis.on("scroll") */}
       <main className="main-content relative z-20 bg-white">
         <Intro />
       </main>

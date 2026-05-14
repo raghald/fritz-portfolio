@@ -1,0 +1,25 @@
+@reference "../../../app/globals.css";
+
+/* Per-letter pop-in: opacity 0 → 1 z opóźnieniem indeksowanym przez --idx.
+   Delay = titleStartMs + idx * letterStaggerMs (przekazywane z JSX). */
+.letter {
+  display: inline-block;
+  opacity: 0;
+  animation: title-letter-pop 1ms linear forwards;
+  animation-delay: calc(
+    var(--title-start-ms, 0ms) + var(--idx, 0) * var(--letter-stagger-ms, 100ms)
+  );
+}
+
+@keyframes title-letter-pop {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    opacity: 1;
+    animation: none;
+  }
+}

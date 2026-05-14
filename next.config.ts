@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   experimental: {
-    optimizePackageImports: ["framer-motion", "@vidstack/react"],
+    optimizePackageImports: ["@vidstack/react"],
     optimizeCss: false,
   },
 

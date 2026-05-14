@@ -1,77 +1,51 @@
 "use client";
 
 import React from "react";
-import { gsap } from "gsap";
 import { FaInstagramSquare, FaLinkedin, FaRegCopy } from "react-icons/fa";
 import { useTranslations } from "@/lib/useTranslations";
 
+import ContactAction from "@/components/ContactAction";
+
 import styles from "./IntroSection.module.css";
 
-type ContactItem = {
-  icon: React.ReactNode;
-  text: string;
-  onClick: () => void;
-  type: "copy" | "link";
-  hoverColor: string;
-  clickEffect?: boolean;
-};
+const EMAIL_ADDRESS = "info@fritzglowacki.com";
+const INSTAGRAM_URL = "https://www.instagram.com/fritzglowacki/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/fryderyk-glowacki/";
+
+/** Wspólny zestaw kontaktów (email/Instagram/LinkedIn) — używany w obu layoutach. */
+function ContactsList() {
+  return (
+    <>
+      <ContactAction
+        variant="black"
+        labelKey="actions.email.label"
+        hoverKey="actions.email.hover"
+        labelFallback={EMAIL_ADDRESS}
+        copyText={EMAIL_ADDRESS}
+        icon={FaRegCopy}
+      />
+
+      <ContactAction
+        variant="black"
+        href={INSTAGRAM_URL}
+        labelKey="actions.instagram.label"
+        hoverKey="actions.instagram.hover"
+        icon={FaInstagramSquare}
+      />
+
+      <ContactAction
+        variant="black"
+        href={LINKEDIN_URL}
+        labelKey="actions.linkedin.label"
+        hoverKey="actions.linkedin.hover"
+        icon={FaLinkedin}
+      />
+    </>
+  );
+}
 
 const IntroAbout: React.FC = () => {
   const t = useTranslations("about.intro");
-
-  const contactItems: ContactItem[] = [
-    {
-      icon: <FaRegCopy size={28} />,
-      text: "info@fritzglowacki.com",
-      onClick: () => {
-        navigator.clipboard
-          .writeText("info@fritzglowacki.com")
-          .catch((err) => console.error("Clipboard error:", err));
-      },
-      type: "copy",
-      hoverColor: "#3b82f6",
-      clickEffect: true,
-    },
-    {
-      icon: <FaInstagramSquare size={28} />,
-      text: "Instagram",
-      onClick: () => {
-        window.open("https://www.instagram.com/fritzglowacki/", "_blank");
-      },
-      type: "link",
-      hoverColor: "#e1306c",
-    },
-    {
-      icon: <FaLinkedin size={28} />,
-      text: "LinkedIn",
-      onClick: () => {
-        window.open("https://www.linkedin.com/in/fryderyk-glowacki/", "_blank");
-      },
-      type: "link",
-      hoverColor: "#0077b5",
-    },
-  ];
-
-  const handleContactItemClick = (
-    item: ContactItem,
-    element?: HTMLElement | null
-  ) => {
-    item.onClick();
-
-    if (item.clickEffect && element) {
-      gsap.fromTo(
-        element,
-        { scale: 1 },
-        {
-          scale: 0.95,
-          duration: 0.1,
-          yoyo: true,
-          repeat: 1,
-          ease: "power2.out",
-        }
-      );
-    }
-  };
 
   return (
     <section
@@ -108,34 +82,7 @@ const IntroAbout: React.FC = () => {
                 <div className="space-y-[40px]">
                   <section className="w-full h-[573px] bg-white flex items-end justify-end p-8">
                     <div className="inline-flex flex-col justify-start items-end gap-5">
-                      {contactItems.map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={(e) =>
-                            handleContactItemClick(item, e.currentTarget)
-                          }
-                          className="transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 cursor-pointer"
-                          title={
-                            item.type === "copy"
-                              ? t("copyToClipboardTitle")
-                              : item.text
-                          }
-                        >
-                          <div className="group relative inline-flex justify-start items-center overflow-hidden px-4 py-2">
-                            <div className="absolute inset-0 -left-[1px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
-                            <div className="h-8 flex justify-start items-center gap-3 group-hover:gap-4 transition-all duration-300">
-                              <div className="relative z-10 justify-start text-black group-hover:text-white text-2xl transition-colors duration-300">
-                                {item.text}
-                              </div>
-                              <div className="w-8 h-8 relative overflow-hidden flex items-center justify-center">
-                                <div className="relative z-10 w-7 h-7 text-black group-hover:text-white transition-colors duration-300">
-                                  {item.icon}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      ))}
+                      <ContactsList />
                     </div>
                   </section>
 
@@ -147,6 +94,8 @@ const IntroAbout: React.FC = () => {
                       loop
                       muted
                       playsInline
+                      preload="metadata"
+                      poster="/videos/About_me_Start_Video-poster.jpg"
                       disablePictureInPicture
                       controlsList="nodownload nofullscreen noremoteplayback"
                       style={{ pointerEvents: "none" }}
@@ -184,34 +133,7 @@ const IntroAbout: React.FC = () => {
               </p>
 
               <div className="mt-8 inline-flex flex-col justify-start items-start gap-5">
-                {contactItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={(e) =>
-                      handleContactItemClick(item, e.currentTarget)
-                    }
-                    className="transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 cursor-pointer"
-                    title={
-                      item.type === "copy"
-                        ? t("copyToClipboardTitle")
-                        : item.text
-                    }
-                  >
-                    <div className="group relative inline-flex justify-start items-center overflow-hidden px-4 py-2">
-                      <div className="absolute inset-0 -left-[1px] bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
-                      <div className="h-8 flex justify-start items-center gap-3 group-hover:gap-4 transition-all duration-300">
-                        <div className="relative z-10 justify-start text-black group-hover:text-white text-2xl transition-colors duration-300">
-                          {item.text}
-                        </div>
-                        <div className="w-8 h-8 relative overflow-hidden flex items-center justify-center">
-                          <div className="relative z-10 w-7 h-7 text-black group-hover:text-white transition-colors duration-300">
-                            {item.icon}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                ))}
+                <ContactsList />
               </div>
 
               <div className="flex justify-center mt-8">
@@ -221,6 +143,8 @@ const IntroAbout: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster="/videos/About_me_Start_Video-poster.jpg"
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                   style={{ pointerEvents: "none" }}

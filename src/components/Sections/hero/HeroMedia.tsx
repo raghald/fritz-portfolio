@@ -28,6 +28,11 @@ type HeroMediaProps = {
   className?: string;
 };
 
+/**
+ * Crossfade carousel — wszystkie elementy są wmontowane raz, widoczność
+ * sterowana klasą .photoActive (opacity 0/1 + transition). Brak unmount/remount
+ * eliminuje flicker i ponowne dekodowanie obrazków.
+ */
 export default function HeroMedia({
   items,
   defaultDurationMs = 2600,
@@ -41,22 +46,18 @@ export default function HeroMedia({
     Math.min(Math.max(startIndex, 0), Math.max(media.length - 1, 0))
   );
 
-  // Gdy lista się zmieni (np. hot reload), pilnuj indeksu
   useEffect(() => {
     setIndex((prev) =>
       Math.min(Math.max(prev, 0), Math.max(media.length - 1, 0))
     );
   }, [media.length]);
 
+  // Carousel timer
   const timerRef = useRef<number | null>(null);
-
-  const clearTimer = () => {
+  useEffect(() => {
     if (timerRef.current) window.clearTimeout(timerRef.current);
     timerRef.current = null;
-  };
 
-  useEffect(() => {
-    clearTimer();
     if (paused || media.length <= 1) return;
 
     const current = media[index];
@@ -66,12 +67,30 @@ export default function HeroMedia({
       setIndex((prev) => (prev + 1) % media.length);
     }, Math.max(100, duration));
 
-    return clearTimer;
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    };
   }, [index, paused, media, defaultDurationMs]);
 
-  if (!media.length) return null;
+  // Video play/pause coordination — tylko aktywne wideo gra
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === index && !paused) {
+        // play() returns a Promise we can safely ignore (autoplay errors are fine)
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch {}
+      }
+    });
+  }, [index, paused]);
 
-  const current = media[index];
+  if (!media.length) return null;
 
   return (
     <div
@@ -79,48 +98,43 @@ export default function HeroMedia({
       aria-hidden="true"
       style={{ position: "relative", width: "100%", height: "100%" }}
     >
-      {current.type === "image" ? (
-        // hero-photo polega na naturalnych wymiarach obrazka (width/height auto + max-inline-size),
-        // więc next/image z width/height wymuszałby nieprawidłowy aspect-ratio
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={`${current.src}-${index}`}
-          src={current.src}
-          alt={current.alt ?? ""}
-          draggable={false}
-          className={styles.photo}
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%) translateZ(0)",
-            objectFit: "contain",
-            objectPosition: "center",
-            pointerEvents: "none",
-            willChange: "transform",
-          }}
-        />
-      ) : (
-        <video
-          key={`${current.src}-${index}`}
-          src={current.src}
-          muted={current.muted ?? true}
-          autoPlay
-          playsInline={current.playsInline ?? true}
-          loop={current.loop ?? false}
-          className={styles.photo}
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%) translateZ(0)",
-            objectFit: "contain",
-            objectPosition: "center",
-            pointerEvents: "none",
-            willChange: "transform",
-          }}
-        />
-      )}
+      {media.map((item, i) => {
+        const isActive = i === index;
+        const classes = `${styles.photo} ${isActive ? styles.photoActive : ""}`.trim();
+
+        if (item.type === "image") {
+          return (
+            // hero-photo polega na naturalnych wymiarach obrazka (width/height auto + max-inline-size),
+            // więc next/image z width/height wymuszałby nieprawidłowy aspect-ratio
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={item.src}
+              src={item.src}
+              alt={item.alt ?? ""}
+              draggable={false}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding={i === 0 ? "sync" : "async"}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              className={classes}
+            />
+          );
+        }
+
+        return (
+          <video
+            key={item.src}
+            ref={(el) => {
+              videoRefs.current[i] = el;
+            }}
+            src={item.src}
+            muted={item.muted ?? true}
+            playsInline={item.playsInline ?? true}
+            loop={item.loop ?? false}
+            preload={i === 0 ? "auto" : "metadata"}
+            className={classes}
+          />
+        );
+      })}
     </div>
   );
 }

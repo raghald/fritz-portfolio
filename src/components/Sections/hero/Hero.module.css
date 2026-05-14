@@ -1,6 +1,32 @@
 @reference "../../../app/globals.css";
 
 /* =========
+   HERO — animation primitives
+   ========= */
+
+/* easing zgodne z poprzednim framer-motion EASE_OUT */
+.section {
+  --hero-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes hero-from-left {
+  from { opacity: 0; transform: translate3d(-10px, 0, 0) scale(0.99); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes hero-from-right {
+  from { opacity: 0; transform: translate3d(10px, 0, 0) scale(0.99); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes hero-from-bottom {
+  from { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.99); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes hero-tag-in {
+  from { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.99); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* =========
    HERO — base
    ========= */
 
@@ -64,6 +90,10 @@
     var(--hero-side-offset) +
     clamp(40px, 6vh, 80px)
   );
+
+  opacity: 0;
+  animation: hero-from-left var(--side-copy-enter-ms, 60ms) var(--hero-ease)
+    var(--side-copy-start-ms, 0ms) forwards;
 }
 
 /* ornaments desktop */
@@ -78,8 +108,11 @@
   );
 
   gap: var(--hero-ornaments-gap);
-  transform: scale(var(--hero-ornaments-scale, 1));
   transform-origin: top right;
+
+  opacity: 0;
+  animation: hero-from-right var(--ornaments-enter-ms, 60ms) var(--hero-ease)
+    var(--ornaments-start-ms, 0ms) forwards;
 }
 
 .ornaments svg {
@@ -99,16 +132,35 @@
   place-items: center;
   width: 100%;
   pointer-events: none;
-  mix-blend-mode: exclusion;
+  /* mix-blend-mode włączamy tylko od tabletu — drogie na mobilnym GPU */
+}
+
+@media (min-width: 768px) {
+  .photoWrap {
+    mix-blend-mode: exclusion;
+  }
 }
 
 .photo {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: block;
   width: auto;
   height: auto;
   max-inline-size: clamp(280px, 70vw, 760px);
   max-block-size: clamp(260px, 56vh, 720px);
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+
+  /* Twarda zmiana: tylko aktywny element widoczny, bez transition */
+  opacity: 0;
+}
+
+.photoActive {
+  opacity: 1;
 }
 
 .titleBlock {
@@ -143,9 +195,22 @@
   line-height: 1.2;
 }
 
+/* pojedynczy tag — stagger przez --idx + --tag-stagger-ms */
+.tag {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-tag-in var(--tag-enter-ms, 220ms) var(--hero-ease)
+    calc(var(--tag-start-ms, 0ms) + var(--idx, 0) * var(--tag-stagger-ms, 120ms))
+    forwards;
+}
+
 .cta {
   @apply flex flex-col items-center gap-4 sm:flex-row;
   margin-top: clamp(14px, 2.4vh, 22px);
+
+  opacity: 0;
+  animation: hero-from-bottom var(--cta-enter-ms, 120ms) var(--hero-ease)
+    var(--cta-start-ms, 0ms) forwards;
 }
 
 /* =========
@@ -400,6 +465,21 @@
   .sideCopy {
     width: clamp(160px, 10vw, 240px);
     font-size: 20px;
+  }
+}
+
+/* Reduced motion — wyłącza CSS animations w Hero (intro/title/crossfade) */
+@media (prefers-reduced-motion: reduce) {
+  .sideCopy,
+  .ornaments,
+  .tags,
+  .cta,
+  .title,
+  .photoWrap,
+  .photo,
+  .titleBlock {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

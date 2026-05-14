@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
-import { IoClose } from "react-icons/io5";
 import { useForm, ValidationError } from "@formspree/react";
 import Image from "next/image";
 import AnimatedButton from "@/components/AnimatedButton";
+import CloseButton from "@/components/CloseButton";
 import { useTranslations } from "@/lib/useTranslations";
 
 import styles from "./ContactPopup.module.css";
@@ -400,21 +400,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                   }
                 `}
               >
-                <button
+                <CloseButton
                   onClick={handleCloseSuccessPopup}
-                  className="
-                    hover:bg-gray-100 active:bg-gray-200 
-                    hover:scale-110 active:scale-95 
-                    transition-all duration-200 
-                    focus:outline-none focus-visible:ring-2 
-                    focus-visible:ring-black
-                    p-1.5 sm:p-2 rounded-full
-                  "
-                  aria-label={t("success.closeAria")}
-                  type="button"
-                >
-                  <IoClose className="text-black w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
-                </button>
+                  ariaLabel={t("success.closeAria")}
+                  rounded
+                />
               </div>
 
               <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 pb-8">
@@ -451,21 +441,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                   }
                 `}
               >
-                <button
-                  onClick={onClose}
-                  className="
-                    hover:bg-gray-100 active:bg-gray-200 
-                    hover:scale-110 active:scale-95 
-                    transition-all duration-200 
-                    focus:outline-none focus-visible:ring-2 
-                    focus-visible:ring-black
-                    p-1.5 sm:p-2
-                  "
-                  aria-label={t("closeAria")}
-                  type="button"
-                >
-                  <IoClose className="text-black w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
-                </button>
+                <CloseButton onClick={onClose} ariaLabel={t("closeAria")} />
               </div>
 
               <div

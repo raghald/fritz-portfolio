@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState, useCallback, useRef, useEffect, useMemo } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaRegCopy, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
 import { useTranslations } from "@/lib/useTranslations";
 
+import ContactAction from "@/components/ContactAction";
+
 import styles from "./Intro.module.css";
-import caStyles from "@/components/ContactAction.module.css";
 
 // Register ScrollTrigger plugin (client-only)
 if (typeof window !== "undefined") {
@@ -26,121 +27,6 @@ type IntroProps = {
   contactsVariant?: "black" | "white";
 };
 
-type IconType = React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-
-type ContactActionProps = {
-  /** Tekst Frame 1 (default) */
-  label: string;
-
-  /** Tekst Frame 2 (hover) — tylko tekst, bez ikony */
-  hoverLabel: string;
-
-  /** jeśli jest => link */
-  href?: string;
-
-  /** jeśli brak href => copy */
-  onCopy?: () => void;
-
-  /** Ikona dla Frame 1 */
-  icon: IconType;
-
-  variant?: "black" | "white";
-
-  /**
-   * Co kopiować (np. email). Jeśli nie podasz, skopiuje `label`.
-   * Polecam podawać, gdy label jest tłumaczeniem, a kopiujesz stałą wartość.
-   */
-  copyValue?: string;
-};
-
-const ContactAction: React.FC<ContactActionProps> = ({
-  label,
-  hoverLabel,
-  href,
-  onCopy,
-  icon: Icon,
-  variant = "black",
-  copyValue,
-}) => {
-  const [copied, setCopied] = useState(false);
-  const tContact = useTranslations("contact");
-
-  const isLink = typeof href === "string" && href.length > 0 && href !== "#";
-  const variantClass = variant === "white" ? caStyles.variantWhite : caStyles.variantBlack;
-
-  const aria = useMemo(() => {
-    if (isLink) return tContact("visit", { label });
-    return tContact("copyToClipboard");
-  }, [isLink, label, tContact]);
-
-  const handleCopy = async () => {
-    if (isLink) return;
-    try {
-      const textToCopy = copyValue ?? label;
-      await navigator.clipboard.writeText(textToCopy);
-      onCopy?.();
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1200);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
-
-  const inner = (
-    <span className={`${caStyles.ca} ${variantClass}`.trim()}>
-      <span className={caStyles.bg} />
-
-      <span className={caStyles.content}>
-        {/* FRAME 1 (default) – trzyma layout */}
-        <span className={`${caStyles.frame} ${caStyles.frameDefault}`}>
-          <span className={`${caStyles.text} group-hover:text-white`}>{label}</span>
-          <span className={caStyles.icon}>
-            <Icon className={`${caStyles.iconSvg} group-hover:text-white`} aria-hidden />
-          </span>
-        </span>
-
-        {/* FRAME 2 (hover) – overlay, wyśrodkowany, BEZ IKONY */}
-        <span className={`${caStyles.frame} ${caStyles.frameHover}`} aria-hidden>
-          <span className={`${caStyles.hoverText} group-hover:text-white`}>{hoverLabel}</span>
-        </span>
-
-        {!isLink && copied && (
-          <span className={caStyles.tooltip} aria-live="polite" role="status">
-            {tContact("copied")}
-          </span>
-        )}
-      </span>
-    </span>
-  );
-
-  if (isLink) {
-    return (
-      <a
-        href={href}
-        className={`${caStyles.focus} group`}
-        aria-label={aria}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {inner}
-      </a>
-    );
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      className={`${caStyles.focus} group`}
-      title={tContact("copyToClipboard")}
-      aria-pressed={copied}
-      aria-label={aria}
-    >
-      {inner}
-    </button>
-  );
-};
-
 const Intro: React.FC<IntroProps> = ({
   imageSrc = "/images/photo.webp",
   email = "info@fritzglowacki.com",
@@ -155,11 +41,6 @@ const Intro: React.FC<IntroProps> = ({
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
   const tIntro = useTranslations("intro");
-  const tContact = useTranslations("contact");
-
-  const handleEmailCopy = useCallback(() => {
-    // opcjonalnie: toast / event track
-  }, []);
 
   useEffect(() => {
     const intro = introRef.current;
@@ -230,32 +111,29 @@ const Intro: React.FC<IntroProps> = ({
             <h2 className={styles.heading}>{tIntro("heading")}</h2>
 
             <div className={styles.contacts}>
-              {/* EMAIL: Frame 1 = email + ikona, Frame 2 = tekst i18n */}
               <ContactAction
-                label={email}
-                hoverLabel={tContact("actions.email.hover")}
-                onCopy={handleEmailCopy}
+                variant={contactsVariant}
+                labelKey="actions.email.label"
+                hoverKey="actions.email.hover"
+                labelFallback={email}
+                copyText={email}
                 icon={FaRegCopy}
-                variant={contactsVariant}
-                copyValue={email}
               />
 
-              {/* INSTAGRAM */}
               <ContactAction
-                label={tContact("actions.instagram.label")}
-                hoverLabel={tContact("actions.instagram.hover")}
+                variant={contactsVariant}
                 href={instagramHref}
+                labelKey="actions.instagram.label"
+                hoverKey="actions.instagram.hover"
                 icon={FaInstagramSquare}
-                variant={contactsVariant}
               />
 
-              {/* LINKEDIN */}
               <ContactAction
-                label={tContact("actions.linkedin.label")}
-                hoverLabel={tContact("actions.linkedin.hover")}
-                href={linkedinHref}
-                icon={FaLinkedin}
                 variant={contactsVariant}
+                href={linkedinHref}
+                labelKey="actions.linkedin.label"
+                hoverKey="actions.linkedin.hover"
+                icon={FaLinkedin}
               />
             </div>
           </div>

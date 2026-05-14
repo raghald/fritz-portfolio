@@ -95,41 +95,7 @@
 
 /* footer */
 .footer {
-  @apply mt-12 text-center lg:text-right;
-}
-
-.footerLink {
-  text-decoration: none;
-}
-
-/* CTA */
-.cta {
-  @apply focus-ring relative w-[125px] h-[53px] font-medium text-[16px] leading-[19px] cursor-pointer border-0 overflow-hidden;
-  background: var(--c-black);
-  color: var(--c-white);
-}
-
-.ctaLayer {
-  @apply absolute inset-0;
-}
-
-.ctaLayer1 {
-  background: var(--c-black);
-}
-
-.ctaLayer2 {
-  @apply w-0 transition-all duration-500 ease-out;
-  background: var(--c-neutral-200);
-}
-
-.ctaLayer3 {
-  @apply w-0 transition-all duration-700 delay-300 ease-out;
-  background: var(--c-white);
-}
-
-.ctaLabel {
-  @apply relative z-10 transition-colors duration-700 delay-200;
-  color: var(--c-white);
+  @apply mt-12 text-center lg:text-right flex justify-end;
 }
 
 .coverLayer,

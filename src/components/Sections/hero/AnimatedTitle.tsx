@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { motion, type Variants } from "framer-motion";
 import type { IntroTimings } from "@/lib/introTimings";
-import { ms } from "@/lib/introTimings";
+
+import styles from "./AnimatedTitle.module.css";
 
 type Props = {
   text: string;
@@ -13,6 +13,12 @@ type Props = {
   ariaLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
+/**
+ * Per-letter pop-in animation, driven entirely by CSS.
+ * — `--title-start-ms` and `--letter-stagger-ms` come from props
+ * — each letter span gets `--idx` for delay calculation
+ * — respects `prefers-reduced-motion` via [AnimatedTitle.module.css]
+ */
 export default function AnimatedTitle({
   text,
   timings,
@@ -21,49 +27,29 @@ export default function AnimatedTitle({
 }: Props) {
   const letters = useMemo(() => Array.from(text), [text]);
 
-  const container: Variants = useMemo(
-    () => ({
-      hidden: {},
-      show: {
-        transition: {
-          delay: ms(timings.titleStartMs),
-          staggerChildren: ms(timings.letterStaggerMs),
-        },
-      },
-    }),
-    [timings]
-  );
-
-  const letter: Variants = useMemo(
-    () => ({
-      hidden: { opacity: 0 },
-      show: {
-        opacity: 1,
-        transition: { duration: 0 },
-      },
-    }),
-    []
-  );
+  const rootStyle: React.CSSProperties = {
+    ["--title-start-ms" as string]: `${timings.titleStartMs}ms`,
+    ["--letter-stagger-ms" as string]: `${timings.letterStaggerMs}ms`,
+  };
 
   return (
-    <motion.div
+    <div
       className={className}
-      initial="hidden"
-      animate="show"
-      variants={container}
+      style={rootStyle}
       aria-label={text}
       role="heading"
       aria-level={ariaLevel}
     >
-      {letters.map((ch, i) => (
-        <motion.span
-          key={i}
-          variants={letter}
-          style={{ display: "inline-block" }}
-        >
-          {ch === " " ? "\u00A0" : ch}
-        </motion.span>
-      ))}
-    </motion.div>
+      {letters.map((ch, i) => {
+        const letterStyle: React.CSSProperties = {
+          ["--idx" as string]: i,
+        };
+        return (
+          <span key={i} className={styles.letter} style={letterStyle}>
+            {ch === " " ? " " : ch}
+          </span>
+        );
+      })}
+    </div>
   );
 }
