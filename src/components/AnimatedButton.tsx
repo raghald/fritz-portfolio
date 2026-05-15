@@ -9,6 +9,7 @@ type BaseProps = {
   children: ReactNode;
   ariaLabel?: string;
   variant?: "white" | "outline" | "cookieAccept" | "cookieDetailed";
+  size?: "M" | "S";
   className?: string;
 };
 
@@ -35,8 +36,19 @@ const variantClass: Record<NonNullable<BaseProps["variant"]>, string> = {
   cookieDetailed: styles.variantCookieDetailed,
 };
 
+const sizeClass: Record<NonNullable<BaseProps["size"]>, string> = {
+  M: styles.sizeM,
+  S: styles.sizeS,
+};
+
 export default function AnimatedButton(props: AnimatedButtonProps) {
-  const { children, ariaLabel, variant = "white", className = "" } = props;
+  const {
+    children,
+    ariaLabel,
+    variant = "white",
+    size = "M",
+    className = "",
+  } = props;
 
   const content = (
     <>
@@ -55,7 +67,7 @@ export default function AnimatedButton(props: AnimatedButtonProps) {
   );
 
   const isLink = "href" in props && typeof props.href === "string";
-  const classes = `${styles.btn} ${variantClass[variant]} ${className}`.trim();
+  const classes = `${styles.btn} ${sizeClass[size]} ${variantClass[variant]} ${className}`.trim();
 
   if (isLink) {
     const { href } = props as LinkButtonProps;

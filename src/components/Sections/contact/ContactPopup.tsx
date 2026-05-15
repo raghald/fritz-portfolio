@@ -361,14 +361,14 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
             bg-white flex flex-col
             w-full h-full
             sm:w-full sm:h-full
-            md:w-[calc(100vw-32px)]
+            md:w-[calc(100dvw-32px)]
             ${
               isCompactHeight
                 ? "md:h-[calc(100vh-16px)] md:max-h-[calc(100vh-16px)] md:m-2"
                 : "md:h-[calc(100vh-32px)] md:max-h-[85vh] md:m-4"
             }
             md:max-w-[600px]
-            lg:w-[calc(100vw-64px)] lg:h-auto lg:max-w-[600px]
+            lg:w-[calc(100dvw-64px)] lg:h-auto lg:max-w-[600px]
             ${
               isCompactHeight
                 ? "lg:max-h-[calc(100vh-20px)] lg:m-2"
@@ -538,7 +538,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                           text-black placeholder-gray-600 
                           focus:outline-none transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
-                          text-[14px] sm:text-[15px] md:text-[16px]
+                          text-[16px]
                           ${
                             validationErrors.firstName
                               ? "bg-[#e2e2e2] border-red-500 focus:border-red-500 focus:bg-white"
@@ -574,7 +574,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                           text-black placeholder-gray-600 
                           focus:outline-none transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
-                          text-[14px] sm:text-[15px] md:text-[16px]
+                          text-[16px]
                           ${
                             validationErrors.email
                               ? "bg-[#e2e2e2] border-red-500 focus:border-red-500 focus:bg-white"
@@ -610,7 +610,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                           text-black placeholder-gray-600 
                           focus:outline-none transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
-                          text-[14px] sm:text-[15px] md:text-[16px]
+                          text-[16px]
                           ${
                             validationErrors.subject
                               ? "bg-[#e2e2e2] border-red-500 focus:border-red-500 focus:bg-white"
@@ -650,7 +650,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                               ? "px-2.5 py-2 sm:px-3 sm:py-2.5"
                               : "px-3 py-2.5 sm:px-4 sm:py-3"
                           }
-                          text-[14px] sm:text-[15px] md:text-[16px]
+                          text-[16px]
                           ${
                             isCompactHeight
                               ? "min-h-[80px] sm:min-h-[90px] md:min-h-[100px] lg:min-h-[110px]"

@@ -132,13 +132,7 @@
   place-items: center;
   width: 100%;
   pointer-events: none;
-  /* mix-blend-mode włączamy tylko od tabletu — drogie na mobilnym GPU */
-}
-
-@media (min-width: 768px) {
-  .photoWrap {
-    mix-blend-mode: exclusion;
-  }
+  mix-blend-mode: exclusion;
 }
 
 .photo {

@@ -7,6 +7,14 @@
 
 .headerTitle {
   @apply section-title;
+  line-height: 1.2;
+}
+
+/* mobile: rezerwa na 2 linie, żeby typing nie pchał treści */
+@media (max-width: 767px) {
+  .headerTitle {
+    min-height: 2lh;
+  }
 }
 
 /* layout (mobile = jak wcześniej) */

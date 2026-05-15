@@ -41,6 +41,18 @@ function VideoCard({ video }: { video: GalleryVideo }) {
 
   const [controlsVisible, setControlsVisible] = React.useState(false);
 
+  // Touch / no-hover: overlay i progress updates są zawsze aktywne
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(hover: none)");
+    const sync = () => {
+      if (mq.matches) setControlsVisible(true);
+    };
+    sync();
+    mq.addEventListener?.("change", sync);
+    return () => mq.removeEventListener?.("change", sync);
+  }, []);
+
   // In-view detection
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.2,
@@ -270,7 +282,7 @@ function VideoCard({ video }: { video: GalleryVideo }) {
       )}
 
       {/* Overlay controls */}
-      <div className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+      <div className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100">
         <div className="pointer-events-auto absolute left-4 right-4 top-4 flex items-start justify-between">
           <div className="w-10 h-10 grid place-items-center rounded-full hover:bg-white/20 transition-colors cursor-pointer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">

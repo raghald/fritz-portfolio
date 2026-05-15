@@ -1,7 +1,7 @@
 @reference "../app/globals.css";
 
 .btn {
-  @apply relative w-full sm:w-auto h-[53px] px-8 font-medium text-[16px] leading-[19px]
+  @apply relative w-full sm:w-auto font-medium
     overflow-hidden inline-flex items-center justify-center cursor-pointer border-0
     isolate focus-ring disabled:opacity-50 disabled:cursor-not-allowed;
 
@@ -17,6 +17,16 @@
 
   /* ring-offset pod tło strony */
   --tw-ring-offset-color: var(--c-bg);
+}
+
+/* --- Sizes --- */
+
+.sizeM {
+  @apply h-[53px] px-8 text-[16px] leading-[19px];
+}
+
+.sizeS {
+  @apply w-auto h-auto py-2 px-5 text-sm leading-5;
 }
 
 .layer {
