@@ -12,6 +12,7 @@ import { useInView } from "react-intersection-observer";
 import { TypeAnimation } from "react-type-animation";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 import AnimatedButton from "@/components/AnimatedButton";
 import { getVideoPosterPath } from "@/lib/videoPoster";
@@ -423,7 +424,7 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
       {/* CTA — link do galerii */}
       <div className={styles.footer}>
         <AnimatedButton
-          href={`/${locale}/gallery`}
+          href={localePath(locale, "/gallery")}
           ariaLabel={t("ctaAria")}
           variant="cookieAccept"
           className="w-[125px] h-[53px] px-0"

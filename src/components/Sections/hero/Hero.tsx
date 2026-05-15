@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 import AnimatedButton from "../../AnimatedButton";
 import { useContactPopup } from "@/hooks/ContactPopupContext";
 import HeroMedia, { type HeroMediaItem } from "./HeroMedia";
@@ -204,7 +205,7 @@ export default function Hero({ rightOrnaments }: HeroProps) {
               </AnimatedButton>
 
               <AnimatedButton
-                href={`/${locale}/works`}
+                href={localePath(locale, "/works")}
                 ariaLabel={t("btnPrimaryAria")}
                 variant="outline"
                 className="sm:w-full lg:w-auto"

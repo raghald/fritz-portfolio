@@ -28,10 +28,15 @@ export default function LanguageToggle({ variant = "desktop" }: LanguageTogglePr
   const handleClick = () => {
     if (!pathname) return;
 
-    // podmieniamy pierwszy segment /en /pl
-    const segments = pathname.split("/");
-    if (segments.length > 1) segments[1] = otherLocale;
-    const newPathname = segments.join("/") || "/";
+    // EN bez prefiksu, PL pod /pl/. Najpierw zdejmujemy ewentualny prefix,
+    // potem dokładamy nowy (tylko dla PL).
+    const stripped = pathname.replace(/^\/pl(?=\/|$)/, "") || "/";
+    const newPathname =
+      otherLocale === "pl"
+        ? stripped === "/"
+          ? "/pl"
+          : `/pl${stripped}`
+        : stripped;
 
     const query = searchParams?.toString();
     const hash = typeof window !== "undefined" ? window.location.hash : "";

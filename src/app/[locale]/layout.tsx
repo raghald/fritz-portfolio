@@ -1,5 +1,5 @@
 // src/app/[locale]/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import localFont from "next/font/local";
@@ -39,6 +39,17 @@ import { routing, type Locale } from "@/i18n/routing";
 // Re-eksport dla zgodności z istniejącymi importami (works/page.tsx, about/layout.tsx, gallery/layout.tsx).
 export const locales = routing.locales;
 
+// --- Viewport (Next 15: osobny export poza Metadata) ---
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#E2E2E2" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
+  ],
+};
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -53,7 +64,9 @@ export async function generateMetadata({
   const isPl = locale === "pl";
 
   const baseUrl = "https://www.fritzglowacki.com";
-  const url = `${baseUrl}/${locale}/`;
+  const urlEn = `${baseUrl}/`;
+  const urlPl = `${baseUrl}/pl/`;
+  const url = isPl ? urlPl : urlEn;
 
   const titleDefault = isPl
     ? "Fritz Glowacki — Designer: Web, UI/UX, Branding i Motion"
@@ -105,9 +118,9 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: `${baseUrl}/en/`,
-        pl: `${baseUrl}/pl/`,
-        "x-default": `${baseUrl}/en/`,
+        en: urlEn,
+        pl: urlPl,
+        "x-default": urlEn,
       },
     },
 

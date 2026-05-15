@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 import AnimatedButton from "@/components/AnimatedButton";
 import { useContactPopup } from "@/hooks/ContactPopupContext";
@@ -94,7 +95,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <li>
             <Link
               ref={firstLinkRef}
-              href={`/${locale}/works`}
+              href={localePath(locale, "/works")}
               className={`${styles.link} focus-ring`}
               onClick={onClose}
             >
@@ -103,7 +104,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </li>
           <li>
             <Link
-              href={`/${locale}/about`}
+              href={localePath(locale, "/about")}
               className={`${styles.link} focus-ring`}
               onClick={onClose}
             >
@@ -112,7 +113,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </li>
           <li>
             <Link
-              href={`/${locale}/gallery`}
+              href={localePath(locale, "/gallery")}
               className={`${styles.link} focus-ring`}
               onClick={onClose}
             >

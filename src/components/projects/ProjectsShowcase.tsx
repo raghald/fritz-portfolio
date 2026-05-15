@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 import { WORKS } from "@/data/worksData";
 import type { WorkItem } from "@/data/worksData";
@@ -224,7 +225,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
               >
                 {currentProject?.link ? (
                   <Link
-                    href={`/${locale}${currentProject.link}`}
+                    href={localePath(locale, currentProject.link)}
                     className={styles.asideLink}
                   >
                     {currentProject.kicker && (
@@ -310,7 +311,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
                   >
                     {project.link ? (
                       <Link
-                        href={`/${locale}${project.link}`}
+                        href={localePath(locale, project.link)}
                         className={styles.mediaLink}
                       >
                         {MediaInner}
@@ -328,7 +329,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
         {/* Footer */}
         <div className={styles.footer}>
           <AnimatedButton
-            href={`/${locale}/works`}
+            href={localePath(locale, "/works")}
             ariaLabel={tProjects("showMore")}
             variant="cookieAccept"
             className="w-[125px] h-[53px] px-0"

@@ -13,8 +13,9 @@ export async function generateMetadata({
   const isPl = locale === "pl";
 
   const BASE = "https://www.fritzglowacki.com";
-  const path = `/${locale}/gallery/`;
-  const url = `${BASE}${path}`;
+  const urlEn = `${BASE}/gallery/`;
+  const urlPl = `${BASE}/pl/gallery/`;
+  const url = isPl ? urlPl : urlEn;
 
   const title = isPl
     ? "Galeria — Fritz Głowacki"
@@ -31,9 +32,9 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE}/en/gallery/`,
-        pl: `${BASE}/pl/gallery/`,
-        "x-default": `${BASE}/en/gallery/`,
+        en: urlEn,
+        pl: urlPl,
+        "x-default": urlEn,
       },
     },
     openGraph: {

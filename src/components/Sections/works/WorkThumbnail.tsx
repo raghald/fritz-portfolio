@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 import type { WorkItem } from "@/data/worksData";
 
 type WorkThumbnailMode = "single" | "column";
@@ -43,7 +44,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
   const locale = useLocale();
   const isHorizontal = work.layout === "horizontal";
 
-  const href = `/${locale}${work.href}`;
+  const href = localePath(locale, work.href);
 
   const title = t(`items.${work.id}.title`);
   const meta = t(`items.${work.id}.meta`);

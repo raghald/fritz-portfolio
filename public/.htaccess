@@ -1,26 +1,25 @@
 # Static export (Next.js output: "export", trailingSlash: true) na Apache.
 # Plik kopiowany jest do out/ przy buildzie.
+#
+# Strategia URL: EN kanoniczna bez prefiksu (/, /about/, /works/...),
+# PL pod /pl/ (/pl/, /pl/about/, ...).
 
 RewriteEngine On
 
-# 1. Root "/" -> /en/ (domyślny locale; brak middleware w static export).
-RewriteRule ^$ /en/ [R=301,L]
+# 1. Stare URL-e /en/* -> /* (301, transferuje link equity z poprzedniej wersji).
+RewriteRule ^en/?$ / [R=301,L]
+RewriteRule ^en/(.*)$ /$1 [R=301,L]
 
-# 2. Bez locale w ścieżce (np. /about/, /works/) -> /en/<reszta>.
-RewriteCond %{REQUEST_URI} !^/(en|pl)(/|$)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+?)/?$ /en/$1/ [R=301,L]
-
-# 3. Trailing slash dla katalogów (zgodne z trailingSlash: true).
+# 2. Trailing slash dla katalogów (zgodne z trailingSlash: true).
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !(/$)
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 DirectoryIndex index.html
 
-# Niestandardowa strona 404 wyrenderowana z [locale]/not-found.tsx.
-ErrorDocument 404 /en/404.html
+# 3. Niestandardowa strona 404 — fallback do PL gdy ścieżka jest pod /pl/,
+#    w pozostałych przypadkach do EN.
+ErrorDocument 404 /404.html
 
 # Cache — statyki długi, HTML krótki (pozwala na rotację po deployu).
 <IfModule mod_expires.c>

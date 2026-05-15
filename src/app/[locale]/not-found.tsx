@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 export default function RootNotFound() {
   const locale = useLocale();
@@ -19,7 +20,7 @@ export default function RootNotFound() {
       </p>
 
       <Link
-        href={`/${locale}`}
+        href={localePath(locale)}
         className="underline underline-offset-4 text-white/90 hover:text-white transition-colors"
       >
         {t("back")}

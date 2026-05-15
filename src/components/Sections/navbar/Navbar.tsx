@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 import { useStickyNav } from "@/hooks/useStickyNav";
 import MobileMenu from "./MobileMenu";
@@ -76,7 +77,7 @@ export default function Navbar({
       >
         <div className={styles.mobileBar}>
           <Link
-            href={`/${locale}`}
+            href={localePath(locale)}
             className={styles.brandMobile}
             aria-label={t("brandAria")}
           >
@@ -117,20 +118,20 @@ export default function Navbar({
       >
         <div className={desktopInnerClassName} style={desktopWrapperStyle}>
           <div className={styles.links}>
-            <Link href={`/${locale}/works`} className={styles.link}>
+            <Link href={localePath(locale, "/works")} className={styles.link}>
               {t("linkWorks")}
             </Link>
-            <Link href={`/${locale}/about`} className={styles.link}>
+            <Link href={localePath(locale, "/about")} className={styles.link}>
               {t("linkAbout")}
             </Link>
-            <Link href={`/${locale}/gallery`} className={styles.link}>
+            <Link href={localePath(locale, "/gallery")} className={styles.link}>
               {t("linkGallery")}
             </Link>
           </div>
 
           <div className={styles.brandCenter}>
             <Link
-              href={`/${locale}`}
+              href={localePath(locale)}
               className={styles.brandDesktop}
               aria-label={t("brandAria")}
             >
@@ -145,7 +146,7 @@ export default function Navbar({
               onClick={openPopup}
               ariaLabel={t("contactCtaAria")}
               variant="cookieAccept"
-              className="w-auto h-auto py-2 px-5 text-sm leading-5"
+              size="S"
             >
               {t("contactCta")}
             </AnimatedButton>

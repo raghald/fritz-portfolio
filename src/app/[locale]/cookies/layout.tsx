@@ -9,8 +9,9 @@ export async function generateMetadata({
   const isPl = locale === "pl";
 
   const BASE = "https://www.fritzglowacki.com";
-  const path = `/${locale}/cookies/`;
-  const url = `${BASE}${path}`;
+  const urlEn = `${BASE}/cookies/`;
+  const urlPl = `${BASE}/pl/cookies/`;
+  const url = isPl ? urlPl : urlEn;
 
   const title = isPl
     ? "Polityka cookies — Fritz Głowacki"
@@ -27,9 +28,9 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE}/en/cookies/`,
-        pl: `${BASE}/pl/cookies/`,
-        "x-default": `${BASE}/en/cookies/`,
+        en: urlEn,
+        pl: urlPl,
+        "x-default": urlEn,
       },
     },
     openGraph: {

@@ -24,7 +24,7 @@ export async function buildCaseStudyMetadata(opts: {
 
   const work = WORKS.find((w) => w.id === workId);
   const slug = SLUG_BY_WORK_ID[workId] ?? workId;
-  const pathEn = `/en/works/${slug}/`;
+  const pathEn = `/works/${slug}/`;
   const pathPl = `/pl/works/${slug}/`;
   const currentPath = isPl ? pathPl : pathEn;
 

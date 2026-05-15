@@ -3,6 +3,7 @@
 import React from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
+import { localePath } from "@/i18n/routing";
 
 import AnimatedButton from "@/components/AnimatedButton";
 import { useContactPopup } from "@/hooks/ContactPopupContext";
@@ -87,7 +88,7 @@ const Footer: React.FC<FooterProps> = ({ className = "" }) => {
           </div>
 
           <a
-            href={`/${locale}/cookies`}
+            href={localePath(locale, "/cookies")}
             className={styles.cookies}
             aria-label={tFooter("cookiesAria")}
             rel="noopener noreferrer"

@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:turbopack": "next build --turbopack",
-    "build:analyze": "set ANALYZE=true&& next build",
+    "build": "next build && node scripts/postbuild-i18n.mjs",
+    "build:turbopack": "next build --turbopack && node scripts/postbuild-i18n.mjs",
+    "build:analyze": "set ANALYZE=true&& next build && node scripts/postbuild-i18n.mjs",
     "start": "next start",
     "lint": "eslint",
     "export": "next export"

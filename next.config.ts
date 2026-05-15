@@ -11,9 +11,16 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
+// Static export tylko dla produkcyjnego buildu. W `next dev` zostawiamy zwykły
+// tryb, żeby middleware (src/middleware.ts) z next-intl działał i obsługiwał
+// czyste URL-e bez prefiksu /en/ (lokalne odpowiedniki Apache .htaccess i
+// scripts/postbuild-i18n.mjs z produkcji).
+const isProductionBuild =
+  process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== "phase-development-server";
+
 const nextConfig: NextConfig = {
   compress: true,
-  output: "export",
+  ...(isProductionBuild ? { output: "export" as const } : {}),
   trailingSlash: true,
 
   images: {

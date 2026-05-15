@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
 import { useRouter } from "next/navigation";
+import { localePath } from "@/i18n/routing";
 import AnimatedButton from "@/components/AnimatedButton";
 
 const CookieConsent: React.FC = () => {
@@ -33,7 +34,7 @@ const CookieConsent: React.FC = () => {
 
   const handleDetailedSettings = () => {
     // wersja z uwzględnieniem locale
-    router.push(`/${locale}/cookie-policy`);
+    router.push(localePath(locale, "/cookies"));
   };
 
   if (!isVisible) {
@@ -47,17 +48,17 @@ const CookieConsent: React.FC = () => {
         
         /* Mobile: Bottom centered with margin */
         bottom-3 left-3 right-3
-        w-auto max-w-[calc(100vw-24px)]
+        w-auto max-w-[calc(100dvw-24px)]
         min-h-[300px] p-3
         
         /* Small tablets */
         sm:bottom-6 sm:left-6 sm:right-6
-        sm:max-w-[calc(100vw-48px)]
+        sm:max-w-[calc(100dvw-48px)]
         sm:min-h-[280px] sm:p-8
         
         /* Medium tablets: Bottom centered */
         md:bottom-8 md:left-9 md:right-9
-        md:max-w-[calc(100vw-72px)]
+        md:max-w-[calc(100dvw-72px)]
         md:min-h-[200px] md:p-10
         
         /* Large tablets/small desktop: Bottom left positioned */
@@ -95,7 +96,7 @@ const CookieConsent: React.FC = () => {
           >
             {t("description.beforeLink")}{" "}
             <a
-              href={`/${locale}/cookie-policy`}
+              href={localePath(locale, "/cookies")}
               target="_blank"
               rel="noopener noreferrer"
               className="underline text-black hover:text-gray-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1"
