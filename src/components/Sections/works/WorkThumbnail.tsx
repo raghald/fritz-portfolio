@@ -149,9 +149,11 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
       <div
         className={[
           "flex-shrink-0",
+          // mobile: płynne (nie przekracza viewportu <370px); desktop: sztywne px,
+          // by kafelki były deterministyczne niezależnie od kontekstu flex/długości opisu.
           "w-full max-w-[338px] aspect-square",
-          "md:max-w-[371px]",
-          "lg:max-w-[540px]",
+          "md:w-[371px] md:h-[371px] md:max-w-none md:aspect-auto",
+          "lg:w-[540px] lg:h-[540px]",
           mode === "single" && !isHorizontal ? "mx-auto md:mx-0" : "",
         ].join(" ")}
       >
