@@ -54,6 +54,10 @@
 .mobileBar {
   @apply flex items-center justify-between px-4;
   height: var(--nav-h-mobile);
+
+  /* notch w landscape — nie chowaj akcji pod krawędź */
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
 }
 
 .brandMobile {
@@ -66,7 +70,8 @@
 }
 
 .burger {
-  @apply relative w-8 h-8 flex flex-col items-center justify-center gap-[3px];
+  /* 44×44 touch target (WCAG 2.5.5) — kreski pozostają wizualnie małe */
+  @apply relative w-11 h-11 flex flex-col items-center justify-center gap-[3px];
   -webkit-tap-highlight-color: transparent;
 }
 

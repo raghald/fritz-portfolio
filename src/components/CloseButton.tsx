@@ -10,7 +10,8 @@ type Props = {
 };
 
 export default function CloseButton({ onClick, ariaLabel, rounded = false }: Props) {
-  const padding = "p-1.5 sm:p-2";
+  const padding =
+    "p-2.5 sm:p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center";
   const roundedClass = rounded ? "rounded-full" : "";
 
   return (

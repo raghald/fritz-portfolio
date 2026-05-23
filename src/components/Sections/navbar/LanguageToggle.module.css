@@ -18,6 +18,13 @@
   @apply w-14 h-7 text-[10px];
 }
 
+/* Niewidzialne powiększenie obszaru dotyku do ~46px (wizualnie zostaje 56×28) */
+.mobile::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+}
+
 .label {
   @apply font-medium tracking-[0.16em];
 }
