@@ -24,7 +24,7 @@
 }
 
 .headline {
-  @apply font-medium text-[44px] md:text-[56px] leading-[1.2] text-left;
+  @apply font-medium text-[30px] sm:text-[44px] md:text-[56px] leading-[1.2] text-left;
   background: linear-gradient(
     135deg,
     rgb(var(--rgb-white) / 1) 0%,
@@ -53,7 +53,7 @@
 }
 
 .link {
-  @apply font-medium text-[16px] transition-colors duration-300;
+  @apply inline-block py-1 font-medium text-[16px] transition-colors duration-300;
 }
 .link:hover {
   color: rgb(var(--rgb-white) / 0.7);

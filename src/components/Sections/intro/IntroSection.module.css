@@ -17,7 +17,7 @@
 }
 
 .title {
-  @apply font-semibold leading-[100%] text-left text-[40px] md:text-[56px] lg:text-[68px];
+  @apply font-semibold leading-[100%] text-left text-[30px] sm:text-[40px] md:text-[56px] lg:text-[68px];
   color: var(--c-black);
 }
 

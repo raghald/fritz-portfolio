@@ -107,7 +107,7 @@ const CaseStudyRenderer: React.FC<CaseStudyRendererProps> = ({
           <div className="pt-[132px] md:pt-[92px] lg:pt-[172px] pb-[60px] lg:pb-[100px]">
             <div className="flex flex-col lg:flex-row gap-[60px] lg:gap-[256px] justify-between">
               <div className="flex-1 lg:max-w-[540px]">
-                <h1 className="font-semibold text-[56px] lg:text-[68px] leading-[100%] text-black">
+                <h1 className="font-semibold text-[34px] sm:text-[44px] md:text-[56px] lg:text-[68px] leading-[100%] text-black">
                   {t("heading")}
                 </h1>
                 <p className="mt-5 text-black text-base leading-[150%]">

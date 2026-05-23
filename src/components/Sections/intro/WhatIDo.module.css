@@ -5,7 +5,7 @@
 }
 
 .heading {
-  @apply font-semibold leading-[100%] text-[44px] md:text-[48px] lg:text-[52px];
+  @apply font-semibold leading-[100%] text-[32px] sm:text-[44px] md:text-[48px] lg:text-[52px];
   color: var(--c-black);
 }
 
