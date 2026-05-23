@@ -49,7 +49,7 @@ const IntroAbout: React.FC = () => {
 
   return (
     <section
-      className={`${styles.section} page-shell relative z-20 pb-[90px] bg-white`}
+      className={`${styles.section} page-shell relative z-20 pb-[60px] lg:pb-[100px] bg-white`}
       role="region"
       aria-label={t("sectionAria")}
     >

@@ -190,7 +190,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`relative z-20 w-full bg-white ${className}`}
+      className={`relative z-20 w-full bg-white py-[60px] lg:py-[100px] ${className}`}
       role="region"
       aria-label={t("sectionAria")}
     >

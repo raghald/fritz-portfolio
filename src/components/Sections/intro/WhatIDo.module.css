@@ -1,7 +1,7 @@
 @reference "../../../app/globals.css";
 
 .section {
-  @apply section section-pad-b-90;
+  @apply section py-[60px] lg:py-[100px];
 }
 
 .heading {

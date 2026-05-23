@@ -10,8 +10,6 @@ import Footer from "@/components/Sections/footer/Footer";
 import { useFooterReveal } from "@/hooks/useFooterReveal";
 import { useTranslations } from "@/lib/useTranslations";
 
-const SectionSpacer = () => <div className="h-[60px] lg:h-[100px]" />;
-
 export default function AboutPageClient() {
   useFooterReveal();
 
@@ -39,19 +37,13 @@ export default function AboutPageClient() {
           <IntroAbout />
         </section>
 
-        <SectionSpacer />
-
         <section aria-label={t("skillsAria")}>
           <Skills />
         </section>
 
-        <SectionSpacer />
-
         <section aria-label={t("whatIDoAria")}>
           <WhatIDo />
         </section>
-
-        <SectionSpacer />
 
         <section aria-label={t("mediaCarouselAria")}>
           <MediaCarousel className="last-section" />
