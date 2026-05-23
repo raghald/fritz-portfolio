@@ -18,7 +18,7 @@ const WorkFilterBar: React.FC<WorkFilterBarProps> = ({
 
   return (
     <div className="w-full px-8 lg:px-[52px]">
-      <div className="w-[338px] md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0 flex flex-wrap gap-3">
+      <div className="w-full max-w-[338px] md:max-w-none md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0 flex flex-wrap gap-3">
         {WORK_TYPES.map((type) => {
           const isActive = activeType === type;
           return (
@@ -27,7 +27,7 @@ const WorkFilterBar: React.FC<WorkFilterBarProps> = ({
               type="button"
               onClick={() => onChange(type)}
               className={[
-                "px-4 py-2 text-xs md:text-sm font-medium border",
+                "px-4 py-2.5 min-h-[40px] text-xs md:text-sm font-medium border",
                 "transition-colors duration-200",
                 isActive
                   ? "bg-black text-white border-black"

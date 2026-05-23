@@ -103,7 +103,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
             {(tutloRecommendation || absolventAgency) && (
               <section aria-label="Selected projects row 2">
                 <div className="px-8 md:px-8 lg:px-[52px]">
-                  <div className="w-[338px] md:w-[770px] lg:w-[1108px] mx-auto md:mx-auto lg:mx-0">
+                  <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto md:mx-auto lg:mx-0">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
                       {tutloRecommendation && (
                         <div className="flex flex-col gap-7">

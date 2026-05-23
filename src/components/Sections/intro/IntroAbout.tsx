@@ -138,7 +138,7 @@ const IntroAbout: React.FC = () => {
 
               <div className="flex justify-center mt-8">
                 <video
-                  className="w-[378px] h-[378px] object-cover rounded-0"
+                  className="w-[min(80vw,378px)] aspect-square object-cover rounded-0"
                   autoPlay
                   loop
                   muted

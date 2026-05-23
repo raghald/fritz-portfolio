@@ -37,11 +37,11 @@ const MoreSections: React.FC<MoreSectionsProps> = ({ workIds }) => {
         {/* Padding zgodny z systemem */}
         <div className="px-8 md:px-8 lg:px-[52px]">
           {/* 🔥 Wewnętrzny kontener wyśrodkowany na wszystkich breakpointach */}
-          <div className="w-[338px] md:w-[770px] lg:w-[1108px] mx-auto">
+          <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto">
             {/* Nagłówek */}
             <h2
               id="more-sections-heading"
-              className="text-black font-semibold text-[44px] lg:text-[52px] leading-[100%] text-left"
+              className="text-black font-semibold text-[30px] sm:text-[44px] lg:text-[52px] leading-[100%] text-left"
             >
               {t("moreSections.heading")}
             </h2>

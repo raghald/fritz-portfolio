@@ -149,9 +149,9 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
       <div
         className={[
           "flex-shrink-0",
-          "w-[338px] h-[338px]",
-          "md:w-[371px] md:h-[371px]",
-          "lg:w-[540px] lg:h-[540px]",
+          "w-full max-w-[338px] aspect-square",
+          "md:max-w-[371px]",
+          "lg:max-w-[540px]",
           mode === "single" && !isHorizontal ? "mx-auto md:mx-0" : "",
         ].join(" ")}
       >
@@ -163,7 +163,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
         className={[
           "flex flex-col",
           isHorizontal && mode === "single" ? "md:justify-center" : "md:justify-start",
-          "w-[338px] md:w-auto",
+          "w-full max-w-[338px] md:max-w-none md:w-auto",
           mode === "single" && !isHorizontal ? "mx-auto md:mx-0" : "",
         ].join(" ")}
       >
@@ -179,7 +179,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
           </div>
 
           <div className="mt-3">
-            <p className="text-black text-base leading-[150%] tracking-[0.16px] text-left w-[338px] md:w-auto md:h-auto">
+            <p className="text-black text-base leading-[150%] tracking-[0.16px] text-left w-full max-w-[338px] md:max-w-none md:w-auto md:h-auto">
               {description}
             </p>
           </div>
@@ -192,7 +192,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
     return (
       <article aria-label={title}>
         <div className="px-8 md:px-8 lg:px-[52px]">
-          <div className="w-[338px] md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0">
+          <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0">
             {Content}
           </div>
         </div>
