@@ -24,7 +24,10 @@
 .bg {
   position: absolute;
   inset: 0;
-  transform: translateX(-100%);
+  /* -1px ekstra: Safari nie przycina sub-pikselowo elementów z transform
+     tak jak Chrome, więc przy translateX(-100%) (prawa krawędź na x=0)
+     zostawia ~1px smugę tła na lewej krawędzi. Margines ją chowa. */
+  transform: translateX(calc(-100% - 1px));
   transition: transform 300ms ease;
   z-index: 0;
 }
@@ -92,16 +95,33 @@
 /* hover: Frame 1 znika, Frame 2 się pojawia
    .group jest globalną klasą Tailwind dodawaną w JSX (na <a>/<button>),
    więc trzymamy ją w :global() żeby CSS Modules nie scope'ował. */
-:global(.group):hover .bg {
+@media (hover: hover) {
+  :global(.group):hover .bg {
+    transform: translateX(0);
+  }
+
+  :global(.group):hover .frameDefault {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+
+  :global(.group):hover .frameHover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* feedback na dotyk (ten sam efekt co hover) */
+:global(.group):active .bg {
   transform: translateX(0);
 }
 
-:global(.group):hover .frameDefault {
+:global(.group):active .frameDefault {
   opacity: 0;
   transform: translateY(-1px);
 }
 
-:global(.group):hover .frameHover {
+:global(.group):active .frameHover {
   opacity: 1;
   transform: translateY(0);
 }
@@ -129,9 +149,16 @@
 .variantBlack .hoverText {
   color: var(--c-black);
 }
-:global(.group):hover .variantBlack .text,
-:global(.group):hover .variantBlack .iconSvg,
-:global(.group):hover .variantBlack .hoverText {
+@media (hover: hover) {
+  :global(.group):hover .variantBlack .text,
+  :global(.group):hover .variantBlack .iconSvg,
+  :global(.group):hover .variantBlack .hoverText {
+    color: var(--c-white);
+  }
+}
+:global(.group):active .variantBlack .text,
+:global(.group):active .variantBlack .iconSvg,
+:global(.group):active .variantBlack .hoverText {
   color: var(--c-white);
 }
 .variantBlack .tooltip {
@@ -147,10 +174,17 @@
 .variantWhite .hoverText {
   color: var(--c-white);
 }
-/* white variant: na hoverze czarny tekst */
-:global(.group):hover .variantWhite .text,
-:global(.group):hover .variantWhite .iconSvg,
-:global(.group):hover .variantWhite .hoverText {
+/* white variant: na hoverze/dotyku czarny tekst */
+@media (hover: hover) {
+  :global(.group):hover .variantWhite .text,
+  :global(.group):hover .variantWhite .iconSvg,
+  :global(.group):hover .variantWhite .hoverText {
+    color: var(--c-black);
+  }
+}
+:global(.group):active .variantWhite .text,
+:global(.group):active .variantWhite .iconSvg,
+:global(.group):active .variantWhite .hoverText {
   color: var(--c-black);
 }
 .variantWhite .tooltip {
