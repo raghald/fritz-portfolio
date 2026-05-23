@@ -18,28 +18,57 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
   const { openPopup } = useContactPopup();
 
   const t = useTranslations("navbar");
   const locale = useLocale() as "en" | "pl";
 
-  // ESC + fokus na pierwszym linku po otwarciu
+  // ESC + focus-trap + fokus na pierwszym linku po otwarciu
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) onClose();
+      if (!isOpen) return;
+
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      // Trap: Tab/Shift+Tab krąży wewnątrz otwartego menu
+      if (event.key === "Tab") {
+        const root = wrapRef.current;
+        if (!root) return;
+
+        const focusables = Array.from(
+          root.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+        ).filter((el) => el.tabIndex !== -1);
+
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
 
+    let timer: number | undefined;
     if (isOpen) {
-      const timer = window.setTimeout(() => firstLinkRef.current?.focus(), 0);
-      return () => {
-        window.clearTimeout(timer);
-        document.removeEventListener("keydown", handleKeyDown);
-      };
+      timer = window.setTimeout(() => firstLinkRef.current?.focus(), 0);
     }
 
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      if (timer) window.clearTimeout(timer);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   // ✅ iOS-safe scroll lock (bez overflow:hidden)
@@ -75,7 +104,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }, [isOpen]);
 
   return (
-    <div className={`${styles.wrap} ${isOpen ? styles.open : styles.closed}`}>
+    <div
+      ref={wrapRef}
+      className={`${styles.wrap} ${isOpen ? styles.open : styles.closed}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("ariaMainNav")}
+    >
       {/* Opcjonalny backdrop — klik zamyka (nie wpływa na layout) */}
       <button
         type="button"

@@ -12,6 +12,9 @@
   --radius: 0.625rem;
 
   /* HERO */
+  /* Globalnie 0 — strona główna ma pełnoekranowe hero pod przezroczystym navbarem.
+     Rezerwację wysokości navbara na mobile robią sekcje (np. IntroSection pt-[132px],
+     CaseStudyRenderer pt-[132px]); --nav-h-mobile = 60px to faktyczna wysokość paska. */
   --nav-h: 0px;
   --hero-tags-gap: clamp(32px, 1vh, 200px);
 

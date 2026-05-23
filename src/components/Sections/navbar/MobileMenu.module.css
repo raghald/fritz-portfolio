@@ -15,7 +15,9 @@
   /* NIE animuj height/max-height → tylko transform/opacity */
   opacity: 0;
   transform: translateY(-8px);
-  transition: opacity 220ms ease, transform 220ms ease;
+  /* visibility ukrywa zamknięte menu przed czytnikiem i fokusem (Tab) */
+  visibility: hidden;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
 }
 
 /* backdrop (klik zamyka) */
@@ -32,12 +34,14 @@
   pointer-events: auto;
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
 }
 
 .closed {
   pointer-events: none;
   opacity: 0;
   transform: translateY(-8px);
+  visibility: hidden;
 }
 
 .nav {
@@ -64,4 +68,10 @@
 
 .link:hover {
   color: rgb(var(--rgb-black) / 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: none;
+  }
 }

@@ -223,7 +223,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
               <div key={`media-${item.id}-${index}`} className="flex-shrink-0">
                 {/* All videos same height (500px), width auto for aspect ratio */}
                 <video
-                  className="h-[500px] w-auto object-contain block"
+                  className="h-[clamp(320px,60vw,500px)] w-auto object-contain block"
                   style={{ maxWidth }}
                   autoPlay
                   loop
