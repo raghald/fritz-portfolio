@@ -99,7 +99,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       body.style.right = "";
       body.style.width = "";
 
+      // Przywróć pozycję natychmiast. Globalne scroll-behavior: smooth animowałoby
+      // skok od 0 do y — wymuszamy 'auto' na czas synchronicznego scrollTo i przywracamy.
+      const prevBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
       window.scrollTo(0, y);
+      html.style.scrollBehavior = prevBehavior;
     };
   }, [isOpen]);
 
