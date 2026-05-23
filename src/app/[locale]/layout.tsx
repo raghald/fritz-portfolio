@@ -28,6 +28,8 @@ const inter = localFont({
 
 import NavbarWrapper from "@/components/NavbarWrapper";
 import SmoothScroll from "@/components/smooth-scroll/SmoothScroll";
+// PageTransition tymczasowo wyłączone — odkomentuj import i wrapper w JSX, by włączyć z powrotem.
+// import PageTransition from "@/components/transition/PageTransition";
 import CookieConsent from "@/components/Sections/cookie-consent/CookieConsent";
 import WebVitals from "@/components/web-vitals/WebVitals";
 import GoogleTagManager from "@/components/Sections/analytics/GoogleTagManager";
@@ -35,9 +37,6 @@ import GoogleAnalytics from "@/components/Sections/analytics/GoogleAnalytics";
 import { ContactPopupProvider } from "@/hooks/ContactPopupContext";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-
-// Re-eksport dla zgodności z istniejącymi importami (works/page.tsx, about/layout.tsx, gallery/layout.tsx).
-export const locales = routing.locales;
 
 // --- Viewport (Next 15: osobny export poza Metadata) ---
 export const viewport: Viewport = {
@@ -51,7 +50,7 @@ export const viewport: Viewport = {
 };
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 // --- generateMetadata: async + await params (Next 15 style) ---
@@ -202,7 +201,7 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params;
 
-  if (!locales.includes(locale as Locale)) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -220,6 +219,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ContactPopupProvider>
+            {/* PageTransition tymczasowo wyłączone — przywróć wrapper, by włączyć przejścia z powrotem. */}
             <Suspense
               fallback={
                 <div className="min-h-screen bg-white flex items-center justify-center">

@@ -1,8 +1,6 @@
 // app/[locale]/gallery/layout.tsx
 import type { Metadata } from "next";
-import { locales } from "../layout";
-
-type Locale = (typeof locales)[number];
+import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,

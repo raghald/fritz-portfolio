@@ -3,9 +3,7 @@ export { generateStaticParams } from "../layout";
 
 import type { Metadata } from "next";
 import WorksPageClient from "./WorksPageClient";
-import { locales } from "../layout";
-
-type Locale = (typeof locales)[number];
+import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
