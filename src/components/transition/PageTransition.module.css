@@ -1,0 +1,27 @@
+/* Plansza przejścia między podstronami.
+   Wjeżdża z prawej (xPercent 100 → 0), zjeżdża w lewo (0 → -100).
+   transform/visibility sterowane przez GSAP (autoAlpha = opacity + visibility). */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-black);
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.logo {
+  color: var(--c-white);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  font-size: clamp(28px, 6vw, 56px);
+  line-height: 1;
+  opacity: 0;
+  user-select: none;
+  white-space: nowrap;
+}
