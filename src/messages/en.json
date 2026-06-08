@@ -17,11 +17,11 @@
       "web": "#web",
       "ui": "#UI",
       "ux": "#UX",
-      "brand": "#brand",
+      "product": "#product",
       "motion": "#motion"
     },
 
-    "tagOrder": "[\"ui\",\"web\",\"ux\",\"brand\",\"motion\"]",
+    "tagOrder": "[\"ui\",\"web\",\"ux\",\"product\",\"motion\"]",
 
     "btnPrimary": "Check out my workflow",
     "btnSecondary": "Ask about your project",

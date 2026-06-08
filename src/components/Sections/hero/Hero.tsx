@@ -16,15 +16,15 @@ type HeroProps = {
   rightOrnaments?: React.ReactNode;
 };
 
-type TagId = "web" | "ui" | "ux" | "brand" | "motion";
+type TagId = "web" | "ui" | "ux" | "product" | "motion";
 
 type Tag = {
   id: TagId;
   label: string;
 };
 
-const DEFAULT_TAG_ORDER: TagId[] = ["ui", "web", "ux", "brand", "motion"];
-const ALL_TAG_IDS: TagId[] = ["web", "ui", "ux", "brand", "motion"];
+const DEFAULT_TAG_ORDER: TagId[] = ["ui", "web", "ux", "product", "motion"];
+const ALL_TAG_IDS: TagId[] = ["web", "ui", "ux", "product", "motion"];
 
 export default function Hero({ rightOrnaments }: HeroProps) {
   const { openPopup } = useContactPopup();
@@ -32,9 +32,8 @@ export default function Hero({ rightOrnaments }: HeroProps) {
   const locale = useLocale() as "en" | "pl";
   const isPl = locale === "pl";
 
-  const seoH1 = isPl
-    ? "Projektuję rozwiązania w oparciu o dobre standardy UI/UX i przyjazne dla SEO"
-    : "I design solutions built on strong UI/UX standards and SEO-friendly practices";
+  // H1 strony jest renderowany serwerowo w app/[locale]/page.tsx (sr-only header).
+  // Tutaj utrzymujemy AnimatedTitle jako element wizualny bez własnego nagłówka H1.
 
   const heroAltBase = isPl
     ? "Fryderyk Głowacki (Fritz) — grafik, Web / UI/UX / branding / motion"
@@ -74,7 +73,7 @@ export default function Hero({ rightOrnaments }: HeroProps) {
         web: t("tags.web"),
         ui: t("tags.ui"),
         ux: t("tags.ux"),
-        brand: t("tags.brand"),
+        product: t("tags.product"),
         motion: t("tags.motion"),
       } satisfies Record<TagId, string>),
     [t]
