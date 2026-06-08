@@ -34,6 +34,10 @@ function VideoCard({ video }: { video: GalleryVideo }) {
   const [paused, setPaused] = React.useState(true);
   const [muted, setMuted] = React.useState(true);
 
+  // Tracks whether the user explicitly unmuted this card,
+  // so autoplay-on-scroll doesn't silently re-mute their choice.
+  const userUnmutedRef = React.useRef(false);
+
   // Progress (updated only when controls overlay is visible; throttled)
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
@@ -83,12 +87,14 @@ function VideoCard({ video }: { video: GalleryVideo }) {
     const player = playerRef.current;
     if (!player) return;
 
-    // Ensure muted before any autoplay attempt
-    // (passing muted prop helps too, but we force it here)
-    try {
-      remote.mute();
-    } catch {
-      // ignore
+    // Ensure muted before any autoplay attempt, UNLESS the user
+    // already opted into sound on this card.
+    if (!userUnmutedRef.current) {
+      try {
+        remote.mute();
+      } catch {
+        // ignore
+      }
     }
 
     const attempt = async () => {
@@ -225,8 +231,13 @@ function VideoCard({ video }: { video: GalleryVideo }) {
 
   const toggleMute = () => {
     // user gesture -> safe to unmute
-    if (muted) remote.unmute();
-    else remote.mute();
+    if (muted) {
+      userUnmutedRef.current = true;
+      remote.unmute();
+    } else {
+      userUnmutedRef.current = false;
+      remote.mute();
+    }
   };
 
   const safeDuration = duration > 0 ? duration : 0;
