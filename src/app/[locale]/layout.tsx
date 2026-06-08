@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import localFont from "next/font/local";
-import React, { Suspense } from "react";
+import React from "react";
 
 import "@/app/globals.css";
 
@@ -32,11 +32,15 @@ import SmoothScroll from "@/components/smooth-scroll/SmoothScroll";
 // import PageTransition from "@/components/transition/PageTransition";
 import CookieConsent from "@/components/Sections/cookie-consent/CookieConsent";
 import WebVitals from "@/components/web-vitals/WebVitals";
+import ConsentDefaults from "@/components/Sections/analytics/ConsentDefaults";
 import GoogleTagManager from "@/components/Sections/analytics/GoogleTagManager";
 import GoogleAnalytics from "@/components/Sections/analytics/GoogleAnalytics";
+import JsonLd from "@/components/JsonLd";
 import { ContactPopupProvider } from "@/hooks/ContactPopupContext";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+
+const BASE_URL = "https://www.fritzglowacki.com";
 
 // --- Viewport (Next 15: osobny export poza Metadata) ---
 export const viewport: Viewport = {
@@ -214,28 +218,70 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const isPl = locale === "pl";
+  const urlEn = `${BASE_URL}/`;
+  const urlPl = `${BASE_URL}/pl/`;
+  const url = isPl ? urlPl : urlEn;
+
+  // JSON-LD: Person (Fritz) + WebSite. Wstawiane statycznie do <body>
+  // w server component — widoczne dla crawlerów bez wymogu hydratacji.
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${BASE_URL}/#person`,
+    name: "Fryderyk Głowacki",
+    alternateName: ["Fritz Glowacki", "Fritz Głowacki", "Fryderyk Glowacki"],
+    givenName: "Fryderyk",
+    familyName: "Głowacki",
+    jobTitle: isPl
+      ? "Projektant Web, UI/UX, brandingu i motion"
+      : "Web, UI/UX, Brand & Motion Designer",
+    description: isPl
+      ? "Designer i projektant: strony internetowe, UI/UX, branding i motion."
+      : "Web, UI/UX, Brand & Motion Designer working across web, brand and motion systems.",
+    url,
+    image: `${BASE_URL}/images/photo.webp`,
+    email: "info@fritzglowacki.com",
+    telephone: "+48506989423",
+    knowsLanguage: ["pl", "en"],
+    sameAs: [
+      "https://www.instagram.com/fritzglowacki/",
+      "https://www.linkedin.com/in/fryderyk-glowacki/",
+    ],
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
+    url: urlEn,
+    name: "Fritz Glowacki — Portfolio",
+    inLanguage: isPl ? "pl-PL" : "en-US",
+    publisher: { "@id": `${BASE_URL}/#person` },
+  };
+
   return (
     <html lang={locale} className={inter.variable}>
       <body>
+        {/* Consent Mode v2 defaults — inline <script> so it runs synchronously
+            before any of next/script's afterInteractive scripts (GTM/GA) can start. */}
+        <ConsentDefaults />
+        <JsonLd data={personJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ContactPopupProvider>
-            {/* PageTransition tymczasowo wyłączone — przywróć wrapper, by włączyć przejścia z powrotem. */}
-            <Suspense
-              fallback={
-                <div className="min-h-screen bg-white flex items-center justify-center">
-                  <p className="text-black">Loading...</p>
-                </div>
-              }
-            >
-              <GoogleTagManager />
-              <GoogleAnalytics />
-              <WebVitals />
-              <NavbarWrapper />
-              <SmoothScroll>
-                {children}
-                <CookieConsent />
-              </SmoothScroll>
-            </Suspense>
+            {/* PageTransition tymczasowo wyłączone — przywróć wrapper, by włączyć przejścia z powrotem.
+                Globalny Suspense został celowo usunięty — useSearchParams w LanguageToggle
+                (wewnątrz Navbar) ma już własny Suspense boundary, więc tutaj nie potrzeba
+                bailout-bezpieczeństwa, a bez wrappera reszta drzewa pre-renderuje się do statycznego HTML. */}
+            <GoogleTagManager />
+            <GoogleAnalytics />
+            <WebVitals />
+            <NavbarWrapper />
+            <SmoothScroll>
+              {children}
+              <CookieConsent />
+            </SmoothScroll>
           </ContactPopupProvider>
         </NextIntlClientProvider>
       </body>

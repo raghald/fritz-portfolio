@@ -598,6 +598,7 @@
     },
     "buttons": {
       "acceptAll": { "label": "Accept all", "aria": "Accept all cookies" },
+      "rejectAll": { "label": "Reject all", "aria": "Reject all non-essential cookies" },
       "detailed": { "label": "Detailed settings", "aria": "Open detailed cookie settings" }
     }
   },
@@ -652,11 +653,13 @@
     },
     "buttons": {
       "save": { "label": "Save preferences", "aria": "Save cookie preferences" },
-      "acceptAll": { "label": "Accept all", "aria": "Accept all cookies" }
+      "acceptAll": { "label": "Accept all", "aria": "Accept all cookies" },
+      "rejectAll": { "label": "Reject all", "aria": "Reject all non-essential cookies" }
     },
     "feedback": {
       "loadError": "We couldn't load your previous cookie settings.",
       "acceptAll": "All cookie categories have been accepted and saved.",
+      "rejectAll": "All non-essential cookies have been rejected.",
       "saved": "Your cookie preferences have been saved."
     },
     "footer": {

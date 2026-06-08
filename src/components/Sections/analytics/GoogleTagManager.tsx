@@ -2,12 +2,16 @@
 
 import Script from "next/script";
 
+import { useConsent } from "@/hooks/useConsent";
+
 export default function GoogleTagManager() {
-  const GTM_ID = "GTM-PKJLWVH3";
+  const { consent, ready } = useConsent();
+  const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+
+  if (!ready || !consent?.analytics || !GTM_ID) return null;
 
   return (
     <>
-      {/* Google Tag Manager Script */}
       <Script
         id="google-tag-manager"
         strategy="afterInteractive"
@@ -22,7 +26,6 @@ export default function GoogleTagManager() {
         }}
       />
 
-      {/* Google Tag Manager (noscript) */}
       <noscript>
         <iframe
           src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

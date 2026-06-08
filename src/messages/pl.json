@@ -561,6 +561,7 @@
     },
     "buttons": {
       "acceptAll": { "label": "Akceptuję wszystkie", "aria": "Akceptuj wszystkie pliki cookie" },
+      "rejectAll": { "label": "Odrzuć wszystkie", "aria": "Odrzuć wszystkie nieistotne pliki cookie" },
       "detailed": { "label": "Ustawienia szczegółowe", "aria": "Otwórz szczegółowe ustawienia plików cookie" }
     }
   },
@@ -615,11 +616,13 @@
     },
     "buttons": {
       "save": { "label": "Zapisz ustawienia", "aria": "Zapisz preferencje dotyczące plików cookie" },
-      "acceptAll": { "label": "Akceptuję wszystkie", "aria": "Akceptuj wszystkie pliki cookie" }
+      "acceptAll": { "label": "Akceptuję wszystkie", "aria": "Akceptuj wszystkie pliki cookie" },
+      "rejectAll": { "label": "Odrzuć wszystkie", "aria": "Odrzuć wszystkie nieistotne pliki cookie" }
     },
     "feedback": {
       "loadError": "Nie udało się wczytać zapisanych ustawień plików cookie.",
       "acceptAll": "Wszystkie kategorie plików cookie zostały zaakceptowane i zapisane.",
+      "rejectAll": "Wszystkie nieistotne pliki cookie zostały odrzucone.",
       "saved": "Twoje preferencje dotyczące plików cookie zostały zapisane."
     },
     "footer": {

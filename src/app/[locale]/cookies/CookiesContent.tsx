@@ -1,57 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useTranslations } from "@/lib/useTranslations";
+import { useEffect, useState } from "react";
 
 import AnimatedButton from "@/components/AnimatedButton";
+import { useConsent } from "@/hooks/useConsent";
+import { ALL_DENIED, ALL_GRANTED, type ConsentCategories } from "@/lib/consent";
+import { useTranslations } from "@/lib/useTranslations";
 
 export default function CookiesContent() {
   const t = useTranslations("cookiePolicy");
+  const { consent, ready, acceptAll, rejectAll, save } = useConsent();
 
-  const [activeConsent, setActiveConsent] = useState({
-    necessary: true,
-    analytics: false,
-    marketing: false,
-    functional: false,
-  });
-
+  const [activeConsent, setActiveConsent] = useState<ConsentCategories>(ALL_DENIED);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
 
+  // Sync UI with whatever the central consent store holds, including changes
+  // coming from the banner or another tab.
   useEffect(() => {
-    const savedPreferences = localStorage.getItem("cookiePreferences");
-    if (savedPreferences) {
-      try {
-        const parsed = JSON.parse(savedPreferences);
-        setActiveConsent((prev) => ({
-          ...prev,
-          necessary: true,
-          analytics: !!parsed.analytics,
-          marketing: !!parsed.marketing,
-          functional: !!parsed.functional,
-        }));
-      } catch (error) {
-        console.error("Error loading cookie preferences:", error);
-        setFeedbackMessage(t("feedback.loadError"));
-      }
-    }
-  }, [t]);
+    if (!ready) return;
+    setActiveConsent(consent ?? ALL_DENIED);
+  }, [consent, ready]);
+
+  // Auto-clear the confirmation message so it doesn't linger forever.
+  useEffect(() => {
+    if (!feedbackMessage) return;
+    const id = window.setTimeout(() => setFeedbackMessage(null), 4000);
+    return () => window.clearTimeout(id);
+  }, [feedbackMessage]);
 
   const handleAcceptAll = () => {
-    const newConsent = {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      functional: true,
-    };
-    setActiveConsent(newConsent);
-    localStorage.setItem("cookieConsent", "accepted");
-    localStorage.setItem("cookiePreferences", JSON.stringify(newConsent));
+    setActiveConsent(ALL_GRANTED);
+    acceptAll();
     setFeedbackMessage(t("feedback.acceptAll"));
   };
 
+  const handleRejectAll = () => {
+    setActiveConsent(ALL_DENIED);
+    rejectAll();
+    setFeedbackMessage(t("feedback.rejectAll"));
+  };
+
   const handleSavePreferences = () => {
-    localStorage.setItem("cookieConsent", "custom");
-    localStorage.setItem("cookiePreferences", JSON.stringify(activeConsent));
+    save(activeConsent);
     setFeedbackMessage(t("feedback.saved"));
   };
 
@@ -245,12 +235,12 @@ export default function CookiesContent() {
             </div>
 
             {/* BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mt-8">
               <AnimatedButton
                 onClick={handleSavePreferences}
                 ariaLabel={t("buttons.save.aria")}
                 variant="cookieAccept"
-                className="w-full sm:w-[271px] lg:w-[250px] h-[53px] rounded-none"
+                className="w-full sm:w-[230px] h-[53px] rounded-none"
               >
                 {t("buttons.save.label")}
               </AnimatedButton>
@@ -259,9 +249,18 @@ export default function CookiesContent() {
                 onClick={handleAcceptAll}
                 ariaLabel={t("buttons.acceptAll.aria")}
                 variant="cookieDetailed"
-                className="w-full sm:w-[283px] lg:w-[260px] h-[53px] rounded-none"
+                className="w-full sm:w-[210px] h-[53px] rounded-none"
               >
                 {t("buttons.acceptAll.label")}
+              </AnimatedButton>
+
+              <AnimatedButton
+                onClick={handleRejectAll}
+                ariaLabel={t("buttons.rejectAll.aria")}
+                variant="cookieDetailed"
+                className="w-full sm:w-[210px] h-[53px] rounded-none"
+              >
+                {t("buttons.rejectAll.label")}
               </AnimatedButton>
             </div>
 

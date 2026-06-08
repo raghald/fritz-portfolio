@@ -2,12 +2,16 @@
 
 import Script from "next/script";
 
+import { useConsent } from "@/hooks/useConsent";
+
 export default function GoogleAnalytics() {
-  const GA_MEASUREMENT_ID = "G-RHT0QJSR9G";
+  const { consent, ready } = useConsent();
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+  if (!ready || !consent?.analytics || !GA_MEASUREMENT_ID) return null;
 
   return (
     <>
-      {/* Google Analytics Script */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}

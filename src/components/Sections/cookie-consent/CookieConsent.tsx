@@ -1,83 +1,64 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocale } from "next-intl";
-import { useTranslations } from "@/lib/useTranslations";
 import { useRouter } from "next/navigation";
-import { localePath } from "@/i18n/routing";
+
 import AnimatedButton from "@/components/AnimatedButton";
+import { useConsent } from "@/hooks/useConsent";
+import { localePath } from "@/i18n/routing";
+import { useTranslations } from "@/lib/useTranslations";
 
 const CookieConsent: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const t = useTranslations("cookieBanner");
   const locale = useLocale();
   const router = useRouter();
+  const { ready, decided, acceptAll, rejectAll } = useConsent();
 
-  useEffect(() => {
-    const hasConsented = localStorage.getItem("cookieConsent");
-    if (!hasConsented) {
-      setIsVisible(true);
-    }
-  }, []);
-
-  const handleAcceptAll = () => {
-    const allConsent = {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      functional: true,
-    };
-    localStorage.setItem("cookieConsent", "accepted");
-    localStorage.setItem("cookiePreferences", JSON.stringify(allConsent));
-    setIsVisible(false);
-  };
+  // Hide until we know the user's stored decision — avoids a flash for
+  // users who already consented and prevents SSR/CSR mismatch.
+  if (!ready || decided) return null;
 
   const handleDetailedSettings = () => {
-    // wersja z uwzględnieniem locale
     router.push(localePath(locale, "/cookies"));
   };
-
-  if (!isVisible) {
-    return null;
-  }
 
   return (
     <div
       className={`
         fixed z-50 bg-white border-0 shadow-lg
-        
+
         /* Mobile: Bottom centered with margin */
         bottom-3 left-3 right-3
         w-auto max-w-[calc(100dvw-24px)]
         min-h-[300px] p-3
-        
+
         /* Small tablets */
         sm:bottom-6 sm:left-6 sm:right-6
         sm:max-w-[calc(100dvw-48px)]
         sm:min-h-[280px] sm:p-8
-        
+
         /* Medium tablets: Bottom centered */
         md:bottom-8 md:left-9 md:right-9
         md:max-w-[calc(100dvw-72px)]
         md:min-h-[200px] md:p-10
-        
+
         /* Large tablets/small desktop: Bottom left positioned */
         lg:bottom-[52px] lg:left-[52px] lg:right-auto
-        lg:w-[750px] lg:max-w-none
-        lg:min-h-[180px] lg:p-[40px_40px]
-        
-        /* Desktop: Slightly wider for comfortable button layout */
-        xl:w-[780px]
-        
-        /* Large desktop: Maximum width */
-        2xl:w-[800px]
+        lg:w-[820px] lg:max-w-none
+        lg:min-h-[200px] lg:p-[40px_40px]
+
+        /* Desktop */
+        xl:w-[860px]
+
+        /* Large desktop */
+        2xl:w-[880px]
       `}
       role="dialog"
       aria-labelledby="cookie-banner-title"
       aria-describedby="cookie-banner-description"
     >
       <div className="flex flex-col h-full justify-between">
-        {/* Header and Description */}
         <div>
           <h2
             id="cookie-banner-title"
@@ -107,29 +88,37 @@ const CookieConsent: React.FC = () => {
           </p>
         </div>
 
-        {/* Buttons */}
         <div
           className={`
-            flex mt-10 gap-5
+            flex mt-10 gap-3
             flex-col
-            sm:flex-row sm:justify-start
+            sm:flex-row sm:flex-wrap sm:justify-start
             lg:justify-start
           `}
         >
           <AnimatedButton
-            onClick={handleAcceptAll}
+            onClick={acceptAll}
             ariaLabel={t("buttons.acceptAll.aria")}
             variant="cookieAccept"
-            className="w-full h-[53px] px-6 sm:w-[271px] lg:w-[250px] rounded-none"
+            className="w-full h-[53px] px-6 sm:w-[230px] lg:w-[215px] rounded-none"
           >
             {t("buttons.acceptAll.label")}
+          </AnimatedButton>
+
+          <AnimatedButton
+            onClick={rejectAll}
+            ariaLabel={t("buttons.rejectAll.aria")}
+            variant="cookieAccept"
+            className="w-full h-[53px] px-6 sm:w-[230px] lg:w-[215px] rounded-none"
+          >
+            {t("buttons.rejectAll.label")}
           </AnimatedButton>
 
           <AnimatedButton
             onClick={handleDetailedSettings}
             ariaLabel={t("buttons.detailed.aria")}
             variant="cookieDetailed"
-            className="w-full h-[53px] px-6 sm:w-[283px] lg:w-[260px] rounded-none"
+            className="w-full h-[53px] px-6 sm:w-[250px] lg:w-[230px] rounded-none"
           >
             {t("buttons.detailed.label")}
           </AnimatedButton>
