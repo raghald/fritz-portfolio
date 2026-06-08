@@ -5,6 +5,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import Image from "next/image";
 import AnimatedButton from "@/components/AnimatedButton";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type FormspreeErrorsLike = {
   getFormErrors?: () => unknown[];
@@ -151,8 +152,13 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
 
   const showSuccess = submitStatus === "success";
 
+  const sectionRef = useScrollReveal<HTMLElement>({
+    start: "top 80%",
+    end: "top 50%",
+  });
+
   return (
-    <section className="w-full bg-white">
+    <section ref={sectionRef} className="w-full bg-white">
       <div className="w-full max-w-[1440px] mx-auto px-8 md:px-8 lg:px-[52px] pb-[60px] lg:pb-[100px]">
         <div>
           {/* płynny odstęp między kolumnami + pełna szerokość do krawędzi sekcji */}

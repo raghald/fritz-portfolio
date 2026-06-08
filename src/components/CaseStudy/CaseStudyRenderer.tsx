@@ -12,6 +12,7 @@ import ResultSection from "@/components/Sections/works/ResultSection";
 import CaseStudyContactSection from "@/components/Sections/works/CaseStudyContactSection";
 import MoreSections from "@/components/Sections/works/MoreProjectsSection";
 import AnimatedButton from "@/components/AnimatedButton";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 import { WORKS } from "@/data/worksData";
 import type { WorkItem } from "@/data/worksData";
@@ -185,80 +186,97 @@ const CaseStudyRenderer: React.FC<CaseStudyRendererProps> = ({
 
       {/* DYNAMIC SECTIONS */}
       {sections.map((section, idx) => {
-        switch (section.type) {
-          case "challenge":
-            return (
-              <ChallengeSection
-                key={`s-${idx}`}
-                i18nKey={i18nKey}
-                imageSrc={section.imageSrc}
-              />
-            );
+        const content = (() => {
+          switch (section.type) {
+            case "challenge":
+              return (
+                <ChallengeSection
+                  i18nKey={i18nKey}
+                  imageSrc={section.imageSrc}
+                />
+              );
 
-          case "goalGrid":
-            return (
-              <GoalSection
-                key={`s-${idx}`}
-                i18nKey={i18nKey}
-                leftTopImageSrc={section.images.leftTop.src}
-                leftTopImageAlt={section.images.leftTop.alt}
-                leftBottomImageSrc={section.images.leftBottom.src}
-                leftBottomImageAlt={section.images.leftBottom.alt}
-                rightImageSrc={section.images.right.src}
-                rightImageAlt={section.images.right.alt}
-              />
-            );
+            case "goalGrid":
+              return (
+                <GoalSection
+                  i18nKey={i18nKey}
+                  leftTopImageSrc={section.images.leftTop.src}
+                  leftTopImageAlt={section.images.leftTop.alt}
+                  leftBottomImageSrc={section.images.leftBottom.src}
+                  leftBottomImageAlt={section.images.leftBottom.alt}
+                  rightImageSrc={section.images.right.src}
+                  rightImageAlt={section.images.right.alt}
+                />
+              );
 
-          case "range":
-            return (
-              <RangeSection
-                key={`s-${idx}`}
-                video1Src={rangeVideo1Src}
-                video2Src={rangeVideo2Src}
-                rangeData={rangeData}
-              />
-            );
+            case "range":
+              return (
+                <RangeSection
+                  video1Src={rangeVideo1Src}
+                  video2Src={rangeVideo2Src}
+                  rangeData={rangeData}
+                />
+              );
 
-          case "halfImageLeft":
-            return (
-              <section key={`s-${idx}`} className="w-full bg-white">
-                <div className="w-full max-w-[1440px] mx-auto px-8 md:px-8 lg:px-[52px]">
-                  <div className="py-[60px] lg:py-[100px]">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                      <div
-                        className={`w-full overflow-hidden ${
-                          section.shadow ? "shadow-lg" : ""
-                        }`}
-                      >
-                        <Image
-                          src={section.imageSrc}
-                          alt={section.alt}
-                          width={0}
-                          height={0}
-                          sizes="(min-width: 1024px) 50vw, 100vw"
-                          className="w-full h-auto object-cover block"
-                          style={{ width: "100%", height: "auto" }}
-                        />
+            case "halfImageLeft":
+              return (
+                <section className="w-full bg-white">
+                  <div className="w-full max-w-[1440px] mx-auto px-8 md:px-8 lg:px-[52px]">
+                    <div className="py-[60px] lg:py-[100px]">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                        <div
+                          className={`w-full overflow-hidden ${
+                            section.shadow ? "shadow-lg" : ""
+                          }`}
+                        >
+                          <Image
+                            src={section.imageSrc}
+                            alt={section.alt}
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="w-full h-auto object-cover block"
+                            style={{ width: "100%", height: "auto" }}
+                          />
+                        </div>
+                        <div />
                       </div>
-                      <div />
                     </div>
                   </div>
-                </div>
-              </section>
-            );
+                </section>
+              );
 
-          case "result":
-            return <ResultSection key={`s-${idx}`} resultText={resultText} />;
+            case "result":
+              return <ResultSection resultText={resultText} />;
 
-          case "contact":
-            return <CaseStudyContactSection key={`s-${idx}`} />;
+            case "contact":
+              return <CaseStudyContactSection />;
 
-          case "more":
-            return <MoreSections key={`s-${idx}`} workIds={section.workIds} />;
+            case "more":
+              return <MoreSections workIds={section.workIds} />;
 
-          default:
-            return null;
+            default:
+              return null;
+          }
+        })();
+
+        if (!content) return null;
+
+        // halfImageLeft jest renderowane jako inline <section> bez własnego reveala
+        // — zawijamy je w RevealOnScroll. Pozostałe komponenty zarządzają swoim revealem same.
+        if (section.type === "halfImageLeft") {
+          return (
+            <RevealOnScroll
+              key={`s-${idx}`}
+              start="top 80%"
+              end="top 50%"
+            >
+              {content}
+            </RevealOnScroll>
+          );
         }
+
+        return <React.Fragment key={`s-${idx}`}>{content}</React.Fragment>;
       })}
     </>
   );

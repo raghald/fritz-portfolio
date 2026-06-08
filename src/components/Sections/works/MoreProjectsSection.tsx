@@ -2,9 +2,28 @@
 
 import React from "react";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import { WORKS, type WorkItem } from "@/data/worksData";
 import WorkThumbnail from "@/components/Sections/works/WorkThumbnail";
+
+function ThumbnailReveal({
+  work,
+  index,
+}: {
+  work: WorkItem;
+  index: number;
+}) {
+  const ref = useScrollReveal<HTMLDivElement>({
+    start: `top ${90 - index * 10}%`,
+    end: `top ${70 - index * 10}%`,
+  });
+  return (
+    <div ref={ref} className="flex-1">
+      <WorkThumbnail work={work} mode="column" />
+    </div>
+  );
+}
 
 type MoreSectionsProps = {
   /** Lista ID projektów z WORKS do wyświetlenia (zwykle 2 sztuki). */
@@ -25,6 +44,11 @@ const MoreSections: React.FC<MoreSectionsProps> = ({ workIds }) => {
     .map((id) => WORKS.find((w) => w.id === id))
     .filter((w): w is WorkItem => Boolean(w));
 
+  const headingRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+
   if (worksToRender.length === 0) return null;
 
   return (
@@ -40,6 +64,7 @@ const MoreSections: React.FC<MoreSectionsProps> = ({ workIds }) => {
           <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto">
             {/* Nagłówek */}
             <h2
+              ref={headingRef}
               id="more-sections-heading"
               className="text-black font-semibold text-[30px] sm:text-[44px] lg:text-[52px] leading-[100%] text-left"
             >
@@ -50,10 +75,8 @@ const MoreSections: React.FC<MoreSectionsProps> = ({ workIds }) => {
 
             {/* Layout 2 kolumny (tablet/desktop), 1 kolumna mobile */}
             <div className="flex flex-col md:flex-row gap-7">
-              {worksToRender.map((work) => (
-                <div key={work.id} className="flex-1">
-                  <WorkThumbnail work={work} mode="column" />
-                </div>
+              {worksToRender.map((work, idx) => (
+                <ThumbnailReveal key={work.id} work={work} index={idx} />
               ))}
             </div>
 

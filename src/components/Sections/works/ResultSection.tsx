@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface ResultSectionProps {
   resultText: string;
@@ -11,6 +12,15 @@ const ResultSection: React.FC<ResultSectionProps> = ({ resultText }) => {
   const tCommon = useTranslations("Common.sections");
   const heading = tCommon("resultHeading");
 
+  const headingRef = useScrollReveal<HTMLDivElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+  const textRef = useScrollReveal<HTMLDivElement>({
+    start: "top 90%",
+    end: "top 50%",
+  });
+
   return (
     <section className="relative z-20 w-full bg-white">
       {/* Spacing above section */}
@@ -19,7 +29,7 @@ const ResultSection: React.FC<ResultSectionProps> = ({ resultText }) => {
       {/* Max width container – spójne z innymi sekcjami */}
       <div className="w-full max-w-[1440px] mx-auto px-3 md:px-8 lg:px-[52px]">
         {/* Heading – right aligned, half width */}
-        <div className="w-full lg:w-1/2 lg:ml-auto">
+        <div ref={headingRef} className="w-full lg:w-1/2 lg:ml-auto">
           <h2 className="text-black font-semibold text-[32px] lg:text-[40px] leading-[110%] text-right">
             {heading}
           </h2>
@@ -29,7 +39,7 @@ const ResultSection: React.FC<ResultSectionProps> = ({ resultText }) => {
         <div className="h-[32px]" />
 
         {/* Result Text – right aligned, half width */}
-        <div className="w-full lg:w-1/2 lg:ml-auto">
+        <div ref={textRef} className="w-full lg:w-1/2 lg:ml-auto">
           {/* Desktop */}
           <div className="hidden lg:block">
             <div className="text-black text-[36px] leading-[48px] text-right">

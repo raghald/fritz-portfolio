@@ -16,6 +16,7 @@ import { localePath } from "@/i18n/routing";
 
 import AnimatedButton from "@/components/AnimatedButton";
 import { getVideoPosterPath } from "@/lib/videoPoster";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import styles from "./TikTokShowcase.module.css";
 
@@ -54,12 +55,18 @@ const tikTokVideos: TikTokVideo[] = [
   },
 ];
 
+// Kolejność wjazdu kart: [pozycja-dla-indeksu-0, pozycja-dla-indeksu-1, ...]
+// Aktualnie: video 2 → 3 → 1 → 4 (więc index 1 wjeżdża pierwsze, potem 2, 0, 3)
+const REVEAL_ORDER = [2, 0, 1, 3];
+
 // ===== Pojedyncza karta z playerem =====
 function TikTokCard({
   video,
+  index,
   className = "",
 }: {
   video: TikTokVideo;
+  index: number;
   className?: string;
 }) {
   const playerRef = React.useRef<MediaPlayerInstance>(null);
@@ -70,6 +77,12 @@ function TikTokCard({
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false,
+  });
+
+  const revealPosition = REVEAL_ORDER[index] ?? index;
+  const revealRef = useScrollReveal<HTMLDivElement>({
+    start: `top ${90 - revealPosition * 7}%`,
+    end: `top ${75 - revealPosition * 7}%`,
   });
 
   React.useEffect(() => {
@@ -93,9 +106,10 @@ function TikTokCard({
   };
 
   return (
+    <div ref={revealRef} className={className}>
     <div
       ref={inViewRef}
-      className={`${styles.card} group ${className}`}
+      className={`${styles.card} group w-full h-full lg:hover:scale-105 lg:transition-transform lg:duration-300`}
       aria-label={video.title}
     >
       <MediaPlayer
@@ -232,6 +246,7 @@ function TikTokCard({
         </div>
       </div>
     </div>
+    </div>
   );
 }
 
@@ -240,6 +255,10 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
   const [shouldStartTyping, setShouldStartTyping] = React.useState(false);
   const [isMounted, setIsMounted] = React.useState(false);
 
+  const headerRevealRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
   const tabletCarouselRef = React.useRef<HTMLDivElement | null>(null);
   const mobileCarouselRef = React.useRef<HTMLDivElement | null>(null);
   const headerRef = React.useRef<HTMLDivElement>(null);
@@ -329,7 +348,7 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
     >
       {/* Header */}
       <div ref={headerRef} className={styles.header}>
-        <h2 className={styles.headerTitle}>
+        <h2 ref={headerRevealRef} className={styles.headerTitle}>
           {shouldStartTyping ? (
             <TypeAnimation
               sequence={[t("headerTyping")]}
@@ -347,9 +366,10 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
 
       {/* Desktop Grid */}
       <div className={styles.gridDesktop}>
-        {tikTokVideos.map((video) => (
+        {tikTokVideos.map((video, idx) => (
           <TikTokCard
             key={video.id}
+            index={idx}
             video={video}
             className={styles.cardDesktop}
           />
@@ -362,9 +382,10 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
         onScroll={handleTabletScroll}
         className={styles.carouselTablet}
       >
-        {tikTokVideos.map((video) => (
+        {tikTokVideos.map((video, idx) => (
           <TikTokCard
             key={video.id}
+            index={idx}
             video={video}
             className={styles.cardTablet}
           />
@@ -377,9 +398,10 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
         onScroll={handleMobileScroll}
         className={styles.carouselMobile}
       >
-        {tikTokVideos.map((video) => (
+        {tikTokVideos.map((video, idx) => (
           <TikTokCard
             key={video.id}
+            index={idx}
             video={video}
             className={styles.cardMobile}
           />

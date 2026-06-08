@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface GoalSectionProps {
   i18nKey: string; // np. "Works.talentdays"
@@ -25,12 +26,29 @@ const GoalSection: React.FC<GoalSectionProps> = ({
 }) => {
   const t = useTranslations(`${i18nKey}.goal`);
 
+  const textRef = useScrollReveal<HTMLDivElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+  const leftTopRef = useScrollReveal<HTMLDivElement>({
+    start: "top 90%",
+    end: "top 70%",
+  });
+  const rightRef = useScrollReveal<HTMLDivElement>({
+    start: "top 80%",
+    end: "top 60%",
+  });
+  const leftBottomRef = useScrollReveal<HTMLDivElement>({
+    start: "top 70%",
+    end: "top 50%",
+  });
+
   return (
     <section className="w-full bg-white">
       <div className="w-full max-w-[1440px] mx-auto px-8 md:px-8 lg:px-[52px]">
         <div className="py-[60px] lg:py-[100px]">
           {/* TEXT */}
-          <div className="max-w-[540px]">
+          <div ref={textRef} className="max-w-[540px]">
             <h2 className="font-semibold text-[32px] lg:text-[40px] leading-[110%] text-black">
               {t("heading")}
             </h2>
@@ -44,7 +62,7 @@ const GoalSection: React.FC<GoalSectionProps> = ({
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
             {/* LEFT */}
             <div className="grid grid-rows-2 gap-4 lg:gap-6">
-              <div className="w-full shadow-lg overflow-hidden">
+              <div ref={leftTopRef} className="w-full shadow-lg overflow-hidden">
                 <Image
                   src={leftTopImageSrc}
                   alt={leftTopImageAlt}
@@ -56,7 +74,7 @@ const GoalSection: React.FC<GoalSectionProps> = ({
                 />
               </div>
 
-              <div className="w-full shadow-lg overflow-hidden">
+              <div ref={leftBottomRef} className="w-full shadow-lg overflow-hidden">
                 <Image
                   src={leftBottomImageSrc}
                   alt={leftBottomImageAlt}
@@ -70,7 +88,7 @@ const GoalSection: React.FC<GoalSectionProps> = ({
             </div>
 
             {/* RIGHT */}
-            <div className="w-full shadow-lg overflow-hidden">
+            <div ref={rightRef} className="w-full shadow-lg overflow-hidden">
               <Image
                 src={rightImageSrc}
                 alt={rightImageAlt}

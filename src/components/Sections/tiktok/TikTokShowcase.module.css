@@ -29,7 +29,7 @@
 }
 
 .cardDesktop {
-  @apply w-full aspect-[9/16] hover:scale-105 transition-transform duration-300;
+  @apply w-full aspect-[9/16];
 }
 
 .carouselTablet {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import AnimatedButton from "@/components/AnimatedButton";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import { useConsent } from "@/hooks/useConsent";
 import { ALL_DENIED, ALL_GRANTED, type ConsentCategories } from "@/lib/consent";
 import { useTranslations } from "@/lib/useTranslations";
@@ -61,20 +62,27 @@ export default function CookiesContent() {
 
         {/* SECTION 1 – What are cookies */}
         <section className="mb-[60px] lg:mb-[100px]">
-          <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
-            {t("section1.title")}
-          </h2>
-          <p className="text-black font-medium text-base leading-[150%] tracking-[0.16px] max-w-[770px]">
-            {t("section1.body")}
-          </p>
+          <RevealOnScroll start="top 90%" end="top 60%">
+            <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
+              {t("section1.title")}
+            </h2>
+          </RevealOnScroll>
+          <RevealOnScroll start="top 90%" end="top 50%">
+            <p className="text-black font-medium text-base leading-[150%] tracking-[0.16px] max-w-[770px]">
+              {t("section1.body")}
+            </p>
+          </RevealOnScroll>
         </section>
 
         {/* SECTION 2 – What cookies do we use */}
         <section className="mb-[60px] lg:mb-[100px]">
-          <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
-            {t("section2.title")}
-          </h2>
+          <RevealOnScroll start="top 90%" end="top 60%">
+            <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
+              {t("section2.title")}
+            </h2>
+          </RevealOnScroll>
 
+          <RevealOnScroll start="top 90%" end="top 50%">
           <ul className="space-y-6 max-w-[770px]">
             <li>
               <p className="text-black font-semibold text-base mb-2">
@@ -112,14 +120,18 @@ export default function CookiesContent() {
               </p>
             </li>
           </ul>
+          </RevealOnScroll>
         </section>
 
         {/* SECTION 3 – Consent management */}
         <section className="mb-[60px] lg:mb-[100px]">
-          <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
-            {t("section3.title")}
-          </h2>
+          <RevealOnScroll start="top 90%" end="top 60%">
+            <h2 className="text-black font-semibold text-[32px] lg:text-[44px] leading-[100%] mb-8">
+              {t("section3.title")}
+            </h2>
+          </RevealOnScroll>
 
+          <RevealOnScroll start="top 90%" end="top 50%">
           <div className="bg-gray-50 border border-gray-200 p-8 max-w-[770px]">
             <div className="space-y-6">
               {/* NECESSARY */}
@@ -277,14 +289,18 @@ export default function CookiesContent() {
               {t("section3.browserInfo")}
             </p>
           </div>
+          </RevealOnScroll>
         </section>
 
         {/* SECTION 4 – Third-party cookies */}
         <section className="mb-[60px] lg:mb-[100px]">
-          <h2 className="text-black font-semibold text-[32px] lg:text-[44px] mb-8 leading-[100%]">
-            {t("section4.title")}
-          </h2>
+          <RevealOnScroll start="top 90%" end="top 60%">
+            <h2 className="text-black font-semibold text-[32px] lg:text-[44px] mb-8 leading-[100%]">
+              {t("section4.title")}
+            </h2>
+          </RevealOnScroll>
 
+          <RevealOnScroll start="top 90%" end="top 50%">
           <div className="grid md:grid-cols-2 gap-6 max-w-[770px]">
             <div className="bg-white border border-gray-200 p-6">
               <h3 className="text-black font-semibold text-[20px] mb-3">
@@ -322,14 +338,18 @@ export default function CookiesContent() {
               </p>
             </div>
           </div>
+          </RevealOnScroll>
         </section>
 
         {/* SECTION 5 – Disable cookies in browser */}
         <section className="mb-[60px] lg:mb-[100px]">
-          <h2 className="text-black font-semibold text-[32px] lg:text-[44px] mb-8 leading-[100%]">
-            {t("section5.title")}
-          </h2>
+          <RevealOnScroll start="top 90%" end="top 60%">
+            <h2 className="text-black font-semibold text-[32px] lg:text-[44px] mb-8 leading-[100%]">
+              {t("section5.title")}
+            </h2>
+          </RevealOnScroll>
 
+          <RevealOnScroll start="top 90%" end="top 50%">
           <div className="bg-black text-white p-8 max-w-[770px]">
             <p className="font-semibold text-base mb-6">
               {t("section5.important")}
@@ -345,6 +365,7 @@ export default function CookiesContent() {
               <p>{t("section5.browsers.edge")}</p>
             </div>
           </div>
+          </RevealOnScroll>
         </section>
 
         {/* FOOTER INFO */}

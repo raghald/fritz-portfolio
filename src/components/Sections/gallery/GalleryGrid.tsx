@@ -11,6 +11,7 @@ import {
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "@/lib/useTranslations";
 import { getVideoPosterPath } from "@/lib/videoPoster";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 // Gallery video data
 type GalleryVideo = {
@@ -360,83 +361,83 @@ const GalleryGrid: React.FC = () => {
       <div className="xl:hidden px-3 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-6 lg:gap-7">
           {galleryVideos.map((video) => (
-            <div key={video.id} className="w-full aspect-[9/16]">
+            <RevealOnScroll key={video.id} className="w-full aspect-[9/16]">
               <VideoCard video={video} />
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
 
       {/* Desktop masonry (>= 1280px) */}
       <div className="hidden xl:block relative h-[6900px]">
-        <div className="w-80 h-[552px] left-[52px] top-0 absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[52px] top-0 absolute">
           <VideoCard video={galleryVideos[0]} />
-        </div>
-        <div className="w-80 h-[552px] left-[52px] top-[1587px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[52px] top-[1587px] absolute">
           <VideoCard video={galleryVideos[1]} />
-        </div>
-        <div className="w-80 h-[552px] left-[52px] top-[3174px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[52px] top-[3174px] absolute">
           <VideoCard video={galleryVideos[2]} />
-        </div>
+        </RevealOnScroll>
 
-        <div className="w-80 h-[552px] left-[166px] top-[807px] absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[166px] top-[807px] absolute">
           <VideoCard video={galleryVideos[3]} />
-        </div>
-        <div className="w-80 h-[552px] left-[166px] top-[2394px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[166px] top-[2394px] absolute">
           <VideoCard video={galleryVideos[4]} />
-        </div>
-        <div className="w-80 h-[552px] left-[166px] top-[3981px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[166px] top-[3981px] absolute">
           <VideoCard video={galleryVideos[5]} />
-        </div>
+        </RevealOnScroll>
 
-        <div className="w-80 h-[552px] left-[563px] top-[322px] absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[563px] top-[322px] absolute">
           <VideoCard video={galleryVideos[6]} />
-        </div>
-        <div className="w-80 h-[552px] left-[563px] top-[1909px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[563px] top-[1909px] absolute">
           <VideoCard video={galleryVideos[7]} />
-        </div>
-        <div className="w-80 h-[552px] left-[563px] top-[3496px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[563px] top-[3496px] absolute">
           <VideoCard video={galleryVideos[8]} />
-        </div>
+        </RevealOnScroll>
 
-        <div className="w-80 h-[552px] left-[1075px] top-[199px] absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[1075px] top-[199px] absolute">
           <VideoCard video={galleryVideos[9]} />
-        </div>
-        <div className="w-80 h-[552px] left-[1075px] top-[1786px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[1075px] top-[1786px] absolute">
           <VideoCard video={galleryVideos[10]} />
-        </div>
-        <div className="w-80 h-[552px] left-[1075px] top-[3373px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[1075px] top-[3373px] absolute">
           <VideoCard video={galleryVideos[11]} />
-        </div>
+        </RevealOnScroll>
 
-        <div className="w-80 h-[552px] left-[962px] top-[1035px] absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[962px] top-[1035px] absolute">
           <VideoCard video={galleryVideos[12]} />
-        </div>
-        <div className="w-80 h-[552px] left-[962px] top-[2622px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[962px] top-[2622px] absolute">
           <VideoCard video={galleryVideos[13]} />
-        </div>
-        <div className="w-80 h-[552px] left-[962px] top-[4209px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[962px] top-[4209px] absolute">
           <VideoCard video={galleryVideos[14]} />
-        </div>
+        </RevealOnScroll>
 
-        <div className="w-80 h-[552px] left-[52px] top-[4761px] absolute">
+        <RevealOnScroll className="w-80 h-[552px] left-[52px] top-[4761px] absolute">
           <VideoCard video={galleryVideos[15]} />
-        </div>
-        <div className="w-80 h-[552px] left-[166px] top-[5568px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[166px] top-[5568px] absolute">
           <VideoCard video={galleryVideos[16]} />
-        </div>
-        <div className="w-80 h-[552px] left-[563px] top-[5083px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[563px] top-[5083px] absolute">
           <VideoCard video={galleryVideos[17]} />
-        </div>
-        <div className="w-80 h-[552px] left-[1075px] top-[4960px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[1075px] top-[4960px] absolute">
           <VideoCard video={galleryVideos[18]} />
-        </div>
-        <div className="w-80 h-[552px] left-[962px] top-[5796px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[962px] top-[5796px] absolute">
           <VideoCard video={galleryVideos[19]} />
-        </div>
-        <div className="w-80 h-[552px] left-[52px] top-[6348px] absolute">
+        </RevealOnScroll>
+        <RevealOnScroll className="w-80 h-[552px] left-[52px] top-[6348px] absolute">
           <VideoCard video={galleryVideos[20]} />
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import IntroWorks from "@/components/Sections/intro/IntroWorks";
 
 import WorkThumbnail from "@/components/Sections/works/WorkThumbnail";
 import WorkFilterBar from "@/components/Sections/works/WorkFilterBar";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import { WORKS, type WorkItem, type WorkType } from "@/data/worksData";
 
 const SectionSpacer = () => <div className="h-[60px] lg:h-[100px]" />;
@@ -31,39 +32,30 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
 
   const isAll = activeType === "All";
 
-  // ✅ SEO (krótko, bez ściany tekstu)
-  const seoH1 = isPl
-    ? "Case study — zobacz moje realizacje — Fritz Głowacki"
-    : "Case studies — selected works — Fritz Glowacki";
-
-  const seoLead = isPl
-    ? "Wybrane projekty z obszaru web designu, UI/UX, brandingu i motion — od architektury informacji po dopracowany interfejs."
-    : "Selected projects across web design, UI/UX, branding and motion — from information architecture to polished interfaces.";
-
   return (
     <main className="main-content relative z-20 bg-white max-w-[1440px] mx-auto">
-        {/* ✅ Niewidoczne SEO H1 + lead */}
-        <header className="sr-only">
-          <h1>{seoH1}</h1>
-          <p>{seoLead}</p>
-        </header>
+        {/* H1 + lead renderowane serwerowo w app/[locale]/works/page.tsx (sr-only). */}
 
         <section aria-label={isPl ? "Wprowadzenie do projektów" : "Works intro"}>
           <IntroWorks />
         </section>
 
-        <section aria-label={isPl ? "Filtry projektów" : "Works filters"}>
-          <WorkFilterBar activeType={activeType} onChange={setActiveType} />
-        </section>
+        <RevealOnScroll start="top 80%" end="top 50%">
+          <section aria-label={isPl ? "Filtry projektów" : "Works filters"}>
+            <WorkFilterBar activeType={activeType} onChange={setActiveType} />
+          </section>
+        </RevealOnScroll>
 
         <SectionSpacer />
 
         {isAll ? (
           <>
             {talentDays && (
-              <section aria-label="Talent Days project">
-                <WorkThumbnail work={talentDays} mode="single" />
-              </section>
+              <RevealOnScroll start="top 80%" end="top 50%">
+                <section aria-label="Talent Days project">
+                  <WorkThumbnail work={talentDays} mode="single" />
+                </section>
+              </RevealOnScroll>
             )}
 
             <SectionSpacer />
@@ -74,15 +66,23 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
                   <div className="w-full md:w-[770px] lg:w-[1108px] lg:ml-auto">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
                       {pharmovit && (
-                        <div className="flex flex-col">
+                        <RevealOnScroll
+                          className="flex flex-col"
+                          start="top 90%"
+                          end="top 70%"
+                        >
                           <WorkThumbnail work={pharmovit} mode="column" />
-                        </div>
+                        </RevealOnScroll>
                       )}
 
                       {pasibus && (
-                        <div className="flex flex-col">
+                        <RevealOnScroll
+                          className="flex flex-col"
+                          start="top 80%"
+                          end="top 60%"
+                        >
                           <WorkThumbnail work={pasibus} mode="column" />
-                        </div>
+                        </RevealOnScroll>
                       )}
                     </div>
                   </div>
@@ -93,9 +93,11 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
             <SectionSpacer />
 
             {kobuStudio && (
-              <section aria-label="Tutlo recommendation system project">
-                <WorkThumbnail work={kobuStudio} mode="single" />
-              </section>
+              <RevealOnScroll start="top 80%" end="top 50%">
+                <section aria-label="Tutlo recommendation system project">
+                  <WorkThumbnail work={kobuStudio} mode="single" />
+                </section>
+              </RevealOnScroll>
             )}
 
             <SectionSpacer />
@@ -106,15 +108,23 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
                   <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto md:mx-auto lg:mx-0">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
                       {tutloRecommendation && (
-                        <div className="flex flex-col gap-7">
+                        <RevealOnScroll
+                          className="flex flex-col gap-7"
+                          start="top 90%"
+                          end="top 70%"
+                        >
                           <WorkThumbnail work={tutloRecommendation} mode="column" />
-                        </div>
+                        </RevealOnScroll>
                       )}
 
                       {absolventAgency && (
-                        <div className="flex flex-col gap-7">
+                        <RevealOnScroll
+                          className="flex flex-col gap-7"
+                          start="top 80%"
+                          end="top 60%"
+                        >
                           <WorkThumbnail work={absolventAgency} mode="column" />
-                        </div>
+                        </RevealOnScroll>
                       )}
                     </div>
                   </div>
@@ -126,11 +136,12 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
           <section aria-label={isPl ? "Lista przefiltrowanych projektów" : "Filtered projects list"}>
             <div className="flex flex-col gap-[60px] md:gap-[60px]">
               {filteredWorks.map((work) => (
-                <WorkThumbnail
-                  key={work.id}
-                  work={{ ...work, layout: "horizontal" }}
-                  mode="single"
-                />
+                <RevealOnScroll key={work.id} start="top 80%" end="top 50%">
+                  <WorkThumbnail
+                    work={{ ...work, layout: "horizontal" }}
+                    mode="single"
+                  />
+                </RevealOnScroll>
               ))}
             </div>
           </section>

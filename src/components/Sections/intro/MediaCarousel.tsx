@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useTranslations } from "@/lib/useTranslations";
 import { getVideoPosterPath } from "@/lib/videoPoster";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type MediaItem = {
   id: number;
@@ -23,6 +24,15 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   const animationRef = useRef<gsap.core.Tween | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isInView, setIsInView] = useState(false);
+
+  const headingRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+  const carouselRef = useScrollReveal<HTMLDivElement>({
+    start: "top 80%",
+    end: "top 50%",
+  });
 
   // Create array of 4 video items - alternating wide and narrow
   const mediaItems: MediaItem[] = [
@@ -196,6 +206,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
     >
       {/* Centered H2 Heading - Responsive */}
       <h2
+        ref={headingRef}
         className="text-black font-semibold  leading-[100%] text-center
                    text-[44px] md:text-[48px] lg:text-[52px]
                    max-w-[1440px] mx-auto px-3 sm:px-[52px]"
@@ -205,6 +216,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
 
       {/* Carousel Container - 8px gap below heading */}
       <div
+        ref={carouselRef}
         className="mt-8 overflow-hidden"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}

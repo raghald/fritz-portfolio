@@ -11,6 +11,7 @@ import { localePath } from "@/i18n/routing";
 import { WORKS } from "@/data/worksData";
 import type { WorkItem } from "@/data/worksData";
 import AnimatedButton from "@/components/AnimatedButton";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import styles from "./ProjectsShowcase.module.css";
 
@@ -61,6 +62,14 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [shouldStartTyping, setShouldStartTyping] = useState(false);
 
+  const headerRevealRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+  const layoutRevealRef = useScrollReveal<HTMLDivElement>({
+    start: "top 90%",
+    end: "top 50%",
+  });
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -198,7 +207,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
       <div className="page-shell">
         {/* Header */}
         <div ref={headerRef} className={styles.header}>
-          <h3 className={styles.headerTitle}>
+          <h3 ref={headerRevealRef} className={styles.headerTitle}>
             {shouldStartTyping ? (
               <TypeAnimation
                 sequence={[tProjects("headerTyping")]}
@@ -214,7 +223,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
         </div>
 
         {/* Layout */}
-        <div className={styles.layout}>
+        <div ref={layoutRevealRef} className={styles.layout}>
           {/* LEFT (sticky) — desktop only */}
           <aside className={styles.aside} aria-hidden="true">
             <div className={styles.sticky}>

@@ -2,12 +2,27 @@
 
 import React from "react";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import styles from "./Skills.module.css";
 
 type SkillItem = {
   id: string;
 };
+
+function SkillCard({ skill, index }: { skill: SkillItem; index: number }) {
+  const t = useTranslations("about.skills");
+  const ref = useScrollReveal<HTMLDivElement>({
+    start: `top ${90 - index * 4}%`,
+    end: `top ${80 - index * 4}%`,
+  });
+  return (
+    <div ref={ref} className={styles.card}>
+      <h3 className={styles.cardTitle}>{t(`items.${skill.id}.title`)}</h3>
+      <p className={styles.cardDesc}>{t(`items.${skill.id}.description`)}</p>
+    </div>
+  );
+}
 
 const Skills: React.FC = () => {
   const t = useTranslations("about.skills");
@@ -23,6 +38,11 @@ const Skills: React.FC = () => {
     { id: "framer" },
   ];
 
+  const headingRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+
   return (
     <section
       className={`${styles.section} page-shell`}
@@ -30,21 +50,13 @@ const Skills: React.FC = () => {
       aria-label={t("sectionAria")}
     >
       <div className="w-full">
-        <h2 className={styles.heading}>{t("heading")}</h2>
+        <h2 ref={headingRef} className={styles.heading}>{t("heading")}</h2>
 
         <div className={styles.gridWrap}>
           <div className={styles.grid}>
-            {skillItems.map((skill) => {
-              const title = t(`items.${skill.id}.title`);
-              const description = t(`items.${skill.id}.description`);
-
-              return (
-                <div key={skill.id} className={styles.card}>
-                  <h3 className={styles.cardTitle}>{title}</h3>
-                  <p className={styles.cardDesc}>{description}</p>
-                </div>
-              );
-            })}
+            {skillItems.map((skill, idx) => (
+              <SkillCard key={skill.id} skill={skill} index={idx} />
+            ))}
           </div>
         </div>
 

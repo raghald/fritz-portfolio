@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "@/lib/useTranslations";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import styles from "./WhatIDo.module.css";
 
@@ -10,6 +11,41 @@ type ServiceCard = {
   id: string;
   iconSrc: string;
 };
+
+function ServiceCardReveal({
+  service,
+  index,
+}: {
+  service: ServiceCard;
+  index: number;
+}) {
+  const t = useTranslations("about.whatIDo");
+  const ref = useScrollReveal<HTMLDivElement>({
+    start: `top ${90 - index * 7}%`,
+    end: `top ${75 - index * 7}%`,
+  });
+  const title = t(`items.${service.id}.title`);
+  const description = t(`items.${service.id}.description`);
+
+  return (
+    <div ref={ref} className={styles.card}>
+      <div className={styles.icon}>
+        <Image
+          src={service.iconSrc}
+          alt={title}
+          width={40}
+          height={40}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      <div className={styles.text}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardDesc}>{description}</p>
+      </div>
+    </div>
+  );
+}
 
 const WhatIDo: React.FC = () => {
   const t = useTranslations("about.whatIDo");
@@ -21,41 +57,30 @@ const WhatIDo: React.FC = () => {
     { id: "testingIteration", iconSrc: "/images/emojis.svg" },
   ];
 
+  const headingRef = useScrollReveal<HTMLHeadingElement>({
+    start: "top 90%",
+    end: "top 60%",
+  });
+  const leadRef = useScrollReveal<HTMLParagraphElement>({
+    start: "top 80%",
+    end: "top 50%",
+  });
+
   return (
     <section
       className={`${styles.section} page-shell`}
       role="region"
       aria-label={t("sectionAria")}
     >
-      <h2 className={styles.heading}>{t("heading")}</h2>
+      <h2 ref={headingRef} className={styles.heading}>{t("heading")}</h2>
 
       <div className={styles.layout}>
-        <p className={styles.lead}>{t("lead")}</p>
+        <p ref={leadRef} className={styles.lead}>{t("lead")}</p>
 
         <div className={styles.grid}>
-          {services.map((service) => {
-            const title = t(`items.${service.id}.title`);
-            const description = t(`items.${service.id}.description`);
-
-            return (
-              <div key={service.id} className={styles.card}>
-                <div className={styles.icon}>
-                  <Image
-                    src={service.iconSrc}
-                    alt={title}
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div className={styles.text}>
-                  <h3 className={styles.cardTitle}>{title}</h3>
-                  <p className={styles.cardDesc}>{description}</p>
-                </div>
-              </div>
-            );
-          })}
+          {services.map((service, idx) => (
+            <ServiceCardReveal key={service.id} service={service} index={idx} />
+          ))}
         </div>
       </div>
     </section>
