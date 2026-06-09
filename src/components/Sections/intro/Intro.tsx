@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { FaRegCopy, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
 import { useTranslations } from "@/lib/useTranslations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -11,7 +10,12 @@ import ContactAction from "@/components/ContactAction";
 import styles from "./Intro.module.css";
 
 type IntroProps = {
-  imageSrc?: string;
+  /**
+   * Bazowy slug do wariantów; faktyczny <img src> użyje większego wariantu,
+   * srcset poda mniejszy dla mobile. Pliki wygenerowane przez
+   * scripts/optimize-photos.mjs (photo-492w.webp, photo-984w.webp).
+   */
+  imageBaseSrc?: string;
   email?: string;
   instagramHref?: string;
   linkedinHref?: string;
@@ -22,7 +26,7 @@ type IntroProps = {
 };
 
 const Intro: React.FC<IntroProps> = ({
-  imageSrc = "/images/photo.webp",
+  imageBaseSrc = "/images/photo",
   email = "info@fritzglowacki.com",
   instagramHref = "https://www.instagram.com/fritzglowacki/",
   linkedinHref = "https://www.linkedin.com/in/fryderyk-glowacki/",
@@ -50,13 +54,22 @@ const Intro: React.FC<IntroProps> = ({
         <div className={styles.grid}>
           {/* Image Column */}
           <div ref={imageRef} className={styles.image}>
-            <Image
-              src={imageSrc}
+            {/* Statyczne warianty webp wygenerowane przez scripts/optimize-photos.mjs.
+                next/image z `unoptimized: true` (output: "export") nie generuje
+                srcset, więc używamy <img> z ręcznym srcSet/sizes. width/height
+                rezerwują miejsce w layoucie (zero CLS). */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${imageBaseSrc}-984w.webp`}
+              srcSet={`${imageBaseSrc}-492w.webp 492w, ${imageBaseSrc}-984w.webp 984w`}
+              sizes="(max-width: 768px) 100vw, 492px"
               alt={tIntro("portraitAlt")}
               width={492}
               height={576}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
-              priority
             />
           </div>
 

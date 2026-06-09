@@ -14,7 +14,8 @@ const IntroGallery: React.FC = () => {
       aria-label={t("aria")}
     >
       <div className={styles.galleryWrap}>
-        <h1 className={`${styles.title} ${styles.alignRight} w-full`}>{t("title")}</h1>
+        {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/gallery/page.tsx (server, sr-only). */}
+        <p className={`${styles.title} ${styles.alignRight} w-full`}>{t("title")}</p>
         <p className={`${styles.subtitle} ${styles.alignRight} w-full`}>
           {t("description")}
         </p>

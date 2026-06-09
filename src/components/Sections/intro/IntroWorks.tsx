@@ -15,7 +15,8 @@ const IntroWorks: React.FC = () => {
     >
       {/* MOBILE & TABLET */}
       <div className={styles.containerMobile}>
-        <h1 className={styles.title}>{t("title")}</h1>
+        {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/works/page.tsx (server, sr-only). */}
+        <p className={styles.title}>{t("title")}</p>
 
         <p className={styles.subtitle}>{t("subtitle")}</p>
 
@@ -27,7 +28,8 @@ const IntroWorks: React.FC = () => {
       {/* DESKTOP */}
       <div className={styles.containerDesktop}>
         <div className={styles.max}>
-          <h1 className={styles.title}>{t("title")}</h1>
+          {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/works/page.tsx (server, sr-only). */}
+        <p className={styles.title}>{t("title")}</p>
 
           <p className={`${styles.subtitle} max-w-[720px]`}>
             {t("subtitle")}
