@@ -25,7 +25,7 @@ export type WorkItem = {
   id: string;
   type: WorkType[];
   year: string;
-  coverSrc: string; 
+  coverSrc: string;
   videoSrc?: string;
   href: string;
   layout: WorkLayoutVariant;
@@ -33,6 +33,11 @@ export type WorkItem = {
   client?: string;
   tools?: string;
   liveUrl?: string;
+
+  /** ISO date (YYYY-MM-DD) ostatniej istotnej aktualizacji case study.
+   *  Używane przez src/app/sitemap.ts jako <lastmod>. Gdy brak, fallback
+   *  do `${year}-06-01`. */
+  updatedAt?: string;
 
   case?: {
     heroVideo: string;
