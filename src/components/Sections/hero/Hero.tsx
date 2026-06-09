@@ -30,37 +30,31 @@ export default function Hero({ rightOrnaments }: HeroProps) {
   const { openPopup } = useContactPopup();
   const t = useTranslations("hero");
   const locale = useLocale() as "en" | "pl";
-  const isPl = locale === "pl";
 
   // H1 strony jest renderowany serwerowo w app/[locale]/page.tsx (sr-only header).
   // Tutaj utrzymujemy AnimatedTitle jako element wizualny bez własnego nagłówka H1.
-
-  const heroAltBase = isPl
-    ? "Fryderyk Głowacki (Fritz) — grafik, Web / UI/UX / branding / motion"
-    : "Fryderyk Głowacki (Fritz) — Web / UI/UX / brand / motion designer";
+  // Portrety w carouselu są dekoratywne (aria-hidden w HeroMedia), więc nie podajemy
+  // alt — HeroMedia jawnie ustawia alt="" zgodnie z WCAG dla decoration.
 
   const heroMedia = useMemo<HeroMediaItem[]>(
     () => [
       {
         type: "image",
         src: "/images/Hero/48C7C530-329B-4F4E-B84A-D53ED3B58B25.webp",
-        alt: `${heroAltBase} — portrait 1`,
         durationMs: 900,
       },
       {
         type: "image",
         src: "/images/Hero/9603.webp",
-        alt: `${heroAltBase} — portrait 2`,
         durationMs: 900,
       },
       {
         type: "image",
         src: "/images/Hero/6672.webp",
-        alt: `${heroAltBase} — portrait 3`,
         durationMs: 900,
       },
     ],
-    [heroAltBase]
+    []
   );
 
   const titleText = t("titleWord");
@@ -150,8 +144,6 @@ export default function Hero({ rightOrnaments }: HeroProps) {
       className={styles.section}
       style={sectionStyle}
     >
-      <h1 className="sr-only">{seoH1}</h1>
-
       <div className={styles.shell}>
         <div className={styles.sideCopy}>
           {sideCopyLine1}

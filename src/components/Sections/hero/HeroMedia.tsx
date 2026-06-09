@@ -20,6 +20,19 @@ export type HeroMediaItem =
       playsInline?: boolean;
     };
 
+/**
+ * Generuje srcSet dla obrazka portret-hero zakładając konwencję nazewniczą
+ * z scripts/optimize-photos.mjs (np. plik.webp → plik-600w.webp, plik-1200w.webp).
+ * Jeśli warianty nie istnieją (np. po wgraniu nowego portretu bez odpalenia skryptu)
+ * — zwraca undefined i przeglądarka użyje samego `src`.
+ */
+const heroSrcSet = (src: string): string | undefined => {
+  // Heuristic: src musi się kończyć .webp żeby uznać że są warianty.
+  if (!src.endsWith(".webp")) return undefined;
+  const base = src.slice(0, -".webp".length);
+  return `${base}-600w.webp 600w, ${base}-1200w.webp 1200w`;
+};
+
 type HeroMediaProps = {
   items: HeroMediaItem[];
   defaultDurationMs?: number;
@@ -95,6 +108,10 @@ export default function HeroMedia({
   return (
     <div
       className={className}
+      // aria-hidden="true" — portrety to dekoracja carouselowa pod AnimatedTitle.
+      // Faktyczny H1 strony jest server-rendered w app/[locale]/page.tsx (sr-only),
+      // a Hero ma osobny widoczny AnimatedTitle. Screen readery nie potrzebują
+      // kontekstu portretów — zamiast tego dostają H1 + tag list.
       aria-hidden="true"
       style={{ position: "relative", width: "100%", height: "100%" }}
     >
@@ -105,12 +122,18 @@ export default function HeroMedia({
         if (item.type === "image") {
           return (
             // hero-photo polega na naturalnych wymiarach obrazka (width/height auto + max-inline-size),
-            // więc next/image z width/height wymuszałby nieprawidłowy aspect-ratio
+            // więc next/image z width/height wymuszałby nieprawidłowy aspect-ratio.
+            // alt="" — element jest dekoratywny (wrapper ma aria-hidden), więc jawnie
+            // pomijamy alt zgodnie z WCAG (alternatywa: opisowy alt by zmylił SR).
+            // srcSet daje przeglądarce wybór mniejszego wariantu na mobile (~16 KB
+            // zamiast 360+ KB przy 360x..px wyświetlanym).
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={item.src}
               src={item.src}
-              alt={item.alt ?? ""}
+              srcSet={heroSrcSet(item.src)}
+              sizes="(max-width: 768px) 70vw, 600px"
+              alt=""
               draggable={false}
               loading={i === 0 ? "eager" : "lazy"}
               decoding={i === 0 ? "sync" : "async"}
