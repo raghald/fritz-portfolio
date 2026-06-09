@@ -15,21 +15,23 @@ export default function KobuStudioContent() {
         {
           type: "challenge",
           imageSrc: "/images/Case_Studies/Kobu/Kobu_Desktop_1.webp",
+          imageAlt:
+            "Kobu Studio architectural office website — initial design exploration shown on desktop",
         },
         {
           type: "goalGrid",
           images: {
             leftTop: {
               src: "/images/Case_Studies/Kobu/Kobu_Desktop_2.webp",
-              alt: "Kobu Studio – goal visual 1",
+              alt: "Kobu Studio architectural office website — portfolio gallery on desktop",
             },
             leftBottom: {
               src: "/images/Case_Studies/Kobu/Kobu_Desktop_4.webp",
-              alt: "Kobu Studio – goal visual 2",
+              alt: "Kobu Studio architectural office website — project detail view on desktop",
             },
             right: {
               src: "/images/Case_Studies/Kobu/Kobu_Desktop_3.webp",
-              alt: "Kobu Studio – goal visual 3",
+              alt: "Kobu Studio architectural office website — studio philosophy section on desktop",
             },
           },
         },
@@ -37,7 +39,7 @@ export default function KobuStudioContent() {
         {
           type: "halfImageLeft",
           imageSrc: "/images/Case_Studies/Kobu/Kobu_Mobile_All.webp",
-          alt: "Kobu Studio – mobile overview",
+          alt: "Kobu Studio architectural office website — responsive mobile design across multiple screens",
           shadow: true,
         },
         { type: "result" },

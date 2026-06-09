@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import KobuContent from "./KobuContent";
-import { buildCaseStudyMetadata } from "@/lib/caseStudyMetadata";
+import JsonLd from "@/components/JsonLd";
+import { buildCaseStudyMetadata, buildCaseStudyJsonLd } from "@/lib/caseStudyMetadata";
+
+const WORK_ID = "kobu-studio";
+const I18N_KEY = "Works.KobuStudio";
 
 export async function generateMetadata({
   params,
@@ -8,16 +12,20 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return buildCaseStudyMetadata({
-    locale,
-    workId: "kobu-studio",
-    i18nKey: "Works.KobuStudio",
-  });
+  return buildCaseStudyMetadata({ locale, workId: WORK_ID, i18nKey: I18N_KEY });
 }
 
-export default function KobuStudioPage() {
+export default async function KobuStudioPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const jsonLd = await buildCaseStudyJsonLd({ locale, workId: WORK_ID, i18nKey: I18N_KEY });
+
   return (
     <main className="main-content relative z-20 bg-white">
+      <JsonLd data={jsonLd} />
       <KobuContent />
     </main>
   );

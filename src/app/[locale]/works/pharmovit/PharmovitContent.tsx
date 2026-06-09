@@ -15,21 +15,23 @@ export default function PharmovitContent() {
         {
           type: "challenge",
           imageSrc: "/images/Case_Studies/Pharmovit/Pharmovit_Desktop_3.webp",
+          imageAlt:
+            "Pharmovit supplement e-commerce store — original product page audited before redesign, on desktop",
         },
         {
           type: "goalGrid",
           images: {
             leftTop: {
               src: "/images/Case_Studies/Pharmovit/Pharmovit_Desktop_2.webp",
-              alt: "Pharmovit – goal visual 1",
+              alt: "Pharmovit supplement e-commerce store — product category page on desktop",
             },
             leftBottom: {
               src: "/images/Case_Studies/Pharmovit/Pharmovit_Desktop_4.webp",
-              alt: "Pharmovit – goal visual 2",
+              alt: "Pharmovit supplement e-commerce store — product detail page on desktop",
             },
             right: {
               src: "/images/Case_Studies/Pharmovit/Pharmovit_Desktop_1.webp",
-              alt: "Pharmovit – goal visual 3",
+              alt: "Pharmovit supplement e-commerce store — homepage hero section on desktop",
             },
           },
         },
@@ -38,7 +40,7 @@ export default function PharmovitContent() {
           type: "halfImageLeft",
           imageSrc:
             "/images/Case_Studies/Pharmovit/Pharmovit_Mobile_All.webp",
-          alt: "Talent Days – mobile overview",
+          alt: "Pharmovit supplement e-commerce store — responsive mobile design across multiple screens",
           shadow: true,
         },
         { type: "result" },

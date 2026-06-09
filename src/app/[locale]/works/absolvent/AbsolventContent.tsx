@@ -16,21 +16,23 @@ export default function AbsolventContent() {
           type: "challenge",
           imageSrc:
             "/images/Case_Studies/Absolvent/Absolvetn_Desktop_1.webp",
+          imageAlt:
+            "Absolvent Consulting website — original design audited before the redesign, shown on desktop",
         },
         {
           type: "goalGrid",
           images: {
             leftTop: {
               src: "/images/Case_Studies/Absolvent/Absolvetn_Desktop_2.webp",
-              alt: "Absolvent – goal visual 1",
+              alt: "Absolvent Consulting employer branding agency website — homepage hero section on desktop",
             },
             leftBottom: {
               src: "/images/Case_Studies/Absolvent/Absolvetn_Desktop_7.webp",
-              alt: "Absolvent – goal visual 2",
+              alt: "Absolvent Consulting employer branding agency website — services overview on desktop",
             },
             right: {
               src: "/images/Case_Studies/Absolvent/Absolvetn_Desktop_8.webp",
-              alt: "Absolvent – goal visual 3",
+              alt: "Absolvent Consulting employer branding agency website — case studies layout on desktop",
             },
           },
         },
@@ -39,7 +41,7 @@ export default function AbsolventContent() {
           type: "halfImageLeft",
           imageSrc:
             "/images/Case_Studies/Absolvent/Absolvetn_Mobile_All.webp",
-          alt: "Absolvent – mobile overview",
+          alt: "Absolvent Consulting employer branding agency website — responsive mobile design across multiple screens",
           shadow: true,
         },
         { type: "result" },

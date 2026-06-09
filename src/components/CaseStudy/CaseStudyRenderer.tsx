@@ -30,7 +30,7 @@ type GoalGridImages = {
 };
 
 type Section =
-  | { type: "challenge"; imageSrc: string }
+  | { type: "challenge"; imageSrc: string; imageAlt?: string }
   | { type: "goalGrid"; images: GoalGridImages }
   | { type: "range" }
   | {
@@ -193,6 +193,7 @@ const CaseStudyRenderer: React.FC<CaseStudyRendererProps> = ({
                 <ChallengeSection
                   i18nKey={i18nKey}
                   imageSrc={section.imageSrc}
+                  imageAlt={section.imageAlt}
                 />
               );
 
