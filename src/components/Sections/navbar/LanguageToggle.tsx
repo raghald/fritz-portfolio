@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import styles from "./LanguageToggle.module.css";
 
@@ -16,7 +16,12 @@ export default function LanguageToggle({ variant = "desktop" }: LanguageTogglePr
 
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+
+  // Świadomie NIE używamy useSearchParams() — ten hook w Next 15 z
+  // output: "export" wymusza CSR bailout całego ancestor Suspense boundary,
+  // co prowadzi do pustego statycznego HTML i visible flicker przy animacji
+  // wejścia navbara. Query string i tak jest potrzebny tylko w momencie
+  // kliknięcia — czytamy go wtedy bezpośrednio z window.location.
 
   const isEn = locale === "en";
   const otherLocale: "en" | "pl" = isEn ? "pl" : "en";
@@ -38,9 +43,13 @@ export default function LanguageToggle({ variant = "desktop" }: LanguageTogglePr
           : `/pl${stripped}`
         : stripped;
 
-    const query = searchParams?.toString();
-    const hash = typeof window !== "undefined" ? window.location.hash : "";
-    const href = query ? `${newPathname}?${query}${hash}` : `${newPathname}${hash}`;
+    // Czytamy query/hash bezpośrednio z URL (handler odpala się tylko na kliencie,
+    // więc window istnieje). Defensive check na wszelki wypadek.
+    const search =
+      typeof window !== "undefined" ? window.location.search : "";
+    const hash =
+      typeof window !== "undefined" ? window.location.hash : "";
+    const href = `${newPathname}${search}${hash}`;
 
     router.replace(href, { scroll: true });
   };

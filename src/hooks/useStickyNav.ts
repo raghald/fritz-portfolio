@@ -2,37 +2,104 @@
 
 import { useEffect, useState } from "react";
 
-export function useStickyNav(threshold: number = 50, enabled: boolean = true): boolean {
+/**
+ * Detekcja "stuck" state dla sticky navbara.
+ *
+ * Implementacja: IntersectionObserver na niewidocznym sentinel divie wstrzykniętym
+ * na pozycji `threshold`px od góry body. Gdy sentinel opuści viewport (przewinięto
+ * w dół) → isStuck=true. Gdy wróci → isStuck=false.
+ *
+ * Dlaczego nie window.scroll event: smooth scroll z Lenis interpoluje pozycję,
+ * a finalne scroll-eventy potrafią lagować lub być pomijane (zwłaszcza przy
+ * powrocie do top), przez co `setIsStuck(scrollY > 50)` zostaje "zamrożony"
+ * w starym stanie. IO jest niezależne od emisji scroll events i opiera się
+ * tylko na faktycznej geometrii layoutu.
+ *
+ * @param threshold px od góry strony, po przekroczeniu którego navbar staje się "stuck"
+ * @param enabled jeśli false, observer się nie podłącza i isStuck pozostaje false
+ */
+export function useStickyNav(
+  threshold: number = 50,
+  enabled: boolean = true
+): boolean {
   const [isStuck, setIsStuck] = useState(false);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      setIsStuck(false);
+      return;
+    }
 
-    let ticking = false;
+    if (typeof window === "undefined") return;
 
-    const updateStickyState = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      setIsStuck(scrollY > threshold);
-      ticking = false;
+    // Sentinel: niewidoczny 1px element pozycjonowany absolutnie na top:threshold.
+    // Gdy zniknie z viewportu (scroll w dół) → stuck.
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("data-sticky-sentinel", "");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = [
+      "position:absolute",
+      `top:${threshold}px`,
+      "left:0",
+      "width:1px",
+      "height:1px",
+      "pointer-events:none",
+      "opacity:0",
+    ].join(";");
+    document.body.appendChild(sentinel);
+
+    // TODO: usunąć po zdiagnozowaniu navbar bug na prodzie. Aktywne tylko
+    // gdy ktoś ustawi ?debugNav=1 w URL — nie zaśmieca konsoli normalnym userom.
+    const debug =
+      typeof window !== "undefined" &&
+      window.location.search.includes("debugNav=1");
+    const log = (msg: string, data?: Record<string, unknown>) => {
+      if (!debug) return;
+      // eslint-disable-next-line no-console
+      console.log(`[useStickyNav] ${msg}`, {
+        scrollY: window.scrollY,
+        threshold,
+        ts: Date.now(),
+        ...data,
+      });
     };
 
-    const requestTick = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateStickyState);
-        ticking = true;
+    log("mount", { enabled });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        // entry.isIntersecting = sentinel widoczny w viewport.
+        // Widoczny → nie jesteśmy stuck. Niewidoczny → stuck.
+        const next = !entry.isIntersecting;
+        log("IO trigger", {
+          isIntersecting: entry.isIntersecting,
+          nextIsStuck: next,
+          intersectionRatio: entry.intersectionRatio,
+        });
+        setIsStuck(next);
+      },
+      {
+        // root: null = viewport
+        // rootMargin: domyślny — strzela na granicy viewport
+        threshold: 0,
       }
-    };
+    );
 
-    const onScroll = () => {
-      requestTick();
-    };
+    observer.observe(sentinel);
 
-    updateStickyState();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
+    // Initial check oparty na scrollY — IO odpala się dopiero przy pierwszej
+    // zmianie intersection, więc na bardzo pierwszym frame mamy fallback.
+    const initialScrollY = window.scrollY || window.pageYOffset;
+    const initialIsStuck = initialScrollY > threshold;
+    log("initial", { initialIsStuck });
+    setIsStuck(initialIsStuck);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      log("unmount");
+      observer.disconnect();
+      sentinel.remove();
     };
   }, [threshold, enabled]);
 

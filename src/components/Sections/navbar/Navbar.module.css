@@ -95,15 +95,38 @@
   border-radius: 0;
   border-style: solid;
   border-color: rgb(var(--rgb-black) / 0.05);
-  border-bottom-width: 1px;
 
-  /* Sterowanie zachowaniem przez inline style (tylko "ruchome" rzeczy) */
+  /* Baseline = "floating pill" (isStuck=false). Klasa .stuck nadpisuje
+     wartości na "stuck to top" (isStuck=true). Wszystko sterowane CSS-em,
+     żeby React-owa reconciliation inline style'ów nie zostawiała stale state
+     (patrz wcześniejszy bug i workaround key={variant} w NavbarWrapper). */
+  margin-top: 50px;
+  max-width: 1108px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+
+  /* Longhandy zamiast border-width — niektóre silniki mają problemy
+     z interpolacją shorthanda gdy zmieniają się tylko trzy z czterech
+     longhandów (top/right/left → 0, bottom zostaje 1px). */
   transition:
     margin-top 300ms ease-out,
     max-width 300ms ease-out,
     box-shadow 300ms ease-out,
-    border-width 300ms ease-out,
-    padding 300ms ease-out;
+    border-top-width 300ms ease-out,
+    border-right-width 300ms ease-out,
+    border-left-width 300ms ease-out;
+}
+
+.desktopInner.stuck {
+  margin-top: 0;
+  max-width: 100%;
+  box-shadow: none;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
 }
 
 .links {

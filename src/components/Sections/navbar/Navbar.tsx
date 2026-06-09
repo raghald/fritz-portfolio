@@ -42,18 +42,6 @@ export default function Navbar({
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const desktopWrapperStyle: React.CSSProperties | undefined = isSticky
-    ? {
-        marginTop: isStuck ? 0 : 50,
-        maxWidth: isStuck ? "100%" : "1108px",
-        boxShadow: isStuck ? "none" : "0 18px 60px rgba(0, 0, 0, 0.18)",
-        borderTopWidth: isStuck ? 0 : 1,
-        borderRightWidth: isStuck ? 0 : 1,
-        borderLeftWidth: isStuck ? 0 : 1,
-        borderBottomWidth: 1,
-      }
-    : undefined;
-
   // Intro animation tylko dla sticky (home page) — sterujemy klasą + CSS var
   const playIntro = isSticky && !disableIntro;
   const delayMs =
@@ -64,7 +52,9 @@ export default function Navbar({
     : undefined;
 
   const desktopClassName = isSticky ? styles.desktop : styles.staticDesktop;
-  const desktopInnerClassName = isSticky ? styles.desktopInner : styles.staticInner;
+  const desktopInnerClassName = isSticky
+    ? `${styles.desktopInner}${isStuck ? ` ${styles.stuck}` : ""}`
+    : styles.staticInner;
 
   return (
     <>
@@ -116,7 +106,7 @@ export default function Navbar({
         aria-label={t("ariaMainNav")}
         style={{ pointerEvents: "auto", ...introStyle }}
       >
-        <div className={desktopInnerClassName} style={desktopWrapperStyle}>
+        <div className={desktopInnerClassName}>
           <div className={styles.links}>
             <Link href={localePath(locale, "/works")} className={styles.link}>
               {t("linkWorks")}
