@@ -41,9 +41,16 @@ export async function generateMetadata({
       title,
       description,
     },
+    // Cookies to strona prawna / niskiej wartości dla SEO — noindex zostawia ją
+    // dostępną dla użytkownika i linkowalną (footer), ale wycina z wyników wyszukiwania.
+    // follow: true — crawler może iść za linkami stąd (np. do home).
     robots: {
-      index: true,
+      index: false,
       follow: true,
+      googleBot: {
+        index: false,
+        follow: true,
+      },
     },
   };
 }

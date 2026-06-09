@@ -42,11 +42,24 @@ export async function generateMetadata({
       url,
       title,
       description,
+      siteName: "Fritz Glowacki Portfolio",
+      images: [
+        {
+          url: "/images/OG.webp",
+          width: 1200,
+          height: 630,
+          alt: isPl
+            ? "O mnie — Fritz Głowacki"
+            : "About — Fritz Glowacki",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/images/OG.webp"],
+      creator: "@fritzglowacki",
     },
     robots: {
       index: true,

@@ -2,6 +2,7 @@
 export { generateStaticParams } from "../layout";
 
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import WorksPageClient from "./WorksPageClient";
 import type { Locale } from "@/i18n/routing";
 
@@ -45,11 +46,24 @@ export async function generateMetadata({
       url,
       title,
       description,
+      siteName: "Fritz Glowacki Portfolio",
+      images: [
+        {
+          url: "/images/OG.webp",
+          width: 1200,
+          height: 630,
+          alt: isPl
+            ? "Case study — Fritz Głowacki"
+            : "Case studies — Fritz Glowacki",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/images/OG.webp"],
+      creator: "@fritzglowacki",
     },
     robots: {
       index: true,
@@ -70,6 +84,26 @@ export default async function WorksPage({
 }: {
   params: Promise<{ locale: Locale }>;
 }) {
-  await params;
-  return <WorksPageClient />;
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const isPl = locale === "pl";
+
+  const seoH1 = isPl
+    ? "Case study — zobacz moje realizacje — Fritz Głowacki"
+    : "Case studies — selected works — Fritz Glowacki";
+
+  const seoLead = isPl
+    ? "Wybrane projekty z obszaru web designu, UI/UX, brandingu i motion — od architektury informacji po dopracowany interfejs."
+    : "Selected projects across web design, UI/UX, branding and motion — from information architecture to polished interfaces.";
+
+  return (
+    <>
+      <header className="sr-only">
+        <h1>{seoH1}</h1>
+        <p>{seoLead}</p>
+      </header>
+      <WorksPageClient />
+    </>
+  );
 }

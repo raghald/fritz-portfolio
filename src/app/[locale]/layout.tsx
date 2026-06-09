@@ -79,32 +79,9 @@ export async function generateMetadata({
     ? "Designer i projektant: strony internetowe, UI/UX, branding i motion. Zobacz wybrane case studies i projekty — od koncepcji po finalny design."
     : "Web, UI/UX, Brand & Motion Designer. I design high-converting interfaces, cohesive brands, and motion systems. Explore selected case studies and projects.";
 
-  const keywords = isPl
-    ? [
-        "grafik",
-        "projektant ui ux",
-        "projektant stron internetowych",
-        "web designer",
-        "branding",
-        "identyfikacja wizualna",
-        "motion design",
-        "animacje ui",
-        "design system",
-        "Fritz Glowacki",
-        "Fryderyk Głowacki",
-      ]
-    : [
-        "web designer",
-        "ui ux designer",
-        "product designer",
-        "brand designer",
-        "motion designer",
-        "motion design",
-        "visual identity",
-        "design systems",
-        "Fritz Glowacki",
-        "Fryderyk Głowacki",
-      ];
+  // Meta keywords celowo usunięte — Google ignoruje od 2009 (oświadczenie Matta Cuttsa),
+  // a Bing/Yandex w niektórych przypadkach traktują jako sygnał keyword stuffing.
+  // Słowa kluczowe są reprezentowane przez treść stron, title, H1, JSON-LD.
 
   const ogTitle = "Fritz Glowacki — Portfolio";
 
@@ -116,7 +93,6 @@ export async function generateMetadata({
       template: "%s | Fritz Glowacki",
     },
     description,
-    keywords,
 
     alternates: {
       canonical: url,
@@ -263,6 +239,15 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body>
+        {/* Preconnect do Google Tag Manager / Analytics — przyspiesza pierwsze
+            połączenie (TCP + TLS handshake) o 100–300ms, niezależnie od momentu
+            faktycznego załadowania skryptów (które są warunkowane consent).
+            Sam preconnect to tylko otwarcie socketu — nie wysyła danych usera,
+            więc nie wymaga consent (GDPR-safe).
+            Next 15 przenosi te <link> do <head> automatycznie. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
         {/* Consent Mode v2 defaults — inline <script> so it runs synchronously
             before any of next/script's afterInteractive scripts (GTM/GA) can start. */}
         <ConsentDefaults />
@@ -271,9 +256,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ContactPopupProvider>
             {/* PageTransition tymczasowo wyłączone — przywróć wrapper, by włączyć przejścia z powrotem.
-                Globalny Suspense został celowo usunięty — useSearchParams w LanguageToggle
-                (wewnątrz Navbar) ma już własny Suspense boundary, więc tutaj nie potrzeba
-                bailout-bezpieczeństwa, a bez wrappera reszta drzewa pre-renderuje się do statycznego HTML. */}
+                Globalny Suspense został celowo usunięty — LanguageToggle (wewnątrz Navbar)
+                nie używa już useSearchParams (czyta query/hash z window.location w handlerze
+                kliku), więc nie wymusza CSR bailoutu i cały tree pre-renderuje się do statycznego HTML. */}
             <GoogleTagManager />
             <GoogleAnalytics />
             <WebVitals />
