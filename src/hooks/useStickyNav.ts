@@ -89,12 +89,15 @@ export function useStickyNav(
 
     observer.observe(sentinel);
 
-    // Initial check oparty na scrollY — IO odpala się dopiero przy pierwszej
-    // zmianie intersection, więc na bardzo pierwszym frame mamy fallback.
-    const initialScrollY = window.scrollY || window.pageYOffset;
-    const initialIsStuck = initialScrollY > threshold;
-    log("initial", { initialIsStuck });
-    setIsStuck(initialIsStuck);
+    // Świadomie BEZ sync `setIsStuck(initialScrollY > threshold)`:
+    // 1) IO i tak strzela pierwszym callbackiem zaraz po observe() z aktualną
+    //    geometrią — nie ma "pierwszego frame'a bez stanu".
+    // 2) Sync setState w useEffect uruchamiał extra render PRZED tym jak IO
+    //    zdążył podać prawdziwą wartość — przy class-toggle to widać jako
+    //    flash "stuck" przy wejściu na stronę (przy inline-style React batchował
+    //    inaczej i flash był zamaskowany).
+    // 3) Jeśli user wbija /home ze scrolla > threshold (rzadki refresh),
+    //    IO i tak nadgoni w pierwszym frame.
 
     return () => {
       log("unmount");

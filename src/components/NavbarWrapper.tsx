@@ -4,12 +4,21 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import Navbar from "./Sections/navbar/Navbar";
+import { routing } from "@/i18n/routing";
+
+// Stripujemy WSZYSTKIE locale (nie tylko /pl), bo przy `output: "export"` SSR
+// renderuje stronę pod kanonicznym route'em `[locale]` — na build-time
+// `usePathname()` zwraca `/en` lub `/en/` dla EN home (przed promocją plików
+// przez scripts/postbuild-i18n.mjs). Bez stripowania `/en` SSR HTML wychodzi
+// z variant="static" zamiast "sticky" → hydration mismatch + flash białego
+// staticDesktopu na home. Regex generowana z `routing.locales` trzyma się
+// w sync z configiem.
+const localePrefixRe = new RegExp(`^/(${routing.locales.join("|")})(?=/|$)`);
 
 export default function NavbarWrapper() {
   const pathname = usePathname();
 
-  // EN bez prefiksu, PL pod /pl/. Home = "/" lub "/pl" / "/pl/".
-  const cleanedPath = pathname.replace(/^\/pl(?=\/|$)/, "") || "/";
+  const cleanedPath = pathname.replace(localePrefixRe, "") || "/";
   const isHome = cleanedPath === "/";
   const variant = isHome ? "sticky" : "static";
 

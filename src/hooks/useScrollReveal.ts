@@ -16,6 +16,12 @@ type Options = {
   end?: string;
 };
 
+// "top 20%" → 0.2. Inne wartości traktujemy jako default 0.2.
+function parseTriggerRatio(value: string, fallback: number): number {
+  const match = /(\d+(?:\.\d+)?)\s*%$/.exec(value.trim());
+  return match ? Number(match[1]) / 100 : fallback;
+}
+
 export function useScrollReveal<T extends HTMLElement = HTMLElement>(
   options: Options = {}
 ) {
@@ -28,6 +34,18 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(el, { clearProps: "transform,opacity" });
+      return;
+    }
+
+    // Sekcje, których top jest już za progiem `end` (czyli element jest
+    // wysoko w viewport / nad nim — animacja i tak skończyłaby się od razu),
+    // renderujemy w stanie końcowym i nie ustawiamy ScrollTriggera.
+    // Sekcje tylko częściowo widoczne (np. przy dolnej krawędzi viewport)
+    // dalej animują się przy scrollu — zgodnie z dotychczasowym efektem.
+    const rect = el.getBoundingClientRect();
+    const endRatio = parseTriggerRatio(end, 0.2);
+    if (rect.top < window.innerHeight * endRatio) {
+      gsap.set(el, { y: 0, opacity: 1 });
       return;
     }
 
