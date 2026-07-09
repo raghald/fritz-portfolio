@@ -18,6 +18,7 @@ const BASE_URL = "https://www.fritzglowacki.com";
 const SLUG_BY_WORK_ID: Record<string, string> = {
   "absolvent-agency": "absolvent",
   "kobu-studio": "kobu-studio",
+  "nth-consulting-group": "nth",
   "pasibus-job-board": "pasibus",
   "pharmovit-store": "pharmovit",
   "talentdays-blog": "talentdays",

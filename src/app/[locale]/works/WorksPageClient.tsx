@@ -23,6 +23,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
   return WORKS.filter((work) => work.type.includes(activeType));
 }, [activeType]);
 
+  const nthConsulting = WORKS.find((w) => w.id === "nth-consulting-group");
   const talentDays = WORKS.find((w) => w.id === "talentdays-blog");
   const pharmovit = WORKS.find((w) => w.id === "pharmovit-store");
   const pasibus = WORKS.find((w) => w.id === "pasibus-job-board");
@@ -50,28 +51,30 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
 
         {isAll ? (
           <>
-            {talentDays && (
+            {/* 1 — single: Nth Consulting Group (2026) */}
+            {nthConsulting && (
               <RevealOnScroll start="top 80%" end="top 50%">
-                <section aria-label="Talent Days project">
-                  <WorkThumbnail work={talentDays} mode="single" />
+                <section aria-label="Nth Consulting Group project">
+                  <WorkThumbnail work={nthConsulting} mode="single" />
                 </section>
               </RevealOnScroll>
             )}
 
             <SectionSpacer />
 
-            {(pharmovit || pasibus) && (
+            {/* 2 — row: Kobu Studio (2026) + Pasibus (2025) */}
+            {(kobuStudio || pasibus) && (
               <section aria-label="Selected projects row">
                 <div className="px-8 md:px-8 lg:px-[52px]">
                   <div className="w-full md:w-[770px] lg:w-[1108px] lg:ml-auto">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
-                      {pharmovit && (
+                      {kobuStudio && (
                         <RevealOnScroll
                           className="flex flex-col"
                           start="top 90%"
                           end="top 70%"
                         >
-                          <WorkThumbnail work={pharmovit} mode="column" />
+                          <WorkThumbnail work={kobuStudio} mode="column" />
                         </RevealOnScroll>
                       )}
 
@@ -92,44 +95,57 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
 
             <SectionSpacer />
 
-            {kobuStudio && (
+            {/* 3 — single: Tutlo (2025) */}
+            {tutloRecommendation && (
               <RevealOnScroll start="top 80%" end="top 50%">
                 <section aria-label="Tutlo recommendation system project">
-                  <WorkThumbnail work={kobuStudio} mode="single" />
+                  <WorkThumbnail work={tutloRecommendation} mode="single" />
                 </section>
               </RevealOnScroll>
             )}
 
             <SectionSpacer />
 
-            {(tutloRecommendation || absolventAgency) && (
+            {/* 4 — row: Absolvent (2025) + Talent Days (2024) */}
+            {(absolventAgency || talentDays) && (
               <section aria-label="Selected projects row 2">
                 <div className="px-8 md:px-8 lg:px-[52px]">
                   <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto md:mx-auto lg:mx-0">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
-                      {tutloRecommendation && (
+                      {absolventAgency && (
                         <RevealOnScroll
                           className="flex flex-col gap-7"
                           start="top 90%"
                           end="top 70%"
                         >
-                          <WorkThumbnail work={tutloRecommendation} mode="column" />
+                          <WorkThumbnail work={absolventAgency} mode="column" />
                         </RevealOnScroll>
                       )}
 
-                      {absolventAgency && (
+                      {talentDays && (
                         <RevealOnScroll
                           className="flex flex-col gap-7"
                           start="top 80%"
                           end="top 60%"
                         >
-                          <WorkThumbnail work={absolventAgency} mode="column" />
+                          <WorkThumbnail work={talentDays} mode="column" />
                         </RevealOnScroll>
                       )}
                     </div>
                   </div>
                 </div>
               </section>
+            )}
+
+            <SectionSpacer />
+
+            {/* 5 — single: Pharmovit (2022) */}
+            {pharmovit && (
+              <RevealOnScroll start="top 80%" end="top 50%">
+                <section aria-label="Pharmovit store project">
+                  <WorkThumbnail work={pharmovit} mode="single" />
+                </section>
+              </RevealOnScroll>
             )}
           </>
         ) : (

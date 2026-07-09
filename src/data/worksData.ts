@@ -58,6 +58,31 @@ export const WORK_TYPES: (WorkType | "All")[] = [
 
 export const WORKS: WorkItem[] = [
   {
+    id: "nth-consulting-group",
+    type: ["Website", "Framer"],
+    year: "2026",
+    coverSrc: "/images/Case_Studies/Nth/Cover_Nth_1080x1080.webp",
+    videoSrc: "/videos/nth.webm",
+    href: "/works/nth",
+    layout: "horizontal",
+    client: "Nth Consulting Group",
+    tools: "Figma | Framer",
+    liveUrl: "https://www.nthcg.com",
+
+    case: {
+      heroVideo: "/videos/Video_Nth_1.webm",
+      rangeVideo1: "/videos/Video_Nth_2.webm",
+      rangeVideo2: "/videos/Video_Nth_3.webm",
+      steps: [
+        "layout-implementation",
+        "responsive-setup",
+        "performance-optimization",
+        "seo-setup",
+        "launch",
+      ],
+    },
+  },
+  {
     id: "talentdays-blog",
     type: ["Website"],
     year: "2024",
@@ -82,7 +107,7 @@ export const WORKS: WorkItem[] = [
     coverSrc: "/images/Case_Studies/Pharmovit/Cover_Pharmovit_1080x1080.webp",
     videoSrc: "/videos/Cover_Pharmovit_1080x1080.webm",
     href: "/works/pharmovit",
-    layout: "vertical",
+    layout: "horizontal",
     client: "Pharmovit",
     tools: "Figma",
     liveUrl: "https://www.pharmovit.pl",

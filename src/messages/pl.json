@@ -108,6 +108,11 @@
   "Works": {
     "videoFallback": "Twoja przeglądarka nie obsługuje elementu wideo.",
     "items": {
+      "nth-consulting-group": {
+        "title": "Strona firmy konsultingowej",
+        "meta": "Strona Internetowa | 2026",
+        "description": "Wdrożenie firmowej strony internetowej dla Nth Consulting Group — firmy doradczej obsługującej liderów branży inżynieryjnej i budowlanej — w oparciu o Framer, z naciskiem na autorytatywny wizerunek marki, czytelną architekturę usług oraz szybkie, w pełni responsywne działanie"
+      },
       "talentdays-blog": {
         "title": "Blog dla młodych talentów",
         "meta": "Blog | 2024",
@@ -398,6 +403,63 @@
       }
     },
 
+    "NthConsulting": {
+      "heading": "Strona firmy konsultingowej",
+      "intro": "Nth Consulting Group to firma doradcza współpracująca z liderami branży inżynieryjnej i budowlanej, dostarczająca usługi zarządzania programami, zarządzania budową oraz kompleksowych rozwiązań projektowych. Marka stawia na autorytet, precyzję i realizację — „to the Nth degree”",
+      "table": {
+        "client": {
+          "label": "Klient"
+        },
+        "type": {
+          "label": "Typ"
+        },
+        "year": {
+          "label": "Rok"
+        },
+        "tools": {
+          "label": "Narzędzia"
+        },
+        "live": {
+          "label": "Online",
+          "button": "Zobacz"
+        }
+      },
+      "challenge": {
+        "heading": "Wyzwanie",
+        "description": "Zadaniem było wierne przeniesienie dostarczonego projektu graficznego do środowiska Framer z zachowaniem autorytatywnego, korporacyjnego charakteru marki oraz wiarygodności oczekiwanej przez klientów korporacyjnych i sektor publiczny. Kluczowym wyzwaniem było precyzyjne odwzorowanie rozbudowanej, wielostronicowej struktury — usługi, rynki, realizacje, zespół, aktualności i kariera — przy zachowaniu hierarchii typografii, spójnych odstępów oraz płynności działania"
+      },
+      "goal": {
+        "heading": "Cel",
+        "description": "Celem projektu było stworzenie nowoczesnej, budzącej zaufanie i w pełni responsywnej strony firmowej, czytelne przedstawienie usług i flagowych realizacji, umożliwienie łatwej edycji treści w sekcjach aktualności i kariera oraz optymalizacja wydajności i widoczności w wyszukiwarkach"
+      },
+      "range": {
+        "layout-implementation": {
+          "title": "Implementacja layoutu w Framer",
+          "description": "Wierne odwzorowanie dostarczonego projektu na wszystkich podstronach, z zachowaniem siatki, proporcji oraz hierarchii typografii"
+        },
+        "responsive-setup": {
+          "title": "Konfiguracja responsywności",
+          "description": "Dostosowanie każdej sekcji do wersji desktop, tablet i mobile, z dbałością o czytelność rozbudowanego układu i zachowanie korporacyjnego charakteru marki"
+        },
+        "performance-optimization": {
+          "title": "Optymalizacja wydajności",
+          "description": "Optymalizacja zdjęć realizacji, poprawa czasu ładowania oraz zapewnienie płynności działania w ramach wielostronicowej struktury"
+        },
+        "seo-setup": {
+          "title": "Konfiguracja SEO",
+          "description": "Ustawienie struktury nagłówków, meta tagów i podstawowych parametrów SEO wspierających widoczność na konkurencyjnym rynku doradztwa B2B"
+        },
+        "launch": {
+          "title": "Testy i publikacja",
+          "description": "Weryfikacja działania strony, testy responsywności na różnych urządzeniach oraz wdrożenie produkcyjne"
+        }
+      },
+      "result": "Efektem była szybka, wiarygodna i w pełni responsywna strona firmowa, która w czytelny sposób komunikuje usługi i flagowe realizacje firmy, wzmacniając jej wizerunek jako zaufanego partnera dla liderów branży inżynieryjnej i budowlanej",
+      "video": {
+        "ariaLabel": "Prezentacja strony Nth Consulting Group",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      }
+    },
     "KobuStudio": {
       "heading": "Studio architektoniczne",
       "intro": "Kobu Studio to biuro architektoniczne specjalizujące się w nowoczesnych, funkcjonalnych przestrzeniach. Marka stawia na estetykę, detal oraz spójność wizualną w realizowanych projektach",

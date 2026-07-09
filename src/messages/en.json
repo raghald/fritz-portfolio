@@ -108,6 +108,11 @@
   "Works": {
     "videoFallback": "Your browser does not support the video tag.",
     "items": {
+      "nth-consulting-group": {
+        "title": "Consulting Group Website",
+        "meta": "Website | 2026",
+        "description": "Framer implementation of a corporate website for Nth Consulting Group — a management consulting firm serving engineering and construction leaders. The focus was an authoritative brand presence, clear service architecture, and fast, fully responsive performance"
+      },
       "talentdays-blog": {
         "title": "Blog for young talents",
         "meta": "Blog | 2024",
@@ -396,6 +401,63 @@
       }
     },
 
+    "NthConsulting": {
+      "heading": "Consulting Group Website",
+      "intro": "Nth Consulting Group is a management consulting firm partnering with engineering and construction leaders to deliver program management, construction management, and project solutions. The brand stands for authority, precision, and delivery — to the Nth degree",
+      "table": {
+        "client": {
+          "label": "Client"
+        },
+        "type": {
+          "label": "Type"
+        },
+        "year": {
+          "label": "Year"
+        },
+        "tools": {
+          "label": "Tools"
+        },
+        "live": {
+          "label": "Online",
+          "button": "Visit"
+        }
+      },
+      "challenge": {
+        "heading": "Challenge",
+        "description": "The task was to translate the provided visual design into Framer while preserving the brand’s authoritative, corporate character and the credibility expected by enterprise and public-sector clients. The main challenge was faithful implementation of a content-rich, multi-page structure — services, markets, projects, leadership, news, and careers — while maintaining typographic hierarchy, consistent spacing, and smooth performance"
+      },
+      "goal": {
+        "heading": "Goal",
+        "description": "The objective was to deliver a modern, trustworthy, and fully responsive corporate website, present the firm’s services and flagship projects clearly, enable easy content updates for news and careers, and optimize overall performance and search visibility"
+      },
+      "range": {
+        "layout-implementation": {
+          "title": "Layout Implementation in Framer",
+          "description": "Faithful translation of the provided design across all pages, preserving grid structure, proportions, and typographic hierarchy"
+        },
+        "responsive-setup": {
+          "title": "Responsive Configuration",
+          "description": "Adapting every section for desktop, tablet, and mobile while keeping the content-rich layout clear and the corporate character intact"
+        },
+        "performance-optimization": {
+          "title": "Performance Optimization",
+          "description": "Optimizing project imagery, improving loading times, and ensuring smooth performance across the multi-page structure"
+        },
+        "seo-setup": {
+          "title": "SEO Setup",
+          "description": "Configuring heading structure, meta tags, and core SEO parameters to support visibility in a competitive B2B consulting market"
+        },
+        "launch": {
+          "title": "Testing & Launch",
+          "description": "Final quality checks, cross-device responsive testing, and production deployment"
+        }
+      },
+      "result": "The result was a fast, credible, and fully responsive corporate website that clearly communicates the firm’s services and flagship projects, reinforcing its positioning as a trusted partner for engineering and construction leaders",
+      "video": {
+        "ariaLabel": "Nth Consulting Group website overview",
+        "fallback": "Your browser does not support the video tag."
+      }
+    },
     "KobuStudio": {
       "heading": "Architectural Studio",
       "intro": "Kobu Studio is an architectural office specializing in modern, functional spaces. The brand emphasizes aesthetics, detail, and visual consistency across its projects",
