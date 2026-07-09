@@ -72,12 +72,12 @@ export async function generateMetadata({
   const url = isPl ? urlPl : urlEn;
 
   const titleDefault = isPl
-    ? "Fritz Glowacki — Designer: Web, UI/UX, Branding i Motion"
-    : "Fritz Glowacki — Web, UI/UX, Brand & Motion Designer";
+    ? "Fritz Glowacki — Designer: Web, UI/UX i Motion"
+    : "Fritz Glowacki — Web, UI/UX & Motion Designer";
 
   const description = isPl
-    ? "Designer i projektant: strony internetowe, UI/UX, branding i motion. Zobacz wybrane case studies i projekty — od koncepcji po finalny design."
-    : "Web, UI/UX, Brand & Motion Designer. I design high-converting interfaces, cohesive brands, and motion systems. Explore selected case studies and projects.";
+    ? "Designer i projektant: strony internetowe, UI/UX i motion. Zobacz wybrane case studies i projekty — od koncepcji po finalny design."
+    : "Web, UI/UX & Motion Designer. I design high-converting interfaces and motion systems. Explore selected case studies and projects.";
 
   // Meta keywords celowo usunięte — Google ignoruje od 2009 (oświadczenie Matta Cuttsa),
   // a Bing/Yandex w niektórych przypadkach traktują jako sygnał keyword stuffing.
@@ -210,11 +210,11 @@ export default async function LocaleLayout({
     givenName: "Fryderyk",
     familyName: "Głowacki",
     jobTitle: isPl
-      ? "Projektant Web, UI/UX, brandingu i motion"
-      : "Web, UI/UX, Brand & Motion Designer",
+      ? "Projektant Web, UI/UX i motion"
+      : "Web, UI/UX & Motion Designer",
     description: isPl
-      ? "Designer i projektant: strony internetowe, UI/UX, branding i motion."
-      : "Web, UI/UX, Brand & Motion Designer working across web, brand and motion systems.",
+      ? "Designer i projektant: strony internetowe, UI/UX i motion."
+      : "Web, UI/UX & Motion Designer working across web and motion systems.",
     url,
     image: `${BASE_URL}/images/photo.webp`,
     email: "info@fritzglowacki.com",

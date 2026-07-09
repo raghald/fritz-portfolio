@@ -24,8 +24,8 @@ export async function generateMetadata({
     : "Case studies — selected works — Fritz Glowacki";
 
   const description = isPl
-    ? "Zobacz wybrane case studies: web design, UI/UX, branding i motion. Projekty od architektury informacji po finalny interfejs."
-    : "Explore selected case studies in web design, UI/UX, branding and motion — from information architecture to final UI.";
+    ? "Zobacz wybrane case studies: web design, UI/UX i motion. Projekty od architektury informacji po finalny interfejs."
+    : "Explore selected case studies in web design, UI/UX and motion — from information architecture to final UI.";
 
   return {
     metadataBase: new URL(BASE),
@@ -94,8 +94,8 @@ export default async function WorksPage({
     : "Case studies — selected works — Fritz Glowacki";
 
   const seoLead = isPl
-    ? "Wybrane projekty z obszaru web designu, UI/UX, brandingu i motion — od architektury informacji po dopracowany interfejs."
-    : "Selected projects across web design, UI/UX, branding and motion — from information architecture to polished interfaces.";
+    ? "Wybrane projekty z obszaru web designu, UI/UX i motion — od architektury informacji po dopracowany interfejs."
+    : "Selected projects across web design, UI/UX and motion — from information architecture to polished interfaces.";
 
   return (
     <>

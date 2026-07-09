@@ -19,8 +19,8 @@ export default async function AboutPage({
     : "About — Fryderyk Glowacki (Fritz), web & UI/UX designer";
 
   const seoLead = isPl
-    ? "Poznaj moje doświadczenie w web designie, UI/UX, brandingu i motion — podejście oparte na standardach, procesie i wdrożeniu."
-    : "Learn about my approach to web design, UI/UX, branding and motion — standards-driven, process-focused and implementation-aware.";
+    ? "Poznaj moje doświadczenie w web designie, UI/UX i motion — podejście oparte na standardach, procesie i wdrożeniu."
+    : "Learn about my approach to web design, UI/UX and motion — standards-driven, process-focused and implementation-aware.";
 
   return (
     <>

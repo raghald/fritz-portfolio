@@ -22,12 +22,12 @@ export default async function LocaleHomePage({
   const isPl = locale === "pl";
 
   const seoH1 = isPl
-    ? "Fryderyk Głowacki — projektant Web, UI/UX, brandingu i motion"
-    : "Fryderyk Glowacki — Web, UI/UX, Brand & Motion Designer";
+    ? "Fryderyk Głowacki — projektant Web, UI/UX i motion"
+    : "Fryderyk Glowacki — Web, UI/UX & Motion Designer";
 
   const seoLead = isPl
-    ? "Projektuję wysoko konwertujące interfejsy, spójne marki i systemy motion. Zobacz wybrane case studies i projekty."
-    : "I design high-converting interfaces, cohesive brands and motion systems. Explore selected case studies and projects.";
+    ? "Projektuję wysoko konwertujące interfejsy i systemy motion. Zobacz wybrane case studies i projekty."
+    : "I design high-converting interfaces and motion systems. Explore selected case studies and projects.";
 
   return (
     <>

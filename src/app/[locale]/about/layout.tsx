@@ -20,8 +20,8 @@ export async function generateMetadata({
     : "About — Fritz Glowacki";
 
   const description = isPl
-    ? "Poznaj Fryderyka Głowackiego (Fritz) — grafika i web / UI/UX designera. Web design, branding, motion i podejście oparte na standardach."
-    : "Learn more about Fryderyk Glowacki (Fritz) — web & UI/UX designer working across web design, branding and motion.";
+    ? "Poznaj Fryderyka Głowackiego (Fritz) — grafika i web / UI/UX designera. Web design, motion i podejście oparte na standardach."
+    : "Learn more about Fryderyk Glowacki (Fritz) — web & UI/UX designer working across web design and motion.";
 
   return {
     metadataBase: new URL(BASE),
