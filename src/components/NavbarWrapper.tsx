@@ -26,7 +26,6 @@ export default function NavbarWrapper() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!window.location.search.includes("debugNav=1")) return;
-    // eslint-disable-next-line no-console
     console.log("[NavbarWrapper] pathname change", {
       raw: pathname,
       cleanedPath,

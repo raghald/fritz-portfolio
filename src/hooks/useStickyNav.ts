@@ -55,7 +55,6 @@ export function useStickyNav(
       window.location.search.includes("debugNav=1");
     const log = (msg: string, data?: Record<string, unknown>) => {
       if (!debug) return;
-      // eslint-disable-next-line no-console
       console.log(`[useStickyNav] ${msg}`, {
         scrollY: window.scrollY,
         threshold,
