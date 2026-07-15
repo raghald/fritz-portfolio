@@ -58,7 +58,11 @@ function safeLocalStorageSet(key: string, value: string): void {
 }
 
 export function hasDecision(): boolean {
-  return safeLocalStorageGet(CONSENT_KEY) !== null;
+  // A decision counts only when the full, version-matching consent parses back.
+  // Presence of the bare CONSENT_KEY is not enough: readConsent() returns null
+  // for a missing/mismatched/corrupt PREFERENCES_KEY, which would otherwise
+  // leave `consent === null && decided === true` and hide the banner wrongly.
+  return readConsent() !== null;
 }
 
 export function readConsent(): ConsentCategories | null {

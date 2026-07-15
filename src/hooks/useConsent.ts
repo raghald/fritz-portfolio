@@ -7,7 +7,6 @@ import {
   CONSENT_KEY,
   PREFERENCES_KEY,
   acceptAll as acceptAllImpl,
-  hasDecision,
   readConsent,
   rejectAll as rejectAllImpl,
   saveCustom as saveCustomImpl,
@@ -32,21 +31,26 @@ export function useConsent(): UseConsentResult {
   const [decided, setDecided] = useState(false);
 
   useEffect(() => {
-    setConsent(readConsent());
-    setDecided(hasDecision());
+    // Derive `decided` from the same parsed consent instead of a second
+    // storage read: a decision is real only when readConsent() succeeds.
+    const initial = readConsent();
+    setConsent(initial);
+    setDecided(initial !== null);
     setReady(true);
 
     const handleChange = (event: Event) => {
       const detail = (event as CustomEvent<ConsentCategories>).detail;
-      setConsent(detail ?? readConsent());
-      setDecided(hasDecision());
+      const next = detail ?? readConsent();
+      setConsent(next);
+      setDecided(next !== null);
     };
 
     // Sync across tabs as well — localStorage events fire on other tabs only.
     const handleStorage = (event: StorageEvent) => {
       if (event.key === CONSENT_KEY || event.key === PREFERENCES_KEY) {
-        setConsent(readConsent());
-        setDecided(hasDecision());
+        const next = readConsent();
+        setConsent(next);
+        setDecided(next !== null);
       }
     };
 
