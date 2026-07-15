@@ -32,6 +32,14 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     projectsBottom: Number.POSITIVE_INFINITY,
     footerRevealStart: Number.POSITIVE_INFINITY,
   });
+  // Exposed to the pathname effect so a route change can re-read the DOM of the
+  // freshly mounted page and reset the hero. Populated inside the mount effect.
+  const refreshLayoutRef = useRef<() => void>(() => {});
+  const resetHeroRef = useRef<() => void>(() => {});
+  // Last applied hero state, kept in refs so resetHero() can clear them from
+  // outside the scroll closure (a stale `true` would suppress the next write).
+  const lastHiddenRef = useRef(false);
+  const lastLoweredRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -81,31 +89,43 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         ? lastSection.offsetTop + lastSection.offsetHeight - windowHeight
         : Number.POSITIVE_INFINITY;
     };
+    refreshLayoutRef.current = refreshLayout;
+
+    /** Reset the hero to its default visible state and clear tracked flags.
+     *  Called after a route change so styles from the previous page don't
+     *  linger on the (possibly new) hero element. */
+    const resetHero = () => {
+      const hero = layoutRef.current.hero;
+      if (hero) {
+        hero.style.opacity = "1";
+        hero.style.pointerEvents = "auto";
+        hero.style.zIndex = "10";
+      }
+      lastHiddenRef.current = false;
+      lastLoweredRef.current = false;
+    };
+    resetHeroRef.current = resetHero;
 
     // Initial layout read after a tick so the page tree is mounted.
     const initialTimer = window.setTimeout(refreshLayout, 0);
     window.addEventListener("resize", refreshLayout, { passive: true });
     window.addEventListener("orientationchange", refreshLayout, { passive: true });
 
-    // Track last state to skip redundant style writes.
-    let lastHidden = false;
-    let lastLowered = false;
-
     lenis.on("scroll", ({ scroll }: { scroll: number }) => {
       const { hero, projectsBottom, footerRevealStart } = layoutRef.current;
       if (!hero) return;
 
       const shouldHide = scroll > projectsBottom;
-      if (shouldHide !== lastHidden) {
+      if (shouldHide !== lastHiddenRef.current) {
         hero.style.opacity = shouldHide ? "0" : "1";
         hero.style.pointerEvents = shouldHide ? "none" : "auto";
-        lastHidden = shouldHide;
+        lastHiddenRef.current = shouldHide;
       }
 
       const shouldLower = scroll >= footerRevealStart;
-      if (shouldLower !== lastLowered) {
+      if (shouldLower !== lastLoweredRef.current) {
         hero.style.zIndex = shouldLower ? "1" : "10";
-        lastLowered = shouldLower;
+        lastLoweredRef.current = shouldLower;
       }
     });
 
@@ -119,14 +139,23 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     };
   }, []);
 
-  // scroll do góry po każdej zmianie podstrony
+  // Po każdej zmianie podstrony: scroll do góry, a następnie (w kolejnej klatce,
+  // gdy nowe drzewo strony jest już zamontowane) przelicz layout i zresetuj
+  // hero. Bez tego layoutRef trzymałby referencje do elementów starej strony —
+  // layout z [locale]/layout.tsx żyje między route'ami przy client-side nav.
   useEffect(() => {
     const lenis = lenisRef.current;
-    if (!lenis) {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      return;
     }
-    lenis.scrollTo(0, { immediate: true });
+
+    const rafId = requestAnimationFrame(() => {
+      refreshLayoutRef.current();
+      resetHeroRef.current();
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [pathname]);
 
   return <>{children}</>;
