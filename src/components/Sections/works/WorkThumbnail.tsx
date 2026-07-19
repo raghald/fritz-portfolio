@@ -55,6 +55,8 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isHover, setIsHover] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
+  // Czy video ma już zdekodowaną klatkę — dopiero wtedy odsłaniamy je nad coverem.
+  const [videoReady, setVideoReady] = useState(false);
 
   const hasVideo = !!work.videoSrc;
 
@@ -63,6 +65,9 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
     if (prefersReducedMotion) return false;
     return isHover || isFocus;
   }, [hasVideo, prefersReducedMotion, isHover, isFocus]);
+
+  // Video pokazujemy tylko, gdy ma odtwarzać i ma gotową klatkę (bez tego jest biały przeskok).
+  const showVideo = shouldPlay && videoReady;
 
   const play = useCallback(async () => {
     const v = videoRef.current;
@@ -80,6 +85,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
     try {
       v.currentTime = 0;
     } catch {}
+    setVideoReady(false);
   }, []);
 
   useEffect(() => {
@@ -105,10 +111,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
           alt={title}
           fill
           sizes="(max-width: 768px) 338px, (max-width: 1024px) 371px, 540px"
-          className={[
-            "object-cover",
-            shouldPlay ? "opacity-0" : "opacity-100",
-          ].join(" ")}
+          className="object-cover"
           priority={false}
         />
 
@@ -118,13 +121,15 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
             ref={videoRef}
             className={[
               "absolute inset-0 w-full h-full object-cover",
-              shouldPlay ? "opacity-100" : "opacity-0",
+              showVideo ? "opacity-100" : "opacity-0",
             ].join(" ")}
             muted
             playsInline
             loop
             preload="none"
             poster={work.coverSrc}
+            onLoadedData={() => setVideoReady(true)}
+            onPlaying={() => setVideoReady(true)}
             disablePictureInPicture
             controlsList="nodownload nofullscreen noremoteplayback"
             style={{ pointerEvents: "none" }}
