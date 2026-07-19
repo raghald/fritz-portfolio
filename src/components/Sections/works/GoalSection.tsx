@@ -95,8 +95,8 @@ const GoalSection: React.FC<GoalSectionProps> = ({
                 width={0}
                 height={0}
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover block"
-                style={{ width: "100%", height: "auto" }}
+                className="w-full h-full object-cover object-top block"
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>
