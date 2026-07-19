@@ -70,9 +70,9 @@ export const WORKS: WorkItem[] = [
     liveUrl: "https://www.nthcg.com",
 
     case: {
-      heroVideo: "/videos/Video_Nth_1.webm",
-      rangeVideo1: "/videos/Video_Nth_2.webm",
-      rangeVideo2: "/videos/Video_Nth_3.webm",
+      heroVideo: "/videos/Video_Nth_1.mp4",
+      rangeVideo1: "/videos/Video_Nth_2.mp4",
+      rangeVideo2: "/videos/Video_Nth_3.mp4",
       steps: [
         "layout-implementation",
         "responsive-setup",
@@ -166,9 +166,9 @@ export const WORKS: WorkItem[] = [
   liveUrl: "https://studiokobu.com",
 
   case: {
-    heroVideo: "/videos/Video_Kobu_1.webm",
-    rangeVideo1: "/videos/Video_Kobu_2.webm",
-    rangeVideo2: "/videos/Video_Kobu_3.webm",
+    heroVideo: "/videos/Video_Kobu_1.mp4",
+    rangeVideo1: "/videos/Video_Kobu_2.mp4",
+    rangeVideo2: "/videos/Video_Kobu_3.mp4",
     steps: [
       "layout-implementation",
       "responsive-setup",
