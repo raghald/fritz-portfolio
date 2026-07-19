@@ -61,6 +61,17 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
   const [activeProject, setActiveProject] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [shouldStartTyping, setShouldStartTyping] = useState(false);
+  // Które video mają już gotową klatkę — dopiero wtedy odsłaniamy je nad coverem (bez białego błysku).
+  const [readyVideos, setReadyVideos] = useState<Set<number>>(new Set());
+
+  const markVideoReady = useCallback((index: number) => {
+    setReadyVideos((prev) => {
+      if (prev.has(index)) return prev;
+      const next = new Set(prev);
+      next.add(index);
+      return next;
+    });
+  }, []);
 
   const headerRevealRef = useScrollReveal<HTMLHeadingElement>({
     start: "top 90%",
@@ -261,23 +272,22 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
             <div className={styles.mediaList}>
               {projects.map((project, index) => {
                 const isActive = index === activeProject;
+                // Video odsłaniamy nad coverem tylko gdy aktywne i ma gotową klatkę.
+                const showVideo =
+                  !prefersReducedMotion &&
+                  isActive &&
+                  readyVideos.has(index);
 
                 const MediaInner = (
                   <>
-                    {/* COVER zawsze istnieje */}
+                    {/* COVER — zawsze pod spodem, nigdy nie chowany (żeby nie było białej luki) */}
                     {project.coverSrc ? (
                       <Image
                         src={project.coverSrc}
                         alt=""
                         fill
                         sizes="(min-width: 1024px) 50vw, 100vw"
-                        className={`${styles.img} ${styles.coverLayer} ${
-                          prefersReducedMotion
-                            ? "opacity-100"
-                            : isActive
-                            ? "opacity-0"
-                            : "opacity-100"
-                        }`}
+                        className={`${styles.img} ${styles.coverLayer} opacity-100`}
                         draggable={false}
                       />
                     ) : null}
@@ -289,13 +299,15 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
                           videoRefs.current[index] = el;
                         }}
                         className={`${styles.video} ${styles.videoLayer} ${
-                          isActive ? "opacity-100" : "opacity-0"
+                          showVideo ? "opacity-100" : "opacity-0"
                         }`}
                         muted
                         playsInline
                         loop
                         preload={index === 0 ? "auto" : "metadata"}
                         poster={project.coverSrc}
+                        onLoadedData={() => markVideoReady(index)}
+                        onPlaying={() => markVideoReady(index)}
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
                         style={{ pointerEvents: "none" }}
