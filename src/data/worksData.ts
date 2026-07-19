@@ -62,7 +62,7 @@ export const WORKS: WorkItem[] = [
     type: ["Website", "Framer"],
     year: "2026",
     coverSrc: "/images/Case_Studies/Nth/Cover_Nth_1080x1080.webp",
-    videoSrc: "/videos/nth.webm",
+    videoSrc: "/videos/NTH_Cover.webm",
     href: "/works/nth",
     layout: "horizontal",
     client: "Nth Consulting Group",
