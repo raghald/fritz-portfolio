@@ -109,6 +109,32 @@ html {
   }
 }
 
+/* Skip link — dostępny tylko dla klawiatury/czytników. Ukryty poza ekranem
+   (nie display:none, bo musi pozostać fokusowalny); przy fokusie zjeżdża na
+   wierzch, ponad navbarem. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  margin: 8px;
+  padding: 10px 16px;
+  background: var(--c-black);
+  color: var(--c-white);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--c-white);
+  outline-offset: 2px;
+}
+
 /* Force full-bleed video inside Vidstack */
 [data-media-player] .vds-media,
 [data-media-player] .vds-video,

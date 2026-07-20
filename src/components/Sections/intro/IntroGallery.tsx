@@ -14,8 +14,11 @@ const IntroGallery: React.FC = () => {
       aria-label={t("aria")}
     >
       <div className={styles.galleryWrap}>
-        {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/gallery/page.tsx (server, sr-only). */}
-        <p className={`${styles.title} ${styles.alignRight} w-full`}>{t("title")}</p>
+        {/* Widoczny H1 (hybrydowy): widoczny tekst + sr-only suffix ze słowami kluczowymi SEO. */}
+        <h1 className={`${styles.title} ${styles.alignRight} w-full`}>
+          {t("title")}
+          <span className="sr-only"> {t("srHeadingSuffix")}</span>
+        </h1>
         <p className={`${styles.subtitle} ${styles.alignRight} w-full`}>
           {t("description")}
         </p>

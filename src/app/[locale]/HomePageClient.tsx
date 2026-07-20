@@ -77,7 +77,7 @@ export default function HomePageClient() {
       />
 
       {/* z-index hero/footer reveal sterowany w SmoothScroll przez lenis.on("scroll") */}
-      <main className="main-content relative z-20 bg-white">
+      <main id="main-content" tabIndex={-1} className="main-content relative z-20 bg-white">
         <Intro />
       </main>
 

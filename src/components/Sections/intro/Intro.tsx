@@ -47,7 +47,6 @@ const Intro: React.FC<IntroProps> = ({
   return (
     <section
       className={`${styles.intro} page-shell ${className}`.trim()}
-      role="region"
       aria-label={tIntro("ariaLabel")}
     >
       <div className={styles.inner}>

@@ -18,7 +18,11 @@ const WorkFilterBar: React.FC<WorkFilterBarProps> = ({
 
   return (
     <div className="w-full px-8 lg:px-[52px]">
-      <div className="w-full max-w-[338px] md:max-w-none md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0 flex flex-wrap gap-3">
+      <div
+        role="group"
+        aria-label={t("groupAria")}
+        className="w-full max-w-[338px] md:max-w-none md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0 flex flex-wrap gap-3"
+      >
         {WORK_TYPES.map((type) => {
           const isActive = activeType === type;
           return (
@@ -26,6 +30,7 @@ const WorkFilterBar: React.FC<WorkFilterBarProps> = ({
               key={type}
               type="button"
               onClick={() => onChange(type)}
+              aria-pressed={isActive}
               className={[
                 "px-4 py-2.5 min-h-[40px] text-xs md:text-sm font-medium border",
                 "transition-colors duration-200",

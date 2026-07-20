@@ -20,7 +20,7 @@ function ThumbnailReveal({
   });
   return (
     <div ref={ref} className="flex-1">
-      <WorkThumbnail work={work} mode="column" />
+      <WorkThumbnail work={work} mode="column" headingLevel={3} />
     </div>
   );
 }

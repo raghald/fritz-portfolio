@@ -211,8 +211,7 @@ export default function ProjectsShowcaseSticky({ className = "" }: Props) {
 
   return (
     <section
-      className={`section section-pad-30-90 ${className}`.trim()}
-      role="region"
+      className={`section section-pad-30-90 ${className}`.trim()}
       aria-label={tProjects("ariaLabel")}
     >
       <div className="page-shell">

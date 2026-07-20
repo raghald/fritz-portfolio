@@ -15,8 +15,11 @@ const IntroWorks: React.FC = () => {
     >
       {/* MOBILE & TABLET */}
       <div className={styles.containerMobile}>
-        {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/works/page.tsx (server, sr-only). */}
-        <p className={styles.title}>{t("title")}</p>
+        {/* Widoczny H1 (hybrydowy): widoczny tekst + sr-only suffix ze słowami kluczowymi SEO. */}
+        <h1 className={styles.title}>
+          {t("title")}
+          <span className="sr-only"> {t("srHeadingSuffix")}</span>
+        </h1>
 
         <p className={styles.subtitle}>{t("subtitle")}</p>
 
@@ -28,8 +31,11 @@ const IntroWorks: React.FC = () => {
       {/* DESKTOP */}
       <div className={styles.containerDesktop}>
         <div className={styles.max}>
-          {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/works/page.tsx (server, sr-only). */}
-        <p className={styles.title}>{t("title")}</p>
+          {/* Widoczny H1 (hybrydowy): widoczny tekst + sr-only suffix ze słowami kluczowymi SEO. */}
+        <h1 className={styles.title}>
+          {t("title")}
+          <span className="sr-only"> {t("srHeadingSuffix")}</span>
+        </h1>
 
           <p className={`${styles.subtitle} max-w-[720px]`}>
             {t("subtitle")}

@@ -12,7 +12,7 @@ export default function CookiePolicyPage() {
       }
     >
       <div className="page-wrapper relative min-h-screen">
-        <main className="main-content relative z-20 bg-white pt-[132px] md:pt-[92px] lg:pt-[172px]">
+        <main id="main-content" tabIndex={-1} className="main-content relative z-20 bg-white pt-[132px] md:pt-[92px] lg:pt-[172px]">
           <CookiesContent />
         </main>
 

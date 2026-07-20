@@ -255,6 +255,11 @@ export default async function LocaleLayout({
         <JsonLd data={websiteJsonLd} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ContactPopupProvider>
+            {/* Skip link — pierwszy fokusowalny element; pozwala pominąć
+                nawigację i przejść klawiaturą wprost do <main id="main-content">. */}
+            <a href="#main-content" className="skip-link">
+              {isPl ? "Przejdź do treści głównej" : "Skip to main content"}
+            </a>
             {/* PageTransition tymczasowo wyłączone — przywróć wrapper, by włączyć przejścia z powrotem.
                 Globalny Suspense został celowo usunięty — LanguageToggle (wewnątrz Navbar)
                 nie używa już useSearchParams (czyta query/hash z window.location w handlerze

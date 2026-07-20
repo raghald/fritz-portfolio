@@ -46,7 +46,6 @@ const Skills: React.FC = () => {
   return (
     <section
       className={`${styles.section} page-shell`}
-      role="region"
       aria-label={t("sectionAria")}
     >
       <div className="w-full">

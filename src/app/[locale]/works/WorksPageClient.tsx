@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useLocale } from "next-intl";
 
+import { useTranslations } from "@/lib/useTranslations";
 import IntroWorks from "@/components/Sections/intro/IntroWorks";
 
 import WorkThumbnail from "@/components/Sections/works/WorkThumbnail";
@@ -13,9 +13,7 @@ import { WORKS, type WorkItem, type WorkType } from "@/data/worksData";
 const SectionSpacer = () => <div className="h-[60px] lg:h-[100px]" />;
 
 export default function WorksPageClient() {
-  const locale = useLocale() as "en" | "pl";
-  const isPl = locale === "pl";
-
+  const t = useTranslations("Works");
   const [activeType, setActiveType] = useState<WorkType | "All">("All");
 
 const filteredWorks = useMemo<WorkItem[]>(() => {
@@ -34,18 +32,19 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
   const isAll = activeType === "All";
 
   return (
-    <main className="main-content relative z-20 bg-white max-w-[1440px] mx-auto">
-        {/* H1 + lead renderowane serwerowo w app/[locale]/works/page.tsx (sr-only). */}
+    <main id="main-content" tabIndex={-1} className="main-content relative z-20 bg-white max-w-[1440px] mx-auto">
+        {/* H1 renderuje IntroWorks jako widoczny <h1> (hybrydowy). */}
 
-        <section aria-label={isPl ? "Wprowadzenie do projektów" : "Works intro"}>
-          <IntroWorks />
-        </section>
+        <IntroWorks />
 
         <RevealOnScroll start="top 80%" end="top 50%">
-          <section aria-label={isPl ? "Filtry projektów" : "Works filters"}>
-            <WorkFilterBar activeType={activeType} onChange={setActiveType} />
-          </section>
+          <WorkFilterBar activeType={activeType} onChange={setActiveType} />
         </RevealOnScroll>
+
+        {/* Dostępny komunikat o liczbie wyników — ogłaszany przy zmianie filtra. */}
+        <p className="sr-only" role="status" aria-live="polite">
+          {t("filterAnnouncement", { count: filteredWorks.length })}
+        </p>
 
         <SectionSpacer />
 
@@ -54,9 +53,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
             {/* 1 — single: Nth Consulting Group (2026) */}
             {nthConsulting && (
               <RevealOnScroll start="top 80%" end="top 50%">
-                <section aria-label="Nth Consulting Group project">
-                  <WorkThumbnail work={nthConsulting} mode="single" />
-                </section>
+                <WorkThumbnail work={nthConsulting} mode="single" />
               </RevealOnScroll>
             )}
 
@@ -64,7 +61,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
 
             {/* 2 — row: Kobu Studio (2026) + Pasibus (2025) */}
             {(kobuStudio || pasibus) && (
-              <section aria-label="Selected projects row">
+              <div>
                 <div className="px-8 md:px-8 lg:px-[52px]">
                   <div className="w-full md:w-[770px] lg:w-[1108px] lg:ml-auto">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
@@ -90,7 +87,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
             )}
 
             <SectionSpacer />
@@ -98,9 +95,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
             {/* 3 — single: Tutlo (2025) */}
             {tutloRecommendation && (
               <RevealOnScroll start="top 80%" end="top 50%">
-                <section aria-label="Tutlo recommendation system project">
-                  <WorkThumbnail work={tutloRecommendation} mode="single" />
-                </section>
+                <WorkThumbnail work={tutloRecommendation} mode="single" />
               </RevealOnScroll>
             )}
 
@@ -108,7 +103,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
 
             {/* 4 — row: Absolvent (2025) + Talent Days (2024) */}
             {(absolventAgency || talentDays) && (
-              <section aria-label="Selected projects row 2">
+              <div>
                 <div className="px-8 md:px-8 lg:px-[52px]">
                   <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto md:mx-auto lg:mx-0">
                     <div className="flex flex-col md:flex-row gap-[60px] md:gap-7">
@@ -134,7 +129,7 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
             )}
 
             <SectionSpacer />
@@ -142,25 +137,21 @@ const filteredWorks = useMemo<WorkItem[]>(() => {
             {/* 5 — single: Pharmovit (2022) */}
             {pharmovit && (
               <RevealOnScroll start="top 80%" end="top 50%">
-                <section aria-label="Pharmovit store project">
-                  <WorkThumbnail work={pharmovit} mode="single" />
-                </section>
+                <WorkThumbnail work={pharmovit} mode="single" />
               </RevealOnScroll>
             )}
           </>
         ) : (
-          <section aria-label={isPl ? "Lista przefiltrowanych projektów" : "Filtered projects list"}>
-            <div className="flex flex-col gap-[60px] md:gap-[60px]">
-              {filteredWorks.map((work) => (
-                <RevealOnScroll key={work.id} start="top 80%" end="top 50%">
-                  <WorkThumbnail
-                    work={{ ...work, layout: "horizontal" }}
-                    mode="single"
-                  />
-                </RevealOnScroll>
-              ))}
-            </div>
-          </section>
+          <div className="flex flex-col gap-[60px] md:gap-[60px]">
+            {filteredWorks.map((work) => (
+              <RevealOnScroll key={work.id} start="top 80%" end="top 50%">
+                <WorkThumbnail
+                  work={{ ...work, layout: "horizontal" }}
+                  mode="single"
+                />
+              </RevealOnScroll>
+            ))}
+          </div>
         )}
 
 

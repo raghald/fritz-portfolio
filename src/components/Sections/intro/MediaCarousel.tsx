@@ -200,8 +200,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`relative z-20 w-full bg-white py-[60px] lg:py-[100px] ${className}`}
-      role="region"
+      className={`relative z-20 w-full bg-white py-[60px] lg:py-[100px] ${className}`}
       aria-label={t("sectionAria")}
     >
       {/* Centered H2 Heading - Responsive */}

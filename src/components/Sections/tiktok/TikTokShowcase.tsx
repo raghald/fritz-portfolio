@@ -342,8 +342,7 @@ export default function TikTokShowcase({ className = "" }: { className?: string 
   return (
     <section
       className={`${styles.section} page-shell ${className}`}
-      data-section="tiktok"
-      role="region"
+      data-section="tiktok"
       aria-label={t("ariaLabel")}
     >
       {/* Header */}

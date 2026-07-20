@@ -10,17 +10,14 @@ export default function GalleryPageClient() {
 
   return (
     <div className="page-wrapper relative min-h-screen bg-white">
-      <main className="main-content relative z-20" aria-label={t("pageAria")}>
+      <main id="main-content" tabIndex={-1} className="main-content relative z-20" aria-label={t("pageAria")}>
         {/* H1 + lead renderowane serwerowo w app/[locale]/gallery/page.tsx (sr-only). */}
 
         <div className="max-w-[1440px] mx-auto w-full">
-          <section aria-label={t("introAria")}>
-            <IntroGallery />
-          </section>
-
-          <section aria-label={t("gridAria")}>
-            <GalleryGrid />
-          </section>
+          {/* IntroGallery i GalleryGrid mają własne <section aria-label> —
+              bez zewnętrznych wrapperów, żeby nie dublować regionów. */}
+          <IntroGallery />
+          <GalleryGrid />
 
           <div className="h-[60px] lg:h-[100px]" />
 

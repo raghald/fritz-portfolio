@@ -16,6 +16,11 @@ type WorkThumbnailProps = {
     videoSrc?: string;    // .mp4 albo .webm (opcjonalne)
   };
   mode?: WorkThumbnailMode;
+  /**
+   * Poziom nagłówka tytułu karty. Listing Works: 2 (H1 strony → H2 projektu).
+   * Sekcja „More projects" na case study: 3 (H1 → H2 sekcji → H3 karty).
+   */
+  headingLevel?: 2 | 3;
 };
 
 function usePrefersReducedMotion() {
@@ -39,12 +44,21 @@ function getVideoMime(src: string) {
   return "video/mp4";
 }
 
-export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailProps) {
+export default function WorkThumbnail({
+  work,
+  mode = "single",
+  headingLevel = 2,
+}: WorkThumbnailProps) {
   const t = useTranslations("Works");
   const locale = useLocale();
   const isHorizontal = work.layout === "horizontal";
 
   const href = localePath(locale, work.href);
+
+  // Widoczny nagłówek karty pełni rolę nazwy dostępnej <article> (aria-labelledby),
+  // dzięki czemu nie duplikujemy tytułu w aria-label kontenera.
+  const HeadingTag = headingLevel === 3 ? "h3" : "h2";
+  const titleId = `work-title-${work.id}`;
 
   const title = t(`items.${work.id}.title`);
   const meta = t(`items.${work.id}.meta`);
@@ -97,7 +111,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
   const Media = (
     <Link
       href={href}
-      className="block w-full h-full cursor-pointer outline-none"
+      className="block w-full h-full cursor-pointer focus-ring"
       aria-label={title}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
@@ -175,9 +189,12 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
         ].join(" ")}
       >
         <Link href={href} className="cursor-pointer group block">
-          <h4 className="text-black font-semibold text-[28px] lg:text-[32px] leading-[100%] text-left">
+          <HeadingTag
+            id={titleId}
+            className="text-black font-semibold text-[28px] lg:text-[32px] leading-[100%] text-left"
+          >
             {title}
-          </h4>
+          </HeadingTag>
 
           <div className="mt-3">
             <p className="text-black text-xs leading-[150%] text-left pointer-events-none">
@@ -197,7 +214,7 @@ export default function WorkThumbnail({ work, mode = "single" }: WorkThumbnailPr
 
   if (mode === "single") {
     return (
-      <article aria-label={title}>
+      <article aria-labelledby={titleId}>
         <div className="px-8 md:px-8 lg:px-[52px]">
           <div className="w-full md:w-[770px] lg:w-[1108px] mx-auto lg:mx-0">
             {Content}

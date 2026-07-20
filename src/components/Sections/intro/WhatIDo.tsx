@@ -30,9 +30,11 @@ function ServiceCardReveal({
   return (
     <div ref={ref} className={styles.card}>
       <div className={styles.icon}>
+        {/* Ikona dekoracyjna — znaczenie niesie sąsiedni <h3>{title}. Pusty alt,
+            żeby czytnik nie odczytywał tytułu dwukrotnie. */}
         <Image
           src={service.iconSrc}
-          alt={title}
+          alt=""
           width={40}
           height={40}
           className="w-full h-full object-contain"
@@ -69,7 +71,6 @@ const WhatIDo: React.FC = () => {
   return (
     <section
       className={`${styles.section} page-shell`}
-      role="region"
       aria-label={t("sectionAria")}
     >
       <h2 ref={headingRef} className={styles.heading}>{t("heading")}</h2>

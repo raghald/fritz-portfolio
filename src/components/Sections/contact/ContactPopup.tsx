@@ -454,7 +454,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                   }
                 `}
               >
-                <h3
+                <h2
                   id="contact-title"
                   className={`
                     text-black font-semibold text-left
@@ -466,7 +466,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                   `}
                 >
                   {t("title")}
-                </h3>
+                </h2>
               </div>
 
               <div
@@ -525,18 +525,26 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
 
                   <form onSubmit={handleSubmit} className="space-y-3">
                     <div className="popup-content">
+                      <label htmlFor="cp-firstName" className="sr-only">
+                        {t("fields.firstName.label")}
+                      </label>
                       <input
                         ref={firstInputRef}
+                        id="cp-firstName"
                         type="text"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         placeholder={t("fields.firstName.placeholder")}
                         required
+                        aria-invalid={validationErrors.firstName ? true : undefined}
+                        aria-describedby={
+                          validationErrors.firstName ? "cp-firstName-error" : undefined
+                        }
                         className={`
                           w-full border-2  
                           text-black placeholder-gray-600 
-                          focus:outline-none transition-all duration-200
+                          focus-ring transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
                           text-[16px]
                           ${
@@ -549,7 +557,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                         `}
                       />
                       {validationErrors.firstName && (
-                        <p className="text-red-500 text-sm mt-1">
+                        <p
+                          id="cp-firstName-error"
+                          role="alert"
+                          className="text-red-500 text-sm mt-1"
+                        >
                           {validationErrors.firstName}
                         </p>
                       )}
@@ -562,17 +574,25 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="popup-content">
+                      <label htmlFor="cp-email" className="sr-only">
+                        {t("fields.email.label")}
+                      </label>
                       <input
+                        id="cp-email"
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder={t("fields.email.placeholder")}
                         required
+                        aria-invalid={validationErrors.email ? true : undefined}
+                        aria-describedby={
+                          validationErrors.email ? "cp-email-error" : undefined
+                        }
                         className={`
                           w-full border-2  
                           text-black placeholder-gray-600 
-                          focus:outline-none transition-all duration-200
+                          focus-ring transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
                           text-[16px]
                           ${
@@ -585,7 +605,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                         `}
                       />
                       {validationErrors.email && (
-                        <p className="text-red-500 text-sm mt-1">
+                        <p
+                          id="cp-email-error"
+                          role="alert"
+                          className="text-red-500 text-sm mt-1"
+                        >
                           {validationErrors.email}
                         </p>
                       )}
@@ -598,17 +622,25 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="popup-content mt-8">
+                      <label htmlFor="cp-subject" className="sr-only">
+                        {t("fields.subject.label")}
+                      </label>
                       <input
+                        id="cp-subject"
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleInputChange}
                         placeholder={t("fields.subject.placeholder")}
                         required
+                        aria-invalid={validationErrors.subject ? true : undefined}
+                        aria-describedby={
+                          validationErrors.subject ? "cp-subject-error" : undefined
+                        }
                         className={`
                           w-full border-2  
                           text-black placeholder-gray-600 
-                          focus:outline-none transition-all duration-200
+                          focus-ring transition-all duration-200
                           px-3 py-2.5 sm:px-4 sm:py-3
                           text-[16px]
                           ${
@@ -621,7 +653,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                         `}
                       />
                       {validationErrors.subject && (
-                        <p className="text-red-500 text-sm mt-1">
+                        <p
+                          id="cp-subject-error"
+                          role="alert"
+                          className="text-red-500 text-sm mt-1"
+                        >
                           {validationErrors.subject}
                         </p>
                       )}
@@ -634,17 +670,25 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="popup-content">
+                      <label htmlFor="cp-message" className="sr-only">
+                        {t("fields.message.label")}
+                      </label>
                       <textarea
+                        id="cp-message"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         placeholder={t("fields.message.placeholder")}
                         required
                         rows={isCompactHeight ? 3 : 4}
+                        aria-invalid={validationErrors.message ? true : undefined}
+                        aria-describedby={
+                          validationErrors.message ? "cp-message-error" : undefined
+                        }
                         className={`
                           w-full border-2  
                           text-black placeholder-gray-600 
-                          resize-none focus:outline-none transition-all duration-200
+                          resize-none focus-ring transition-all duration-200
                           ${
                             isCompactHeight
                               ? "px-2.5 py-2 sm:px-3 sm:py-2.5"
@@ -666,7 +710,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ isOpen, onClose }) => {
                         `}
                       />
                       {validationErrors.message && (
-                        <p className="text-red-500 text-sm mt-1">
+                        <p
+                          id="cp-message-error"
+                          role="alert"
+                          className="text-red-500 text-sm mt-1"
+                        >
                           {validationErrors.message}
                         </p>
                       )}

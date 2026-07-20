@@ -87,23 +87,8 @@ export default async function WorksPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const isPl = locale === "pl";
-
-  const seoH1 = isPl
-    ? "Case study — zobacz moje realizacje — Fritz Głowacki"
-    : "Case studies — selected works — Fritz Glowacki";
-
-  const seoLead = isPl
-    ? "Wybrane projekty z obszaru web designu, UI/UX i motion — od architektury informacji po dopracowany interfejs."
-    : "Selected projects across web design, UI/UX and motion — from information architecture to polished interfaces.";
-
-  return (
-    <>
-      <header className="sr-only">
-        <h1>{seoH1}</h1>
-        <p>{seoLead}</p>
-      </header>
-      <WorksPageClient />
-    </>
-  );
+  // Kanoniczny H1 renderuje IntroWorks jako widoczny <h1> (hybrydowy:
+  // widoczny tekst + sr-only suffix SEO). Przy output: "export" komponent
+  // kliencki jest prerenderowany do statycznego HTML.
+  return <WorksPageClient />;
 }

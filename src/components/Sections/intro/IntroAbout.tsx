@@ -50,7 +50,6 @@ const IntroAbout: React.FC = () => {
   return (
     <section
       className={`${styles.section} page-shell relative z-20 pb-[60px] lg:pb-[100px] bg-white`}
-      role="region"
       aria-label={t("sectionAria")}
     >
       <div className="w-full">
@@ -60,8 +59,11 @@ const IntroAbout: React.FC = () => {
             <div className="flex lg:flex-row flex-col lg:gap-[100px] gap-12">
               <aside className="lg:sticky lg:top-24 lg:h-fit w-[462px] order-2 lg:order-1 hidden lg:block lg:self-start">
                 <div className="space-y-8">
-                  {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/about/page.tsx (server, sr-only). */}
-                  <p className={styles.title}>{t("heading")}</p>
+                  {/* Widoczny H1 (hybrydowy): widoczny tekst + sr-only suffix ze słowami kluczowymi SEO. */}
+                  <h1 className={styles.title}>
+                    {t("heading")}
+                    <span className="sr-only"> {t("srHeadingSuffix")}</span>
+                  </h1>
 
                   <p className="text-black text-base leading-[150%]">
                     {t("paragraph1")}
@@ -117,8 +119,11 @@ const IntroAbout: React.FC = () => {
         <div className={styles.containerMobile}>
           <div className="block lg:hidden">
             <div className="space-y-8">
-              {/* Wizualny nagłówek — semantyczne H1 jest w app/[locale]/about/page.tsx (server, sr-only). */}
-              <p className={styles.title}>{t("heading")}</p>
+              {/* Widoczny H1 (hybrydowy): widoczny tekst + sr-only suffix ze słowami kluczowymi SEO. */}
+              <h1 className={styles.title}>
+                    {t("heading")}
+                    <span className="sr-only"> {t("srHeadingSuffix")}</span>
+                  </h1>
 
               <p className="text-black text-base leading-[150%]">
                 {t("paragraph1")}

@@ -215,17 +215,25 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
                     <form onSubmit={handleSubmit} className="mt-6 space-y-3">
                       {/* Name */}
                       <div className="popup-content">
+                        <label htmlFor="csc-firstName" className="sr-only">
+                          {t("fields.firstName.label")}
+                        </label>
                         <input
+                          id="csc-firstName"
                           type="text"
                           name="firstName"
                           value={formData.firstName}
                           onChange={handleInputChange}
                           placeholder={t("fields.firstName.placeholder")}
                           required
+                          aria-invalid={validationErrors.firstName ? true : undefined}
+                          aria-describedby={
+                            validationErrors.firstName ? "csc-firstName-error" : undefined
+                          }
                           className={`
                             w-full border-2  
                             text-black placeholder-gray-600 
-                            focus:outline-none transition-all duration-200
+                            focus-ring transition-all duration-200
                             px-3 py-2.5 sm:px-4 sm:py-3
                             text-[14px] sm:text-[15px] md:text-[16px]
                             ${
@@ -238,7 +246,11 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
                           `}
                         />
                         {validationErrors.firstName && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p
+                            id="csc-firstName-error"
+                            role="alert"
+                            className="text-red-500 text-sm mt-1"
+                          >
                             {validationErrors.firstName}
                           </p>
                         )}
@@ -252,17 +264,25 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
 
                       {/* Email */}
                       <div className="popup-content">
+                        <label htmlFor="csc-email" className="sr-only">
+                          {t("fields.email.label")}
+                        </label>
                         <input
+                          id="csc-email"
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder={t("fields.email.placeholder")}
                           required
+                          aria-invalid={validationErrors.email ? true : undefined}
+                          aria-describedby={
+                            validationErrors.email ? "csc-email-error" : undefined
+                          }
                           className={`
                             w-full border-2  
                             text-black placeholder-gray-600 
-                            focus:outline-none transition-all duration-200
+                            focus-ring transition-all duration-200
                             px-3 py-2.5 sm:px-4 sm:py-3
                             text-[14px] sm:text-[15px] md:text-[16px]
                             ${
@@ -275,7 +295,11 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
                           `}
                         />
                         {validationErrors.email && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p
+                            id="csc-email-error"
+                            role="alert"
+                            className="text-red-500 text-sm mt-1"
+                          >
                             {validationErrors.email}
                           </p>
                         )}
@@ -289,17 +313,25 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
 
                       {/* Subject */}
                       <div className="popup-content mt-8">
+                        <label htmlFor="csc-subject" className="sr-only">
+                          {t("fields.subject.label")}
+                        </label>
                         <input
+                          id="csc-subject"
                           type="text"
                           name="subject"
                           value={formData.subject}
                           onChange={handleInputChange}
                           placeholder={t("fields.subject.placeholder")}
                           required
+                          aria-invalid={validationErrors.subject ? true : undefined}
+                          aria-describedby={
+                            validationErrors.subject ? "csc-subject-error" : undefined
+                          }
                           className={`
                             w-full border-2  
                             text-black placeholder-gray-600 
-                            focus:outline-none transition-all duration-200
+                            focus-ring transition-all duration-200
                             px-3 py-2.5 sm:px-4 sm:py-3
                             text-[14px] sm:text-[15px] md:text-[16px]
                             ${
@@ -312,7 +344,11 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
                           `}
                         />
                         {validationErrors.subject && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p
+                            id="csc-subject-error"
+                            role="alert"
+                            className="text-red-500 text-sm mt-1"
+                          >
                             {validationErrors.subject}
                           </p>
                         )}
@@ -326,17 +362,25 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
 
                       {/* Message */}
                       <div className="popup-content">
+                        <label htmlFor="csc-message" className="sr-only">
+                          {t("fields.message.label")}
+                        </label>
                         <textarea
+                          id="csc-message"
                           name="message"
                           value={formData.message}
                           onChange={handleInputChange}
                           placeholder={t("fields.message.placeholder")}
                           required
                           rows={4}
+                          aria-invalid={validationErrors.message ? true : undefined}
+                          aria-describedby={
+                            validationErrors.message ? "csc-message-error" : undefined
+                          }
                           className={`
                             w-full border-2  
                             text-black placeholder-gray-600 
-                            resize-none focus:outline-none transition-all duration-200
+                            resize-none focus-ring transition-all duration-200
                             px-3 py-2.5 sm:px-4 sm:py-3
                             text-[14px] sm:text-[15px] md:text-[16px]
                             min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px]
@@ -350,7 +394,11 @@ const CaseStudyContactSection: React.FC<CaseStudyContactSectionProps> = ({
                           `}
                         />
                         {validationErrors.message && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p
+                            id="csc-message-error"
+                            role="alert"
+                            className="text-red-500 text-sm mt-1"
+                          >
                             {validationErrors.message}
                           </p>
                         )}

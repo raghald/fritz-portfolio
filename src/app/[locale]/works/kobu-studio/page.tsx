@@ -24,7 +24,7 @@ export default async function KobuStudioPage({
   const jsonLd = await buildCaseStudyJsonLd({ locale, workId: WORK_ID, i18nKey: I18N_KEY });
 
   return (
-    <main className="main-content relative z-20 bg-white">
+    <main id="main-content" tabIndex={-1} className="main-content relative z-20 bg-white">
       <JsonLd data={jsonLd} />
       <KobuContent />
     </main>

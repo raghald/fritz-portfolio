@@ -31,8 +31,9 @@ export default function Hero({ rightOrnaments }: HeroProps) {
   const t = useTranslations("hero");
   const locale = useLocale() as "en" | "pl";
 
-  // H1 strony jest renderowany serwerowo w app/[locale]/page.tsx (sr-only header).
-  // Tutaj utrzymujemy AnimatedTitle jako element wizualny bez własnego nagłówka H1.
+  // H1 strony renderuje AnimatedTitle jako prawdziwy <h1> (podejście hybrydowe):
+  // widoczne, animowane litery są dekoracyjne (aria-hidden), a nazwą dostępną
+  // nagłówka jest bogaty w słowa kluczowe `hero.srHeading`.
   // Portrety w carouselu są dekoratywne (aria-hidden w HeroMedia), więc nie podajemy
   // alt — HeroMedia jawnie ustawia alt="" zgodnie z WCAG dla decoration.
 
@@ -168,7 +169,7 @@ export default function Hero({ rightOrnaments }: HeroProps) {
                 text={titleText}
                 timings={intro}
                 className={styles.title}
-                ariaLevel={2}
+                srText={t("srHeading")}
               />
 
               <div className={styles.tags} style={tagsStyle}>

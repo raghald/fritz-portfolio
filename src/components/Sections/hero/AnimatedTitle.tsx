@@ -9,8 +9,13 @@ type Props = {
   text: string;
   timings: IntroTimings;
   className?: string;
-  /** domyślnie 2, bo H1 robimy osobno jako sr-only */
-  ariaLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /**
+   * Dostępna nazwa nagłówka (sr-only). Komponent renderuje prawdziwy <h1>,
+   * którego nazwą dostępną jest ten tekst; animowane litery są dekoracyjne
+   * (aria-hidden). Podejście hybrydowe: wizualnie animowany tytuł, a przy tym
+   * jeden semantyczny, bogaty w słowa kluczowe H1.
+   */
+  srText: string;
 };
 
 /**
@@ -18,12 +23,15 @@ type Props = {
  * — `--title-start-ms` and `--letter-stagger-ms` come from props
  * — each letter span gets `--idx` for delay calculation
  * — respects `prefers-reduced-motion` via [AnimatedTitle.module.css]
+ *
+ * Renderuje się jako <h1>: widoczne litery są `aria-hidden`, a nazwą dostępną
+ * nagłówka jest `srText`.
  */
 export default function AnimatedTitle({
   text,
   timings,
   className,
-  ariaLevel = 2,
+  srText,
 }: Props) {
   const letters = useMemo(() => Array.from(text), [text]);
 
@@ -33,23 +41,23 @@ export default function AnimatedTitle({
   };
 
   return (
-    <div
-      className={className}
-      style={rootStyle}
-      aria-label={text}
-      role="heading"
-      aria-level={ariaLevel}
-    >
+    <h1 className={className} style={rootStyle}>
+      <span className="sr-only">{srText}</span>
       {letters.map((ch, i) => {
         const letterStyle: React.CSSProperties = {
           ["--idx" as string]: i,
         };
         return (
-          <span key={i} className={styles.letter} style={letterStyle}>
+          <span
+            key={i}
+            className={styles.letter}
+            style={letterStyle}
+            aria-hidden="true"
+          >
             {ch === " " ? " " : ch}
           </span>
         );
       })}
-    </div>
+    </h1>
   );
 }
