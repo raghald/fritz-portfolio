@@ -42,14 +42,9 @@ export default function ConsentDefaults() {
         if (decision && raw) {
           try {
             var p = JSON.parse(raw);
-            if (p && p.v === 1) {
+            if (p && p.v === 2) {
               gtag('consent', 'update', {
-                ad_storage: p.marketing ? 'granted' : 'denied',
-                ad_user_data: p.marketing ? 'granted' : 'denied',
-                ad_personalization: p.marketing ? 'granted' : 'denied',
                 analytics_storage: p.analytics ? 'granted' : 'denied',
-                functionality_storage: p.functional ? 'granted' : 'denied',
-                personalization_storage: p.functional ? 'granted' : 'denied',
                 security_storage: 'granted'
               });
             }

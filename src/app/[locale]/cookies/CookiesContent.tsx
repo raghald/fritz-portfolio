@@ -101,24 +101,6 @@ export default function CookiesContent() {
                 {t("section2.items.analytics.body")}
               </p>
             </li>
-
-            <li>
-              <p className="text-black font-semibold text-base mb-2">
-                • {t("section2.items.marketing.title")}
-              </p>
-              <p className="text-black font-medium text-base ml-6 leading-[150%] tracking-[0.16px]">
-                {t("section2.items.marketing.body")}
-              </p>
-            </li>
-
-            <li>
-              <p className="text-black font-semibold text-base mb-2">
-                • {t("section2.items.functional.title")}
-              </p>
-              <p className="text-black font-medium text-base ml-6 leading-[150%] tracking-[0.16px]">
-                {t("section2.items.functional.body")}
-              </p>
-            </li>
           </ul>
           </RevealOnScroll>
         </section>
@@ -187,63 +169,6 @@ export default function CookiesContent() {
                 </div>
               </div>
 
-              {/* MARKETING */}
-              <div className="flex items-start justify-between bg-white p-4 rounded">
-                <div className="flex items-start flex-1">
-                  <input
-                    type="checkbox"
-                    id="marketing"
-                    checked={activeConsent.marketing}
-                    onChange={(e) =>
-                      setActiveConsent((prev) => ({
-                        ...prev,
-                        marketing: e.target.checked,
-                      }))
-                    }
-                    className="w-5 h-5 mt-1 mr-4 accent-black cursor-pointer"
-                  />
-                  <div>
-                    <label
-                      htmlFor="marketing"
-                      className="text-black font-semibold text-base block cursor-pointer mb-1"
-                    >
-                      {t("section3.categories.marketing.label")}
-                    </label>
-                    <p className="text-gray-600 text-sm">
-                      {t("section3.categories.marketing.helper")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FUNCTIONAL */}
-              <div className="flex items-start justify-between bg-white p-4 rounded">
-                <div className="flex items-start flex-1">
-                  <input
-                    type="checkbox"
-                    id="functional"
-                    checked={activeConsent.functional}
-                    onChange={(e) =>
-                      setActiveConsent((prev) => ({
-                        ...prev,
-                        functional: e.target.checked,
-                      }))
-                    }
-                    className="w-5 h-5 mt-1 mr-4 accent-black cursor-pointer"
-                  />
-                  <div>
-                    <label
-                      htmlFor="functional"
-                      className="text-black font-semibold text-base block cursor-pointer mb-1"
-                    >
-                      {t("section3.categories.functional.label")}
-                    </label>
-                    <p className="text-gray-600 text-sm">
-                      {t("section3.categories.functional.helper")}
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* BUTTONS */}
@@ -304,15 +229,6 @@ export default function CookiesContent() {
           <div className="grid md:grid-cols-2 gap-6 max-w-[770px]">
             <div className="bg-white border border-gray-200 p-6">
               <h3 className="text-black font-semibold text-[20px] mb-3">
-                {t("section4.cards.googleFonts.title")}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {t("section4.cards.googleFonts.body")}
-              </p>
-            </div>
-
-            <div className="bg-white border border-gray-200 p-6">
-              <h3 className="text-black font-semibold text-[20px] mb-3">
                 {t("section4.cards.googleAnalytics.title")}
               </h3>
               <p className="text-gray-600 text-sm">
@@ -326,15 +242,6 @@ export default function CookiesContent() {
               </h3>
               <p className="text-gray-600 text-sm">
                 {t("section4.cards.formspree.body")}
-              </p>
-            </div>
-
-            <div className="bg-white border border-gray-200 p-6">
-              <h3 className="text-black font-semibold text-[20px] mb-3">
-                {t("section4.cards.social.title")}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {t("section4.cards.social.body")}
               </p>
             </div>
           </div>

@@ -7,36 +7,32 @@
 export type ConsentCategories = {
   necessary: true;
   analytics: boolean;
-  marketing: boolean;
-  functional: boolean;
 };
 
 export type ConsentDecision = "accepted" | "rejected" | "custom";
 
 export const CONSENT_KEY = "cookieConsent";
 export const PREFERENCES_KEY = "cookiePreferences";
-export const CONSENT_VERSION = 1;
+// v2: usunięto kategorie marketing/functional — strona nie używa pikseli
+// reklamowych ani zewnętrznych embedów (np. Google Maps). Bump wersji
+// unieważnia stare zapisy (v1), więc banner poprosi o ponowną zgodę
+// wobec zmienionego zestawu kategorii.
+export const CONSENT_VERSION = 2;
 export const CONSENT_EVENT = "cookieconsentchange";
 
 export const ALL_DENIED: ConsentCategories = {
   necessary: true,
   analytics: false,
-  marketing: false,
-  functional: false,
 };
 
 export const ALL_GRANTED: ConsentCategories = {
   necessary: true,
   analytics: true,
-  marketing: true,
-  functional: true,
 };
 
 type StoredPreferences = {
   v: number;
   analytics: boolean;
-  marketing: boolean;
-  functional: boolean;
 };
 
 function safeLocalStorageGet(key: string): string | null {
@@ -75,8 +71,6 @@ export function readConsent(): ConsentCategories | null {
     return {
       necessary: true,
       analytics: parsed.analytics === true,
-      marketing: parsed.marketing === true,
-      functional: parsed.functional === true,
     };
   } catch {
     return null;
@@ -84,13 +78,16 @@ export function readConsent(): ConsentCategories | null {
 }
 
 function toGtagConsentMap(consent: ConsentCategories) {
+  // Analytics to jedyna opcjonalna kategoria. Sygnały reklamowe/funkcjonalne
+  // pozostają zadeklarowane jako "denied" — Consent Mode v2 oczekuje ich
+  // obecności, a strona nie używa reklam ani zewnętrznych embedów.
   return {
-    ad_storage: consent.marketing ? "granted" : "denied",
-    ad_user_data: consent.marketing ? "granted" : "denied",
-    ad_personalization: consent.marketing ? "granted" : "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
     analytics_storage: consent.analytics ? "granted" : "denied",
-    functionality_storage: consent.functional ? "granted" : "denied",
-    personalization_storage: consent.functional ? "granted" : "denied",
+    functionality_storage: "denied",
+    personalization_storage: "denied",
     security_storage: "granted",
   } as const;
 }
@@ -154,8 +151,6 @@ export function writeConsent(
   const payload: StoredPreferences = {
     v: CONSENT_VERSION,
     analytics: consent.analytics,
-    marketing: consent.marketing,
-    functional: consent.functional,
   };
   safeLocalStorageSet(CONSENT_KEY, decision);
   safeLocalStorageSet(PREFERENCES_KEY, JSON.stringify(payload));

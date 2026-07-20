@@ -9,21 +9,9 @@
 // Schemat XML pozostaje zgodny z tym, co już zindexował Google — nie wymaga
 // re-submission w Search Console.
 import type { MetadataRoute } from "next";
-import { WORKS } from "@/data/worksData";
+import { WORKS, slugForWork } from "@/data/worksData";
 
 const BASE_URL = "https://www.fritzglowacki.com";
-
-// Mapowanie workId → segment URL (zgodne z routingiem w app/[locale]/works/*/page.tsx
-// oraz SLUG_BY_WORK_ID w lib/caseStudyMetadata.ts).
-const SLUG_BY_WORK_ID: Record<string, string> = {
-  "absolvent-agency": "absolvent",
-  "kobu-studio": "kobu-studio",
-  "nth-consulting-group": "nth",
-  "pasibus-job-board": "pasibus",
-  "pharmovit-store": "pharmovit",
-  "talentdays-blog": "talentdays",
-  "tutlo-recommendation": "tutlo",
-};
 
 // Data ostatniej istotnej aktualizacji treści statycznej (home/about/works listing/gallery).
 // Aktualizuj ręcznie przy znaczących zmianach treści — Google traktuje lastmod
@@ -103,8 +91,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const caseStudies: MetadataRoute.Sitemap = WORKS.flatMap((work) => {
-    const slug = SLUG_BY_WORK_ID[work.id];
-    if (!slug) return [];
+    const slug = slugForWork(work);
 
     // Fallback dla case studies bez updatedAt: środek roku, w którym zrobione.
     // To "uczciwsze" dla Google niż build date dla każdego URL-a.

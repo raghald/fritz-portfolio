@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { WORKS, type WorkItem } from "@/data/worksData";
+import { WORKS, slugForWork, type WorkItem } from "@/data/worksData";
 
 const BASE_URL = "https://www.fritzglowacki.com";
-
-const SLUG_BY_WORK_ID: Record<string, string> = {
-  "absolvent-agency": "absolvent",
-  "kobu-studio": "kobu-studio",
-  "nth-consulting-group": "nth",
-  "pasibus-job-board": "pasibus",
-  "pharmovit-store": "pharmovit",
-  "talentdays-blog": "talentdays",
-  "tutlo-recommendation": "tutlo",
-};
 
 /**
  * Buduje JSON-LD CreativeWork dla konkretnego case study.
@@ -29,7 +19,7 @@ export async function buildCaseStudyJsonLd(opts: {
   const t = await getTranslations({ locale, namespace: i18nKey });
 
   const work = WORKS.find((w) => w.id === workId);
-  const slug = SLUG_BY_WORK_ID[workId] ?? workId;
+  const slug = work ? slugForWork(work) : workId;
   const path = isPl ? `/pl/works/${slug}/` : `/works/${slug}/`;
 
   const heading = t("heading");
@@ -73,7 +63,7 @@ export async function buildCaseStudyMetadata(opts: {
   const t = await getTranslations({ locale, namespace: i18nKey });
 
   const work = WORKS.find((w) => w.id === workId);
-  const slug = SLUG_BY_WORK_ID[workId] ?? workId;
+  const slug = work ? slugForWork(work) : workId;
   const pathEn = `/works/${slug}/`;
   const pathPl = `/pl/works/${slug}/`;
   const currentPath = isPl ? pathPl : pathEn;

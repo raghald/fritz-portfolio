@@ -56,6 +56,15 @@ export const WORK_TYPES: (WorkType | "All")[] = [
   "Framer",
 ];
 
+/**
+ * URL slug case study — jedno źródło prawdy. Slug jest zakodowany w `href`
+ * (`/works/<slug>`), z którego korzysta też routing i <Link>. Wcześniej slug
+ * był powielony w osobnych mapach `SLUG_BY_WORK_ID` w sitemap.ts oraz
+ * caseStudyMetadata.ts — trzymanie go tutaj eliminuje ryzyko rozjazdu.
+ */
+export const slugForWork = (work: WorkItem): string =>
+  work.href.replace(/^\/works\//, "").replace(/\/$/, "");
+
 export const WORKS: WorkItem[] = [
   {
     id: "nth-consulting-group",
