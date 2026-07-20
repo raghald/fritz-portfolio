@@ -9,6 +9,7 @@
   "hero": {
     "ariaLabel": "Hero section",
     "titleWord": "DESIGNER",
+    "srHeading": "Fryderyk Głowacki — projektant Web, UI/UX i motion",
 
     "sideCopyLine1": "Your neighbor",
     "sideCopyLine2": "design freak",
@@ -102,6 +103,7 @@
   "worksIntro": {
     "ariaLabel": "Wprowadzenie do projektów",
     "title": "Zrealizowałem kilka projektów...",
+    "srHeadingSuffix": "— wybrane case studies — Fryderyk Głowacki",
     "subtitle": "Poznaj moje projekty — od UX i web designu po kreatywne kampanie i treści digital"
   },
 
@@ -135,7 +137,7 @@
       },
       "kobu-studio": {
         "title": "Studio architektoniczne",
-        "meta": "Strona Internetowa | 2025",
+        "meta": "Strona Internetowa | 2026",
         "description": "Wdrożenie strony internetowej dla biura architektonicznego Kobu Studio w oparciu o Framer, z naciskiem na precyzję, minimalizm i jakość prezentacji portfolio."
       },
       "absolvent-agency": {
@@ -146,6 +148,7 @@
     },
 
     "filters": {
+      "groupAria": "Filtruj projekty według typu",
       "All": "Wszystkie projekty",
       "E-commerce": "E-commerce",
       "LandingPage": "Landing page",
@@ -153,6 +156,7 @@
       "LoFi": "UX / LoFi",
       "Framer": "Framer"
     },
+    "filterAnnouncement": "{count, plural, =0 {Żaden projekt nie pasuje do wybranego filtra} one {Wyświetlono # projekt} few {Wyświetlono # projekty} many {Wyświetlono # projektów} other {Wyświetlono # projektu}}",
 
     "moreSections": {
       "heading": "To nie jest moje jedyne case study"
@@ -509,7 +513,7 @@
 
       "result": "Efektem była estetyczna, szybka i w pełni responsywna strona internetowa, która w czytelny sposób prezentuje portfolio studia i wspiera jego wizerunek jako nowoczesnego biura architektonicznego",
       "video": {
-        "ariaLabel": "Prezentacja landing page'a Tutlo Lead Active",
+        "ariaLabel": "Prezentacja strony internetowej Kobu Studio",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
       }
     }
@@ -523,6 +527,7 @@
     "intro": {
       "sectionAria": "Sekcja wprowadzająca o mnie",
       "heading": "Kim jestem...",
+      "srHeadingSuffix": "— Fryderyk Głowacki (Fritz), grafik i web / UI/UX designer",
       "paragraph1": "Od 8 lat pracuję w designie, specjalizując się w Web Designie oraz UI/UX. Łączę zaplecze artystyczne i techniczne – ukończyłem studia z Projektowania Graficznego i Informatyki, a obecnie studiuję Creative Management ze specjalizacją UX Design. Dzięki temu podchodzę do projektów jednocześnie z perspektywy estetyki, funkcjonalności i procesów.",
       "devLanguageHighlight": "Tak, znam język devów",
       "paragraph2": "Prywatnie jestem UX-geekiem – typem osoby, która opowiada znajomym o przykładzie drzwi Normana. Dobrze czuję się przed kamerą i od czasu do czasu tworzę treści w social mediach. Cenię ludzi, którzy działają, tworzą i idą do przodu, bo wierzę, że rozwój to ciągły proces.",
@@ -567,6 +572,7 @@
     "intro": {
       "aria": "Wprowadzenie do galerii",
       "title": "Nie tylko designer",
+      "srHeadingSuffix": "— motion, content i eksperymenty wizualne — Fryderyk Głowacki",
       "description": "Od czasu do czasu wchodzę w rolę twórcy contentu — od pomysłu, przez nagranie, aż po montaż. Tworzę krótkie formy wideo na social media. To mój sposób na eksperymentowanie z wizualem i storytellingiem w lekkiej, dynamicznej formie."
     },
     "grid": {
@@ -590,10 +596,10 @@
       "line2": "Zrealizujmy go razem."
     },
     "fields": {
-      "firstName": { "placeholder": "Jak masz na imię?" },
-      "email": { "placeholder": "Mail, na który wyślę odpowiedź" },
-      "subject": { "placeholder": "Jaki projekt masz do obgadania?" },
-      "message": { "placeholder": "Napisz coś więcej o projekcie :D" }
+      "firstName": { "label": "Imię", "placeholder": "Jak masz na imię?" },
+      "email": { "label": "E-mail", "placeholder": "Mail, na który wyślę odpowiedź" },
+      "subject": { "label": "Temat", "placeholder": "Jaki projekt masz do obgadania?" },
+      "message": { "label": "Wiadomość", "placeholder": "Napisz coś więcej o projekcie :D" }
     },
     "errors": {
       "required": "Uzupełnij to pole.",
@@ -617,7 +623,7 @@
   "cookieBanner": {
     "title": "Pliki cookie",
     "description": {
-      "beforeLink": "Używamy plików cookie, aby strona działała poprawnie oraz – za Twoją zgodą – do analityki i zewnętrznych funkcji. Ustawienia możesz zmienić w dokumencie",
+      "beforeLink": "Używamy plików cookie, aby strona działała poprawnie oraz – za Twoją zgodą – do analityki. Ustawienia możesz zmienić w dokumencie",
       "linkText": "Polityka plików cookie",
       "afterLink": "."
     },
@@ -631,38 +637,32 @@
   "cookiePolicy": {
     "header": {
       "title": "Polityka plików cookie",
-      "intro": "Na tej stronie wyjaśniam, czym są pliki cookie, w jaki sposób ich używam oraz jak możesz zarządzać swoimi ustawieniami. Informacje o przetwarzaniu danych osobowych znajdziesz w Polityce prywatności."
+      "intro": "Na tej stronie wyjaśniam, czym są pliki cookie, w jaki sposób ich używam oraz jak możesz zarządzać swoimi ustawieniami."
     },
     "section1": {
       "title": "1. Czym są pliki cookie?",
-      "body": "Pliki cookie to niewielkie pliki tekstowe zapisywane na Twoim urządzeniu. Pomagają zapewnić prawidłowe działanie strony, analizować ruch oraz – za Twoją zgodą – personalizować treści."
+      "body": "Pliki cookie to niewielkie pliki tekstowe zapisywane na Twoim urządzeniu. Pomagają zapewnić prawidłowe działanie strony oraz – za Twoją zgodą – analizować ruch."
     },
     "section2": {
       "title": "2. Jakich plików cookie używam?",
       "items": {
         "necessary": { "title": "Niezbędne", "body": "wymagane do działania strony (np. zapisywanie ustawień cookies). Te pliki są zawsze aktywne." },
-        "analytics": { "title": "Analityczne", "body": "pomagają zrozumieć, w jaki sposób korzystasz ze strony (np. Google Analytics)." },
-        "marketing": { "title": "Marketingowe", "body": "wykorzystywane do dopasowania treści i kampanii reklamowych." },
-        "functional": { "title": "Funkcjonalne zewnętrzne", "body": "np. Google Maps osadzone na stronie kontaktowej." }
+        "analytics": { "title": "Analityczne", "body": "pomagają zrozumieć, w jaki sposób korzystasz ze strony (np. Google Analytics)." }
       }
     },
     "section3": {
       "title": "3. Zarządzanie zgodą",
       "categories": {
         "necessary": { "label": "Niezbędne", "helper": "(zawsze aktywne — wymagane do działania serwisu)" },
-        "analytics": { "label": "Analityczne", "helper": "(Google Analytics – analiza ruchu)" },
-        "marketing": { "label": "Marketingowe", "helper": "(spersonalizowane reklamy)" },
-        "functional": { "label": "Funkcjonalne", "helper": "(Google Maps i osadzone treści)" }
+        "analytics": { "label": "Analityczne", "helper": "(Google Analytics – analiza ruchu)" }
       },
       "browserInfo": "Możesz też zarządzać plikami cookie w ustawieniach swojej przeglądarki i usuwać zapisane pliki."
     },
     "section4": {
       "title": "4. Zewnętrzne pliki cookie",
       "cards": {
-        "googleFonts": { "title": "Google Fonts", "body": "Wczytywanie czcionek używanych na stronie." },
         "googleAnalytics": { "title": "Google Analytics", "body": "Analiza ruchu i zachowania użytkowników (opcjonalna)." },
-        "formspree": { "title": "Formspree", "body": "Obsługa wysyłki formularza kontaktowego." },
-        "social": { "title": "Media społecznościowe", "body": "Linki do profili na Instagramie i LinkedIn." }
+        "formspree": { "title": "Formspree", "body": "Obsługa wysyłki formularza kontaktowego." }
       }
     },
     "section5": {
@@ -689,7 +689,7 @@
     },
     "footer": {
       "title": "Potrzebujesz pomocy?",
-      "body": "Jeśli masz pytania dotyczące polityki plików cookie, skontaktuj się ze mną lub zajrzyj do Polityki prywatności."
+      "body": "Jeśli masz pytania dotyczące polityki plików cookie, skontaktuj się ze mną."
     }
   },
 
@@ -705,10 +705,10 @@
     "subheadline": "Porozmawiajmy o Twoim produkcie",
     "form": { "title": "Porozmawiajmy o Twoim produkcie" },
     "fields": {
-      "firstName": { "placeholder": "Jak masz na imię?" },
-      "email": { "placeholder": "Mail, na który wyślę odpowiedź" },
-      "subject": { "placeholder": "Jaki projekt masz do obgadania?" },
-      "message": { "placeholder": "Napisz coś więcej o projekcie :D" }
+      "firstName": { "label": "Imię", "placeholder": "Jak masz na imię?" },
+      "email": { "label": "E-mail", "placeholder": "Mail, na który wyślę odpowiedź" },
+      "subject": { "label": "Temat", "placeholder": "Jaki projekt masz do obgadania?" },
+      "message": { "label": "Wiadomość", "placeholder": "Napisz coś więcej o projekcie :D" }
     },
     "submit": {
       "aria": "Wyślij formularz",

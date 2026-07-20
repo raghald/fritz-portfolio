@@ -9,6 +9,7 @@
   "hero": {
     "ariaLabel": "Hero section",
     "titleWord": "DESIGNER",
+    "srHeading": "Fryderyk Glowacki — Web, UI/UX & Motion Designer",
 
     "sideCopyLine1": "Your neighbor",
     "sideCopyLine2": "design freak",
@@ -102,6 +103,7 @@
   "worksIntro": {
     "ariaLabel": "Works Introduction",
     "title": "I've done a few projects...",
+    "srHeadingSuffix": "— selected case studies by Fritz Glowacki",
     "subtitle": "Explore my projects — from UX and web design to creative campaigns and digital content"
   },
 
@@ -116,7 +118,7 @@
       "talentdays-blog": {
         "title": "Blog for young talents",
         "meta": "Blog | 2024",
-        "description": "Blog design for Talent Days - created as a clear and engaging space with articles supporting users in job searching and career development"
+        "description": "Blog design for Talent Days — created as a clear and engaging space with articles supporting users in job searching and career development"
       },
       "pharmovit-store": {
         "title": "Supplement Store",
@@ -130,22 +132,23 @@
       },
       "tutlo-recommendation": {
         "title": "Recommendation system",
-        "meta": "LandingPage | 2025",
-        "description": "Landing page design for Tutlo Referral Program - created to encourage users to sign up and join the partnership initiative"
+        "meta": "Landing page | 2025",
+        "description": "Landing page design for Tutlo Referral Program — created to encourage users to sign up and join the partnership initiative"
       },
       "kobu-studio": {
         "title": "Architecture Studio",
-        "meta": "Website | 2025",
-        "description": "Landing page design for Tutlo Referral Program – created to encourage users to sign up and join the partnership initiative. My task was to design a visually consistent, clear, and conversion-oriented page that communicates the program rules and user benefits in an accessible way."
+        "meta": "Website | 2026",
+        "description": "Website implementation in Framer for the Kobu Studio architectural office — focused on precision, minimalism, and high-quality portfolio presentation"
       },
       "absolvent-agency": {
         "title": "Employer Branding Agency",
         "meta": "Website | 2025",
-        "description": "Design project new Absolvent Consulting’s website"
+        "description": "Design of the new website for Absolvent Consulting — an employer branding agency working with major brands"
       }
     },
 
     "filters": {
+      "groupAria": "Filter projects by type",
       "All": "All projects",
       "E-commerce": "E-commerce",
       "LandingPage": "Landing pages",
@@ -153,6 +156,7 @@
       "LoFi": "UX / LoFi",
       "Framer": "Framer"
     },
+    "filterAnnouncement": "{count, plural, =0 {No projects match the selected filter} one {Showing # project} other {Showing # projects}}",
 
     "moreSections": {
       "heading": "This is not my one and only case"
@@ -507,7 +511,7 @@
 
       "result": "The result was a clean, fast, and fully responsive website that clearly presents the studio’s portfolio and supports its positioning as a modern architectural practice",
       "video": {
-        "ariaLabel": "Tutlo Lead Active landing page overview",
+        "ariaLabel": "Kobu Studio architectural portfolio website overview",
         "fallback": "Your browser does not support the video tag."
       }
     }
@@ -521,15 +525,16 @@
     "intro": {
       "sectionAria": "About introduction section",
       "heading": "Who I am...",
+      "srHeadingSuffix": "— Fryderyk Glowacki (Fritz), web & UI/UX designer",
       "paragraph1": "I’ve been working in design for 8 years, specializing in Web Design and UI/UX Design. My background combines both artistic and technical skills – I hold degrees in Graphic Design and Computer Science, and I’m currently pursuing Creative Management with a specialization in UX Design. This allows me to approach projects not only from an aesthetic and functional perspective.",
-      "devLanguageHighlight": "Yes, I know dev's language",
+      "devLanguageHighlight": "Yes, I speak developers’ language",
       "paragraph2": "Privately, I’m a true UX geek – the kind of person who tells random people about the example of Norman doors. I’m also comfortable in front of the camera and occasionally create content for social media. I value people who take action, create, and keep moving forward, because I believe growth is a continuous process.",
       "copyToClipboardTitle": "Copy to clipboard"
     },
 
     "skills": {
       "sectionAria": "Skills section",
-      "heading": "...and my skills....",
+      "heading": "...and my skills...",
       "items": {
         "figma": {
           "title": "Figma",
@@ -545,7 +550,7 @@
         },
         "htmlCssJs": {
           "title": "HTML | CSS | JS",
-          "description": "Interface design, prototyping, and team collaboration"
+          "description": "Building responsive interfaces and translating designs into clean, functional code"
         },
         "aiTools": {
           "title": "AI Tools",
@@ -604,6 +609,7 @@
     "intro": {
       "aria": "Gallery introduction",
       "title": "Not only a designer",
+      "srHeadingSuffix": "— motion, content and visual experiments by Fritz Glowacki",
       "description": "From time to time, I step into the role of a content creator – handling everything from concept and recording to video editing. I create short-form content for social media. It’s my way of experimenting with visuals and storytelling in a fun, dynamic format."
     },
     "grid": {
@@ -627,10 +633,10 @@
       "line2": "Let's bring it to life together."
     },
     "fields": {
-      "firstName": { "placeholder": "What's your name?" },
-      "email": { "placeholder": "Email where I can reply" },
-      "subject": { "placeholder": "What project do you want to discuss?" },
-      "message": { "placeholder": "Tell me a bit more about the project :)" }
+      "firstName": { "label": "First name", "placeholder": "What's your name?" },
+      "email": { "label": "Email", "placeholder": "Email where I can reply" },
+      "subject": { "label": "Subject", "placeholder": "What project do you want to discuss?" },
+      "message": { "label": "Message", "placeholder": "Tell me a bit more about the project :)" }
     },
     "errors": {
       "required": "Please fill in this field.",
@@ -654,7 +660,7 @@
   "cookieBanner": {
     "title": "Cookies",
     "description": {
-      "beforeLink": "We use cookies to ensure that the website works properly and, with your consent, for analytics and external functions. You can change your settings in the",
+      "beforeLink": "We use cookies to ensure that the website works properly and, with your consent, for analytics. You can change your settings in the",
       "linkText": "Cookie Policy",
       "afterLink": "."
     },
@@ -668,38 +674,32 @@
   "cookiePolicy": {
     "header": {
       "title": "Cookie Policy",
-      "intro": "On this page, we explain what cookies are, how we use them, and how you can manage your preferences. To learn how we process personal data, please visit our Privacy Policy."
+      "intro": "On this page, we explain what cookies are, how we use them, and how you can manage your preferences."
     },
     "section1": {
       "title": "1. What are cookies?",
-      "body": "Cookies are small text files saved on your device that help us ensure proper site functionality, analyze traffic, and – with your consent – personalize content."
+      "body": "Cookies are small text files saved on your device that help us ensure proper site functionality and – with your consent – analyze traffic."
     },
     "section2": {
       "title": "2. What cookies do we use?",
       "items": {
         "necessary": { "title": "Necessary", "body": "required for the site to function (e.g., saving cookie settings). These files are always active." },
-        "analytics": { "title": "Analytics", "body": "help us understand how you use the site (e.g., Google Analytics)." },
-        "marketing": { "title": "Marketing", "body": "used to tailor content and advertising campaigns." },
-        "functional": { "title": "External functional", "body": "e.g., Google Maps embedded on the contact page." }
+        "analytics": { "title": "Analytics", "body": "help us understand how you use the site (e.g., Google Analytics)." }
       }
     },
     "section3": {
       "title": "3. Consent management",
       "categories": {
         "necessary": { "label": "Necessary", "helper": "(always active - required for site functionality)" },
-        "analytics": { "label": "Analytics", "helper": "(Google Analytics - traffic analysis)" },
-        "marketing": { "label": "Marketing", "helper": "(tailored advertising)" },
-        "functional": { "label": "Functional", "helper": "(Google Maps and embedded content)" }
+        "analytics": { "label": "Analytics", "helper": "(Google Analytics - traffic analysis)" }
       },
       "browserInfo": "You can also manage cookies in your browser settings and delete saved files."
     },
     "section4": {
       "title": "4. Third-party cookies",
       "cards": {
-        "googleFonts": { "title": "Google Fonts", "body": "Loading fonts used on the site." },
         "googleAnalytics": { "title": "Google Analytics", "body": "Traffic analysis and user behavior (optional)." },
-        "formspree": { "title": "Formspree", "body": "Contact form submission handling." },
-        "social": { "title": "Social Media", "body": "Links to Instagram and LinkedIn profiles." }
+        "formspree": { "title": "Formspree", "body": "Contact form submission handling." }
       }
     },
     "section5": {
@@ -726,7 +726,7 @@
     },
     "footer": {
       "title": "Need help?",
-      "body": "If you have questions about our cookie policy, please contact us or check our Privacy Policy."
+      "body": "If you have questions about our cookie policy, please contact us."
     }
   },
 
@@ -742,10 +742,10 @@
     "subheadline": "Let's talk about your product",
     "form": { "title": "Let's talk about your product" },
     "fields": {
-      "firstName": { "placeholder": "What's your name?" },
-      "email": { "placeholder": "Email where I can reply" },
-      "subject": { "placeholder": "What project do you want to discuss?" },
-      "message": { "placeholder": "Tell me a bit more about the project :)" }
+      "firstName": { "label": "First name", "placeholder": "What's your name?" },
+      "email": { "label": "Email", "placeholder": "Email where I can reply" },
+      "subject": { "label": "Subject", "placeholder": "What project do you want to discuss?" },
+      "message": { "label": "Message", "placeholder": "Tell me a bit more about the project :)" }
     },
     "errors": {
       "required": "Please fill in this field.",
