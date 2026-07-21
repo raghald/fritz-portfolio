@@ -216,7 +216,7 @@ export default async function LocaleLayout({
       ? "Designer i projektant: strony internetowe, UI/UX i motion."
       : "Web, UI/UX & Motion Designer working across web and motion systems.",
     url,
-    image: `${BASE_URL}/images/photo.webp`,
+    image: `${BASE_URL}/images/photo-984w.webp`,
     email: "info@fritzglowacki.com",
     telephone: "+48506989423",
     knowsLanguage: ["pl", "en"],

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import Navbar from "./Sections/navbar/Navbar";
@@ -21,20 +20,6 @@ export default function NavbarWrapper() {
   const cleanedPath = pathname.replace(localePrefixRe, "") || "/";
   const isHome = cleanedPath === "/";
   const variant = isHome ? "sticky" : "static";
-
-  // TODO: usunąć po zdiagnozowaniu navbar bug — aktywne tylko przy ?debugNav=1.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!window.location.search.includes("debugNav=1")) return;
-    console.log("[NavbarWrapper] pathname change", {
-      raw: pathname,
-      cleanedPath,
-      isHome,
-      variant,
-      windowPathname: window.location.pathname,
-      windowHref: window.location.href,
-    });
-  }, [pathname, cleanedPath, isHome, variant]);
 
   // key={variant} wymusza unmount + remount Navbar przy zmianie variant — czyste
   // resetowanie wszystkich inline style i stanu wewnętrznego. Bez tego React

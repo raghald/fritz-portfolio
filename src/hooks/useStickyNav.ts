@@ -48,23 +48,6 @@ export function useStickyNav(
     ].join(";");
     document.body.appendChild(sentinel);
 
-    // TODO: usunąć po zdiagnozowaniu navbar bug na prodzie. Aktywne tylko
-    // gdy ktoś ustawi ?debugNav=1 w URL — nie zaśmieca konsoli normalnym userom.
-    const debug =
-      typeof window !== "undefined" &&
-      window.location.search.includes("debugNav=1");
-    const log = (msg: string, data?: Record<string, unknown>) => {
-      if (!debug) return;
-      console.log(`[useStickyNav] ${msg}`, {
-        scrollY: window.scrollY,
-        threshold,
-        ts: Date.now(),
-        ...data,
-      });
-    };
-
-    log("mount", { enabled });
-
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -72,11 +55,6 @@ export function useStickyNav(
         // entry.isIntersecting = sentinel widoczny w viewport.
         // Widoczny → nie jesteśmy stuck. Niewidoczny → stuck.
         const next = !entry.isIntersecting;
-        log("IO trigger", {
-          isIntersecting: entry.isIntersecting,
-          nextIsStuck: next,
-          intersectionRatio: entry.intersectionRatio,
-        });
         setIsStuck(next);
       },
       {
@@ -99,7 +77,6 @@ export function useStickyNav(
     //    IO i tak nadgoni w pierwszym frame.
 
     return () => {
-      log("unmount");
       observer.disconnect();
       sentinel.remove();
     };

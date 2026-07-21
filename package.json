@@ -8,8 +8,7 @@
     "build:turbopack": "next build --turbopack && node scripts/postbuild-i18n.mjs",
     "build:analyze": "set ANALYZE=true&& next build && node scripts/postbuild-i18n.mjs",
     "start": "next start",
-    "lint": "eslint",
-    "export": "next export"
+    "lint": "eslint"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
