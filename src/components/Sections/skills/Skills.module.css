@@ -14,7 +14,9 @@
 }
 
 .grid {
-  @apply grid grid-cols-2 w-full gap-5;
+  /* Jedna kolumna na najmniejszych telefonach (poniżej sm=640px), żeby karty
+     i tekst były czytelne; dwie kolumny od tabletu w górę. */
+  @apply grid grid-cols-1 sm:grid-cols-2 w-full gap-5;
 }
 
 .card {
@@ -29,7 +31,8 @@
 }
 
 .cardDesc {
-  @apply text-left break-words hyphens-auto text-[12px] leading-[150%] lg:text-[16px] lg:leading-[150%];
+  /* Min 14px na mobile (wcześniej 12px — poniżej progu czytelności). */
+  @apply text-left break-words hyphens-auto text-[14px] leading-[150%] lg:text-[16px] lg:leading-[150%];
   color: var(--c-black);
   margin-top: 4px;
 }

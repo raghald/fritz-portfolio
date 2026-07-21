@@ -24,6 +24,17 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   const animationRef = useRef<gsap.core.Tween | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Reduced motion: użytkownik z ustawieniem "ogranicz ruch" nie dostaje
+  // auto-przewijania ani odtwarzanych filmów (statyczne plakaty).
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
 
   const headingRef = useScrollReveal<HTMLHeadingElement>({
     start: "top 90%",
@@ -94,6 +105,11 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
       if (carouselWidth === 0) return;
 
       gsap.set(track, { x: 0 });
+
+      // Reduced motion: zostaw track statyczny, nie twórz nieskończonej pętli.
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
 
       animationRef.current = gsap.to(track, {
         x: -carouselWidth,
@@ -167,16 +183,18 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   useEffect(() => {
     if (!trackRef.current) return;
     const videos = trackRef.current.querySelectorAll("video");
+    // Odtwarzaj tylko gdy w viewport i bez reduced-motion.
+    const shouldPlay = isInView && !prefersReducedMotion;
     videos.forEach((video) => {
-      if (isInView) {
+      if (shouldPlay) {
         video.play().catch(() => {});
       } else {
         video.pause();
       }
     });
-  }, [isInView]);
+  }, [isInView, prefersReducedMotion]);
 
-  // Handle hover with smooth deceleration like a train slowing down
+  // Zatrzymanie ruchu przy hover (płynne zwolnienie).
   useEffect(() => {
     if (!animationRef.current) return;
 
@@ -200,7 +218,7 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
   return (
     <section
       ref={sectionRef}
-      className={`relative z-20 w-full bg-white py-[60px] lg:py-[100px] ${className}`}
+      className={`relative z-20 w-full bg-white py-[60px] lg:py-[100px] ${className}`}
       aria-label={t("sectionAria")}
     >
       {/* Centered H2 Heading - Responsive */}
@@ -229,14 +247,20 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
           {[...mediaItems, ...mediaItems].map((item, index) => {
             // Set max-width for About_Me_1 and About_Me_4 to match actual video content width
             const maxWidth = item.id === 1 || item.id === 4 ? "282px" : "none";
+            // Druga połowa to wizualny duplikat dla pętli — ukryty dla AT.
+            const isDuplicate = index >= mediaItems.length;
 
             return (
-              <div key={`media-${item.id}-${index}`} className="flex-shrink-0">
-                {/* All videos same height (500px), width auto for aspect ratio */}
+              <div
+                key={`media-${item.id}-${index}`}
+                className="flex-shrink-0"
+                aria-hidden={isDuplicate ? true : undefined}
+              >
+                {/* Odtwarzanie sterowane efektem (in-view + pauza + reduced-motion),
+                    bez atrybutu autoPlay, żeby respektować prefers-reduced-motion. */}
                 <video
                   className="h-[clamp(320px,60vw,500px)] w-auto object-contain block"
                   style={{ maxWidth }}
-                  autoPlay
                   loop
                   muted
                   playsInline
@@ -254,8 +278,8 @@ const MediaCarousel: React.FC<MediaCarouselProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      {/* Responsive bottom spacing */}
-      <div className="pb-[72px] md:pb-[52px] lg:pb-[100px]" />
+      {/* Responsive bottom spacing (zredukowane) */}
+      <div className="pb-[24px] md:pb-[24px] lg:pb-[40px]" />
     </section>
   );
 };
