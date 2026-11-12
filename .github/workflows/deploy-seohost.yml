@@ -1,0 +1,91 @@
+name: Deploy portfolio to SEOHost
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Upload files to production (leave unchecked for a dry run)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seohost-portfolio-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build and verify the static site
+        run: |
+          npm ci
+          npm run build
+          test -s out/index.html
+          test -s out/pl/index.html
+          test -s out/.htaccess
+
+      - name: Sync to SEOHost
+        env:
+          DEPLOY_KEY: ${{ secrets.SEOHOST_SSH_KEY }}
+          DEPLOY_PASSPHRASE: ${{ secrets.SEOHOST_SSH_PASSPHRASE }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.SEOHOST_KNOWN_HOSTS }}
+          PUBLISH: ${{ inputs.publish }}
+        run: |
+          set -euo pipefail
+          : "${DEPLOY_KEY:?Set SEOHOST_SSH_KEY in the production environment}"
+          : "${DEPLOY_KNOWN_HOSTS:?Set SEOHOST_KNOWN_HOSTS in the production environment}"
+
+          umask 077
+          ssh_dir="$(mktemp -d)"
+          eval "$(ssh-agent -s)" >/dev/null
+          trap 'ssh-agent -k >/dev/null; rm -rf -- "$ssh_dir"' EXIT
+          printf '%s\n' "$DEPLOY_KEY" > "$ssh_dir/deploy_key"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          unset DEPLOY_KEY DEPLOY_KNOWN_HOSTS
+
+          cat > "$ssh_dir/askpass" <<'EOF'
+          #!/bin/sh
+          printf '%s\n' "$DEPLOY_PASSPHRASE"
+          EOF
+          chmod 700 "$ssh_dir/askpass"
+          SSH_ASKPASS="$ssh_dir/askpass" SSH_ASKPASS_REQUIRE=force \
+            ssh-add "$ssh_dir/deploy_key" </dev/null
+          unset DEPLOY_PASSPHRASE
+
+          cat > "$ssh_dir/config" <<EOF
+          Host seohost-portfolio
+            HostName h62.seohost.pl
+            Port 2222
+            User srv95228
+            UserKnownHostsFile $ssh_dir/known_hosts
+            StrictHostKeyChecking yes
+            BatchMode yes
+            IdentitiesOnly yes
+            IdentityFile $ssh_dir/deploy_key
+          EOF
+
+          destination=/home/srv95228/domains/fritzglowacki.com/public_html
+          ssh -F "$ssh_dir/config" seohost-portfolio \
+            "test -d '$destination' && test -w '$destination' && command -v rsync >/dev/null"
+
+          flags=(--recursive --times --delay-updates --itemize-changes)
+          if [[ "$PUBLISH" != true ]]; then
+            flags+=(--dry-run)
+          fi
+          rsync "${flags[@]}" -e "ssh -F $ssh_dir/config" \
+            out/ "seohost-portfolio:$destination/"
