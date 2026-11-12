@@ -11,7 +11,7 @@
     "titleWord": "DESIGNER",
     "srHeading": "Fryderyk Głowacki — projektant Web, UI/UX i motion",
 
-    "sideCopyLine1": "Your neighbor",
+    "sideCopyLine1": "Your neighborhood",
     "sideCopyLine2": "design freak",
 
     "tags": {
@@ -24,10 +24,10 @@
 
     "tagOrder": "[\"ui\",\"web\",\"ux\",\"product\",\"motion\"]",
 
-    "btnPrimary": "Zobacz moje workflow",
-    "btnSecondary": "Zapytaj o swój projekt",
-    "btnPrimaryAria": "Przejdź do moich case studies",
-    "btnSecondaryAria": "Otwórz okno kontaktu, aby wspólnie popracować"
+    "btnPrimary": "Zobacz projekty",
+    "btnSecondary": "Porozmawiajmy o Twoim projekcie",
+    "btnPrimaryAria": "Zobacz projekty",
+    "btnSecondaryAria": "Porozmawiajmy o Twoim projekcie"
   },
 
   "loading": {
@@ -37,7 +37,7 @@
 
   "intro": {
     "ariaLabel": "Intro",
-    "heading": "Cześć, jestem Fryderyk — web & UI/UX designer skupiający się na przejrzystym, przemyślanym designie. Czasami zajmuję się również tworzeniem treści.",
+    "heading": "Cześć, jestem Fryderyk. Projektuję strony i interfejsy, a wybrane projekty wdrażam we Framerze.",
     "portraitAlt": "Zdjęcie przedstawiające Fritz"
   },
 
@@ -80,8 +80,8 @@
 
   "projects": {
   "ariaLabel": "Sekcja projektów",
-  "headerTyping": "I'm (...) web & UI/UX designer",
-  "showMore": "Zobacz więcej"
+  "headerTyping": "Wybrane projekty",
+  "showMore": "Wszystkie projekty"
 },
 
 
@@ -94,15 +94,15 @@
     "seek": "Przewiń wideo",
     "dotPage": "Przejdź do strony {index}",
     "dotVideo": "Przejdź do wideo {index}",
-    "ctaLabel": "Zobacz więcej",
-    "ctaAria": "Zobacz więcej treści w galerii",
+    "ctaLabel": "Przejdź do galerii",
+    "ctaAria": "Przejdź do galerii",
     "play": "Odtwórz wideo",
     "pause": "Zatrzymaj wideo"
   },
 
   "worksIntro": {
     "ariaLabel": "Wprowadzenie do projektów",
-    "title": "Zrealizowałem kilka projektów...",
+    "title": "Projekty",
     "srHeadingSuffix": "— wybrane case studies — Fryderyk Głowacki",
     "subtitle": "Poznaj moje projekty — od UX i web designu po kreatywne kampanie i treści digital"
   },
@@ -111,39 +111,39 @@
     "videoFallback": "Twoja przeglądarka nie obsługuje elementu wideo.",
     "items": {
       "nth-consulting-group": {
-        "title": "Strona firmy konsultingowej",
+        "title": "Strona Nth Consulting Group",
         "meta": "Strona Internetowa | 2026",
-        "description": "Wdrożenie firmowej strony internetowej dla Nth Consulting Group — firmy doradczej obsługującej liderów branży inżynieryjnej i budowlanej — w oparciu o Framer, z naciskiem na autorytatywny wizerunek marki, czytelną architekturę usług oraz szybkie, w pełni responsywne działanie"
+        "description": "Wdrożyłem we Framerze stronę z osobnymi sekcjami usług, branż i realizacji."
       },
       "talentdays-blog": {
-        "title": "Blog dla młodych talentów",
+        "title": "Blog kariery Talent Days",
         "meta": "Blog | 2024",
-        "description": "Projekt bloga dla platformy Talent Days, którego celem było stworzenie przejrzystej i angażującej przestrzeni z artykułami wspierającymi użytkowników w poszukiwaniu pracy i rozwoju kariery"
+        "description": "Przeprojektowałem kategorie, układ artykułów i sposób prezentacji powiązanych treści."
       },
       "pharmovit-store": {
-        "title": "Sklep z suplementami",
+        "title": "Sklep internetowy Pharmovit",
         "meta": "E-commerce | 2022",
-        "description": "Projekt sklepu internetowego Pharmovit, w którym kluczowym celem było połączenie nowoczesnej estetyki z funkcjonalnością wspierającą sprzedaż"
+        "description": "Zaprojektowałem sklep, który połączył stronę firmową i sprzedaż detaliczną w jednym serwisie."
       },
       "pasibus-job-board": {
-        "title": "Burger's Job Board",
+        "title": "Strona kariery Pasibus",
         "meta": "LoFi / UX | 2025",
-        "description": "Projekt strony Kariera w Pasibusie, którego celem było uporządkowanie treści i stworzenie intuicyjnej architektury informacji wspierającej proces rekrutacyjny"
+        "description": "Opracowałem strukturę strony kariery i przygotowałem makiety UX dla zespołu UI."
       },
       "tutlo-recommendation": {
-        "title": "System poleceń",
+        "title": "Program poleceń Tutlo",
         "meta": "Landing Page | 2025",
-        "description": "Projekt landing page’a dla programu poleceń Tutlo – przygotowany tak, aby zachęcać użytkowników do dołączenia do programu partnerskiego. Odpowiadałem za zaprojektowanie spójnej wizualnie, czytelnej i nastawionej na konwersję strony, która w prosty sposób tłumaczy zasady i korzyści dla użytkownika."
+        "description": "Zaprojektowałem stronę, która wyjaśnia zasady programu i prowadzi do rejestracji."
       },
       "kobu-studio": {
-        "title": "Studio architektoniczne",
+        "title": "Portfolio Kobu Studio",
         "meta": "Strona Internetowa | 2026",
-        "description": "Wdrożenie strony internetowej dla biura architektonicznego Kobu Studio w oparciu o Framer, z naciskiem na precyzję, minimalizm i jakość prezentacji portfolio."
+        "description": "Wdrożyłem portfolio we Framerze i zoptymalizowałem zdjęcia realizacji."
       },
       "absolvent-agency": {
-        "title": "Agencja Employer Branding",
+        "title": "Strona Absolvent Consulting",
         "meta": "Website | 2025",
-        "description": "Projekt nowej strony Absolvent Consulting"
+        "description": "Przejrzałem dotychczasowy projekt strony, uporządkowałem treści i znalazłem wykonawcę do wdrożenia."
       }
     },
 
@@ -159,7 +159,7 @@
     "filterAnnouncement": "{count, plural, =0 {Żaden projekt nie pasuje do wybranego filtra} one {Wyświetlono # projekt} few {Wyświetlono # projekty} many {Wyświetlono # projektów} other {Wyświetlono # projektu}}",
 
     "moreSections": {
-      "heading": "To nie jest moje jedyne case study"
+      "heading": "Pozostałe projekty"
     },
 
     "types": {
@@ -171,7 +171,7 @@
     },
 
     "absolvent": {
-      "heading": "Agencja Employer Branding",
+      "heading": "Strona Absolvent Consulting",
       "intro": "Absolvent Consulting to agencja employer brandingowa z kilkuletnim doświadczeniem w branży. Kreatywna ekipa fachowców w swoich dziedzinach. Na co dzień pracują z największymi markami, a ich kreacje i pomysły można spotkać na co dzień w social mediach oraz internecie",
       "table": {
         "client": { "label": "Klient" },
@@ -186,7 +186,7 @@
 
       "challenge": {
         "heading": "Wyzwanie",
-        "description": "Absolvent Consulting spotkało się z nieprzyjemną sytuacją. Projekt przebudowy strony trwał już rok, ponieważ pierwotny wykonawca zniknął na pewnym etapie prac, a temat trzeba było doprowadzić do końca"
+        "description": "Przejąłem rozpoczęty projekt przebudowy strony. Trzeba było ocenić istniejące materiały i przygotować projekt do wdrożenia."
       },
 
       "goal": {
@@ -200,8 +200,8 @@
           "description": "Układ, spójność z brandingiem"
         },
         "implementer": {
-          "title": "Wdrożenie",
-          "description": "Znalezienie wdrożeniowca"
+          "title": "Wybór wykonawcy",
+          "description": "Znalezienie wykonawcy do wdrożenia strony."
         },
         "ux-ui": {
           "title": "Usprawnienia UX i UI",
@@ -216,7 +216,7 @@
           "description": "Dostarczenie kompletnej, spójnej wersji strony"
         }
       },
-      "result": "Wymuszone przez sytuację zmiany przyniosły błyskawiczne efekty. Udało nam się dopiąć stronę do końca. Absolvent Consulting mógł powitać drugi kwartał 2025 z nową wizytówką swojej działalności",
+      "result": "Dopracowałem nawigację, hierarchię treści i układy mobilne. Nowa strona została opublikowana w drugim kwartale 2025 roku.",
       "video": {
         "ariaLabel": "Prezentacja strony Absolvent Consulting",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
@@ -224,7 +224,7 @@
     },
 
     "pasibus": {
-      "heading": "Burger's Job Board",
+      "heading": "Strona kariery Pasibus",
       "intro": "Pasibus to polska sieć fastfoodowa, która w kilka lat przeszła drogę od foodtruckowej restauracji do realnego konkurenta dla zagranicznych koncernów na lokalnym rynku. Konsekwentnie realizuje swoje cele, stawiając na ciągły rozwój produktów, sieci restauracji oraz pracowników",
       "table": {
         "client": { "label": "Klient" },
@@ -238,7 +238,7 @@
       },
       "challenge": {
         "heading": "Wyzwanie",
-        "description": "Rozwijająca się sieć Pasibus stanęła przed potrzebą sprawnego pozyskiwania nowych pracowników do powstających błyskawicznie nowych punktów na mapie Polski. Zdecydowali się na własny job board, który będzie pozyskiwał kandydatów bezpośrednio do ich bazy"
+        "description": "Pasibus potrzebował własnej strony kariery, żeby przyjmować zgłoszenia bezpośrednio od kandydatów do pracy w nowych restauracjach."
       },
 
       "goal": {
@@ -259,7 +259,7 @@
           "description": "Przygotowanie funkcjonalnych layoutów bez warstwy wizualnej."
         }
       },
-      "result": "Powstała uporządkowana i intuicyjna struktura strony karierowej, która ułatwia kandydatom poruszanie się po ofercie pracy i jednocześnie wspiera budowanie wizerunku Pasibusa jako pracodawcy. Moje opracowanie UX i architektury informacji stało się solidną bazą dla dalszych prac UI i wdrożenia",
+      "result": "Przekazałem zespołowi UI strukturę strony kariery i makiety UX z układem ofert pracy oraz nawigacją.",
       "video": {
         "ariaLabel": "Prezentacja UX i architektury informacji Pasibus",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
@@ -267,7 +267,7 @@
     },
 
     "pharmovit": {
-      "heading": "Sklep z suplementami",
+      "heading": "Sklep internetowy Pharmovit",
       "intro": "Pharmovit jest jednym z największych producentów oraz dystrybutorów suplementów diety w Polsce. Płocka firma sukcesywnie rok w rok powiększa swoje portfolio produktów i inwestuje w różne innowacje",
       "table": {
         "client": { "label": "Klient" },
@@ -281,7 +281,7 @@
       },
       "challenge": {
         "heading": "Wyzwanie",
-        "description": "Razem z zespołem Pharmovitu stanęliśmy przed ambitnym zadaniem. Po tym, jak firma święciła triumfy w obszarze sprzedaży B2B oraz produkcji, pojawił się pomysł, aby spróbować rozwinąć sprzedaż detaliczną. Dotychczasowy sklep internetowy istniał oddzielnie od strony internetowej firmy, więc po kilku spotkaniach postawiliśmy na konsolidację tych dwóch bytów"
+        "description": "Pharmovit chciał rozwinąć sprzedaż detaliczną. Dotychczasowy sklep działał oddzielnie od strony firmowej, więc postanowiliśmy połączyć oba serwisy."
       },
 
       "goal": {
@@ -306,7 +306,7 @@
           "description": "Jednorazowa konfiguracja płatności i integracji z magazynem, aby przygotować sklep na realną sprzedaż."
         }
       },
-      "result": "Poza konsolidacją najważniejszych treści osiągnęliśmy coś, co jest największą wagą dla każdego e-commerce. Po wdrożeniu nowej strony po kilku miesiącach zaobserwowaliśmy wzrost widoczności w przeglądarkach, co przełożyło się na większą sprzedaż detaliczną produktów firmy. Synchronizacja z systemem Subiekt GT ułatwiła obsługę nowych zamówień przez biuro obsługi klienta",
+      "result": "Połączyliśmy stronę firmową i sklep w jednym serwisie. Integracja z Subiektem GT ułatwiła obsługę zamówień. W kolejnych miesiącach odnotowaliśmy też wzrost widoczności w wyszukiwarkach i sprzedaży detalicznej.",
       "video": {
         "ariaLabel": "Prezentacja sklepu internetowego Pharmovit",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
@@ -314,8 +314,8 @@
     },
 
     "talentdays": {
-      "heading": "Blog dla młodych talentów",
-      "intro": "Talent Days to jedne z największych i najważniejszych wydarzeń dla studentów w ciągu roku. Od 2013 podczas każdej edycji setki młodych talentów znajdują tutaj swoją pierwszą pracę. Jednak Talent Days to nie tylko wydarzenie karierowe, ale też prężnie rozwijający się serwis internetowy, który pozycjonuje się jako job board skupiony na ofertach pracy na poziomie juniorskim oraz blog, który stał się zbiorem porad dotyczących kariery",
+      "heading": "Blog kariery Talent Days",
+      "intro": "Przeprojektowałem blog Talent Days dla osób szukających pierwszej pracy. Uporządkowałem kategorie i powiązane treści oraz zaprojektowałem nowy układ artykułów.",
       "table": {
         "client": { "label": "Klient" },
         "type": { "label": "Typ" },
@@ -341,7 +341,7 @@
           "description": "Integracja newslettera, rejestracji oraz Talent Match w toku czytania, bez przerywania doświadczenia."
         }
       },
-      "result": "Udało nam się osiągnąć cel, który założyliśmy. Wdrożyliśmy całkowicie nowy wygląd produktu, ale co najważniejsze, w dłuższym okresie analizy odnotowaliśmy większą liczbę wejść oraz wydłużony czas pozostawania użytkowników na stronie. Miejsce, które wspiera młode talenty, doszło do skutku",
+      "result": "Po wdrożeniu nowej wersji bloga odnotowaliśmy więcej wizyt i dłuższy czas spędzony na stronie.",
       "video": {
         "ariaLabel": "Interfejs bloga Talent Days i doświadczenie czytania",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
@@ -359,7 +359,7 @@
     },
 
     "tutlo": {
-      "heading": "System rekomendacji",
+      "heading": "Program poleceń Tutlo",
       "intro": "Projekt landing page’a promującego Program Poleceń Tutlo — stworzonego z myślą o zachęceniu użytkowników do rejestracji i dołączenia do programu partnerskiego",
       "table": {
         "client": { "label": "Klient" },
@@ -400,7 +400,7 @@
           "description": "Przygotowanie assetów i dokumentacji dla zespołu developerskiego."
         }
       },
-      "result": "Powstała lekka i intuicyjna strona typu landing page, która w prosty sposób prezentuje zasady programu, odpowiada na kluczowe pytania użytkowników i prowadzi ich do rejestracji. Projekt wspiera cel biznesowy — pozyskanie nowych partnerów i zwiększenie liczby poleceń Tutlo",
+      "result": "Na stronie zebrałem zasady programu i odpowiedzi na najważniejsze pytania. Z tego samego miejsca odwiedzający mogą przejść do rejestracji.",
       "video": {
         "ariaLabel": "Prezentacja landing page'a systemu rekomendacji Tutlo",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
@@ -408,7 +408,7 @@
     },
 
     "NthConsulting": {
-      "heading": "Strona firmy konsultingowej",
+      "heading": "Strona Nth Consulting Group",
       "intro": "Nth Consulting Group to firma doradcza współpracująca z liderami branży inżynieryjnej i budowlanej, dostarczająca usługi zarządzania programami, zarządzania budową oraz kompleksowych rozwiązań projektowych. Marka stawia na autorytet, precyzję i realizację — „to the Nth degree”",
       "table": {
         "client": {
@@ -458,14 +458,14 @@
           "description": "Weryfikacja działania strony, testy responsywności na różnych urządzeniach oraz wdrożenie produkcyjne"
         }
       },
-      "result": "Efektem była szybka, wiarygodna i w pełni responsywna strona firmowa, która w czytelny sposób komunikuje usługi i flagowe realizacje firmy, wzmacniając jej wizerunek jako zaufanego partnera dla liderów branży inżynieryjnej i budowlanej",
+      "result": "Wdrożyłem we Framerze osobne sekcje usług, branż i realizacji. Dostosowałem układy do różnych ekranów i zoptymalizowałem zdjęcia projektów.",
       "video": {
         "ariaLabel": "Prezentacja strony Nth Consulting Group",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
       }
     },
     "KobuStudio": {
-      "heading": "Studio architektoniczne",
+      "heading": "Portfolio Kobu Studio",
       "intro": "Kobu Studio to biuro architektoniczne specjalizujące się w nowoczesnych, funkcjonalnych przestrzeniach. Marka stawia na estetykę, detal oraz spójność wizualną w realizowanych projektach",
       "table": {
         "client": { "label": "Klient" },
@@ -511,7 +511,7 @@
   }
 },
 
-      "result": "Efektem była estetyczna, szybka i w pełni responsywna strona internetowa, która w czytelny sposób prezentuje portfolio studia i wspiera jego wizerunek jako nowoczesnego biura architektonicznego",
+      "result": "Wdrożyłem portfolio we Framerze, zachowując siatkę i typografię projektu. Dostosowałem układ do różnych ekranów i zoptymalizowałem duże zdjęcia realizacji.",
       "video": {
         "ariaLabel": "Prezentacja strony internetowej Kobu Studio",
         "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."

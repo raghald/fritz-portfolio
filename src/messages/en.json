@@ -11,7 +11,7 @@
     "titleWord": "DESIGNER",
     "srHeading": "Fryderyk Glowacki — Web, UI/UX & Motion Designer",
 
-    "sideCopyLine1": "Your neighbor",
+    "sideCopyLine1": "Your neighborhood",
     "sideCopyLine2": "design freak",
 
     "tags": {
@@ -24,10 +24,10 @@
 
     "tagOrder": "[\"ui\",\"web\",\"ux\",\"product\",\"motion\"]",
 
-    "btnPrimary": "Check out my workflow",
-    "btnSecondary": "Ask about your project",
-    "btnPrimaryAria": "Go to my case studies",
-    "btnSecondaryAria": "Open contact dialog to work together"
+    "btnPrimary": "View projects",
+    "btnSecondary": "Let’s talk about your project",
+    "btnPrimaryAria": "View projects",
+    "btnSecondaryAria": "Let’s talk about your project"
   },
 
   "loading": {
@@ -37,7 +37,7 @@
 
   "intro": {
     "ariaLabel": "Intro",
-    "heading": "Hi, I'm Fryderyk — web & UI/UX designer focused on clean, thoughtful design. Sometimes I'm a content creator.",
+    "heading": "Hi, I’m Fryderyk. I design websites and interfaces, and build selected projects in Framer.",
     "portraitAlt": "Portrait of Fritz Glowacki"
   },
 
@@ -80,8 +80,8 @@
 
   "projects": {
   "ariaLabel": "Projects showcase",
-  "headerTyping": "I'm (...) web & UI/UX designer",
-  "showMore": "Show more"
+  "headerTyping": "Selected projects",
+  "showMore": "All projects"
 },
 
 
@@ -94,15 +94,15 @@
     "seek": "Seek in video",
     "dotPage": "Go to page {index}",
     "dotVideo": "Go to video {index}",
-    "ctaLabel": "Show more",
-    "ctaAria": "Show more content in gallery",
+    "ctaLabel": "Explore the gallery",
+    "ctaAria": "Explore the gallery",
     "play": "Play video",
     "pause": "Pause video"
   },
 
   "worksIntro": {
     "ariaLabel": "Works Introduction",
-    "title": "I've done a few projects...",
+    "title": "Projects",
     "srHeadingSuffix": "— selected case studies by Fritz Glowacki",
     "subtitle": "Explore my projects — from UX and web design to creative campaigns and digital content"
   },
@@ -111,39 +111,39 @@
     "videoFallback": "Your browser does not support the video tag.",
     "items": {
       "nth-consulting-group": {
-        "title": "Consulting Group Website",
+        "title": "Nth Consulting Group Website",
         "meta": "Website | 2026",
-        "description": "Framer implementation of a corporate website for Nth Consulting Group — a management consulting firm serving engineering and construction leaders. The focus was an authoritative brand presence, clear service architecture, and fast, fully responsive performance"
+        "description": "I built the site in Framer, with dedicated sections for services, markets, and projects."
       },
       "talentdays-blog": {
-        "title": "Blog for young talents",
+        "title": "Talent Days Career Blog",
         "meta": "Blog | 2024",
-        "description": "Blog design for Talent Days — created as a clear and engaging space with articles supporting users in job searching and career development"
+        "description": "I redesigned the categories, article layouts, and related content."
       },
       "pharmovit-store": {
-        "title": "Supplement Store",
+        "title": "Pharmovit Online Store",
         "meta": "E-commerce | 2022",
-        "description": "Design of Pharmovit’s online store, where the key objective was combining modern aesthetics with functionality that drives sales"
+        "description": "I designed a store that brought the company website and retail sales together."
       },
       "pasibus-job-board": {
-        "title": "Burger's Job Board",
+        "title": "Pasibus Careers Site",
         "meta": "LoFi / UX | 2025",
-        "description": "The Pasibus Careers website project focused on structuring content and creating an intuitive information architecture to support the recruitment process"
+        "description": "I planned the careers site structure and prepared UX wireframes for the UI team."
       },
       "tutlo-recommendation": {
-        "title": "Recommendation system",
+        "title": "Tutlo Referral Program",
         "meta": "Landing page | 2025",
-        "description": "Landing page design for Tutlo Referral Program — created to encourage users to sign up and join the partnership initiative"
+        "description": "I designed a landing page that explains the program and guides visitors to sign up."
       },
       "kobu-studio": {
-        "title": "Architecture Studio",
+        "title": "Kobu Studio Portfolio",
         "meta": "Website | 2026",
-        "description": "Website implementation in Framer for the Kobu Studio architectural office — focused on precision, minimalism, and high-quality portfolio presentation"
+        "description": "I built the portfolio in Framer and optimized the project images."
       },
       "absolvent-agency": {
-        "title": "Employer Branding Agency",
+        "title": "Absolvent Consulting Website",
         "meta": "Website | 2025",
-        "description": "Design of the new website for Absolvent Consulting — an employer branding agency working with major brands"
+        "description": "I reviewed the existing design, reorganized the content, and found a developer to build the site."
       }
     },
 
@@ -159,7 +159,7 @@
     "filterAnnouncement": "{count, plural, =0 {No projects match the selected filter} one {Showing # project} other {Showing # projects}}",
 
     "moreSections": {
-      "heading": "This is not my one and only case"
+      "heading": "More projects"
     },
 
     "types": {
@@ -171,7 +171,7 @@
     },
 
     "absolvent": {
-      "heading": "Employer Branding Agency",
+      "heading": "Absolvent Consulting Website",
       "intro": "Absolvent Consulting is an employer branding agency with several years of experience in the industry. A creative team of professionals in their fields. They work with major brands on a daily basis, and their creations and ideas can be found every day on social media and the internet",
       "table": {
   "client": { "label": "Client" },
@@ -186,7 +186,7 @@
 
       "challenge": {
         "heading": "Challenge",
-        "description": "Absolvent Consulting encountered an unpleasant situation. The website redesign project had already been going on for a year because the original contractor disappeared at a certain stage of the work, and the project had to be completed"
+        "description": "I took over an unfinished website redesign. I reviewed the existing materials to decide what we could reuse and what needed work before development."
       },
 
       "goal": {
@@ -200,8 +200,8 @@
           "description": "Layout, branding consistency"
         },
         "implementer": {
-          "title": "Implementation",
-          "description": "Finding an implementer"
+          "title": "Finding a developer",
+          "description": "I found a developer to build the website."
         },
         "ux-ui": {
           "title": "UX and UI improvements",
@@ -216,7 +216,7 @@
           "description": "Delivering the site in a cohesive, completed form"
         }
       },
-      "result": "The changes forced by the situation brought immediate results. We managed to complete the website. Absolvent Consulting was able to welcome the second quarter of 2025 with a new showcase for its activities",
+      "result": "I refined the navigation, content hierarchy, and mobile layouts. The new site went live in the second quarter of 2025.",
       "video": {
         "ariaLabel": "Absolvent Consulting website overview",
         "fallback": "Your browser does not support the video tag."
@@ -224,7 +224,7 @@
     },
 
     "pasibus": {
-      "heading": "Burger's Job Board",
+      "heading": "Pasibus Careers Site",
       "intro": "Pasibus is a Polish fast food chain that has gone from being a food truck restaurant to a real competitor for foreign corporations on the local market in just a few years. It consistently pursues its goals by focusing on the continuous development of its products, restaurant chain, and employees",
       "table": {
   "client": { "label": "Client" },
@@ -238,7 +238,7 @@
 },
       "challenge": {
         "heading": "Challenge",
-        "description": "The growing Pasibus network faced the need to efficiently recruit new employees for rapidly emerging new locations across Poland. They decided to create their own job board, which would recruit candidates directly to their database"
+        "description": "Pasibus needed a careers site to receive applications directly from candidates for its new restaurants."
       },
 
       "goal": {
@@ -259,7 +259,7 @@
           "description": "Preparing functional layouts without the visual layer."
         }
       },
-      "result": "The result was a clear and intuitive career site structure that makes it easier for candidates to navigate job opportunities while also supporting Pasibus’s employer branding. My UX and information architecture work provided a solid foundation for the following UI design and implementation phases",
+      "result": "I handed over the careers site structure and UX wireframes, including the job listing layout and navigation, to the UI team.",
       "video": {
         "ariaLabel": "Pasibus careers UX and IA overview",
         "fallback": "Your browser does not support the video tag."
@@ -267,7 +267,7 @@
     },
 
     "pharmovit": {
-      "heading": "Supplement store",
+      "heading": "Pharmovit Online Store",
       "intro": "Pharmovit is one of the largest manufacturers and distributors of dietary supplements in Poland. Year after year, the Płock-based company is gradually expanding its product portfolio and investing in various innovations",
       "table": {
   "client": { "label": "Client" },
@@ -281,7 +281,7 @@
 },
       "challenge": {
         "heading": "Challenge",
-        "description": "Together with the Pharmovit team, we faced an ambitious task. After the company celebrated its triumphs in B2B sales and production, the idea arose to try to develop retail sales. The existing online store existed separately from the company's website, so after several meetings, we decided to consolidate the two entities"
+        "description": "Pharmovit wanted to grow its retail business. Its online store and corporate website ran separately, so we decided to bring them together."
       },
 
       "goal": {
@@ -306,7 +306,7 @@
           "description": "One-time setup for payments and warehouse system synchronization to prepare the store for real orders."
         }
       },
-      "result": "In addition to consolidating the most important content, we achieved something that is of utmost importance for any e-commerce business. After implementing the new website, we observed an increase in visibility in browsers after a few months, which translated into higher retail sales of the company's products. Synchronization with the Subiekt GT system, on the other hand, facilitated the processing of new orders by the customer service department",
+      "result": "We brought the corporate website and store together. The Subiekt GT integration made it easier to process orders. In the months after launch, we also saw higher search visibility and retail sales.",
       "video": {
         "ariaLabel": "Pharmovit e-commerce store overview",
         "fallback": "Your browser does not support the video tag."
@@ -314,8 +314,8 @@
     },
 
     "talentdays": {
-      "heading": "Blog for young talents",
-      "intro": "Talent Days is one of the largest and most important events for students during the year. Since 2013, hundreds of young talents have found their first job here during each edition. However, Talent Days is not only a career event, but also a rapidly growing website that positions itself as a job board focused on junior-level job offers and a blog that has become a collection of advice on work-related issues",
+      "heading": "Talent Days Career Blog",
+      "intro": "I redesigned the Talent Days blog for people looking for their first job. I reorganized the categories and related content and designed a new article layout.",
       "table": {
   "client": { "label": "Client" },
   "type": { "label": "Type" },
@@ -351,7 +351,7 @@
           "description": "Integrating newsletter, registration, and Talent Match touchpoints into the reading flow."
         }
       },
-      "result": "We managed to achieve the goal we set for ourselves. We implemented a completely new product design, but most importantly, in the long term, we saw an increase in the number of visits and the time users spent on the site. A place that supports young talent has come to fruition",
+      "result": "After the redesigned blog launched, we saw more visits and longer time spent on the site.",
       "video": {
         "ariaLabel": "Talent Days blog UI and reading experience",
         "fallback": "Your browser does not support the video tag."
@@ -359,7 +359,7 @@
     },
 
     "tutlo": {
-      "heading": "Recommendation system",
+      "heading": "Tutlo Referral Program",
       "intro": "Tutlo is a Polish platform for learning English online. It is based on the freedom to choose the place and time of learning. It draws on a large database of tutors from around the world",
       "table": {
   "client": { "label": "Client" },
@@ -398,7 +398,7 @@
           "description": "Preparing assets and documentation for a smooth implementation"
         }
       },
-      "result": "The result is a lightweight and intuitive landing page that clearly presents the program rules, addresses key user questions, and drives them toward registration. The design supports the business goal of acquiring new partners and increasing the number of Tutlo referrals",
+      "result": "I brought the program rules and answers to common questions together on one page, where visitors can also go straight to registration.",
       "video": {
         "ariaLabel": "Tutlo recommendation system landing page overview",
         "fallback": "Your browser does not support the video tag."
@@ -406,7 +406,7 @@
     },
 
     "NthConsulting": {
-      "heading": "Consulting Group Website",
+      "heading": "Nth Consulting Group Website",
       "intro": "Nth Consulting Group is a management consulting firm partnering with engineering and construction leaders to deliver program management, construction management, and project solutions. The brand stands for authority, precision, and delivery — to the Nth degree",
       "table": {
         "client": {
@@ -456,14 +456,14 @@
           "description": "Final quality checks, cross-device responsive testing, and production deployment"
         }
       },
-      "result": "The result was a fast, credible, and fully responsive corporate website that clearly communicates the firm’s services and flagship projects, reinforcing its positioning as a trusted partner for engineering and construction leaders",
+      "result": "I built dedicated sections for services, markets, and projects in Framer. I adapted the layouts for different screen sizes and optimized the project images.",
       "video": {
         "ariaLabel": "Nth Consulting Group website overview",
         "fallback": "Your browser does not support the video tag."
       }
     },
     "KobuStudio": {
-      "heading": "Architectural Studio",
+      "heading": "Kobu Studio Portfolio",
       "intro": "Kobu Studio is an architectural office specializing in modern, functional spaces. The brand emphasizes aesthetics, detail, and visual consistency across its projects",
       "table": {
   "client": { "label": "Client" },
@@ -509,7 +509,7 @@
   }
 },
 
-      "result": "The result was a clean, fast, and fully responsive website that clearly presents the studio’s portfolio and supports its positioning as a modern architectural practice",
+      "result": "I built the portfolio in Framer, preserving the design’s grid and typography. I adapted the layout for different screen sizes and optimized the large project images.",
       "video": {
         "ariaLabel": "Kobu Studio architectural portfolio website overview",
         "fallback": "Your browser does not support the video tag."
