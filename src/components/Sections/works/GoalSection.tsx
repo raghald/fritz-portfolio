@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import CaseMedia from "@/components/CaseStudy/CaseMedia";
 import { useTranslations } from "@/lib/useTranslations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -63,11 +63,9 @@ const GoalSection: React.FC<GoalSectionProps> = ({
             {/* LEFT */}
             <div className="grid grid-rows-2 gap-4 lg:gap-6">
               <div ref={leftTopRef} className="w-full shadow-lg overflow-hidden">
-                <Image
+                <CaseMedia
                   src={leftTopImageSrc}
                   alt={leftTopImageAlt}
-                  width={0}
-                  height={0}
                   sizes="(min-width: 1024px) 25vw, 100vw"
                   className="w-full h-full object-cover block"
                   style={{ width: "100%", height: "auto" }}
@@ -75,11 +73,9 @@ const GoalSection: React.FC<GoalSectionProps> = ({
               </div>
 
               <div ref={leftBottomRef} className="w-full shadow-lg overflow-hidden">
-                <Image
+                <CaseMedia
                   src={leftBottomImageSrc}
                   alt={leftBottomImageAlt}
-                  width={0}
-                  height={0}
                   sizes="(min-width: 1024px) 25vw, 100vw"
                   className="w-full h-full object-cover block"
                   style={{ width: "100%", height: "auto" }}
@@ -89,11 +85,9 @@ const GoalSection: React.FC<GoalSectionProps> = ({
 
             {/* RIGHT */}
             <div ref={rightRef} className="w-full shadow-lg overflow-hidden">
-              <Image
+              <CaseMedia
                 src={rightImageSrc}
                 alt={rightImageAlt}
-                width={0}
-                height={0}
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-full object-cover object-top block"
                 style={{ width: "100%", height: "100%" }}

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import CaseMedia from "@/components/CaseStudy/CaseMedia";
 import { useTranslations } from "@/lib/useTranslations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -51,11 +51,9 @@ const ChallengeSection: React.FC<ChallengeSectionProps> = ({
             {/* IMAGE */}
             <div ref={imageRef} className="order-2 lg:order-1 flex-1 shadow-lg">
               <div className="w-full overflow-hidden">
-                <Image
+                <CaseMedia
                   src={imageSrc}
                   alt={imageAlt}
-                  width={0}
-                  height={0}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="w-full h-auto object-cover block"
                   style={{ width: "100%", height: "auto" }}
