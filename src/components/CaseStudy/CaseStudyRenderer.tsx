@@ -14,7 +14,7 @@ import MoreSections from "@/components/Sections/works/MoreProjectsSection";
 import AnimatedButton from "@/components/AnimatedButton";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
-import { WORKS } from "@/data/worksData";
+import { WORKS, isPersonalWork } from "@/data/worksData";
 import type { WorkItem } from "@/data/worksData";
 
 type TableRow = {
@@ -73,8 +73,14 @@ const CaseStudyRenderer: React.FC<CaseStudyRendererProps> = ({
     );
   }
 
+  const isPersonal = isPersonalWork(work);
+
   const tableData: TableRow[] = [
-  { label: t("table.client.label"), value: work.client ?? "" },
+  {
+    label: t("table.client.label"),
+    // Projekt własny nie ma klienta — wartość (np. „Projekt własny”) z tłumaczeń case'a.
+    value: isPersonal ? t("table.client.value") : work.client ?? "",
+  },
   {
     label: t("table.type.label"),
     value: work.type.map((type) => tTypes(type)).join(" / "),

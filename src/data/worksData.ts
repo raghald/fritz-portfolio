@@ -5,7 +5,18 @@ export type WorkType =
   | "LandingPage"
   | "Website"
   | "LoFi"
-  | "Framer";
+  | "Framer"
+  | "App";
+
+/**
+ * Charakter projektu: zlecenie dla klienta albo projekt własny (side project,
+ * robiony dla zabawy / do własnego użytku). Projekty własne mają na kartach
+ * plakietkę i można je ukryć checkboxem na listingu Works.
+ */
+export type WorkCategory = "client" | "personal";
+
+/** Wartości filtra na listingu: typ projektu albo „wszystkie”. */
+export type WorkFilter = WorkType | "All";
 
 export type WorkLayoutVariant = "vertical" | "horizontal";
 
@@ -19,11 +30,18 @@ export type WorkCaseStepId =
   | "responsive-setup"
   | "performance-optimization"
   | "seo-setup"
-  | "launch";
+  | "launch"
+  | "concept"
+  | "engine"
+  | "3d"
+  | "desktop-app"
+  | "export";
 
 export type WorkItem = {
   id: string;
   type: WorkType[];
+  /** Domyślnie "client". */
+  category?: WorkCategory;
   year: string;
   coverSrc: string;
   videoSrc?: string;
@@ -47,7 +65,8 @@ export type WorkItem = {
   };
 };
 
-export const WORK_TYPES: (WorkType | "All")[] = [
+/** Kolejność chipów filtra na listingu Works. */
+export const WORK_FILTERS: WorkFilter[] = [
   "All",
   "E-commerce",
   "LandingPage",
@@ -55,6 +74,9 @@ export const WORK_TYPES: (WorkType | "All")[] = [
   "LoFi",
   "Framer",
 ];
+
+export const isPersonalWork = (work: WorkItem): boolean =>
+  work.category === "personal";
 
 /**
  * URL slug case study — jedno źródło prawdy. Slug jest zakodowany w `href`
@@ -66,6 +88,26 @@ export const slugForWork = (work: WorkItem): string =>
   work.href.replace(/^\/works\//, "").replace(/\/$/, "");
 
 export const WORKS: WorkItem[] = [
+  // Projekt własny (side project)
+  {
+    id: "stanczyk-app",
+    category: "personal",
+    type: ["App"],
+    year: "2026",
+    coverSrc: "/images/Case_Studies/Stanczyk/Cover_Stanczyk_1080x1080.webp",
+    videoSrc: "/videos/stanczyk.webm",
+    href: "/works/stanczyk",
+    layout: "horizontal",
+    tools: "Electron | WebGL | three.js",
+    liveUrl: "https://raghald.github.io/stanczyk/",
+    updatedAt: "2026-11-13",
+    case: {
+      heroVideo: "/videos/Stanczyk_Video_1.mp4",
+      rangeVideo1: "/videos/Stanczyk_Video_2.mp4",
+      rangeVideo2: "/videos/Stanczyk_Video_3.mp4",
+      steps: ["concept", "engine", "3d", "desktop-app", "export"],
+    },
+  },
   {
     id: "nth-consulting-group",
     type: ["Website", "Framer"],
@@ -206,3 +248,11 @@ export const WORKS: WorkItem[] = [
     },
   },
 ];
+
+/**
+ * Projekty od najnowszych (rok malejąco). Sortowanie jest stabilne, więc
+ * w obrębie jednego roku decyduje kolejność w tablicy WORKS.
+ */
+export const WORKS_CHRONOLOGICAL: WorkItem[] = [...WORKS].sort(
+  (a, b) => Number(b.year) - Number(a.year)
+);

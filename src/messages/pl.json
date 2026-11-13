@@ -108,8 +108,81 @@
   },
 
   "Works": {
+    "personal": {
+      "badge": "Projekt własny"
+    },
+
+    "Stanczyk": {
+      "heading": "Stańczyk — edytor animacji z kropek",
+      "intro": "Stańczyk to mój autorski edytor do tworzenia animowanych kompozycji ze zdjęć, wideo i brył 3D. Pozwala eksperymentować z kropkami, pikselami, liniami i znakami ASCII z podglądem efektów w czasie rzeczywistym. Zaprojektowałem interfejs i zbudowałem aplikację do własnej pracy i wizualnych eksperymentów.",
+      "table": {
+        "client": {
+          "label": "Projekt",
+          "value": "Własny, open source"
+        },
+        "type": {
+          "label": "Typ"
+        },
+        "year": {
+          "label": "Rok"
+        },
+        "tools": {
+          "label": "Technologie"
+        },
+        "live": {
+          "label": "Demo",
+          "button": "Otwórz"
+        }
+      },
+      "challenge": {
+        "heading": "Skąd pomysł",
+        "description": "Chciałem eksperymentować z efektami rastra, pikseli i ASCII bez pisania każdej animacji od zera. Potrzebowałem narzędzia, w którym zmieniam ustawienia suwakami, od razu widzę efekt w ruchu i mogę go wyeksportować. Nazwa aplikacji i domyślny obraz nawiązują do „Stańczyka” Jana Matejki."
+      },
+      "goal": {
+        "heading": "Założenia",
+        "description": "Chciałem połączyć płynny podgląd dziesiątek tysięcy kropek z prostą obsługą zdjęć, wideo i brył 3D. Efekt miał być dostępny jako pojedynczy kadr PNG, nagranie wideo lub — dla zdjęć i brył 3D — kod do osadzenia na stronie."
+      },
+      "range": {
+        "concept": {
+          "title": "Projekt interfejsu",
+          "description": "Zaprojektowałem ciemny interfejs z podglądem na środku i zwijanym panelem ustawień. Wykorzystałem komponenty Material Design 3. Dodałem gotowe zestawy ustawień oraz polską i angielską wersję interfejsu."
+        },
+        "engine": {
+          "title": "Silnik animacji",
+          "description": "Zbudowałem silnik animacji oparty na WebGL 2, który wprawia w ruch kropki, piksele, linie i znaki ASCII. Ustawienia pozwalają zmieniać ich wygląd i ruch, od delikatnego dryfu po fale, wiry i rozsypkę."
+        },
+        "3d": {
+          "title": "Bryły 3D i sekwencje",
+          "description": "Dodałem wbudowane bryły, tekst 3D i import własnych modeli w formatach GLB, OBJ i STL. Zdjęcia, wideo i bryły można łączyć w sekwencje z animowanymi przejściami."
+        },
+        "desktop-app": {
+          "title": "Aplikacja desktopowa",
+          "description": "Przygotowałem wersję na macOS i Windows w Electronie. Pozwala zapisywać projekty w plikach .stanczyk i wracać do nich z listy ostatnio otwieranych."
+        },
+        "export": {
+          "title": "Eksport",
+          "description": "Dodałem zapis pojedynczego kadru do PNG i nagrywanie animacji do MP4 lub WebM, zależnie od przeglądarki. Zdjęcia i bryły 3D można też wyeksportować jako fragment HTML do osadzenia na stronie; ten format pomija wideo z sekwencji."
+        }
+      },
+      "result": "Zbudowałem narzędzie, w którym mogę eksperymentować z obrazem i ruchem bez pisania każdej animacji od zera. Stańczyk działa w przeglądarce i jako aplikacja desktopowa, a jego kod udostępniłem na GitHubie. Wersję przeglądarkową możesz wypróbować bez instalacji.",
+      "video": {
+        "ariaLabel": "Prezentacja edytora Stańczyk: przełączanie presetów i obracająca się bryła 3D",
+        "fallback": "Twoja przeglądarka nie obsługuje elementu wideo."
+      },
+      "images": {
+        "editor": "Okno edytora Stańczyk z obrazem Jana Matejki animowanym w rastrze drukarskim i panelem ustawień po prawej stronie",
+        "lines": "Obraz „Stańczyk” odtworzony z falujących pionowych linii w efekcie Lines",
+        "cubes": "Obraz „Stańczyk” odtworzony z pikseli poruszających się falą w efekcie Cubes",
+        "shape": "Obracający się torus przedstawiony w rastrze drukarskim w trybie 3D edytora Stańczyk"
+      }
+    },
     "videoFallback": "Twoja przeglądarka nie obsługuje elementu wideo.",
     "items": {
+      "stanczyk-app": {
+        "title": "Stańczyk — edytor animacji z kropek",
+        "meta": "Aplikacja | 2026",
+        "description": "Zaprojektowałem i zbudowałem edytor do tworzenia animowanych kompozycji ze zdjęć, wideo i brył 3D. Działa w przeglądarce oraz na macOS i Windows, pozwalając zmieniać efekty z podglądem w czasie rzeczywistym."
+      },
       "nth-consulting-group": {
         "title": "Strona Nth Consulting Group",
         "meta": "Strona Internetowa | 2026",
@@ -148,6 +221,7 @@
     },
 
     "filters": {
+      "showPersonal": "Pokaż projekty własne",
       "groupAria": "Filtruj projekty według typu",
       "All": "Wszystkie projekty",
       "E-commerce": "E-commerce",
@@ -163,6 +237,7 @@
     },
 
     "types": {
+      "App": "Aplikacja",
       "E-commerce": "E-commerce",
       "LandingPage": "Landing page",
       "Website": "Strona internetowa",

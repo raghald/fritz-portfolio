@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import { useTranslations } from "@/lib/useTranslations";
 import { localePath } from "@/i18n/routing";
-import type { WorkItem } from "@/data/worksData";
+import { isPersonalWork, type WorkItem } from "@/data/worksData";
 
 type WorkThumbnailMode = "single" | "column";
 
@@ -63,6 +63,7 @@ export default function WorkThumbnail({
   const title = t(`items.${work.id}.title`);
   const meta = t(`items.${work.id}.meta`);
   const description = t(`items.${work.id}.description`);
+  const isPersonal = isPersonalWork(work);
 
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -189,6 +190,11 @@ export default function WorkThumbnail({
         ].join(" ")}
       >
         <Link href={href} className="cursor-pointer group block">
+          {isPersonal && (
+            <span className="inline-block mb-3 px-2.5 py-1 border border-black text-black text-xs font-medium leading-none">
+              {t("personal.badge")}
+            </span>
+          )}
           <HeadingTag
             id={titleId}
             className="text-black font-semibold text-[28px] lg:text-[32px] leading-[100%] text-left"

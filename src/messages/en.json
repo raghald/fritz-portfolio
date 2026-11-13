@@ -108,8 +108,81 @@
   },
 
   "Works": {
+    "personal": {
+      "badge": "Side project"
+    },
+
+    "Stanczyk": {
+      "heading": "Stańczyk Dot Animation Editor",
+      "intro": "Stańczyk is an editor I designed and built to create animated compositions from photos, videos, and 3D shapes. It lets me experiment with dots, pixels, lines, and ASCII characters with a real-time preview of the effects. I created it for my own work and visual experiments.",
+      "table": {
+        "client": {
+          "label": "Project",
+          "value": "Personal, open source"
+        },
+        "type": {
+          "label": "Type"
+        },
+        "year": {
+          "label": "Year"
+        },
+        "tools": {
+          "label": "Tech"
+        },
+        "live": {
+          "label": "Demo",
+          "button": "Open"
+        }
+      },
+      "challenge": {
+        "heading": "Why I built it",
+        "description": "I wanted to experiment with halftone, pixel, and ASCII effects without coding each animation from scratch. I needed a tool where I could adjust settings with sliders, see the effect in motion, and export it. The app’s name and default image are inspired by Jan Matejko’s painting “Stańczyk”."
+      },
+      "goal": {
+        "heading": "Goals",
+        "description": "I wanted to combine a smooth preview of tens of thousands of dots with straightforward controls for photos, videos, and 3D shapes. The output needed to be available as a single PNG frame, a video recording, or — for photos and 3D shapes — code to embed on a website."
+      },
+      "range": {
+        "concept": {
+          "title": "Interface Design",
+          "description": "I designed a dark interface with a central preview and a collapsible settings panel. I used Material Design 3 components and added presets, with an interface available in Polish and English."
+        },
+        "engine": {
+          "title": "Animation Engine",
+          "description": "I built a WebGL 2 animation engine that brings dots, pixels, lines, and ASCII characters to life. The controls let me adjust their appearance and movement, from a gentle drift to waves, vortices, and scatter effects."
+        },
+        "3d": {
+          "title": "3D Shapes & Sequences",
+          "description": "I added built-in shapes, 3D text, and support for importing custom GLB, OBJ, and STL models. Photos, videos, and shapes can be combined into sequences with animated transitions."
+        },
+        "desktop-app": {
+          "title": "Desktop App",
+          "description": "I built an Electron version for macOS and Windows. It supports saving projects as .stanczyk files and reopening them from a recent projects list."
+        },
+        "export": {
+          "title": "Export",
+          "description": "I added single-frame PNG export and animation recording in MP4 or WebM, depending on the browser. Photos and 3D shapes can also be exported as an HTML snippet for a website; this format skips videos in the sequence."
+        }
+      },
+      "result": "I built a tool that lets me experiment with images and motion without coding each animation from scratch. Stańczyk runs in the browser and as a desktop app, and I shared its source code on GitHub. You can try the browser version without installation.",
+      "video": {
+        "ariaLabel": "Stańczyk editor walkthrough: switching presets and a rotating 3D shape",
+        "fallback": "Your browser does not support the video tag."
+      },
+      "images": {
+        "editor": "Stańczyk editor window showing Jan Matejko’s painting animated as a newspaper-style halftone, with the settings panel on the right",
+        "lines": "The painting “Stańczyk” recreated with flowing vertical lines using the Lines effect",
+        "cubes": "The painting “Stańczyk” recreated with pixels moving in a wave using the Cubes effect",
+        "shape": "A rotating torus rendered as a newspaper-style halftone in Stańczyk’s 3D mode"
+      }
+    },
     "videoFallback": "Your browser does not support the video tag.",
     "items": {
+      "stanczyk-app": {
+        "title": "Stańczyk Dot Animation Editor",
+        "meta": "App | 2026",
+        "description": "I designed and built an editor for creating animated compositions from photos, videos, and 3D shapes. It runs in the browser and on macOS and Windows, letting you adjust effects with a real-time preview."
+      },
       "nth-consulting-group": {
         "title": "Nth Consulting Group Website",
         "meta": "Website | 2026",
@@ -148,6 +221,7 @@
     },
 
     "filters": {
+      "showPersonal": "Show side projects",
       "groupAria": "Filter projects by type",
       "All": "All projects",
       "E-commerce": "E-commerce",
@@ -163,6 +237,7 @@
     },
 
     "types": {
+      "App": "App",
       "E-commerce": "E-commerce",
       "LandingPage": "Landing page",
       "Website": "Website",
